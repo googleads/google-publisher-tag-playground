@@ -1,2 +1,5 @@
+node_modules
+
 *.js
 !rollup.config.js
+!dist/js/*.js

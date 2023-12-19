@@ -1,0 +1,1 @@
+import"./gpt-playground.js";import{g as o,j as s,x as p}from"./url-hash.js";const e=o("preview"),n=!e||!["0","false"].includes(e),r=o("sample");s(p`<gpt-playground project-src="${r?`config/${r}.json`:"config/display-test-ad-js.json"}" ?preview-enabled="${n}"></gpt-playground>`,document.body);
