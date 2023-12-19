@@ -1,0 +1,69 @@
+import {html, render} from 'lit-html';
+import {unsafeHTML} from 'lit/directives/unsafe-html.js';
+import * as ts from 'typescript';
+
+import {SampleConfig} from '../../src/model/sample-config.js';
+import {createTemplate} from '../../src/template/template-factory.js';
+import * as base64url from '../../src/util/base64url.js';
+
+
+let config: SampleConfig|null = null;
+
+if (window.location.hash) {
+  const params = new URLSearchParams(window.location.hash.substring(1));
+  if (params && params.has('config') && params.get('config') != null) {
+    config = JSON.parse(base64url.decode(params.get('config')!));
+  }
+}
+
+if (config) {
+  const template = createTemplate(config);
+  template.jsTarget = ts.ScriptTarget.ES2020;
+
+  template.stylesheets.forEach(s => {
+    addStylesheet(s);
+  });
+
+  template.scripts.forEach(s => {
+    addScript(s);
+  });
+
+  template.modules.forEach(s => {
+    addScript(s, true);
+  });
+
+  render(html`<style>${template.inlineStyles}</style>`, document.head);
+
+  addInlineScript(await template.gptInitialization());
+  render(html`${unsafeHTML(await template.bodyHtml())}`, document.body);
+  addInlineScript(await template.gptRequestAndRenderAds());
+}
+
+function addInlineScript(content: string) {
+  // Remove script tags (if present), strip comments and linebreaks.
+  const inlineScript = content.replace('<script>', '')
+                           .replace('</script>', '')
+                           .replace(/\s+?\/\/.*?\n/g, '')
+                           .replace(/\n/g, '');
+
+  const tag = document.createElement('script');
+  tag.innerText = inlineScript;
+  document.body.appendChild(tag);
+}
+
+function addScript(script: string, module = false) {
+  const tag = document.createElement('script');
+  tag.src = script;
+  tag.async = true;
+  if (module) {
+    tag.type = 'module';
+  }
+  document.head.appendChild(tag);
+}
+
+function addStylesheet(stylesheet: string) {
+  const tag = document.createElement('link');
+  tag.href = stylesheet;
+  tag.rel = 'stylesheet';
+  document.head.appendChild(tag);
+}

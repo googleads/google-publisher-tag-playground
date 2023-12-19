@@ -1,0 +1,40 @@
+{
+  "page": {
+    "sra": true,
+    "privacy": {
+      "npa": true,
+      "rdp": true,
+      "tfcd": true,
+      "tfua": true
+    }
+  },
+  "slots": [
+    {
+      "adUnit": "/123/abc",
+      "size": [300, 250],
+      "targeting": [
+        {
+          "key": "slot",
+          "value": "blue"
+        }
+      ]
+    },
+    {
+      "adUnit": "/6355419/Travel/Europe/France/Paris",
+      "size": [300, 250],
+      "format": "INTERSTITIAL",
+      "targeting": [
+        {
+          "key": "interstitial",
+          "value": "yellow"
+        }
+      ]
+    }
+  ],
+  "targeting": [
+    {
+      "key": "page",
+      "value": "red"
+    }
+  ]
+}

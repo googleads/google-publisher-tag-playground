@@ -1,0 +1,24 @@
+{
+  "slots": [
+    {
+      "adUnit": "/123/abc",
+      "size": [300, 250],
+      "targeting": [
+        {
+          "key": "slot",
+          "value": "blue"
+        }
+      ]
+    }
+  ],
+  "targeting": [
+    {
+      "key": "kv1",
+      "value": "value1"
+    },
+    {
+      "key": "kv2",
+      "value": "value2"
+    }
+  ]
+}

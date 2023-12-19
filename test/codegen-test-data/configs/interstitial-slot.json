@@ -1,0 +1,9 @@
+{
+  "slots": [
+    {
+      "adUnit": "/123/abc",
+      "size": [300, 250],
+      "format": "INTERSTITIAL"
+    }
+  ]
+}
