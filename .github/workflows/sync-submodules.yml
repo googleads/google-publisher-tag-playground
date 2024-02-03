@@ -1,0 +1,21 @@
+name: Sync submodules
+on:
+  schedule:
+    - cron: "*/30 * * * *" # every 30 minutes
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+      - name: Update submodules
+        run: |
+          git submodule update --remote
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update submodules
