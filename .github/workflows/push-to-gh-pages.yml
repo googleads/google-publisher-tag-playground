@@ -37,6 +37,13 @@ jobs:
         run: |
           npm install
           npm run build
+      - name: Build samples
+        working-directory: ./samples
+        run: |
+          npm install
+          npm run build
+      - name: Generate sample configs
+        run: |
           npx -y tsx scripts/gen-samples.ts
       - name: Setup Pages
         uses: actions/configure-pages@v3
