@@ -13,9 +13,17 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: true
+          token: ${{ secrets.PUBTAGS_BOT_REPO_TOKEN }}
       - name: Update submodules
         run: |
           git submodule update --remote
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
         with:
-          commit_message: Update submodules
+          push-to-fork: publisher-ads-audits-bot/google-publisher-tag-playground
+          token: ${{ secrets.PUBTAGS_BOT_REPO_TOKEN }}
+          title: "Update submodules"
+          body: "Automated PR to update submodules of googleads/google-publisher-tag-playground"
+          commit-message: "Update submodules"
+          branch: "submodules"
+          delete-branch: true
