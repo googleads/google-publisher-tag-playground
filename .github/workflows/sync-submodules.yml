@@ -22,6 +22,7 @@ jobs:
         with:
           push-to-fork: publisher-ads-audits-bot/google-publisher-tag-playground
           token: ${{ secrets.PUBTAGS_BOT_REPO_TOKEN }}
+          committer: Google Publisher Tags Bot <publisher-ads-audits-bot@google.com>
           title: "Update submodules"
           body: "Automated PR to update submodules of googleads/google-publisher-tag-playground"
           commit-message: "Update submodules"
