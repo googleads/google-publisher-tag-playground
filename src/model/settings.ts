@@ -53,3 +53,16 @@ export const templateConfigNames:
       type: 'Sample template',
       target: 'Output format',
     };
+
+/**
+ * Maps `googletag.enums.OutOfPageFormat` keys to their friendly names.
+ */
+export const outOfPageFormatNames:
+    {[K in keyof typeof googletag.enums.OutOfPageFormat]: string} = {
+      BOTTOM_ANCHOR: 'Anchor ad (bottom)',
+      TOP_ANCHOR: 'Anchor ad (top)',
+      REWARDED: 'Rewarded ad',
+      LEFT_SIDE_RAIL: 'Side rail ad (left)',
+      RIGHT_SIDE_RAIL: 'Side rail ad (right)',
+      INTERSTITIAL: 'Web interstitial ad',
+    };

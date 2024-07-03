@@ -20,9 +20,11 @@ import './targeting-input'
 import {css, html, LitElement, ReactiveElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
+import {when} from 'lit/directives/when.js';
 import {isEqual} from 'lodash-es';
 
 import type {SampleSlotConfig} from '../model/sample-config.js';
+import {outOfPageFormatNames} from '../model/settings.js';
 
 import {sampleAds} from './shared/sample-ads.js';
 import {materialStyles} from './shared/styles.js';
@@ -33,8 +35,12 @@ import {TargetingInput} from './targeting-input.js';
 const ADD_SLOT_TITLE = 'Add slot';
 const AD_UNIT_LABEL = 'Ad unit path';
 const CUSTOM_OPTION_LABEL = 'Custom';
+const OOP_FORMAT_DISABLED = 'Unavailable';
+const OOP_FORMAT_LABEL = 'Out-of-page format';
+const OOP_FORMAT_UNSELECTED = 'None';
 const REMOVE_SLOT_TITLE = 'Remove slot';
-const SAMPLE_ADS_LABEL = 'Sample Ads';
+const SAMPLE_ADS_LABEL = 'Sample ads';
+const SAMPLE_ADS_OOP_LABEL = 'Sample ads (out-of-page)';
 const SIZE_SECTION_TITLE = 'Sizes'
 const TARGETING_SECTION_TITLE = 'Targeting';
 
@@ -53,12 +59,15 @@ interface KeyedSlot {
   template: boolean;
 }
 
+type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
+
 /**
- * Custom component for displaying/editing GPT slots.
+ * Custom component for displaying/editing an array of GPT slots.
  */
 @customElement('slot-input')
 export class SlotInput extends LitElement {
   @state() private dirtyConfig: KeyedSlot[] = [];
+  private disabledFormats = new Set<OutOfPageFormat>();
 
   static styles = [
     materialStyles, css`
@@ -86,7 +95,13 @@ export class SlotInput extends LitElement {
         min-width: 24px;
       }
 
+      .slot-option {
+        align-items: center;
+        padding: 3px 0;
+      }
+
       .slot-option label {
+        min-width: 125px;
         padding-right: 5px;
       }
 
@@ -139,6 +154,8 @@ export class SlotInput extends LitElement {
         this.dirtyConfig.push(
             {id: Date.now(), slot: slot, template: this.isTemplateAd(slot)});
       });
+
+      this.updateDisabledFormats();
     }
   }
 
@@ -156,8 +173,8 @@ export class SlotInput extends LitElement {
     const cleanConfig: SampleSlotConfig[] = [];
 
     config.forEach(({slot}) => {
-      if (slot.adUnit && slot.size.length > 0 &&
-          AD_UNIT_VALIDATION_REGEX.test(slot.adUnit)) {
+      if (slot.adUnit && AD_UNIT_VALIDATION_REGEX.test(slot.adUnit) &&
+          (slot.format || slot.size.length > 0)) {
         cleanConfig.push(slot);
       }
     });
@@ -183,7 +200,8 @@ export class SlotInput extends LitElement {
     this.dirtyConfig = updatedConfig;
 
     if (cleanConfigUpdated) {
-      console.log(JSON.stringify(this.dirtyConfig));
+      this.updateDisabledFormats();
+
       // Fire an event to let the configurator know a value has changed.
       this.dispatchEvent(
           new CustomEvent('update', {bubbles: true, composed: true}));
@@ -191,12 +209,50 @@ export class SlotInput extends LitElement {
   }
 
   /**
+   * Determine which {@link OutOfPageFormat}s should be disabled, based on which
+   * are currently configured.
+   */
+  private updateDisabledFormats() {
+    const disabledFormats = new Set<OutOfPageFormat>();
+
+    this.dirtyConfig.forEach((keyedSlot) => {
+      const format = keyedSlot.slot.format;
+      if (!format) return;
+
+      if (format === 'BOTTOM_ANCHOR' || format === 'TOP_ANCHOR') {
+        // Only one of top or bottom anchor is allowed per page.
+        disabledFormats.add('BOTTOM_ANCHOR');
+        disabledFormats.add('TOP_ANCHOR');
+      } else {
+        disabledFormats.add(format);
+      }
+    });
+
+    this.disabledFormats = disabledFormats;
+  }
+
+  /**
+   * Helper method to determine if an {@link OutOfPageFormat} should be
+   * disabled for a given slot.
+   */
+  private isFormatDisabledForSlot(
+      slot: SampleSlotConfig, format: OutOfPageFormat) {
+    if (format === 'BOTTOM_ANCHOR' || format === 'TOP_ANCHOR') {
+      // If slot is an anchor, allow swapping between top and bottom formats.
+      // Otherwise, disable both if either is selected elsewhere.
+      return this.disabledFormats.has(format) &&
+          (slot.format !== 'BOTTOM_ANCHOR' && slot.format !== 'TOP_ANCHOR');
+    }
+
+    return this.disabledFormats.has(format) && slot.format != format;
+  }
+
+  /**
    * Helper method to determine whether a given slot config matches a known
    * sample ad.
    */
   private isTemplateAd(slot: SampleSlotConfig) {
-    return sampleAds.filter(sampleAd => isEqual(slot, sampleAd.slot)).length >
-        0;
+    return sampleAds.some(sampleAd => isEqual(slot, sampleAd.slot));
   }
 
   private addSlot() {
@@ -224,8 +280,9 @@ export class SlotInput extends LitElement {
     const index =
         Array.from(this.renderRoot.querySelectorAll('.slot')).indexOf(parent);
 
-    const template = (parent.querySelector('select') as HTMLSelectElement)
-                         .selectedOptions[0];
+    const template =
+        (parent.querySelector('select[name=templates]') as HTMLSelectElement)
+            .selectedOptions[0];
 
     if (template.dataset && template.dataset.index) {
       // A sample ad was selected.
@@ -236,15 +293,23 @@ export class SlotInput extends LitElement {
       config[index].template = false;
 
       // Prepopulate inputs with any previously selected sample ad values.
+      const adUnitPath =
+          (parent.querySelector('input[name=adUnit]') as HTMLInputElement);
+      const format =
+          (parent.querySelector('select[name=formats]') as HTMLSelectElement)
+              ?.selectedOptions[0];
+      const sizes =
+          (parent.querySelector('slot-size-input') as ReactiveElement as
+           SlotSizeInput);
+      const targeting =
+          (parent.querySelector('targeting-input') as ReactiveElement as
+           TargetingInput);
+
       config[index].slot = {
-        adUnit: (parent.querySelector('input[name=adUnit]') as HTMLInputElement)
-                    .value,
-        size: (parent.querySelector('slot-size-input') as ReactiveElement as
-               SlotSizeInput)
-                  .config,
-        targeting: (parent.querySelector('targeting-input') as
-                    ReactiveElement as TargetingInput)
-                       .config
+        adUnit: adUnitPath?.value,
+        format: format?.value as OutOfPageFormat,
+        size: sizes?.config || [],
+        targeting: targeting?.config || []
       }
     }
 
@@ -252,26 +317,71 @@ export class SlotInput extends LitElement {
   }
 
   private renderSlotTemplates(slot: SampleSlotConfig) {
-    const templates: TemplateResult[] = []
+    const templates: TemplateResult[] = [];
+    const oopTemplates: TemplateResult[] = [];
+
     sampleAds.forEach((sampleAd, i) => {
-      const option = html`
+      const format = sampleAd.slot.format as OutOfPageFormat;
+      const disabled = this.isFormatDisabledForSlot(slot, format);
+      const template = html`
         <option
           data-index="${i}"
+          ?disabled="${disabled}"
           ?selected="${isEqual(slot, sampleAd.slot)}"
-        >${sampleAd.name}</option>`
-      templates.push(option);
+        >
+          ${sampleAd.name}
+          ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
+        </option>`;
+      (format ? oopTemplates : templates).push(template);
     });
 
     return html`
       <select
         class="flex padded"
+        name="templates"
         @input="${this.updateSlot}"
       >
         <option>${CUSTOM_OPTION_LABEL}</option>
         <optgroup label="${SAMPLE_ADS_LABEL}">
           ${templates}
         </optgroup>
+        <optgroup label="${SAMPLE_ADS_OOP_LABEL}">
+          ${oopTemplates}
+        </optgroup>
       </select>`;
+  }
+
+  private renderSlotFormatInput(slot: SampleSlotConfig) {
+    const formats: TemplateResult[] = [];
+    Object
+        .entries(outOfPageFormatNames)
+        // Remove formats we don't yet support.
+        .filter(([k, v]) => k as OutOfPageFormat !== 'REWARDED')
+        .forEach(([k, v]) => {
+          const format = k as OutOfPageFormat;
+          const disabled = this.isFormatDisabledForSlot(slot, format);
+          const option = html`
+            <option
+              value="${k}"
+              ?disabled="${disabled}"
+              ?selected="${slot.format === format}"
+            >
+              ${v}
+              ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
+            </option>`;
+          formats.push(option);
+        });
+
+    return html`
+      <select
+        class="flex padded"
+        name="formats"
+        @input="${this.updateSlot}"
+      >
+        <option value="">${OOP_FORMAT_UNSELECTED}</option>
+        ${formats}
+      </select>
+    `;
   }
 
   private renderSlotOptions(slot: SampleSlotConfig) {
@@ -279,12 +389,16 @@ export class SlotInput extends LitElement {
       <div class="slot-option flex">
         <label for="adUnit">${AD_UNIT_LABEL}</label>
         <input
-          class="flex"
+          class="flex padded"
           type="text"
           name="adUnit"
           pattern="${AD_UNIT_VALIDATION_PATTERN}"
           value="${slot.adUnit}"
           @input="${this.updateSlot}" />
+      </div>
+      <div class="slot-option flex">
+        <label for="format">${OOP_FORMAT_LABEL}</label>
+        ${this.renderSlotFormatInput(slot)}
       </div>`;
   }
 
@@ -301,7 +415,7 @@ export class SlotInput extends LitElement {
     return html`
       <targeting-input
         title="${TARGETING_SECTION_TITLE}"
-        .config="${slot.targeting}"
+        .config="${slot.targeting || []}"
         @update="${this.updateSlot}"
       ></targeting-input>`;
   }
@@ -314,12 +428,15 @@ export class SlotInput extends LitElement {
       <div class="${classMap(classesWithPadding)}">
         ${this.renderSlotOptions(slot)}
       </div>
-      <div class="${classMap(classes)}">
-        ${this.renderSlotSizeInput(slot)}
-      </div>
+      ${when(!slot.format, () => html`
+        <div class="${classMap(classes)}">
+          ${this.renderSlotSizeInput(slot)}
+        </div>
+      `)}
       <div class="${classMap(classes)}">
         ${this.renderTargetingInput(slot)}
-      </div>`;
+      </div>
+    `;
   }
 
   private renderSlot(slot: KeyedSlot, index: number) {

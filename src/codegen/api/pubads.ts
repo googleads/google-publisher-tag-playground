@@ -17,10 +17,14 @@
 import {SamplePrivacyConfig, SampleTargetingKV} from '../../model/sample-config.js';
 import {sanitizeJs} from '../sanitize.js';
 
+type GptEvent = keyof googletag.events.EventTypeMap;
+
 /* Internal template strings */
 
 const api = {
   pubAdsService: () => 'googletag.pubads()',
+  addEventListener: (event: GptEvent, code: string) => `${
+      api.pubAdsService()}.addEventListener('${event}', (event) => {${code}})`,
   enableSingleRequest: () => `${api.pubAdsService()}.enableSingleRequest()`,
   setPrivacySettings: (settings: string) =>
       `${api.pubAdsService()}.setPrivacySettings({${settings}})`,
@@ -38,6 +42,17 @@ const api = {
 };
 
 /* Public exports */
+
+/**
+ * Generates code for adding an event listener.
+ *
+ * @param event The {@link GptEvent} to listen for.
+ * @param body The code to be executed when the event occurs.
+ * @returns
+ */
+export function addEventListener(event: GptEvent, code: string) {
+  return api.addEventListener(event, code);
+}
 
 /**
  * Generates code for enabling SRA mode.

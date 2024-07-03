@@ -16,7 +16,7 @@
 
 import type {SampleSlotConfig} from '../../model/sample-config.js';
 
-interface SampleAd {
+export interface SampleAd {
   name: string;
   slot: SampleSlotConfig;
 }
@@ -45,5 +45,39 @@ export const sampleAds: SampleAd[] = [
       size: [[100, 100], [300, 250], [728, 90], [750, 200]]
     }
   },
-  {name: 'Fluid ad', slot: {adUnit: '/6355419/Travel', size: 'fluid'}}
+  {name: 'Fluid ad', slot: {adUnit: '/6355419/Travel', size: 'fluid'}}, {
+    name: 'Anchor ad (bottom)',
+    slot: {
+      adUnit: '/6355419/Travel',
+      format: 'BOTTOM_ANCHOR',
+      size: [],
+      targeting: [{key: 'test', value: 'anchor'}]
+    }
+  },
+  {
+    name: 'Anchor ad (top)',
+    slot: {
+      adUnit: '/6355419/Travel',
+      format: 'TOP_ANCHOR',
+      size: [],
+      targeting: [{key: 'test', value: 'anchor'}]
+    }
+  },
+  {
+    name: 'Side rail ad (left)',
+    slot: {adUnit: '/6355419/Travel/Europe', format: 'LEFT_SIDE_RAIL', size: []}
+  },
+  {
+    name: 'Side rail ad (right)',
+    slot:
+        {adUnit: '/6355419/Travel/Europe', format: 'RIGHT_SIDE_RAIL', size: []}
+  },
+  {
+    name: 'Web interstitial ad',
+    slot: {
+      adUnit: '/6355419/Travel/Europe/France/Paris',
+      format: 'INTERSTITIAL',
+      size: []
+    }
+  }
 ]

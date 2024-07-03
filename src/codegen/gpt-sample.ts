@@ -49,7 +49,7 @@ function slotDefinitions(config: SampleConfig, outOfPage = false) {
     if (!outOfPage && !slot.format) {
       slotDefs += googletag.defineSlot(config, slot) + '\n';
     } else if (outOfPage && slot.format) {
-      slotDefs += googletag.defineOutOfPageSlot(config, slot) + '\n';
+      slotDefs += googletag.defineOutOfPageSlot(config, slot) + '\n\n';
     }
   });
 

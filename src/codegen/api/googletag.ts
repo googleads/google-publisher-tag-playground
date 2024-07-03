@@ -15,8 +15,10 @@
  */
 
 import {SampleConfig, SampleSlotConfig} from '../../model/sample-config.js';
+import {outOfPageFormatNames} from '../../model/settings.js';
 import {sanitizeJs} from '../sanitize.js';
 
+import * as pubads from './pubads.js';
 import * as slot from './slot.js';
 
 /* Internal template strings */
@@ -35,18 +37,54 @@ const api = {
   enableServices: () => 'googletag.enableServices()',
 };
 
+const outOfPage = {
+  comment: (format: string) => `${
+      format} slots return null if the page or device does not support them.`,
+  loaded: (format: string) => `${format} is loaded.`,
+  loadedNeedScroll: (format: string) =>
+      `${outOfPage.loaded(format)} Scroll page to activate.`,
+  loadedUrl: (format: string) =>
+      `<a href="https://www.example.com">${outOfPage.loaded(format)}</a>`,
+  loading: (format: string) => `${format} is loading...`,
+  notSupported: (format: string) => `${format} is not supported on this page.`,
+}
+
+const status =
+    {
+      container: (id: string) => `document.getElementById('${id}')`,
+      update: (id: string, content: string) =>
+          `${status.container(id)}!.innerText = '${content}'`,
+      updateHtml: (id: string, content: string) =>
+          `${status.container(id)}!.innerHTML = '${content}'`,
+    }
+
 /* Internal helper methods */
 
 /**
- * Converts an out-of-page format enum value into a friendly string.
- *
- * Ex: BOTTOM_ANCHOR -> Bottom anchor
+ * Generates a slotOnload event callback function body for the
+ * specified slot.
  */
-function getFormatString(config: SampleSlotConfig) {
-  return config.format ?
-      `${String(config.format).charAt(0)}${
-          String(config.format).slice(1).toLowerCase().replaceAll('_', ' ')}` :
-      '';
+function getSlotOnloadCallback(config: SampleConfig, slot: SampleSlotConfig) {
+  const id = getSlotIdentifer(config, slot);
+  const formatStr = outOfPageFormatNames[slot.format!];
+
+  let statusUpdate = '';
+  switch (slot.format) {
+    case 'INTERSTITIAL':
+      statusUpdate = status.updateHtml(id, outOfPage.loadedUrl(formatStr));
+      break;
+    case 'TOP_ANCHOR':
+      statusUpdate = status.update(id, outOfPage.loadedNeedScroll(formatStr));
+      break;
+    default:
+      statusUpdate = status.update(id, outOfPage.loaded(formatStr));
+  }
+
+  return `
+    if(${id} === event.slot) {
+      ${statusUpdate};
+    }
+  `;
 }
 
 /* Public exports */
@@ -105,15 +143,22 @@ export function defineSlot(config: SampleConfig, slotConfig: SampleSlotConfig) {
 export function defineOutOfPageSlot(
     config: SampleConfig, slotConfig: SampleSlotConfig) {
   const slotVar = getSlotIdentifer(config, slotConfig);
-  const slotSettings = slot.addInlineSlotSettings(slotConfig, slotVar);
 
-  const formatString = getFormatString(slotConfig);
+  const formatString = outOfPageFormatNames[slotConfig.format!];
   return `
     ${slotVar} = ${api.defineOutOfPageSlot(slotConfig)};
 
-    // ${formatString} slots return null if the page or device does not support them.
-    if(${slotVar}) {
-      ${slotSettings};
+    // ${outOfPage.comment(formatString)}
+    if(!${slotVar}) {
+      ${status.update(slotVar, `${outOfPage.notSupported(formatString)}`)};
+    } else {
+      ${slot.addInlineSlotSettings(slotConfig, slotVar)};
+
+      ${status.update(slotVar, `${outOfPage.loading(formatString)}`)};
+
+      ${
+             pubads.addEventListener(
+                 'slotOnload', getSlotOnloadCallback(config, slotConfig))}
     }
   `.trim();
 }
@@ -166,5 +211,5 @@ export function displayAll(config: SampleConfig) {
  */
 export function getSlotIdentifer(
     config: SampleConfig, slotConfig: SampleSlotConfig) {
-  return `slot${config.slots.indexOf(slotConfig)}`;
+  return `slot${config.slots.indexOf(slotConfig) + 1}`;
 }

@@ -31,28 +31,44 @@ import {Template} from './template.js';
 export class BasicSample extends Template {
   readonly inlineStyles = css`
     .ad-slot {
-        border: 1px dashed;
-        display: inline-block;
-        margin: 10px;
+      border: 1px dashed;
+      display: inline-block;
+      margin: 10px;
     }
 
     .page-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }`;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: calc(100% - 400px);
+      min-height: 200vh;
+      margin: auto;
+    }
+
+    .status {
+      margin: 10px;
+      min-width: 50%;
+      text-align: center;
+    }
+    `;
 
   async bodyHtml(): Promise<string> {
     const slotContainers: string[] = [];
 
-    this.sampleConfig.slots.forEach((slot: SampleSlotConfig) => {
-      if (!slot.format) {
-        const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
-        slotContainers.push(`<div id="${id}" class="ad-slot" style="${
-            getSlotStyles(slot)}"></div>`);
-      }
-    });
+    // Output containers for OOP creative status updates first.
+    this.sampleConfig.slots.filter((slot: SampleSlotConfig) => slot.format)
+        .forEach((slot: SampleSlotConfig) => {
+          const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
+          slotContainers.push(`<div id="${id}" class="status"></div>`);
+        });
+
+    // Output ad containers for non-OOP slots second.
+    this.sampleConfig.slots.filter((slot: SampleSlotConfig) => !slot.format)
+        .forEach((slot: SampleSlotConfig) => {
+          const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
+          slotContainers.push(`<div id="${id}" class="ad-slot" style="${
+              getSlotStyles(slot)}"></div>`);
+        });
 
     return `
         <div class="page-content">
