@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import './playground-dialog';
 import 'playground-elements/playground-file-editor';
 import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
@@ -22,14 +23,29 @@ import 'playground-elements/playground-tab-bar';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
+import {when} from 'lit/directives/when.js';
+import {PlaygroundPreview} from 'playground-elements/playground-preview.js';
 import type {PlaygroundProject} from 'playground-elements/playground-project.js';
 import type {ProjectManifest} from 'playground-elements/shared/worker-api.js';
+
+import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
+
+// Constant UI strings.
+const PREVIEW_DIALOG = 'This sample cannot be previewed in an iframe. ' +
+    'Click the button below to preview in a new window.';
+const PREVIEW_DIALOG_BUTTON = 'Open preview';
+
+// Playground component identifier.
+const PLAYGROUND_ID = 'gpt-sample';
 
 /**
  * Custom GPT Playground component.
  */
 @customElement('gpt-playground')
 export class GptPlayground extends LitElement {
+  @query('playground-preview') private preview!: PlaygroundPreview;
+  @query('playground-dialog') private previewDialog!: PlaygroundDialog;
+
   // Declare shadow DOM styles.
   static styles = css`
     :host {
@@ -65,6 +81,7 @@ export class GptPlayground extends LitElement {
       margin-left: -3px;
       min-height: 200px;
       min-width: 200px;
+      position: relative;
     }
 
     #playground.vertical #rhs {
@@ -122,12 +139,34 @@ export class GptPlayground extends LitElement {
   @query('playground-project') project!: PlaygroundProject;
 
   /**
+   * A reference to the external preview window, if one has been opened.
+   */
+  previewWindow: Window|null = null;
+
+
+  /**
+   * Disconnect the preview pane and display the preview diaalog.
+   */
+  disablePreview() {
+    this.preview.project = '';
+    this.previewDialog.open = true;
+  }
+
+  /**
+   * Connect the preview pane and hide the preview dialog.
+   */
+  enablePreview() {
+    this.preview.project = PLAYGROUND_ID;
+    this.previewDialog.open = false;
+  }
+
+  /**
    * Renders a customized playground-elements playground UI.
    * @returns
    */
   render() {
     return html`
-      <playground-project id="gpt-sample" .config="${
+      <playground-project id="${PLAYGROUND_ID}" .config="${
         ifDefined(this.config)}" project-src="${ifDefined(this.projectSrc)}">
       </playground-project>
 
@@ -141,18 +180,17 @@ export class GptPlayground extends LitElement {
 
   private renderFilePane() {
     return html`
-      <div id="lhs" class="${
-        ifDefined(!this.previewEnabled ? 'full' : undefined)}">
+      <div id="lhs">
           <playground-tab-bar
-            id="gpt-sample-tab-bar"
-            project="gpt-sample"
-            editor="gpt-sample-editor">
+            id="${PLAYGROUND_ID}-tab-bar"
+            project="${PLAYGROUND_ID}"
+            editor="${PLAYGROUND_ID}-editor">
           </playground-tab-bar>
 
           <playground-file-editor
-            id="gpt-sample-editor"
-            project="gpt-sample"
-            ?readonly="${this.readonly}"
+            id="${PLAYGROUND_ID}-editor"
+            project="${PLAYGROUND_ID}"
+            ?readonly="${this.readonly || !this.previewEnabled}"
             line-numbers>
           </playground-file-editor>
       </div>
@@ -160,11 +198,45 @@ export class GptPlayground extends LitElement {
   }
 
   private renderPreviewPane() {
-    return !this.previewEnabled ? '' : html`
+    return html`
       <div id="rhs">
-          <playground-preview id="gpt-sample-preview" project="gpt-sample">
+          ${this.renderPreviewDialog()}
+          <playground-preview
+            id="${PLAYGROUND_ID}-preview"
+            project="${when(this.previewEnabled, () => PLAYGROUND_ID)}">
           </playground-preview>
       </div>
     `;
+  }
+
+  private renderPreviewDialog() {
+    const buttons: PlaygroundDialogButton[] = [{
+      text: `${PREVIEW_DIALOG_BUTTON}`,
+      onClick: () => {
+        this.previewWindow =
+            window.open(this.generatePreviewUrl(), 'gpt-preview')
+      }
+    }];
+
+    return html`
+      <playground-dialog
+        .text="${[PREVIEW_DIALOG]}"
+        .buttons="${buttons}"
+        ?open="${!this.previewEnabled}"
+        modal>
+      </playground-dialog>
+    `;
+  }
+
+  private generatePreviewUrl() {
+    if (this.projectSrc) {
+      // Extract sample ID from the project src
+      // Ex: 'config/display-test-ad-js.json' -> 'display-test-ad'
+      const sample = this.projectSrc.replace(/.*?\/(.*?)-[jt]s.json/, '$1');
+      return `https://googleads.github.io/google-publisher-tag-samples/${
+          sample}/js/demo.html`;
+    }
+
+    return window.location.href.replace('/configurator', '/preview');
   }
 }

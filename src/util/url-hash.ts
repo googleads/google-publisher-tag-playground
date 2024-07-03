@@ -38,8 +38,9 @@ export function getParameter(name: string): string|null {
  * parameter name and value in the URL hash. Any existing parameter with the
  * specified name will be overwritten.
  */
-export function setParameter(name: string, value: string) {
+export function setParameter(
+    name: string, value: string, hist: History = history) {
   const params = getUrlHashParameters();
   params.set(name, value);
-  history.replaceState(null, '', `#${params.toString()}`);
+  hist.replaceState(null, '', `#${params.toString()}`);
 }

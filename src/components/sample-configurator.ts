@@ -30,6 +30,7 @@ import {configNames, pageConfigNames, privacyConfigNames, templateConfigNames} f
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
+import {GptPlayground} from './gpt-playground.js';
 import {SlotInput} from './slot-input.js';
 import {TargetingInput} from './targeting-input.js';
 
@@ -40,6 +41,7 @@ import {TargetingInput} from './targeting-input.js';
 export class SampleConfigurator extends LitElement {
   private internalConfig: SampleConfig = {slots: []};
   @state() private template: Template;
+  @query('gpt-playground') private playground!: GptPlayground;
   @query('targeting-input.page') private pageTargetingInput!: TargetingInput;
   @query('slot-input') private slotInput!: SlotInput;
 
@@ -126,6 +128,19 @@ export class SampleConfigurator extends LitElement {
 
   private getSelectById(id: string): HTMLSelectElement {
     return this.renderRoot.querySelector(`#${id}`) as HTMLSelectElement;
+  }
+
+  private isPreviewable() {
+    // Out-of-page slots won't work in the embedded preview iframe.
+    return !this.config.slots?.some((slot) => slot.format);
+  }
+
+  private updatePreview() {
+    if (this.isPreviewable()) {
+      this.playground.enablePreview();
+    } else {
+      this.playground.disablePreview();
+    }
   }
 
   private updateBooleanSettings(e: Event) {
@@ -284,15 +299,26 @@ export class SampleConfigurator extends LitElement {
       ${this.renderConfigurator()}
       <gpt-playground
         .config="${until(this.template?.playgroundConfig(), null)}"
-        preview-enabled
+        ?preview-enabled=${this.isPreviewable()}
         readonly
         vertical>
       </gpt-playground>`;
   }
 
   updated() {
+    const configHash = base64url.encode(JSON.stringify(this.config));
+
     // Update the browser URL with the current config state.
-    urlHash.setParameter(
-        'config', base64url.encode(JSON.stringify(this.config)));
+    urlHash.setParameter('config', configHash);
+
+    // Update the preview window, if one is open.
+    const previewWindow = this.playground.previewWindow;
+    if (previewWindow) {
+      urlHash.setParameter('config', configHash, previewWindow.history);
+      previewWindow.location.reload();
+    }
+
+    // Update the preview window state.
+    this.updatePreview();
   }
 }
