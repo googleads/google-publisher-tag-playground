@@ -21,6 +21,7 @@ import './slot-input';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {until} from 'lit-html/directives/until.js';
 import {customElement, property, query, state} from 'lit/decorators.js';
+import {debounce} from 'lodash-es';
 import ts from 'typescript';
 
 import * as base64url from '../../src/util/base64url.js';
@@ -40,6 +41,8 @@ import {TargetingInput} from './targeting-input.js';
 @customElement('sample-configurator')
 export class SampleConfigurator extends LitElement {
   private internalConfig: SampleConfig = {slots: []};
+  private updateConfigState = debounce(this.updateConfigStateInternal, 100);
+
   @state() private template: Template;
   @query('gpt-playground') private playground!: GptPlayground;
   @query('targeting-input.page') private pageTargetingInput!: TargetingInput;
@@ -140,6 +143,25 @@ export class SampleConfigurator extends LitElement {
       this.playground.enablePreview();
     } else {
       this.playground.disablePreview();
+    }
+  }
+
+  private updateConfigStateInternal() {
+    const configHash = base64url.encode(JSON.stringify(this.config));
+
+    // Update the window URL with the current config state.
+    urlHash.setParameter('config', configHash);
+
+    if (window.parent) {
+      // Post a message to the parent window with the current config state.
+      window.parent.postMessage(configHash, '*');
+    }
+
+    // Update the preview window, if one is open.
+    const previewWindow = this.playground.previewWindow;
+    if (previewWindow) {
+      urlHash.setParameter('config', configHash, previewWindow.history);
+      previewWindow.location.reload();
     }
   }
 
@@ -306,19 +328,10 @@ export class SampleConfigurator extends LitElement {
   }
 
   updated() {
-    const configHash = base64url.encode(JSON.stringify(this.config));
+    // Update serialized configurator state.
+    this.updateConfigState();
 
-    // Update the browser URL with the current config state.
-    urlHash.setParameter('config', configHash);
-
-    // Update the preview window, if one is open.
-    const previewWindow = this.playground.previewWindow;
-    if (previewWindow) {
-      urlHash.setParameter('config', configHash, previewWindow.history);
-      previewWindow.location.reload();
-    }
-
-    // Update the preview window state.
+    // Update the preview panel state.
     this.updatePreview();
   }
 }
