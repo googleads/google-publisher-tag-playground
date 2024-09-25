@@ -29,7 +29,7 @@
     "@web/rollup-plugin-import-meta-assets": "^2.2.1",
     "glob": "^10.4.5",
     "jasmine": "^5.2.0",
-    "rollup": "^2.79.1",
+    "rollup": "^3.29.5",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
     "ts-node": "^10.9.2"
