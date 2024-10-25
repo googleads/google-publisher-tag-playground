@@ -61,6 +61,7 @@ export const outOfPageFormatNames:
     {[K in keyof typeof googletag.enums.OutOfPageFormat]: string} = {
       BOTTOM_ANCHOR: 'Anchor ad (bottom)',
       TOP_ANCHOR: 'Anchor ad (top)',
+      GAME_MANUAL_INTERSTITIAL: 'Gaming interstitial ad',
       REWARDED: 'Rewarded ad',
       LEFT_SIDE_RAIL: 'Side rail ad (left)',
       RIGHT_SIDE_RAIL: 'Side rail ad (right)',

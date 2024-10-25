@@ -48,6 +48,9 @@ const TARGETING_SECTION_TITLE = 'Targeting';
 const AD_UNIT_VALIDATION_PATTERN = '[\\da-zA-Z_\\-.*\\/\\\\!:\\(\\)]+';
 const AD_UNIT_VALIDATION_REGEX = new RegExp(`^${AD_UNIT_VALIDATION_PATTERN}$`);
 
+// Unsupported out-of-page formats.
+const EXCLUDED_OOP_FORMATS = ['GAME_MANUAL_INTERSTITIAL', 'REWARDED'];
+
 /**
  * A wrapper around {@link SampleSlotConfig} that associates additional metadata
  * with a slot config.
@@ -356,7 +359,8 @@ export class SlotInput extends LitElement {
     Object
         .entries(outOfPageFormatNames)
         // Remove formats we don't yet support.
-        .filter(([k, v]) => k as OutOfPageFormat !== 'REWARDED')
+        .filter(
+            ([k, v]) => !EXCLUDED_OOP_FORMATS.includes(k as OutOfPageFormat))
         .forEach(([k, v]) => {
           const format = k as OutOfPageFormat;
           const disabled = this.isFormatDisabledForSlot(slot, format);
