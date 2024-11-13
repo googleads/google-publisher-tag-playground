@@ -169,7 +169,7 @@ export class SlotSizeInput extends LitElement {
 
     config.forEach(({size}) => {
       if (Array.isArray(size)) {
-        if (size.length == 1 && size[0]) {
+        if (size.length === 1 && size[0]) {
           // NamedSize -> ['fluid']
           cleanConfig.push(size[0]);
         } else {
@@ -219,7 +219,7 @@ export class SlotSizeInput extends LitElement {
   private isNamedSize(size: Size) {
     const namedSizes = ['fluid'];
     return Array.isArray(size) ?
-        size.length == 1 && namedSizes.includes(size[0]) :
+        size.length === 1 && namedSizes.includes(size[0]) :
         namedSizes.includes(size);
   }
 

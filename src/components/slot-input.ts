@@ -247,7 +247,7 @@ export class SlotInput extends LitElement {
           (slot.format !== 'BOTTOM_ANCHOR' && slot.format !== 'TOP_ANCHOR');
     }
 
-    return this.disabledFormats.has(format) && slot.format != format;
+    return this.disabledFormats.has(format) && slot.format !== format;
   }
 
   /**

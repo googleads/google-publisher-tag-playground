@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "An interactive GPT sample configurator and code playground.",
   "type": "module",
+  "engines": {
+    "node": ">=11.0.0"
+  },
   "scripts": {
     "build": "npm run build:l10n && npm run build:ts && npm run build:rollup",
     "build:l10n": "lit-localize extract && lit-localize build",
     "build:ts": "tsc",
     "build:rollup": "rollup -c",
+    "fix": "gts fix",
+    "lint": "gts lint",
     "serve": "wds --node-resolve --watch --root-dir dist/",
     "test": "npm run build:ts && jasmine --config=jasmine.json"
   },
@@ -35,6 +40,7 @@
     "rollup": "^2.79.2",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "gts": "^6.0.2"
   }
 }

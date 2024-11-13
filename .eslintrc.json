@@ -1,0 +1,9 @@
+{
+  "extends": "./node_modules/gts/",
+  "rules": {
+    "n/no-extraneous-import": ["error", {
+        "allowModules": ["lit-html"]
+    }],
+    "n/no-unpublished-import": "off"
+  }
+}
