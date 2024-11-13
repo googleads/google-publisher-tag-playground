@@ -29,7 +29,7 @@ export function encode(str: string) {
   // Convert '+' -> '-', '/' to '_', and remove padding chars ('=').
   // Padding characters are not necessary for decode on modern browsers.
   return base64.replaceAll('+', '-').replaceAll('/', '_').replace(/=+$/, '');
-};
+}
 
 /**
  * Decode a URL-safe Base64 string.

@@ -23,10 +23,10 @@ import {createTemplate} from '../../src/template/template-factory.js';
 import * as base64url from '../../src/util/base64url.js';
 import * as urlHash from '../../src/util/url-hash.js';
 
-
 const configParam = urlHash.getParameter('config');
-const config: SampleConfig =
-    configParam ? JSON.parse(base64url.decode(configParam)) : null;
+const config: SampleConfig = configParam
+  ? JSON.parse(base64url.decode(configParam))
+  : null;
 
 if (config) {
   const template = createTemplate(config);
@@ -48,7 +48,12 @@ if (config) {
   });
 
   // Render inline styles.
-  render(html`<style>${template.inlineStyles}</style>`, document.head);
+  render(
+    html`<style>
+      ${template.inlineStyles}
+    </style>`,
+    document.head,
+  );
 
   // Execute GPT initialization logic.
   addInlineScript(await template.gptInitialization());
@@ -62,10 +67,11 @@ if (config) {
 
 function addInlineScript(content: string) {
   // Remove script tags (if present), strip comments and linebreaks.
-  const inlineScript = content.replace('<script>', '')
-                           .replace('</script>', '')
-                           .replace(/\s+?\/\/.*?\n/g, '')
-                           .replace(/\n/g, '');
+  const inlineScript = content
+    .replace('<script>', '')
+    .replace('</script>', '')
+    .replace(/\s+?\/\/.*?\n/g, '')
+    .replace(/\n/g, '');
 
   const tag = document.createElement('script');
   tag.innerText = inlineScript;

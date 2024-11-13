@@ -23,10 +23,9 @@ import {SampleConfig} from '../model/sample-config.js';
 import {formatHtml} from '../util/format-code.js';
 import {tsToJs} from '../util/transpile-code.js';
 
-
-const GPT_STANDARD_URL = `https://securepubads.g.doubleclick.net/tag/js/gpt.js`;
+const GPT_STANDARD_URL = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
 const GPT_LIMITED_ADS_URL =
-    `https://pagead2.googlesyndication.com/tag/js/gpt.js`;
+  'https://pagead2.googlesyndication.com/tag/js/gpt.js';
 
 /**
  * Base class from which all sample templates extend.
@@ -48,7 +47,9 @@ export abstract class Template {
    * @param jsTarget The JavaScript version to target.
    */
   constructor(
-      public sampleConfig: SampleConfig, public jsTarget?: ts.ScriptTarget) {}
+    public sampleConfig: SampleConfig,
+    public jsTarget?: ts.ScriptTarget,
+  ) {}
 
   /**
    * Returns the `<body>` HTML of the current sample, excluding code to
@@ -65,17 +66,18 @@ export abstract class Template {
    */
   async headHtml(): Promise<string> {
     const gptInit = await this.gptInitialization();
-    const inlineStyles = this.inlineStyles.cssText ?
-        `<style>${this.inlineStyles.cssText}</style>` :
-        '';
-    const modules =
-        this.modules.map(s => `<script type="module" src="${s}"></script>`)
-            .join('');
-    const scripts =
-        this.scripts.map(s => `<script async src="${s}"></script>`).join('');
-    const stylesheets =
-        this.stylesheets.map(s => `<link href="${s}" rel="stylesheet" />`)
-            .join('');
+    const inlineStyles = this.inlineStyles.cssText
+      ? `<style>${this.inlineStyles.cssText}</style>`
+      : '';
+    const modules = this.modules
+      .map(s => `<script type="module" src="${s}"></script>`)
+      .join('');
+    const scripts = this.scripts
+      .map(s => `<script async src="${s}"></script>`)
+      .join('');
+    const stylesheets = this.stylesheets
+      .map(s => `<link href="${s}" rel="stylesheet" />`)
+      .join('');
 
     return `
     <meta charset="utf-8" />
@@ -111,8 +113,9 @@ export abstract class Template {
   async gptInitialization(): Promise<string> {
     if (this.jsTarget) {
       const gptInit = tsToJs(
-          await samplegen.initializeGpt(this.sampleConfig, false),
-          this.jsTarget);
+        await samplegen.initializeGpt(this.sampleConfig, false),
+        this.jsTarget,
+      );
       return `<script>${gptInit}</script>`.trim();
     }
 
@@ -126,8 +129,9 @@ export abstract class Template {
   async gptRequestAndRenderAds(): Promise<string> {
     if (this.jsTarget) {
       const requestAndRenderAds = tsToJs(
-          await samplegen.requestAndRenderAds(this.sampleConfig),
-          this.jsTarget);
+        await samplegen.requestAndRenderAds(this.sampleConfig),
+        this.jsTarget,
+      );
       return `<script>${requestAndRenderAds}</script>`.trim();
     }
 
@@ -143,12 +147,12 @@ export abstract class Template {
     if (!this.jsTarget) {
       // TypeScript samples have seperate HTML and TS files.
       config.files!['sample.ts'] = {
-        content: await samplegen.initializeGpt(this.sampleConfig)
+        content: await samplegen.initializeGpt(this.sampleConfig),
       };
       // Include a hidden package.json, to enable autocomplete of GPT methods.
       config.files!['package.json'] = {
         content: '{"dependencies": {"@types/google-publisher-tag": "^1.0.0"}}',
-        hidden: true
+        hidden: true,
       };
     }
 
@@ -163,7 +167,8 @@ export abstract class Template {
    * Retrieve the appropriate GPT URL for the current sample.
    */
   protected gptUrl(): string {
-    return this.sampleConfig.page?.privacy?.ltd ? GPT_LIMITED_ADS_URL :
-                                                  GPT_STANDARD_URL;
+    return this.sampleConfig.page?.privacy?.ltd
+      ? GPT_LIMITED_ADS_URL
+      : GPT_STANDARD_URL;
   }
 }

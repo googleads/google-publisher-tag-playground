@@ -14,7 +14,12 @@
  * limitations under the License.
  */
 
-import {SampleConfig, SamplePageConfig, SamplePrivacyConfig, SampleTemplateConfig} from '../../src/model/sample-config.js';
+import {
+  SampleConfig,
+  SamplePageConfig,
+  SamplePrivacyConfig,
+  SampleTemplateConfig,
+} from '../../src/model/sample-config.js';
 
 /**
  * Maps {@link SampleConfig} properties to their friendly names.
@@ -48,22 +53,23 @@ export const privacyConfigNames: {[K in keyof SamplePrivacyConfig]: string} = {
 /**
  * Maps {@link SampleTemplateConfig} properties to their friendly names.
  */
-export const templateConfigNames:
-    {[K in keyof SampleTemplateConfig]: string} = {
-      type: 'Sample template',
-      target: 'Output format',
-    };
+export const templateConfigNames: {[K in keyof SampleTemplateConfig]: string} =
+  {
+    type: 'Sample template',
+    target: 'Output format',
+  };
 
 /**
  * Maps `googletag.enums.OutOfPageFormat` keys to their friendly names.
  */
-export const outOfPageFormatNames:
-    {[K in keyof typeof googletag.enums.OutOfPageFormat]: string} = {
-      BOTTOM_ANCHOR: 'Anchor ad (bottom)',
-      TOP_ANCHOR: 'Anchor ad (top)',
-      GAME_MANUAL_INTERSTITIAL: 'Gaming interstitial ad',
-      REWARDED: 'Rewarded ad',
-      LEFT_SIDE_RAIL: 'Side rail ad (left)',
-      RIGHT_SIDE_RAIL: 'Side rail ad (right)',
-      INTERSTITIAL: 'Web interstitial ad',
-    };
+export const outOfPageFormatNames: {
+  [K in keyof typeof googletag.enums.OutOfPageFormat]: string;
+} = {
+  BOTTOM_ANCHOR: 'Anchor ad (bottom)',
+  TOP_ANCHOR: 'Anchor ad (top)',
+  GAME_MANUAL_INTERSTITIAL: 'Gaming interstitial ad',
+  REWARDED: 'Rewarded ad',
+  LEFT_SIDE_RAIL: 'Side rail ad (left)',
+  RIGHT_SIDE_RAIL: 'Side rail ad (right)',
+  INTERSTITIAL: 'Web interstitial ad',
+};

@@ -28,7 +28,7 @@ export async function formatTypeScript(content: string) {
   return await prettier.format(content, {
     parser: 'typescript',
     plugins: [prettierPluginTypescript, prettierPluginEstree],
-    printWidth: 100
+    printWidth: 100,
   });
 }
 
@@ -41,9 +41,11 @@ export async function formatHtml(content: string) {
   return await prettier.format(content, {
     parser: 'html',
     plugins: [
-      prettierPluginBabel, prettierPluginEstree, prettierPluginHtml,
-      prettierPluginPostcss
+      prettierPluginBabel,
+      prettierPluginEstree,
+      prettierPluginHtml,
+      prettierPluginPostcss,
     ],
-    printWidth: 100
+    printWidth: 100,
   });
 }

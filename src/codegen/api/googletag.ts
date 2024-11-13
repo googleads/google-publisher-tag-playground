@@ -27,36 +27,37 @@ const api = {
   cmdInit: () => 'window.googletag = window.googletag || {cmd: []}',
   cmdPush: (content: string) => `googletag.cmd.push(() => {${content}})`,
   declareSlot: (id: string) => `let ${id}: googletag.Slot|null`,
-  defineSlot: (slot: SampleSlotConfig, id: string) => `googletag.defineSlot(${
-      sanitizeJs(slot.adUnit)}, ${sanitizeJs(slot.size)}, '${id}')`,
+  defineSlot: (slot: SampleSlotConfig, id: string) =>
+    `googletag.defineSlot(${sanitizeJs(
+      slot.adUnit,
+    )}, ${sanitizeJs(slot.size)}, '${id}')`,
   defineOutOfPageSlot: (slot: SampleSlotConfig) =>
-      `googletag.defineOutOfPageSlot(${
-          sanitizeJs(slot.adUnit)}, googletag.enums.OutOfPageFormat.${
-          String(slot.format)})`,
+    `googletag.defineOutOfPageSlot(${sanitizeJs(
+      slot.adUnit,
+    )}, googletag.enums.OutOfPageFormat.${String(slot.format)})`,
   display: (idOrSlot: string) => `googletag.display(${idOrSlot})`,
   enableServices: () => 'googletag.enableServices()',
 };
 
 const outOfPage = {
-  comment: (format: string) => `${
-      format} slots return null if the page or device does not support them.`,
+  comment: (format: string) =>
+    `${format} slots return null if the page or device does not support them.`,
   loaded: (format: string) => `${format} is loaded.`,
   loadedNeedScroll: (format: string) =>
-      `${outOfPage.loaded(format)} Scroll page to activate.`,
+    `${outOfPage.loaded(format)} Scroll page to activate.`,
   loadedUrl: (format: string) =>
-      `<a href="https://www.example.com">${outOfPage.loaded(format)}</a>`,
+    `<a href="https://www.example.com">${outOfPage.loaded(format)}</a>`,
   loading: (format: string) => `${format} is loading...`,
   notSupported: (format: string) => `${format} is not supported on this page.`,
-}
+};
 
-const status =
-    {
-      container: (id: string) => `document.getElementById('${id}')`,
-      update: (id: string, content: string) =>
-          `${status.container(id)}!.innerText = '${content}'`,
-      updateHtml: (id: string, content: string) =>
-          `${status.container(id)}!.innerHTML = '${content}'`,
-    }
+const status = {
+  container: (id: string) => `document.getElementById('${id}')`,
+  update: (id: string, content: string) =>
+    `${status.container(id)}!.innerText = '${content}'`,
+  updateHtml: (id: string, content: string) =>
+    `${status.container(id)}!.innerHTML = '${content}'`,
+};
 
 /* Internal helper methods */
 
@@ -94,7 +95,7 @@ function getSlotOnloadCallback(config: SampleConfig, slot: SampleSlotConfig) {
  */
 export const cmd = {
   init: () => api.cmdInit() + ';',
-  push: (content: string) => api.cmdPush(content) + ';'
+  push: (content: string) => api.cmdPush(content) + ';',
 };
 
 /**
@@ -116,7 +117,9 @@ export function enableServices() {
  * @returns
  */
 export function declareSlot(
-    config: SampleConfig, slotConfig: SampleSlotConfig) {
+  config: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
   return api.declareSlot(getSlotIdentifer(config, slotConfig)) + ';';
 }
 
@@ -129,7 +132,7 @@ export function declareSlot(
  */
 export function defineSlot(config: SampleConfig, slotConfig: SampleSlotConfig) {
   const slotDef =
-      api.defineSlot(slotConfig, getSlotIdentifer(config, slotConfig)) + '!';
+    api.defineSlot(slotConfig, getSlotIdentifer(config, slotConfig)) + '!';
   return slot.addInlineSlotSettings(slotConfig, slotDef);
 }
 
@@ -141,7 +144,9 @@ export function defineSlot(config: SampleConfig, slotConfig: SampleSlotConfig) {
  * @returns
  */
 export function defineOutOfPageSlot(
-    config: SampleConfig, slotConfig: SampleSlotConfig) {
+  config: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
   const slotVar = getSlotIdentifer(config, slotConfig);
 
   const formatString = outOfPageFormatNames[slotConfig.format!];
@@ -156,9 +161,10 @@ export function defineOutOfPageSlot(
 
       ${status.update(slotVar, `${outOfPage.loading(formatString)}`)};
 
-      ${
-             pubads.addEventListener(
-                 'slotOnload', getSlotOnloadCallback(config, slotConfig))}
+      ${pubads.addEventListener(
+        'slotOnload',
+        getSlotOnloadCallback(config, slotConfig),
+      )}
     }
   `.trim();
 }
@@ -174,8 +180,9 @@ export function display(config: SampleConfig, slotConfig: SampleSlotConfig) {
   const id = getSlotIdentifer(config, slotConfig);
   const idOrSlot = slotConfig.format ? id : `'${id}'`;
 
-  return slotConfig.format ? `if (${idOrSlot}) { ${api.display(idOrSlot)}; }` :
-                             `${api.display(idOrSlot)};`;
+  return slotConfig.format
+    ? `if (${idOrSlot}) { ${api.display(idOrSlot)}; }`
+    : `${api.display(idOrSlot)};`;
 }
 
 /**
@@ -210,6 +217,8 @@ export function displayAll(config: SampleConfig) {
  * @returns
  */
 export function getSlotIdentifer(
-    config: SampleConfig, slotConfig: SampleSlotConfig) {
+  config: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
   return `slot${config.slots.indexOf(slotConfig) + 1}`;
 }

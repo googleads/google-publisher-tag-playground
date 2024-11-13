@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-type Primitive = number|string|boolean;
+type Primitive = number | string | boolean;
 type Sanitizable =
-    Primitive|readonly Sanitizable[]|{readonly [key: string]: Sanitizable};
+  | Primitive
+  | readonly Sanitizable[]
+  | {readonly [key: string]: Sanitizable};
 
 /**
  * Sanitize a user-provided value for inclusion in JS output.

@@ -14,9 +14,8 @@
  * limitations under the License.
  */
 
-
 interface TestCases {
-  [key: string]: {typescript: string; es5: string; es2020: string;};
+  [key: string]: {typescript: string; es5: string; es2020: string};
 }
 
 /**
@@ -35,9 +34,9 @@ export const transpileTestCases: TestCases = {
     es2020: `
       googletag.cmd.push(() => {
           googletag.display('div-1');
-      });`
+      });`,
   },
-  'const': {
+  const: {
     typescript: `
       const slot = googletag
         .defineSlot('/1234567/sports', [160, 600], 'div')!
@@ -52,7 +51,7 @@ export const transpileTestCases: TestCases = {
       const slot = googletag
         .defineSlot('/1234567/sports', [160, 600], 'div')
         .set('adsense_background_color', '#FFFFFF')
-        .addService(googletag.pubads());`
+        .addService(googletag.pubads());`,
   },
   'non-null assert': {
     typescript: `
@@ -91,4 +90,4 @@ export const transpileTestCases: TestCases = {
         }, 30000);
       };`,
   },
-}
+};

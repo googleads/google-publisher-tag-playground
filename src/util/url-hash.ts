@@ -18,15 +18,15 @@
  * Safely retrieve the current URL hash parameters.
  */
 function getUrlHashParameters() {
-  return window.location.hash ?
-      new URLSearchParams(window.location.hash.substring(1)) :
-      new URLSearchParams();
+  return window.location.hash
+    ? new URLSearchParams(window.location.hash.substring(1))
+    : new URLSearchParams();
 }
 
 /**
  * Retrieve a parameter from the URL hash.
  */
-export function getParameter(name: string): string|null {
+export function getParameter(name: string): string | null {
   const params = getUrlHashParameters();
   return params.has(name) ? params.get(name) : null;
 }
@@ -39,7 +39,10 @@ export function getParameter(name: string): string|null {
  * specified name will be overwritten.
  */
 export function setParameter(
-    name: string, value: string, hist: History = history) {
+  name: string,
+  value: string,
+  hist: History = history,
+) {
   const params = getUrlHashParameters();
   params.set(name, value);
   hist.replaceState(null, '', `#${params.toString()}`);

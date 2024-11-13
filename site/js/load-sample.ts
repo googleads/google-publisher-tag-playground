@@ -18,26 +18,30 @@ import '../../src/components/gpt-playground';
 
 import {html, render} from 'lit-html';
 
-import * as urlHash from '../../src/util/url-hash.js'
+import * as urlHash from '../../src/util/url-hash.js';
 
 // The sample to fall back to if nothing is specified.
 const DEFAULT_SAMPLE = 'config/display-test-ad-js.json';
 
 // Attempt to retrive sample details from the URL hash.
 const previewParam = urlHash.getParameter('preview');
-const previewEnabled =
-    previewParam ? !['0', 'false'].includes(previewParam) : true;
+const previewEnabled = previewParam
+  ? !['0', 'false'].includes(previewParam)
+  : true;
 
 const sampleParam = urlHash.getParameter('sample');
-const sampleToDisplay =
-    sampleParam ? `config/${sampleParam}.json` : DEFAULT_SAMPLE;
-
+const sampleToDisplay = sampleParam
+  ? `config/${sampleParam}.json`
+  : DEFAULT_SAMPLE;
 
 // Load the specified (or default) sample.
 render(
-    html`
-        <gpt-playground project-src="${sampleToDisplay}" ?preview-enabled="${
-        previewEnabled}">
-        </gpt-playground>
-        `,
-    document.body);
+  html`
+    <gpt-playground
+      project-src="${sampleToDisplay}"
+      ?preview-enabled="${previewEnabled}"
+    >
+    </gpt-playground>
+  `,
+  document.body,
+);

@@ -7,7 +7,7 @@
     "node": ">=11.0.0"
   },
   "scripts": {
-    "build": "npm run build:l10n && npm run build:ts && npm run build:rollup",
+    "build": "npm run build:l10n && npm run fix && npm run build:ts && npm run build:rollup",
     "build:l10n": "lit-localize extract && lit-localize build",
     "build:ts": "tsc",
     "build:rollup": "rollup -c",

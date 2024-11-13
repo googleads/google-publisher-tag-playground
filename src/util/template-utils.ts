@@ -34,9 +34,10 @@ export function getSlotStyles(slot: SampleSlotConfig): string {
 
   if (Array.isArray(slot.size)) {
     // Convert googletag.SingleSize to googletag.MultiSize for simplicity.
-    const sizes = slot.size.length === 2 && typeof slot.size[0] === 'number' ?
-        [slot.size] :
-        slot.size;
+    const sizes =
+      slot.size.length === 2 && typeof slot.size[0] === 'number'
+        ? [slot.size]
+        : slot.size;
 
     for (const size of sizes) {
       if (Array.isArray(size) && size[0] !== 'fluid') {
@@ -46,7 +47,7 @@ export function getSlotStyles(slot: SampleSlotConfig): string {
     }
   }
 
-  return minH < maxValue && minW < maxValue ?
-      `min-height: ${minH}px; min-width: ${minW}px;` :
-      'min-width: 50%';
+  return minH < maxValue && minW < maxValue
+    ? `min-height: ${minH}px; min-width: ${minW}px;`
+    : 'min-width: 50%';
 }

@@ -16,18 +16,18 @@
 
 import ts from 'typescript';
 
-const PLACEHOLDER_COMMENT = `/* NEW_LINE_PLACEHOLDER */`;
+const PLACEHOLDER_COMMENT = '/* NEW_LINE_PLACEHOLDER */';
 
 const TSC_OPTIONS: ts.CompilerOptions = {
   newLine: ts.NewLineKind.LineFeed,
   removeComments: false,
-  pretty: true
+  pretty: true,
 };
 
 function toggleBlankLines(source: string) {
-  return source.includes(PLACEHOLDER_COMMENT) ?
-      source.replaceAll(PLACEHOLDER_COMMENT, '\n') :
-      source.replaceAll('\n\n', `\n${PLACEHOLDER_COMMENT}`);
+  return source.includes(PLACEHOLDER_COMMENT)
+    ? source.replaceAll(PLACEHOLDER_COMMENT, '\n')
+    : source.replaceAll('\n\n', `\n${PLACEHOLDER_COMMENT}`);
 }
 
 /**
@@ -39,8 +39,8 @@ function toggleBlankLines(source: string) {
  */
 export function tsToJs(source: string, target = ts.ScriptTarget.ES2020) {
   const js = ts.transpileModule(toggleBlankLines(source), {
-                 compilerOptions: {...TSC_OPTIONS, target}
-               }).outputText;
+    compilerOptions: {...TSC_OPTIONS, target},
+  }).outputText;
 
   return toggleBlankLines(js);
 }

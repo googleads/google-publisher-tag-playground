@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-import {SampleSlotConfig, SampleTargetingKV} from '../../model/sample-config.js';
+import {
+  SampleSlotConfig,
+  SampleTargetingKV,
+} from '../../model/sample-config.js';
 import {sanitizeJs} from '../sanitize.js';
 
 /* Internal template strings */
@@ -22,7 +25,7 @@ import {sanitizeJs} from '../sanitize.js';
 const api = {
   addService: () => 'addService(googletag.pubads())',
   setTargeting: (kv: SampleTargetingKV) =>
-      `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`
+    `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
 };
 
 /* Public exports */
@@ -31,7 +34,9 @@ const api = {
  * Generates code for configuring slot settings inline with a slot definition.
  */
 export function addInlineSlotSettings(
-    config: SampleSlotConfig, slotDefinition: string) {
+  config: SampleSlotConfig,
+  slotDefinition: string,
+) {
   let slotSettings = slotDefinition;
 
   config.targeting?.forEach((kv: SampleTargetingKV) => {

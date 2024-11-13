@@ -30,8 +30,9 @@ const WIDTH_PLACEHOLDER = 'Width';
 
 // Height and width validation patterns.
 const DIMENSION_VALIDATION_PATTERN = '[\\d]{1,4}';
-const DIMENSION_VALIDATION_REGEX =
-    new RegExp(`^${DIMENSION_VALIDATION_PATTERN}$`);
+const DIMENSION_VALIDATION_REGEX = new RegExp(
+  `^${DIMENSION_VALIDATION_PATTERN}$`,
+);
 
 /**
  * Custom wrapper around {@link SingleSize} that:
@@ -42,7 +43,7 @@ const DIMENSION_VALIDATION_REGEX =
  * The ID is used to control when Lit updates elements. String dimensions
  * allow us to preserve invalid values as users are editing.
  */
-type Size = [string, string]|googletag.NamedSize;
+type Size = [string, string] | googletag.NamedSize;
 interface KeyedSize {
   id: number;
   size?: Size;
@@ -57,9 +58,10 @@ export class SlotSizeInput extends LitElement {
   private focusIndex?: number;
 
   static styles = [
-    materialStyles, css`
+    materialStyles,
+    css`
       :host {
-        width: 100%
+        width: 100%;
       }
 
       fieldset {
@@ -115,7 +117,8 @@ export class SlotSizeInput extends LitElement {
 
       input:invalid {
         background-color: lightpink;
-      }`
+      }
+    `,
   ];
 
   /**
@@ -134,16 +137,17 @@ export class SlotSizeInput extends LitElement {
       if (Array.isArray(config)) {
         // Convert SingleSize to MultiSize for simplicity.
         const sizes =
-            config.length <= 2 && !Array.isArray(config[0]) ? [config] : config;
+          config.length <= 2 && !Array.isArray(config[0]) ? [config] : config;
 
         sizes.forEach(s => {
-          const size: Size = !Array.isArray(s) ?
-              // NamedSize -> 'fluid'
-              [s] as googletag.NamedSize :
-              // NamedSize -> ['fluid']
-              (s.length === 1 ? s as googletag.NamedSize :
-                                // SingleSize -> [1,1]
-                                [String(s[0]), String(s[1])]);
+          const size: Size = !Array.isArray(s)
+            ? // NamedSize -> 'fluid'
+              ([s] as googletag.NamedSize)
+            : // NamedSize -> ['fluid']
+              s.length === 1
+              ? (s as googletag.NamedSize)
+              : // SingleSize -> [1,1]
+                [String(s[0]), String(s[1])];
 
           this.dirtyConfig.push({id: Date.now(), size});
         });
@@ -174,8 +178,10 @@ export class SlotSizeInput extends LitElement {
           cleanConfig.push(size[0]);
         } else {
           // SingleSize -> [1,1]
-          if (DIMENSION_VALIDATION_REGEX.test(size[0]) &&
-              DIMENSION_VALIDATION_REGEX.test(size[1])) {
+          if (
+            DIMENSION_VALIDATION_REGEX.test(size[0]) &&
+            DIMENSION_VALIDATION_REGEX.test(size[1])
+          ) {
             cleanConfig.push([Number(size[0]), Number(size[1])]);
           }
         }
@@ -200,27 +206,29 @@ export class SlotSizeInput extends LitElement {
    */
   private updateConfig(updatedConfig: KeyedSize[]) {
     // Check whether changes affect the "clean" config.
-    const cleanConfigUpdated =
-        !isEqual(this.clean(updatedConfig), this.clean(this.dirtyConfig));
+    const cleanConfigUpdated = !isEqual(
+      this.clean(updatedConfig),
+      this.clean(this.dirtyConfig),
+    );
 
     this.dirtyConfig = updatedConfig;
 
     if (cleanConfigUpdated) {
       // Fire an event to let the configurator know a value has changed.
       this.dispatchEvent(
-          new CustomEvent('update', {bubbles: true, composed: true}));
+        new CustomEvent('update', {bubbles: true, composed: true}),
+      );
     }
   }
-
 
   /**
    * Helper method to determine whether the provided size is a NamedSize.
    */
   private isNamedSize(size: Size) {
     const namedSizes = ['fluid'];
-    return Array.isArray(size) ?
-        size.length === 1 && namedSizes.includes(size[0]) :
-        namedSizes.includes(size);
+    return Array.isArray(size)
+      ? size.length === 1 && namedSizes.includes(size[0])
+      : namedSizes.includes(size);
   }
 
   /**
@@ -228,16 +236,19 @@ export class SlotSizeInput extends LitElement {
    * Note that the returned object is not "cleaned" in any way.
    */
   size(sizeElem: HTMLElement): Size {
-    const fluidElem =
-        sizeElem.querySelector('input[name=fluid]') as HTMLInputElement;
+    const fluidElem = sizeElem.querySelector(
+      'input[name=fluid]',
+    ) as HTMLInputElement;
 
     if (fluidElem.checked) {
       return ['fluid'];
     } else {
-      const widthElem =
-          sizeElem.querySelector('input[name=width]') as HTMLInputElement;
-      const heightElem =
-          sizeElem.querySelector('input[name=height]') as HTMLInputElement;
+      const widthElem = sizeElem.querySelector(
+        'input[name=width]',
+      ) as HTMLInputElement;
+      const heightElem = sizeElem.querySelector(
+        'input[name=height]',
+      ) as HTMLInputElement;
 
       return [widthElem.value, heightElem.value];
     }
@@ -249,15 +260,16 @@ export class SlotSizeInput extends LitElement {
 
     // Attempt to focus the newly added row.
     this.focusIndex = config.length - 1;
-    this.updateConfig(config)
+    this.updateConfig(config);
   }
 
   private removeSize(event: Event) {
     const config = this.cloneConfig();
 
     const parent = (event.target as HTMLElement).closest('.size');
-    const index =
-        Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(parent!);
+    const index = Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(
+      parent!,
+    );
 
     config.splice(index, 1);
 
@@ -270,8 +282,9 @@ export class SlotSizeInput extends LitElement {
     const config = this.cloneConfig();
 
     const parent = (event.target as HTMLElement).closest('.size');
-    const index =
-        Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(parent!);
+    const index = Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(
+      parent!,
+    );
 
     config[index].size = this.size(parent as HTMLElement);
     this.updateConfig(config);
@@ -281,28 +294,30 @@ export class SlotSizeInput extends LitElement {
     const namedSize = size && this.isNamedSize(size);
 
     return html`
-       <div class="dimensions">
-         <input
-           type="text"
-           maxLength="4"
-           name="width"
-           pattern="${DIMENSION_VALIDATION_PATTERN}"
-           placeholder="${WIDTH_PLACEHOLDER}"
-           value="${!size || namedSize ? nothing : size[0]}"
-           ?disabled="${namedSize}"
-           @input="${this.updateSize}" />
-         <span class="dimension-separator">x</span>
-         <input
-           type="text"
-           maxLength="4"
-           name="height"
-           pattern="${DIMENSION_VALIDATION_PATTERN}"
-           placeholder="${HEIGHT_PLACEHOLDER}"
-           value="${!size || namedSize ? nothing : size[1]}"
-           ?disabled="${namedSize}"
-           @input="${this.updateSize}" />
-       </div>
-     `;
+      <div class="dimensions">
+        <input
+          type="text"
+          maxlength="4"
+          name="width"
+          pattern="${DIMENSION_VALIDATION_PATTERN}"
+          placeholder="${WIDTH_PLACEHOLDER}"
+          value="${!size || namedSize ? nothing : size[0]}"
+          ?disabled="${namedSize}"
+          @input="${this.updateSize}"
+        />
+        <span class="dimension-separator">x</span>
+        <input
+          type="text"
+          maxlength="4"
+          name="height"
+          pattern="${DIMENSION_VALIDATION_PATTERN}"
+          placeholder="${HEIGHT_PLACEHOLDER}"
+          value="${!size || namedSize ? nothing : size[1]}"
+          ?disabled="${namedSize}"
+          @input="${this.updateSize}"
+        />
+      </div>
+    `;
   }
 
   private renderNamedSizes(size?: Size) {
@@ -314,15 +329,17 @@ export class SlotSizeInput extends LitElement {
           name="fluid"
           type="checkbox"
           ?checked="${fluid}"
-          @input="${this.updateSize}" />
+          @input="${this.updateSize}"
+        />
         <label for="fluid">${FLUID_LABEL}</label>
       </div>
     `;
   }
 
   private renderSize(size: KeyedSize) {
-    return html`
-      ${keyed(size.id, html`
+    return html` ${keyed(
+      size.id,
+      html`
         <div class="size">
           <div class="size-input">
             ${this.renderDimensions(size.size)}
@@ -333,10 +350,12 @@ export class SlotSizeInput extends LitElement {
               class="material-icons md-24 button"
               title="${REMOVE_SIZE_TITLE}"
               @click="${this.removeSize}"
-            >delete</span>
+              >delete</span
+            >
           </div>
         </div>
-    `)}`;
+      `,
+    )}`;
   }
 
   render() {
@@ -353,7 +372,8 @@ export class SlotSizeInput extends LitElement {
           class="material-icons md-24 add-size button"
           title="${ADD_SIZE_TITLE}"
           @click="${this.addSize}"
-        >add</span>
+          >add</span
+        >
       </fieldset>
     `;
   }
@@ -363,7 +383,7 @@ export class SlotSizeInput extends LitElement {
 
     // Focus the first input of the specified size.
     const container =
-        this.renderRoot.querySelectorAll('.size')[this.focusIndex!];
+      this.renderRoot.querySelectorAll('.size')[this.focusIndex!];
     (container?.querySelector('input[name=width]') as HTMLElement)?.focus();
 
     this.focusIndex = undefined;

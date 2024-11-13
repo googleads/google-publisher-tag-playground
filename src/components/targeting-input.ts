@@ -69,77 +69,79 @@ export class TargetingInput extends LitElement {
   private focusIndex?: number;
 
   static styles = [
-    materialStyles, css`
-    :host {
-      width: 100%
-    }
+    materialStyles,
+    css`
+      :host {
+        width: 100%;
+      }
 
-    fieldset {
-      display: flex;
-      flex-flow: row wrap;
-    }
+      fieldset {
+        display: flex;
+        flex-flow: row wrap;
+      }
 
-    .header,
-    .key-value {
-      display: flex;
-      flex-direction: row;
-      width: 100%
-    }
+      .header,
+      .key-value {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
 
-    .header {
-      margin: 0 24px 0;
-    }
+      .header {
+        margin: 0 24px 0;
+      }
 
-    .key-value {
-      padding: 5px;
-      margin-left: 24px;
-    }
+      .key-value {
+        padding: 5px;
+        margin-left: 24px;
+      }
 
-    .key-value:nth-child(even) {
-      background-color: darkgrey;
-    }
+      .key-value:nth-child(even) {
+        background-color: darkgrey;
+      }
 
-    .header span,
-    .key,
-    .values {
-      align-items: baseline;
-      display: flex;
-      flex: 1;
-      justify-content: center;
-    }
+      .header span,
+      .key,
+      .values {
+        align-items: baseline;
+        display: flex;
+        flex: 1;
+        justify-content: center;
+      }
 
-    .key,
-    .values {
-      flex-direction: column;
-      flex: 1;
-      align-items: center;
-      padding: 5px;
-    }
+      .key,
+      .values {
+        flex-direction: column;
+        flex: 1;
+        align-items: center;
+        padding: 5px;
+      }
 
-    .key input,
-    .value input {
-      width: 100%;
-    }
+      .key input,
+      .value input {
+        width: 100%;
+      }
 
-    .value {
-      display: flex;
-      justify-content: center;
-      width: 100%
-    }
+      .value {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
 
-    .add-key {
-      width: 100%;
-      text-align:  center;
-      margin: 0 24px 0;
-    }
+      .add-key {
+        width: 100%;
+        text-align: center;
+        margin: 0 24px 0;
+      }
 
-    .button {
-      cursor: pointer;
-    }
+      .button {
+        cursor: pointer;
+      }
 
-    input:invalid {
-      background-color: lightpink;
-    }`
+      input:invalid {
+        background-color: lightpink;
+      }
+    `,
   ];
 
   /**
@@ -175,15 +177,19 @@ export class TargetingInput extends LitElement {
 
     config.forEach(keyedKV => {
       const {key, value} = keyedKV.targeting;
-      if (key && key.trim().length > 0 &&
-          KEY_VALIDATION_REGEX.test(key.trim())) {
+      if (
+        key &&
+        key.trim().length > 0 &&
+        KEY_VALIDATION_REGEX.test(key.trim())
+      ) {
         const values = Array.isArray(value) ? value : [value];
         const cleanValues = values.filter(
-            v => v && v.trim().length > 0 && VALUE_VALIDATION_REGEX.test(v));
+          v => v && v.trim().length > 0 && VALUE_VALIDATION_REGEX.test(v),
+        );
         if (cleanValues.length > 0) {
           cleanConfig.push({
             key,
-            value: cleanValues.length > 1 ? cleanValues : cleanValues[0]
+            value: cleanValues.length > 1 ? cleanValues : cleanValues[0],
           });
         }
       }
@@ -204,15 +210,18 @@ export class TargetingInput extends LitElement {
    */
   private updateConfig(updatedConfig: KeyedSampleTargetingKV[]) {
     // Check whether changes affect the "clean" config.
-    const cleanConfigUpdated =
-        !isEqual(this.clean(updatedConfig), this.clean(this.dirtyConfig));
+    const cleanConfigUpdated = !isEqual(
+      this.clean(updatedConfig),
+      this.clean(this.dirtyConfig),
+    );
 
     this.dirtyConfig = updatedConfig;
 
     if (cleanConfigUpdated) {
       // Fire an event to let the configurator know a value has changed.
       this.dispatchEvent(
-          new CustomEvent('update', {bubbles: true, composed: true}));
+        new CustomEvent('update', {bubbles: true, composed: true}),
+      );
     }
   }
 
@@ -275,17 +284,20 @@ export class TargetingInput extends LitElement {
 
     // Rebuild the entire values array, excluding the value being removed.
     const config = this.cloneConfig();
-    config[index].targeting.value =
-        Array.from(grandparent.querySelectorAll('.value input'))
-            .filter(e => e !== input)
-            .map(e => (e as HTMLInputElement).value);
+    config[index].targeting.value = Array.from(
+      grandparent.querySelectorAll('.value input'),
+    )
+      .filter(e => e !== input)
+      .map(e => (e as HTMLInputElement).value);
 
     // Update the unique ID for this row to force the template to refresh.
     // TODO: look into keying individual values, to make updates more efficient.
     config[index].id = Date.now();
 
-    if (!config[index].targeting.value ||
-        config[index].targeting.value.length === 0) {
+    if (
+      !config[index].targeting.value ||
+      config[index].targeting.value.length === 0
+    ) {
       // No values remain, so remove the key.
       this.removeKey(event);
     } else {
@@ -302,39 +314,46 @@ export class TargetingInput extends LitElement {
 
     // Rebuild the entire values array.
     const config = this.cloneConfig();
-    config[index].targeting.value =
-        Array.from(parent.querySelectorAll('.value input'))
-            .map(e => (e as HTMLInputElement).value);
+    config[index].targeting.value = Array.from(
+      parent.querySelectorAll('.value input'),
+    ).map(e => (e as HTMLInputElement).value);
     this.updateConfig(config);
   }
 
-  private renderValues(value: string|string[]) {
+  private renderValues(value: string | string[]) {
     const values = Array.isArray(value) ? value : [value];
 
     const valueElems: TemplateResult[] = [];
     values.forEach((value, i) => {
       // The last value gets an "Add" button. The rest get a spacer.
-      const addOrSpacer = i < values.length - 1 ?
-          html`<span class="spacer"></span>` :
-          html`<span
-                class="material-icons md-24 button"
-                @click="${this.addValue}"
-                title="${ADD_VALUE_TITLE}">add</span>`;
+      const addOrSpacer =
+        i < values.length - 1
+          ? html`<span class="spacer"></span>`
+          : html`<span
+              class="material-icons md-24 button"
+              @click="${this.addValue}"
+              title="${ADD_VALUE_TITLE}"
+              >add</span
+            >`;
 
-      valueElems.push(html`
-        <div class="value">
+      valueElems.push(
+        html` <div class="value">
           <input
             type="text"
             value="${value}"
             maxlength="40"
             pattern="${VALUE_VALIDATION_PATTERN}"
-            @input="${this.updateValue}" />
+            @input="${this.updateValue}"
+          />
           <span
             class="material-icons md-24 button"
             @click="${this.removeValue}"
-            title="${REMOVE_VALUE_TITLE}">delete</span>
+            title="${REMOVE_VALUE_TITLE}"
+            >delete</span
+          >
           ${addOrSpacer}
-        </div>`);
+        </div>`,
+      );
     });
 
     return valueElems;
@@ -343,21 +362,21 @@ export class TargetingInput extends LitElement {
   private renderKeyValue(kv: KeyedSampleTargetingKV, index: number) {
     // Manually key these DOM elements by their unique ID, to prevent them from
     // from being reused incorrectly by Lit as rows are added/removed.
-    return html`
-      ${keyed(kv.id, html`
-        <div class="key-value" id="${index}">
-          <div class="key">
-            <input
-              type="text"
-              value="${kv.targeting.key}"
-              maxlength="20"
-              pattern="${KEY_VALIDATION_PATTERN}"
-              @input="${this.updateKey}" />
-          </div>
-          <div class="values">
-            ${this.renderValues(kv.targeting.value)}
-          </div>
-        </div>`)}`;
+    return html` ${keyed(
+      kv.id,
+      html` <div class="key-value" id="${index}">
+        <div class="key">
+          <input
+            type="text"
+            value="${kv.targeting.key}"
+            maxlength="20"
+            pattern="${KEY_VALIDATION_PATTERN}"
+            @input="${this.updateKey}"
+          />
+        </div>
+        <div class="values">${this.renderValues(kv.targeting.value)}</div>
+      </div>`,
+    )}`;
   }
 
   render() {
@@ -367,26 +386,28 @@ export class TargetingInput extends LitElement {
     });
 
     return html`
-    <fieldset>
-      <div class="header">
-        <span>Key</span>
-        <span>Values</span>
-      </div>
-      <legend>${this.title}</legend>
-      ${keyValues}
-      <span
-        class="material-icons md-24 button add-key"
-        @click="${this.addKey}"
-        title="${ADD_KEY_TITLE}">add</span>
-    </fieldset>
-  `;
+      <fieldset>
+        <div class="header">
+          <span>Key</span>
+          <span>Values</span>
+        </div>
+        <legend>${this.title}</legend>
+        ${keyValues}
+        <span
+          class="material-icons md-24 button add-key"
+          @click="${this.addKey}"
+          title="${ADD_KEY_TITLE}"
+          >add</span
+        >
+      </fieldset>
+    `;
   }
 
   updated() {
     if (this.focusIndex === undefined) return;
 
     const container =
-        this.renderRoot.querySelectorAll('.key-value')[this.focusIndex!];
+      this.renderRoot.querySelectorAll('.key-value')[this.focusIndex!];
 
     // If the key input is empty focus it. Else, if the last value is empty,
     // focus that.
@@ -395,8 +416,9 @@ export class TargetingInput extends LitElement {
       key.focus();
     } else {
       const values = container?.querySelector('.values');
-      const value =
-          values?.lastElementChild?.querySelector('input') as HTMLInputElement;
+      const value = values?.lastElementChild?.querySelector(
+        'input',
+      ) as HTMLInputElement;
       if (value?.value.trim().length === 0) value.focus();
     }
 

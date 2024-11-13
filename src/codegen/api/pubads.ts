@@ -14,7 +14,10 @@
  * limitations under the License.
  */
 
-import {SamplePrivacyConfig, SampleTargetingKV} from '../../model/sample-config.js';
+import {
+  SamplePrivacyConfig,
+  SampleTargetingKV,
+} from '../../model/sample-config.js';
 import {sanitizeJs} from '../sanitize.js';
 
 type GptEvent = keyof googletag.events.EventTypeMap;
@@ -23,22 +26,22 @@ type GptEvent = keyof googletag.events.EventTypeMap;
 
 const api = {
   pubAdsService: () => 'googletag.pubads()',
-  addEventListener: (event: GptEvent, code: string) => `${
-      api.pubAdsService()}.addEventListener('${event}', (event) => {${code}})`,
+  addEventListener: (event: GptEvent, code: string) =>
+    `${api.pubAdsService()}.addEventListener('${event}', (event) => {${code}})`,
   enableSingleRequest: () => `${api.pubAdsService()}.enableSingleRequest()`,
   setPrivacySettings: (settings: string) =>
-      `${api.pubAdsService()}.setPrivacySettings({${settings}})`,
+    `${api.pubAdsService()}.setPrivacySettings({${settings}})`,
   setTargeting: (kv: SampleTargetingKV) =>
-      `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
+    `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
 
   privacySetting: {
     ltd: (enabled: boolean) => `limitedAds: ${sanitizeJs(enabled)}`,
     npa: (enabled: boolean) => `nonPersonalizedAds: ${sanitizeJs(enabled)}`,
     rdp: (enabled: boolean) => `restrictDataProcessing: ${sanitizeJs(enabled)}`,
     tfcd: (enabled: boolean) =>
-        `childDirectedTreatment: ${sanitizeJs(enabled)}`,
+      `childDirectedTreatment: ${sanitizeJs(enabled)}`,
     tfua: (enabled: boolean) => `underAgeOfConsent: ${sanitizeJs(enabled)}`,
-  }
+  },
 };
 
 /* Public exports */
@@ -86,9 +89,9 @@ export function setPrivacySettings(privacy: SamplePrivacyConfig) {
     privacySettings.push(api.privacySetting.tfcd(true));
   }
 
-  return privacySettings.length > 0 ?
-      api.setPrivacySettings(privacySettings.join(',')) + ';' :
-      '';
+  return privacySettings.length > 0
+    ? api.setPrivacySettings(privacySettings.join(',')) + ';'
+    : '';
 }
 
 /**
@@ -104,7 +107,7 @@ export function setTargeting(targeting: SampleTargetingKV[]) {
     targetingKVs.push('.' + api.setTargeting(kv));
   });
 
-  return targetingKVs.length > 0 ?
-      api.pubAdsService() + targetingKVs.join('') + ';' :
-      '';
+  return targetingKVs.length > 0
+    ? api.pubAdsService() + targetingKVs.join('') + ';'
+    : '';
 }

@@ -24,35 +24,41 @@ export interface SampleAd {
 export const sampleAds: SampleAd[] = [
   {
     name: 'Fixed-size ad (100x100)',
-    slot: {adUnit: '/6355419/Travel/Europe', size: [100, 100]}
+    slot: {adUnit: '/6355419/Travel/Europe', size: [100, 100]},
   },
   {
     name: 'Fixed-size ad (300x250)',
-    slot: {adUnit: '/6355419/Travel/Europe', size: [300, 250]}
+    slot: {adUnit: '/6355419/Travel/Europe', size: [300, 250]},
   },
   {
     name: 'Fixed-size ad (728x90)',
-    slot: {adUnit: '/6355419/Travel/Europe', size: [728, 90]}
+    slot: {adUnit: '/6355419/Travel/Europe', size: [728, 90]},
   },
   {
     name: 'Fixed-size ad (750x200)',
-    slot: {adUnit: '/6355419/Travel/Europe', size: [750, 200]}
+    slot: {adUnit: '/6355419/Travel/Europe', size: [750, 200]},
   },
   {
     name: 'Multi-size ad',
     slot: {
       adUnit: '/6355419/Travel/Europe',
-      size: [[100, 100], [300, 250], [728, 90], [750, 200]]
-    }
+      size: [
+        [100, 100],
+        [300, 250],
+        [728, 90],
+        [750, 200],
+      ],
+    },
   },
-  {name: 'Fluid ad', slot: {adUnit: '/6355419/Travel', size: 'fluid'}}, {
+  {name: 'Fluid ad', slot: {adUnit: '/6355419/Travel', size: 'fluid'}},
+  {
     name: 'Anchor ad (bottom)',
     slot: {
       adUnit: '/6355419/Travel',
       format: 'BOTTOM_ANCHOR',
       size: [],
-      targeting: [{key: 'test', value: 'anchor'}]
-    }
+      targeting: [{key: 'test', value: 'anchor'}],
+    },
   },
   {
     name: 'Anchor ad (top)',
@@ -60,24 +66,31 @@ export const sampleAds: SampleAd[] = [
       adUnit: '/6355419/Travel',
       format: 'TOP_ANCHOR',
       size: [],
-      targeting: [{key: 'test', value: 'anchor'}]
-    }
+      targeting: [{key: 'test', value: 'anchor'}],
+    },
   },
   {
     name: 'Side rail ad (left)',
-    slot: {adUnit: '/6355419/Travel/Europe', format: 'LEFT_SIDE_RAIL', size: []}
+    slot: {
+      adUnit: '/6355419/Travel/Europe',
+      format: 'LEFT_SIDE_RAIL',
+      size: [],
+    },
   },
   {
     name: 'Side rail ad (right)',
-    slot:
-        {adUnit: '/6355419/Travel/Europe', format: 'RIGHT_SIDE_RAIL', size: []}
+    slot: {
+      adUnit: '/6355419/Travel/Europe',
+      format: 'RIGHT_SIDE_RAIL',
+      size: [],
+    },
   },
   {
     name: 'Web interstitial ad',
     slot: {
       adUnit: '/6355419/Travel/Europe/France/Paris',
       format: 'INTERSTITIAL',
-      size: []
-    }
-  }
-]
+      size: [],
+    },
+  },
+];

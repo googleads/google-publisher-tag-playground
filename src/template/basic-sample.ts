@@ -50,25 +50,30 @@ export class BasicSample extends Template {
       min-width: 50%;
       text-align: center;
     }
-    `;
+  `;
 
   async bodyHtml(): Promise<string> {
     const slotContainers: string[] = [];
 
     // Output containers for OOP creative status updates first.
-    this.sampleConfig.slots.filter((slot: SampleSlotConfig) => slot.format)
-        .forEach((slot: SampleSlotConfig) => {
-          const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
-          slotContainers.push(`<div id="${id}" class="status"></div>`);
-        });
+    this.sampleConfig.slots
+      .filter((slot: SampleSlotConfig) => slot.format)
+      .forEach((slot: SampleSlotConfig) => {
+        const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
+        slotContainers.push(`<div id="${id}" class="status"></div>`);
+      });
 
     // Output ad containers for non-OOP slots second.
-    this.sampleConfig.slots.filter((slot: SampleSlotConfig) => !slot.format)
-        .forEach((slot: SampleSlotConfig) => {
-          const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
-          slotContainers.push(`<div id="${id}" class="ad-slot" style="${
-              getSlotStyles(slot)}"></div>`);
-        });
+    this.sampleConfig.slots
+      .filter((slot: SampleSlotConfig) => !slot.format)
+      .forEach((slot: SampleSlotConfig) => {
+        const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
+        slotContainers.push(
+          `<div id="${id}" class="ad-slot" style="${getSlotStyles(
+            slot,
+          )}"></div>`,
+        );
+      });
 
     return `
         <div class="page-content">

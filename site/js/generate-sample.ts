@@ -26,11 +26,11 @@ import * as urlHash from '../../src/util/url-hash.js';
 setLocale(urlHash.getParameter('hl') ?? 'en');
 
 const configParam = urlHash.getParameter('config');
-const config: SampleConfig =
-    configParam ? JSON.parse(base64url.decode(configParam)) : {slots: []};
+const config: SampleConfig = configParam
+  ? JSON.parse(base64url.decode(configParam))
+  : {slots: []};
 
 render(
-    html`
-      <sample-configurator .config="${config}"></sample-configurator>
-    `,
-    document.body);
+  html` <sample-configurator .config="${config}"></sample-configurator> `,
+  document.body,
+);

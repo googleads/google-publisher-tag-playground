@@ -33,17 +33,17 @@ const TERSER_OPTIONS = {
     // Allow @license and @preserve in output.
     comments: 'some',
     inline_script: false,
-  }
+  },
 };
 
 // Process locale files individually to ensure they aren't chunked together.
-const locales = glob.sync('src/generated/locales/*.js').map((locale) => {
+const locales = glob.sync('src/generated/locales/*.js').map(locale => {
   return {
     input: locale,
     output: {dir: 'dist/locales/', format: 'es'},
-    plugins: [terser(TERSER_OPTIONS)]
+    plugins: [terser(TERSER_OPTIONS)],
   };
-})
+});
 
 export default [
   {
@@ -52,7 +52,7 @@ export default [
       dir: 'dist/js',
       format: 'es',
       // Manually split dependencies into logical chunks, to aid debugging.
-      manualChunks: (id) => {
+      manualChunks: id => {
         const lib = id.replace(/^.*\\node_modules\\/, '');
         if (lib.startsWith('lit')) {
           return 'lit';
@@ -74,21 +74,23 @@ export default [
       // Ignore all `requires`, rather than including polyfills we won't use.
       commonjs({
         include: 'node_modules/typescript/lib/typescript.js',
-        ignore: () => true
+        ignore: () => true,
       }),
       resolve(),
       importMetaAssets(),
       // TODO: see if this is viable with sample generator templates.
       minifyHTML(),
       copy({
-        targets: [{
-          src: ['site/*', '!site/js'],
-          dest: 'dist',
-        }],
-        flatten: false
+        targets: [
+          {
+            src: ['site/*', '!site/js'],
+            dest: 'dist',
+          },
+        ],
+        flatten: false,
       }),
       terser(TERSER_OPTIONS),
     ],
   },
-  ...locales
+  ...locales,
 ];

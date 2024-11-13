@@ -62,7 +62,7 @@ export interface SampleSlotConfig {
  */
 export interface SampleTargetingKV {
   key: string;
-  value: string|string[];
+  value: string | string[];
 }
 
 /**

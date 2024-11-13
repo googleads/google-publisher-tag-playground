@@ -16,12 +16,16 @@
 
 import {configureLocalization} from '@lit/localize';
 
-import {allLocales, sourceLocale, targetLocales} from '../generated/locale-codes.js';
+import {
+  allLocales,
+  sourceLocale,
+  targetLocales,
+} from '../generated/locale-codes.js';
 
 const localization = configureLocalization({
   sourceLocale,
   targetLocales,
-  loadLocale: (locale) => import(`/locales/${locale}.js`),
+  loadLocale: locale => import(`/locales/${locale}.js`),
 });
 
 /**

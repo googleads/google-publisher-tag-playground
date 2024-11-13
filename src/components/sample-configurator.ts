@@ -27,7 +27,12 @@ import ts from 'typescript';
 import * as base64url from '../../src/util/base64url.js';
 import * as urlHash from '../../src/util/url-hash.js';
 import type {SampleConfig} from '../model/sample-config.js';
-import {configNames, pageConfigNames, privacyConfigNames, templateConfigNames} from '../model/settings.js';
+import {
+  configNames,
+  pageConfigNames,
+  privacyConfigNames,
+  templateConfigNames,
+} from '../model/settings.js';
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
@@ -49,66 +54,66 @@ export class SampleConfigurator extends LitElement {
   @query('slot-input') private slotInput!: SlotInput;
 
   static styles = css`
-      :host {
-        display: flex;
-        height: 100%;
-      }
+    :host {
+      display: flex;
+      height: 100%;
+    }
 
-      #configurator {
-        display: flex;
-        flex-direction: column;
-        width: var(--configurator-width, 33%);
-        background-color: var(--playground-tab-bar-background, #eaeaea);
-      }
+    #configurator {
+      display: flex;
+      flex-direction: column;
+      width: var(--configurator-width, 33%);
+      background-color: var(--playground-tab-bar-background, #eaeaea);
+    }
 
-      #configurator-header {
-        align-items: center;
-        display: flex;
-        flex: 0 0 var(--playground-bar-height,40px);
-        padding: 0 8px 0;
-        border-bottom: var(--playground-border,solid 1px #ddd);
-      }
+    #configurator-header {
+      align-items: center;
+      display: flex;
+      flex: 0 0 var(--playground-bar-height, 40px);
+      padding: 0 8px 0;
+      border-bottom: var(--playground-border, solid 1px #ddd);
+    }
 
-      #configurator-settings {
-        flex: 1 1 0%;
-        max-height: 100%;
-        padding: 0 8px 8px;
-        overflow: scroll;
-      }
+    #configurator-settings {
+      flex: 1 1 0%;
+      max-height: 100%;
+      padding: 0 8px 8px;
+      overflow: scroll;
+    }
 
-      fieldset {
-        display: flex;
-        flex-flow: row wrap;
-      }
+    fieldset {
+      display: flex;
+      flex-flow: row wrap;
+    }
 
-      fieldset > fieldset,
-      fieldset > targeting-input {
-        margin: 15px 0 0;
-      }
+    fieldset > fieldset,
+    fieldset > targeting-input {
+      margin: 15px 0 0;
+    }
 
-      fieldset label {
-        display: block;
-      }
+    fieldset label {
+      display: block;
+    }
 
-      fieldset input[type=checkbox] {
-        float: left;
-      }
+    fieldset input[type='checkbox'] {
+      float: left;
+    }
 
-      fieldset select {
-        float: right;
-      }
+    fieldset select {
+      float: right;
+    }
 
-      fieldset.page div,
-      fieldset.privacy div {
-        width: 33%;
-        min-width: 200px;
-      }
+    fieldset.page div,
+    fieldset.privacy div {
+      width: 33%;
+      min-width: 200px;
+    }
 
-      fieldset.template div {
-        width: 50%;
-        min-width: 200px;
-      }
-      `;
+    fieldset.template div {
+      width: 50%;
+      min-width: 200px;
+    }
+  `;
 
   @property({attribute: 'config', type: Object})
   set config(config: SampleConfig) {
@@ -135,7 +140,7 @@ export class SampleConfigurator extends LitElement {
 
   private isPreviewable() {
     // Out-of-page slots won't work in the embedded preview iframe.
-    return !this.config.slots?.some((slot) => slot.format);
+    return !this.config.slots?.some(slot => slot.format);
   }
 
   private updatePreview() {
@@ -196,9 +201,10 @@ export class SampleConfigurator extends LitElement {
     // Update template settings.
     const template = config.template;
     const target = this.getSelectById('target').value;
-    template.target = target.length > 0 ?
-        ts.ScriptTarget[target as keyof typeof ts.ScriptTarget] :
-        undefined;
+    template.target =
+      target.length > 0
+        ? ts.ScriptTarget[target as keyof typeof ts.ScriptTarget]
+        : undefined;
 
     this.config = config;
   }
@@ -224,55 +230,54 @@ export class SampleConfigurator extends LitElement {
   }
 
   private checkbox(setting: string, name: string, enabled = false) {
-    return html`
-      <div>
-        <input
-          type="checkbox"
-          id="${setting}"
-          ?checked="${enabled}"
-          @click="${this.updateBooleanSettings}" />
-        <label for="${setting}">${name}</label>
-      </div>`;
+    return html` <div>
+      <input
+        type="checkbox"
+        id="${setting}"
+        ?checked="${enabled}"
+        @click="${this.updateBooleanSettings}"
+      />
+      <label for="${setting}">${name}</label>
+    </div>`;
   }
 
   private renderPageSettings() {
     const settings = this.config?.page;
 
-    return html`
-      <fieldset class="page">
-        <legend>${configNames.page}</legend>
-        ${this.checkbox('sra', pageConfigNames.sra!, settings?.sra)}
-        ${this.renderPrivacySettings()}
-        <targeting-input
-          class="page"
-          .config="${settings?.targeting}"
-          title="${pageConfigNames.targeting}"
-          @update="${this.updatePageTargeting}">
-        </targeting-input>
-      </fieldset>`;
+    return html` <fieldset class="page">
+      <legend>${configNames.page}</legend>
+      ${this.checkbox('sra', pageConfigNames.sra!, settings?.sra)}
+      ${this.renderPrivacySettings()}
+      <targeting-input
+        class="page"
+        .config="${settings?.targeting}"
+        title="${pageConfigNames.targeting}"
+        @update="${this.updatePageTargeting}"
+      >
+      </targeting-input>
+    </fieldset>`;
   }
 
   private renderPrivacySettings() {
     const settings = this.config?.page?.privacy;
 
-    return html`
-      <fieldset class="privacy">
-        <legend>${pageConfigNames.privacy}</legend>
-        ${this.checkbox('tfcd', privacyConfigNames.tfcd!, settings?.tfcd)}
-        ${this.checkbox('ltd', privacyConfigNames.ltd!, settings?.ltd)}
-        ${this.checkbox('npa', privacyConfigNames.npa!, settings?.npa)}
-        ${this.checkbox('rdp', privacyConfigNames.rdp!, settings?.rdp)}
-        ${this.checkbox('tfua', privacyConfigNames.tfua!, settings?.tfua)}
-      </fieldset>`;
+    return html` <fieldset class="privacy">
+      <legend>${pageConfigNames.privacy}</legend>
+      ${this.checkbox('tfcd', privacyConfigNames.tfcd!, settings?.tfcd)}
+      ${this.checkbox('ltd', privacyConfigNames.ltd!, settings?.ltd)}
+      ${this.checkbox('npa', privacyConfigNames.npa!, settings?.npa)}
+      ${this.checkbox('rdp', privacyConfigNames.rdp!, settings?.rdp)}
+      ${this.checkbox('tfua', privacyConfigNames.tfua!, settings?.tfua)}
+    </fieldset>`;
   }
 
   private renderSlotSettings() {
-    return html`
-      <slot-input
-        title="${configNames.slots}"
-        .config="${this.config?.slots}"
-        @update="${this.updateSlotSettings}">
-      </slot-input>`;
+    return html` <slot-input
+      title="${configNames.slots}"
+      .config="${this.config?.slots}"
+      @update="${this.updateSlotSettings}"
+    >
+    </slot-input>`;
   }
 
   private renderTemplateSettings() {
@@ -280,50 +285,50 @@ export class SampleConfigurator extends LitElement {
 
     const jsTargets: TemplateResult[] = [];
     Object.entries(ts.ScriptTarget)
-        .filter(([k, v]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
-        .forEach(([k, v]) => {
-          jsTargets.push(html`<option value="${k}" ?selected="${
-              settings && settings.target === v}">JavaScript (${k})</option>`);
-        });
+      .filter(([k, v]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
+      .forEach(([k, v]) => {
+        jsTargets.push(
+          html`<option
+            value="${k}"
+            ?selected="${settings && settings.target === v}"
+          >
+            JavaScript (${k})
+          </option>`,
+        );
+      });
 
-    return html`
-      <fieldset class="template">
-        <legend>${configNames.template}</legend>
-        <div>
-          <select
-            id="target"
-            name="target"
-            @change=${this.updateStringSettings}>
-            <option value="">TypeScript</option>
-            ${jsTargets}
-          </select>
-          <label for="target">${templateConfigNames.target}</label>
-        </div>
-      </fieldset>`;
+    return html` <fieldset class="template">
+      <legend>${configNames.template}</legend>
+      <div>
+        <select id="target" name="target" @change=${this.updateStringSettings}>
+          <option value="">TypeScript</option>
+          ${jsTargets}
+        </select>
+        <label for="target">${templateConfigNames.target}</label>
+      </div>
+    </fieldset>`;
   }
 
   private renderConfigurator() {
-    return html`
-      <div id="configurator">
-        <div id="configurator-header">
-          <span>Sample configuration</span>
-        </div>
-        <div id="configurator-settings">
-          ${this.renderPageSettings()}
-          ${this.renderSlotSettings()}
-          ${this.renderTemplateSettings()}
-        </div>
-      </div>`;
+    return html` <div id="configurator">
+      <div id="configurator-header">
+        <span>Sample configuration</span>
+      </div>
+      <div id="configurator-settings">
+        ${this.renderPageSettings()} ${this.renderSlotSettings()}
+        ${this.renderTemplateSettings()}
+      </div>
+    </div>`;
   }
 
   render() {
-    return html`
-      ${this.renderConfigurator()}
+    return html` ${this.renderConfigurator()}
       <gpt-playground
         .config="${until(this.template?.playgroundConfig(), null)}"
         ?preview-enabled=${this.isPreviewable()}
         readonly
-        vertical>
+        vertical
+      >
       </gpt-playground>`;
   }
 

@@ -29,17 +29,17 @@ const ENABLE_SRA_COMMENT = '// Enable single request mode.';
 const PAGE_TARGETING_COMMENT = '//Configure page-level targeting.';
 const PRIVACY_SETTINGS_COMMENT = '// Configure privacy settings.';
 const REQUEST_ADS_COMMENT =
-    '// Request and render all previously defined ad slots.';
+  '// Request and render all previously defined ad slots.';
 
 /* Internal helper methods */
 
 function globalSlotDeclarations(config: SampleConfig) {
   return config.slots
-      .map((slot: SampleSlotConfig) => {
-        return slot.format ? googletag.declareSlot(config, slot) : '';
-      })
-      .filter((v) => v !== '')
-      .join('\n');
+    .map((slot: SampleSlotConfig) => {
+      return slot.format ? googletag.declareSlot(config, slot) : '';
+    })
+    .filter(v => v !== '')
+    .join('\n');
 }
 
 function slotDefinitions(config: SampleConfig, outOfPage = false) {
@@ -90,8 +90,9 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
     ${googletag.enableServices()}
 
     ${requestAndRenderAds ? requestAds(config) : ''}
-  `.replace(/\\n{3,}/g, '\n\n')
-      .trim();
+  `
+    .replace(/\\n{3,}/g, '\n\n')
+    .trim();
 }
 
 /* Public exports */
@@ -104,7 +105,9 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
  * @returns
  */
 export function getSlotContainerId(
-    config: SampleConfig, slot: SampleSlotConfig) {
+  config: SampleConfig,
+  slot: SampleSlotConfig,
+) {
   return googletag.getSlotIdentifer(config, slot);
 }
 
@@ -117,16 +120,18 @@ export function getSlotContainerId(
  * @returns
  */
 export async function initializeGpt(
-    config: SampleConfig, requestAndRenderAds = true) {
+  config: SampleConfig,
+  requestAndRenderAds = true,
+) {
   const initCode = `
     ${googletag.cmd.init()}
 
     ${globalSlotDeclarations(config)}
 
     ${googletag.cmd.push(initGpt(config, requestAndRenderAds))}
-  `.replace(
-       /\\n{3,}/g,
-       '\n\n').trim();
+  `
+    .replace(/\\n{3,}/g, '\n\n')
+    .trim();
 
   return await formatTypeScript(initCode);
 }

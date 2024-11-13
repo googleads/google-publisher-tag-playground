@@ -93,13 +93,13 @@ export class PlaygroundDialog extends LitElement {
     }
 
     .dialog-buttons {
-      padding: 1em 0 0.5em 0
+      padding: 1em 0 0.5em 0;
     }
 
     span {
       padding-top: 0.5em;
     }
-    `;
+  `;
 
   /**
    * Specifies whether this dialog should allow interaction with the rest
@@ -125,31 +125,32 @@ export class PlaygroundDialog extends LitElement {
   buttons: PlaygroundDialogButton[] = [];
 
   private renderText() {
-    return html`
-     <div class="dialog-text">
-        ${this.text.map((text) => html`<span>${text}</span>`)}
-      </div>`;
+    return html` <div class="dialog-text">
+      ${this.text.map(text => html`<span>${text}</span>`)}
+    </div>`;
   }
 
   private renderButtons() {
     return html`
       <div class="dialog-buttons">
-        ${this.buttons.map((button) => html`
-            <button @click="${button.onClick}">
-              ${button.text}
-            </button>`)}
+        ${this.buttons.map(
+          button =>
+            html` <button @click="${button.onClick}">${button.text}</button>`,
+        )}
       </div>
     `;
   }
 
   render() {
-    return html`
-      <div part="backdrop" class="${ifDefined(this.modal ? 'modal' : '')}">
-        <div part="dialog">
-          ${when(this.text.length, () => this.renderText())}
-          <slot></slot>
-          ${when(this.buttons.length, () => this.renderButtons())}
-        </div>
-      </div>`;
+    return html` <div
+      part="backdrop"
+      class="${ifDefined(this.modal ? 'modal' : '')}"
+    >
+      <div part="dialog">
+        ${when(this.text.length, () => this.renderText())}
+        <slot></slot>
+        ${when(this.buttons.length, () => this.renderButtons())}
+      </div>
+    </div>`;
   }
 }

@@ -56,18 +56,18 @@ describe('Utility', () => {
     });
 
     it('encode trims padding characters', () => {
-      const input = 'A';  // base64('A') -> 'QQ=='
+      const input = 'A'; // base64('A') -> 'QQ=='
       expect(base64url.encode(input)).not.toContain('=');
     });
 
     it('encode converts "+" chars', () => {
-      const input = '<><><>';  // base64('<><><>') -> 'PD48Pjw+'
+      const input = '<><><>'; // base64('<><><>') -> 'PD48Pjw+'
       const expectedOutput = 'PD48Pjw-';
       expect(base64url.encode(input)).toEqual(expectedOutput);
     });
 
     it('encode converts "/" chars', () => {
-      const input = '???';  // base64('???') -> 'Pz8/'
+      const input = '???'; // base64('???') -> 'Pz8/'
       const expectedOutput = 'Pz8_';
       expect(base64url.encode(input)).toEqual(expectedOutput);
     });
@@ -90,13 +90,13 @@ describe('Utility', () => {
 
     it('formats HTML', async () => {
       const input =
-          '<html><head><title>test</title></head><body></body></html>';
+        '<html><head><title>test</title></head><body></body></html>';
       testFormatting(input, await formatHtml(input));
     });
 
     it('formats CSS in HTML', async () => {
       const input =
-          '<style>.class { color: red; } #id { display: block; }</style>';
+        '<style>.class { color: red; } #id { display: block; }</style>';
       testFormatting(input, await formatHtml(input));
     });
 
@@ -149,15 +149,22 @@ describe('Utility', () => {
     });
 
     it('handles googletag.MultiSize', () => {
-      const input: googletag.MultiSize = [[100, 200], [200, 100]];
+      const input: googletag.MultiSize = [
+        [100, 200],
+        [200, 100],
+      ];
       const output = getSlotStyles(getSlotConfig(input));
       expect(output).toContain('min-height: 100px');
       expect(output).toContain('min-width: 100px');
     });
 
     it('handles googletag.NamedSize in googletag.Multisize', () => {
-      const input: googletag.MultiSize =
-          [[100, 200], ['fluid'], 'fluid', [200, 100]];
+      const input: googletag.MultiSize = [
+        [100, 200],
+        ['fluid'],
+        'fluid',
+        [200, 100],
+      ];
       const output = getSlotStyles(getSlotConfig(input));
       expect(output).toContain('min-height: 100px');
       expect(output).toContain('min-width: 100px');
