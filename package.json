@@ -4,13 +4,15 @@
   "description": "An interactive GPT sample configurator and code playground.",
   "type": "module",
   "scripts": {
-    "build": "npm run build:ts && npm run build:rollup",
+    "build": "npm run build:l10n && npm run build:ts && npm run build:rollup",
+    "build:l10n": "lit-localize extract && lit-localize build",
     "build:ts": "tsc",
     "build:rollup": "rollup -c",
     "serve": "wds --node-resolve --watch --root-dir dist/",
     "test": "npm run build:ts && jasmine --config=jasmine.json"
   },
   "dependencies": {
+    "@lit/localize": "^0.12.2",
     "lit": "^3.2.1",
     "lodash-es": "^4.17.21",
     "playground-elements": "^0.18.1",
@@ -18,13 +20,14 @@
     "typescript": "^5.6.3"
   },
   "devDependencies": {
+    "@lit/localize-tools": "^0.8.0",
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",
-    "@types/google-publisher-tag": "^1.20241021.0",
+    "@types/google-publisher-tag": "^1.20241104.0",
     "@types/jasmine": "^5.1.4",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.17.1",
+    "@types/node": "^20.17.6",
     "@web/dev-server": "^0.3.7",
     "@web/rollup-plugin-import-meta-assets": "^2.2.1",
     "glob": "^10.4.5",

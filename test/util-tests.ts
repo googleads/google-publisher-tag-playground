@@ -21,6 +21,7 @@ import ts from 'typescript';
 import {SampleSlotConfig} from '../src/model/sample-config.js';
 import * as base64url from '../src/util/base64url.js';
 import {formatHtml, formatTypeScript} from '../src/util/format-code.js';
+import {getLocale, setLocale} from '../src/util/localization-utils.js';
 import {getSlotStyles} from '../src/util/template-utils.js';
 import {tsToJs} from '../src/util/transpile-code.js';
 
@@ -107,6 +108,27 @@ describe('Utility', () => {
     it('formats TS', async () => {
       const input = 'function foo(bar: string): boolean { return false; }';
       testFormatting(input, await formatTypeScript(input));
+    });
+  });
+
+  describe('localization-utils', () => {
+    it('successfully handles a supported locale', () => {
+      const locale = 'en';
+
+      spyOn(console, 'info');
+      setLocale(locale);
+      expect(getLocale()).toEqual(locale);
+      expect(console.info).toHaveBeenCalled();
+    });
+
+    it('reports an error for unsupported locales', () => {
+      const startingLocale = 'en';
+      setLocale(startingLocale);
+
+      spyOn(console, 'error');
+      setLocale('invalid');
+      expect(getLocale()).toEqual(startingLocale);
+      expect(console.error).toHaveBeenCalled();
     });
   });
 

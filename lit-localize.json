@@ -1,0 +1,37 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lit/lit/main/packages/localize-tools/config.schema.json",
+  "sourceLocale": "en",
+  "targetLocales": [
+    "ar",
+    "bn",
+    "de",
+    "es-419",
+    "fa",
+    "fr",
+    "he",
+    "hi",
+    "id",
+    "it",
+    "ja",
+    "ko",
+    "pl",
+    "pt-br",
+    "ru",
+    "th",
+    "tr",
+    "vi",
+    "zh-cn",
+    "zh-tw"
+  ],
+  "tsConfig": "./tsconfig.json",
+  "output": {
+    "mode": "runtime",
+    "outputDir": "./src/generated/locales",
+    "localeCodesModule": "./src/generated/locale-codes.ts"
+  },
+  "interchange": {
+    "format": "xlb",
+    "outputFile": "./data/localization/en.xlb",
+    "translationsGlob": "./data/localization/*.xlb"
+  }
+}
