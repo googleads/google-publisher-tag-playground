@@ -17,6 +17,8 @@
 // Do not modify this file by hand!
 // Re-generate this file by running lit-localize
 
+import {str} from '@lit/localize';
+
 /* eslint-disable no-irregular-whitespace */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -41,4 +43,16 @@ export const templates = {
   s09c694b6602d365d: 'Side rail ad (left)',
   sccb7f7246c10ecb6: 'Side rail ad (right)',
   secff207571282402: 'Web interstitial ad',
+  s0d576da69783c058: str`${0} slots return null if the page or device does not support them.`,
+  s352f8b213acc822a: str`${0} is loaded.`,
+  s90465cbd227840a3: str`${0} Scroll page to activate.`,
+  s9d21580cc7643953: str`${0} is loading...`,
+  s8233e942045a2b50: str`${0} is not supported on this page.`,
+  s71e012bd812c44a2: '// Define static ad slots.',
+  s902dcca83f60a987: '// Define out of page slots.',
+  sc5c8140d066b7231: '// Enable GPT services.',
+  s5ec0955e7a33abf4: '// Enable single request mode.',
+  s34774a88f199f364: '// Configure page-level targeting.',
+  s0536dee760be4bf2: '// Configure privacy settings.',
+  sd3926a53f7b06107: '// Request and render all previously defined ad slots.',
 };

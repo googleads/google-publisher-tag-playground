@@ -40,8 +40,11 @@ const TERSER_OPTIONS = {
 const locales = glob.sync('src/generated/locales/*.js').map(locale => {
   return {
     input: locale,
-    output: {dir: 'dist/locales/', format: 'es'},
-    plugins: [terser(TERSER_OPTIONS)],
+    output: {
+      dir: 'dist/locales/',
+      format: 'es',
+    },
+    plugins: [resolve(), terser(TERSER_OPTIONS)],
   };
 });
 

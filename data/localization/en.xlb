@@ -21,5 +21,17 @@
     <msg name="s09c694b6602d365d">Side rail ad (left)</msg>
     <msg name="sccb7f7246c10ecb6">Side rail ad (right)</msg>
     <msg name="secff207571282402">Web interstitial ad</msg>
+    <msg name="s0d576da69783c058"><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
+    <msg name="s352f8b213acc822a"><ph name="0">${format}</ph> is loaded.</msg>
+    <msg name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
+    <msg name="s9d21580cc7643953"><ph name="0">${format}</ph> is loading...</msg>
+    <msg name="s8233e942045a2b50"><ph name="0">${format}</ph> is not supported on this page.</msg>
+    <msg name="s71e012bd812c44a2">// Define static ad slots.</msg>
+    <msg name="s902dcca83f60a987">// Define out of page slots.</msg>
+    <msg name="sc5c8140d066b7231">// Enable GPT services.</msg>
+    <msg name="s5ec0955e7a33abf4">// Enable single request mode.</msg>
+    <msg name="s34774a88f199f364">// Configure page-level targeting.</msg>
+    <msg name="s0536dee760be4bf2">// Configure privacy settings.</msg>
+    <msg name="sd3926a53f7b06107">// Request and render all previously defined ad slots.</msg>
   </messages>
 </localizationbundle>

@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {msg} from '@lit/localize';
+
 import {SampleConfig, SampleSlotConfig} from '../model/sample-config.js';
 import {formatTypeScript} from '../util/format-code.js';
 
@@ -22,14 +24,16 @@ import * as pubads from './api/pubads.js';
 
 /* Internal template strings */
 
-const STATIC_SLOT_COMMENT = '// Define static ad slots.';
-const OUT_OF_PAGE_SLOT_COMMENT = '// Define out of page slots.';
-const ENABLE_SERVICES_COMMENT = '// Enable GPT services.';
-const ENABLE_SRA_COMMENT = '// Enable single request mode.';
-const PAGE_TARGETING_COMMENT = '//Configure page-level targeting.';
-const PRIVACY_SETTINGS_COMMENT = '// Configure privacy settings.';
-const REQUEST_ADS_COMMENT =
-  '// Request and render all previously defined ad slots.';
+const strings = {
+  staticSlotComment: () => msg('// Define static ad slots.'),
+  outOfPageSlotComment: () => msg('// Define out of page slots.'),
+  enableServicesComment: () => msg('// Enable GPT services.'),
+  enableSraComment: () => msg('// Enable single request mode.'),
+  pageTargetingComment: () => msg('// Configure page-level targeting.'),
+  privacySettingsComment: () => msg('// Configure privacy settings.'),
+  requestAdsComment: () =>
+    msg('// Request and render all previously defined ad slots.'),
+};
 
 /* Internal helper methods */
 
@@ -58,7 +62,7 @@ function slotDefinitions(config: SampleConfig, outOfPage = false) {
 
 function requestAds(config: SampleConfig) {
   return `
-    ${config.slots.length > 0 ? REQUEST_ADS_COMMENT : ''}
+    ${config.slots.length > 0 ? strings.requestAdsComment() : ''}
     ${config.slots.length > 0 ? googletag.displayAll(config) : ''}
   `.trim();
 }
@@ -71,22 +75,22 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
   const privacySettings = pubads.setPrivacySettings(config.page?.privacy || {});
 
   return `
-    ${staticSlots.length > 0 ? STATIC_SLOT_COMMENT : ''}
+    ${staticSlots.length > 0 ? strings.staticSlotComment() : ''}
     ${staticSlots}
 
-    ${outOfPageSlots.length > 0 ? OUT_OF_PAGE_SLOT_COMMENT : ''}
+    ${outOfPageSlots.length > 0 ? strings.outOfPageSlotComment() : ''}
     ${outOfPageSlots}
 
-    ${privacySettings.length > 0 ? PRIVACY_SETTINGS_COMMENT : ''}
+    ${privacySettings.length > 0 ? strings.privacySettingsComment() : ''}
     ${privacySettings}
 
-    ${pageTargeting.length > 0 ? PAGE_TARGETING_COMMENT : ''}
+    ${pageTargeting.length > 0 ? strings.pageTargetingComment() : ''}
     ${pageTargeting}
 
-    ${config.page?.sra ? ENABLE_SRA_COMMENT : ''}
+    ${config.page?.sra ? strings.enableSraComment() : ''}
     ${config.page?.sra ? pubads.enableSingleRequest() : ''}
 
-    ${ENABLE_SERVICES_COMMENT}
+    ${strings.enableServicesComment()}
     ${googletag.enableServices()}
 
     ${requestAndRenderAds ? requestAds(config) : ''}

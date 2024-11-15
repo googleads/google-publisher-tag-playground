@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {msg, str} from '@lit/localize';
+
 import {SampleConfig, SampleSlotConfig} from '../../model/sample-config.js';
 import {outOfPageFormatNames} from '../../model/settings.js';
 import {sanitizeJs} from '../sanitize.js';
@@ -41,14 +43,19 @@ const api = {
 
 const outOfPage = {
   comment: (format: string) =>
-    `${format} slots return null if the page or device does not support them.`,
-  loaded: (format: string) => `${format} is loaded.`,
+    msg(
+      str`${
+        format
+      } slots return null if the page or device does not support them.`,
+    ),
+  loaded: (format: string) => msg(str`${format} is loaded.`),
   loadedNeedScroll: (format: string) =>
-    `${outOfPage.loaded(format)} Scroll page to activate.`,
+    msg(str`${outOfPage.loaded(format)} Scroll page to activate.`),
   loadedUrl: (format: string) =>
     `<a href="https://www.example.com">${outOfPage.loaded(format)}</a>`,
-  loading: (format: string) => `${format} is loading...`,
-  notSupported: (format: string) => `${format} is not supported on this page.`,
+  loading: (format: string) => msg(str`${format} is loading...`),
+  notSupported: (format: string) =>
+    msg(str`${format} is not supported on this page.`),
 };
 
 const status = {

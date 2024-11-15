@@ -21,5 +21,17 @@
     <msg name="s09c694b6602d365d">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (l̂́êf̂́t̂)</msg>
     <msg name="sccb7f7246c10ecb6">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (r̂́îĝ́ĥt̂́)</msg>
     <msg name="secff207571282402">Ŵ́êb̂́ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
+    <msg name="s0d576da69783c058"><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
+    <msg name="s352f8b213acc822a"><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
+    <msg name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
+    <msg name="s9d21580cc7643953"><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
+    <msg name="s8233e942045a2b50"><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
+    <msg name="s71e012bd812c44a2">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="s902dcca83f60a987">// D̂́êf̂́în̂́ê ốût̂́ ốf̂ p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="sc5c8140d066b7231">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
+    <msg name="s5ec0955e7a33abf4">// Ến̂ấb̂l̂́ê ŝ́în̂́ĝl̂́ê r̂́êq̂́ûếŝt̂́ m̂́ôd̂́ê.</msg>
+    <msg name="s34774a88f199f364">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
+    <msg name="s0536dee760be4bf2">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
+    <msg name="sd3926a53f7b06107">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
   </messages>
 </localizationbundle>
