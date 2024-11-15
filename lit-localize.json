@@ -21,7 +21,8 @@
     "tr",
     "vi",
     "zh-cn",
-    "zh-tw"
+    "zh-tw",
+    "test"
   ],
   "tsConfig": "./tsconfig.json",
   "output": {

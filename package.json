@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "npm run build:l10n && npm run fix && npm run build:ts && npm run build:rollup",
-    "build:l10n": "lit-localize extract && lit-localize build",
+    "build:l10n": "lit-localize extract && npm run build:l10n-test && lit-localize build",
+    "build:l10n-test": "npx -y tsx@latest scripts/gen-test-locale.ts",
     "build:ts": "tsc",
     "build:rollup": "rollup -c",
     "fix": "gts fix",
