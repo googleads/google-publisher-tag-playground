@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="en">
   <messages>
+    <msg name="sf93d227444bc5687">Page settings</msg>
+    <msg name="s7b5fa742d13b462e">Slot settings</msg>
+    <msg name="sc907ffeeafb021d1">Output settings</msg>
+    <msg name="se78c02e9a98a0f47">Privacy</msg>
+    <msg name="s267a52c34c200ef0">Single Request Architecture (SRA)</msg>
+    <msg name="s758d8c59379ea482">Page-level targeting</msg>
+    <msg name="sd5ac53cfd233dbcb">Limited ads</msg>
+    <msg name="s0eb106f4b9813ad3">Non-personalized ads</msg>
+    <msg name="sb457d189f407a5a6">Restrict data processing</msg>
+    <msg name="s3132d1a0580760bc">Child-directed treatment</msg>
+    <msg name="sf915707accde585c">Under the age of consent</msg>
+    <msg name="s77b0113eae08368b">Sample template</msg>
+    <msg name="s4535f519744108bf">Output format</msg>
+    <msg name="s5bf3f3d517569ebd">Anchor ad (bottom)</msg>
+    <msg name="s710f900ef624e363">Anchor ad (top)</msg>
+    <msg name="s1163c710c6c9bccf">Gaming interstitial ad</msg>
+    <msg name="sefe480470a2c783c">Rewarded ad</msg>
+    <msg name="s09c694b6602d365d">Side rail ad (left)</msg>
+    <msg name="sccb7f7246c10ecb6">Side rail ad (right)</msg>
+    <msg name="secff207571282402">Web interstitial ad</msg>
   </messages>
 </localizationbundle>

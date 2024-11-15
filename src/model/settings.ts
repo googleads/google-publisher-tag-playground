@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {msg} from '@lit/localize';
+
 import {
   SampleConfig,
   SamplePageConfig,
@@ -24,52 +26,55 @@ import {
 /**
  * Maps {@link SampleConfig} properties to their friendly names.
  */
-export const configNames: {[K in keyof SampleConfig]: string} = {
-  page: 'Page settings',
-  slots: 'Slot settings',
-  template: 'Output settings',
+export const configNames: {[K in keyof SampleConfig]: () => string} = {
+  page: () => msg('Page settings'),
+  slots: () => msg('Slot settings'),
+  template: () => msg('Output settings'),
 };
 
 /**
  * Maps {@link SamplePageConfig} properties to their friendly names.
  */
-export const pageConfigNames: {[K in keyof SamplePageConfig]: string} = {
-  privacy: 'Privacy',
-  sra: 'Single Request Architecture (SRA)',
-  targeting: 'Page-level targeting',
+export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
+  privacy: () => msg('Privacy'),
+  sra: () => msg('Single Request Architecture (SRA)'),
+  targeting: () => msg('Page-level targeting'),
 };
 
 /**
  * Maps {@link SamplePrivacyConfig} properties to their friendly names.
  */
-export const privacyConfigNames: {[K in keyof SamplePrivacyConfig]: string} = {
-  ltd: 'Limited ads',
-  npa: 'Non-personalized ads',
-  rdp: 'Restrict data processing',
-  tfcd: 'Child-directed treatment',
-  tfua: 'Under the age of consent',
+export const privacyConfigNames: {
+  [K in keyof SamplePrivacyConfig]: () => string;
+} = {
+  ltd: () => msg('Limited ads'),
+  npa: () => msg('Non-personalized ads'),
+  rdp: () => msg('Restrict data processing'),
+  tfcd: () => msg('Child-directed treatment'),
+  tfua: () => msg('Under the age of consent'),
 };
 
 /**
  * Maps {@link SampleTemplateConfig} properties to their friendly names.
  */
-export const templateConfigNames: {[K in keyof SampleTemplateConfig]: string} =
-  {
-    type: 'Sample template',
-    target: 'Output format',
-  };
+export const templateConfigNames: {
+  [K in keyof SampleTemplateConfig]: () => string;
+} = {
+  type: () => msg('Sample template'),
+  target: () => msg('Output format'),
+};
 
 /**
  * Maps `googletag.enums.OutOfPageFormat` keys to their friendly names.
  */
 export const outOfPageFormatNames: {
-  [K in keyof typeof googletag.enums.OutOfPageFormat]: string;
+  [K in keyof typeof googletag.enums.OutOfPageFormat]: () => string;
 } = {
-  BOTTOM_ANCHOR: 'Anchor ad (bottom)',
-  TOP_ANCHOR: 'Anchor ad (top)',
-  GAME_MANUAL_INTERSTITIAL: 'Gaming interstitial ad',
-  REWARDED: 'Rewarded ad',
-  LEFT_SIDE_RAIL: 'Side rail ad (left)',
-  RIGHT_SIDE_RAIL: 'Side rail ad (right)',
-  INTERSTITIAL: 'Web interstitial ad',
+  BOTTOM_ANCHOR: () => msg('Anchor ad (bottom)'),
+  TOP_ANCHOR: () => msg('Anchor ad (top)'),
+  GAME_MANUAL_INTERSTITIAL: () => msg('Gaming interstitial ad'),
+  REWARDED: () => msg('Rewarded ad'),
+  LEFT_SIDE_RAIL: () => msg('Side rail ad (left)'),
+  RIGHT_SIDE_RAIL: () => msg('Side rail ad (right)'),
+  INTERSTITIAL: () => msg('Web interstitial ad'),
 };

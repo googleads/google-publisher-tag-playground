@@ -67,7 +67,7 @@ const status = {
  */
 function getSlotOnloadCallback(config: SampleConfig, slot: SampleSlotConfig) {
   const id = getSlotIdentifer(config, slot);
-  const formatStr = outOfPageFormatNames[slot.format!];
+  const formatStr = outOfPageFormatNames[slot.format!]();
 
   let statusUpdate = '';
   switch (slot.format) {
@@ -149,7 +149,7 @@ export function defineOutOfPageSlot(
 ) {
   const slotVar = getSlotIdentifer(config, slotConfig);
 
-  const formatString = outOfPageFormatNames[slotConfig.format!];
+  const formatString = outOfPageFormatNames[slotConfig.format!]();
   return `
     ${slotVar} = ${api.defineOutOfPageSlot(slotConfig)};
 

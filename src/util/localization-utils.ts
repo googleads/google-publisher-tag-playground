@@ -25,7 +25,7 @@ import {
 const localization = configureLocalization({
   sourceLocale,
   targetLocales,
-  loadLocale: locale => import(`/locales/${locale}.js`),
+  loadLocale: locale => import(`../locales/${locale}.js`),
 });
 
 /**

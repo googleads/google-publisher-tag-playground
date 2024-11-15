@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import {localized} from '@lit/localize';
 import {css, html, LitElement, nothing, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {keyed} from 'lit/directives/keyed.js';
@@ -52,6 +53,7 @@ interface KeyedSize {
 /**
  * Custom component for displaying/editing GPT slot sizes.
  */
+@localized()
 @customElement('slot-size-input')
 export class SlotSizeInput extends LitElement {
   @state() private dirtyConfig: KeyedSize[] = [];

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import {localized} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {keyed} from 'lit/directives/keyed.js';
@@ -57,6 +58,7 @@ interface KeyedSampleTargetingKV {
 /**
  * Custom component for displaying/editing GPT targeting key-values.
  */
+@localized()
 @customElement('targeting-input')
 export class TargetingInput extends LitElement {
   /**

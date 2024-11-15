@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import {localized} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property} from 'lit/decorators.js';
@@ -33,6 +34,7 @@ export interface PlaygroundDialogButton {
  * Supports both modal and modeless modes, and can be used to display
  * arbitrary content.
  */
+@localized()
 @customElement('playground-dialog')
 export class PlaygroundDialog extends LitElement {
   static styles = css`

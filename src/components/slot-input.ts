@@ -17,6 +17,7 @@
 import './slot-size-input';
 import './targeting-input';
 
+import {localized} from '@lit/localize';
 import {css, html, LitElement, ReactiveElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
@@ -67,6 +68,7 @@ type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
 /**
  * Custom component for displaying/editing an array of GPT slots.
  */
+@localized()
 @customElement('slot-input')
 export class SlotInput extends LitElement {
   @state() private dirtyConfig: KeyedSlot[] = [];
@@ -379,7 +381,7 @@ export class SlotInput extends LitElement {
           ?disabled="${disabled}"
           ?selected="${slot.format === format}"
         >
-          ${v} ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
+          ${v()} ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
         </option>`;
         formats.push(option);
       });

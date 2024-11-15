@@ -18,6 +18,7 @@ import './gpt-playground';
 import './targeting-input';
 import './slot-input';
 
+import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {until} from 'lit-html/directives/until.js';
 import {customElement, property, query, state} from 'lit/decorators.js';
@@ -43,6 +44,7 @@ import {TargetingInput} from './targeting-input.js';
 /**
  * Custom GPT sample configurator component.
  */
+@localized()
 @customElement('sample-configurator')
 export class SampleConfigurator extends LitElement {
   private internalConfig: SampleConfig = {slots: []};
@@ -245,13 +247,13 @@ export class SampleConfigurator extends LitElement {
     const settings = this.config?.page;
 
     return html` <fieldset class="page">
-      <legend>${configNames.page}</legend>
-      ${this.checkbox('sra', pageConfigNames.sra!, settings?.sra)}
+      <legend>${configNames.page!()}</legend>
+      ${this.checkbox('sra', pageConfigNames.sra!(), settings?.sra)}
       ${this.renderPrivacySettings()}
       <targeting-input
         class="page"
         .config="${settings?.targeting}"
-        title="${pageConfigNames.targeting}"
+        title="${pageConfigNames.targeting!()}"
         @update="${this.updatePageTargeting}"
       >
       </targeting-input>
@@ -262,18 +264,18 @@ export class SampleConfigurator extends LitElement {
     const settings = this.config?.page?.privacy;
 
     return html` <fieldset class="privacy">
-      <legend>${pageConfigNames.privacy}</legend>
-      ${this.checkbox('tfcd', privacyConfigNames.tfcd!, settings?.tfcd)}
-      ${this.checkbox('ltd', privacyConfigNames.ltd!, settings?.ltd)}
-      ${this.checkbox('npa', privacyConfigNames.npa!, settings?.npa)}
-      ${this.checkbox('rdp', privacyConfigNames.rdp!, settings?.rdp)}
-      ${this.checkbox('tfua', privacyConfigNames.tfua!, settings?.tfua)}
+      <legend>${pageConfigNames.privacy!()}</legend>
+      ${this.checkbox('tfcd', privacyConfigNames.tfcd!(), settings?.tfcd)}
+      ${this.checkbox('ltd', privacyConfigNames.ltd!(), settings?.ltd)}
+      ${this.checkbox('npa', privacyConfigNames.npa!(), settings?.npa)}
+      ${this.checkbox('rdp', privacyConfigNames.rdp!(), settings?.rdp)}
+      ${this.checkbox('tfua', privacyConfigNames.tfua!(), settings?.tfua)}
     </fieldset>`;
   }
 
   private renderSlotSettings() {
     return html` <slot-input
-      title="${configNames.slots}"
+      title="${configNames.slots()}"
       .config="${this.config?.slots}"
       @update="${this.updateSlotSettings}"
     >
@@ -298,13 +300,13 @@ export class SampleConfigurator extends LitElement {
       });
 
     return html` <fieldset class="template">
-      <legend>${configNames.template}</legend>
+      <legend>${configNames.template!()}</legend>
       <div>
         <select id="target" name="target" @change=${this.updateStringSettings}>
           <option value="">TypeScript</option>
           ${jsTargets}
         </select>
-        <label for="target">${templateConfigNames.target}</label>
+        <label for="target">${templateConfigNames.target!()}</label>
       </div>
     </fieldset>`;
   }

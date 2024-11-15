@@ -20,6 +20,7 @@ import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
 import 'playground-elements/playground-tab-bar';
 
+import {localized} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
@@ -42,6 +43,7 @@ const PLAYGROUND_ID = 'gpt-sample';
 /**
  * Custom GPT Playground component.
  */
+@localized()
 @customElement('gpt-playground')
 export class GptPlayground extends LitElement {
   @query('playground-preview') private preview!: PlaygroundPreview;
