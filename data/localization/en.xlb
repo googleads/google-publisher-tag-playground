@@ -33,5 +33,36 @@
     <msg name="s34774a88f199f364">// Configure page-level targeting.</msg>
     <msg name="s0536dee760be4bf2">// Configure privacy settings.</msg>
     <msg name="sd3926a53f7b06107">// Request and render all previously defined ad slots.</msg>
+    <msg name="sba78b2039ea0dfb0">This sample cannot be previewed in an iframe. </msg>
+    <msg name="sf107929dee6a6c72">Click the button below to preview in a new window.</msg>
+    <msg name="s3be169991df10a5d">Open preview</msg>
+    <msg name="s48390e2c954ba495">Fixed-size ad (100x100)</msg>
+    <msg name="sbba26a884a26c0c7">Fixed-size ad (300x250)</msg>
+    <msg name="s4121536e35beb2ed">Fixed-size ad (728x90)</msg>
+    <msg name="s703415876ae4626f">Fixed-size ad (750x200)</msg>
+    <msg name="s3400fb34f1e245a9">Multi-size ad</msg>
+    <msg name="s292d08a9cea72454">Fluid ad</msg>
+    <msg name="s1c59de6a71660855">Add size</msg>
+    <msg name="sffdadf0a576fd802">Height</msg>
+    <msg name="sb55d0a3abebf97fe">Remove size</msg>
+    <msg name="sf21fb4f4b9e8911f">Width</msg>
+    <msg name="sed09c5dfcd2f8bc8">Add targeting key</msg>
+    <msg name="sf2057da4d0abd00e">Add targeting value</msg>
+    <msg name="s716e903e2945c8cb">Remove targeting value</msg>
+    <msg name="s02c64e6a6306c0b0">Add slot</msg>
+    <msg name="s2d647200b120ea41">Ad unit path</msg>
+    <msg name="s08995feb9716ee48">Out-of-page format</msg>
+    <msg name="s8a2c4a3aa651b7fb">Remove slot</msg>
+    <msg name="s11a3c998dc1af0b1">Sample ads</msg>
+    <msg name="s4661d2a8c1259e58">Sample ads (out-of-page)</msg>
+    <msg name="s7d28e0b73aced2d9">Sample configuration</msg>
+    <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">None</msg>
+    <msg name="sf0cab2483f66aa2e" desc="Option that allows users to input custom ad slot values.">Custom</msg>
+    <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Unavailable</msg>
+    <msg name="s9691600b4b891cf3" desc="The &quot;fluid&quot; size for native ads.">Fluid</msg>
+    <msg name="s506b6a19d12f414c" desc="The key portion of a targeting key-value.">Key</msg>
+    <msg name="s57472465a23b41db" desc="The values portion of a targeting key-value.">Values</msg>
+    <msg name="s3e0b42b56e05829d" desc="Title for the section contain ad sizing options.">Sizes</msg>
+    <msg name="se6dd79643508bb80" desc="Title for the section containing ad targeting options.">Targeting</msg>
   </messages>
 </localizationbundle>

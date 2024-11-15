@@ -17,7 +17,7 @@
 import './slot-size-input';
 import './targeting-input';
 
-import {localized} from '@lit/localize';
+import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, ReactiveElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
@@ -33,17 +33,30 @@ import {SlotSizeInput} from './slot-size-input.js';
 import {TargetingInput} from './targeting-input.js';
 
 // Constant UI strings.
-const ADD_SLOT_TITLE = 'Add slot';
-const AD_UNIT_LABEL = 'Ad unit path';
-const CUSTOM_OPTION_LABEL = 'Custom';
-const OOP_FORMAT_DISABLED = 'Unavailable';
-const OOP_FORMAT_LABEL = 'Out-of-page format';
-const OOP_FORMAT_UNSELECTED = 'None';
-const REMOVE_SLOT_TITLE = 'Remove slot';
-const SAMPLE_ADS_LABEL = 'Sample ads';
-const SAMPLE_ADS_OOP_LABEL = 'Sample ads (out-of-page)';
-const SIZE_SECTION_TITLE = 'Sizes';
-const TARGETING_SECTION_TITLE = 'Targeting';
+const strings = {
+  addSlotTitle: () => msg('Add slot'),
+  adUnitLabel: () => msg('Ad unit path'),
+  customOptionLabel: () =>
+    msg('Custom', {
+      desc: 'Option that allows users to input custom ad slot values.',
+    }),
+  oopFormatDisabled: () =>
+    msg('Unavailable', {
+      desc: 'Text shown when a drop-down option is disabled.',
+    }),
+  oopFormatLabel: () => msg('Out-of-page format'),
+  oopFormatUnselected: () =>
+    msg('None', {desc: 'Option indicating no out-of-page format is selected.'}),
+  removeSlotTitle: () => msg('Remove slot'),
+  sampleAdsLabel: () => msg('Sample ads'),
+  sampleAdsOopLabel: () => msg('Sample ads (out-of-page)'),
+  sizeSectionTitle: () =>
+    msg('Sizes', {desc: 'Title for the section contain ad sizing options.'}),
+  targetingSectionTitle: () =>
+    msg('Targeting', {
+      desc: 'Title for the section containing ad targeting options.',
+    }),
+};
 
 // Ad unit path validation.
 const AD_UNIT_VALIDATION_PATTERN = '[\\da-zA-Z_\\-.*\\/\\\\!:\\(\\)]+';
@@ -352,7 +365,8 @@ export class SlotInput extends LitElement {
         ?disabled="${disabled}"
         ?selected="${isEqual(slot, sampleAd.slot)}"
       >
-        ${sampleAd.name} ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
+        ${sampleAd.name()}
+        ${when(disabled, () => ` (${strings.oopFormatDisabled()})`)}
       </option>`;
       (format ? oopTemplates : templates).push(template);
     });
@@ -362,9 +376,11 @@ export class SlotInput extends LitElement {
       name="templates"
       @input="${this.updateSlot}"
     >
-      <option>${CUSTOM_OPTION_LABEL}</option>
-      <optgroup label="${SAMPLE_ADS_LABEL}">${templates}</optgroup>
-      <optgroup label="${SAMPLE_ADS_OOP_LABEL}">${oopTemplates}</optgroup>
+      <option>${strings.customOptionLabel()}</option>
+      <optgroup label="${strings.sampleAdsLabel()}">${templates}</optgroup>
+      <optgroup label="${strings.sampleAdsOopLabel()}">
+        ${oopTemplates}
+      </optgroup>
     </select>`;
   }
 
@@ -381,14 +397,14 @@ export class SlotInput extends LitElement {
           ?disabled="${disabled}"
           ?selected="${slot.format === format}"
         >
-          ${v()} ${when(disabled, () => ` (${OOP_FORMAT_DISABLED})`)}
+          ${v()} ${when(disabled, () => ` (${strings.oopFormatDisabled()})`)}
         </option>`;
         formats.push(option);
       });
 
     return html`
       <select class="flex padded" name="formats" @input="${this.updateSlot}">
-        <option value="">${OOP_FORMAT_UNSELECTED}</option>
+        <option value="">${strings.oopFormatUnselected()}</option>
         ${formats}
       </select>
     `;
@@ -396,7 +412,7 @@ export class SlotInput extends LitElement {
 
   private renderSlotOptions(slot: SampleSlotConfig) {
     return html` <div class="slot-option flex">
-        <label for="adUnit">${AD_UNIT_LABEL}</label>
+        <label for="adUnit">${strings.adUnitLabel()}</label>
         <input
           class="flex padded"
           type="text"
@@ -407,14 +423,14 @@ export class SlotInput extends LitElement {
         />
       </div>
       <div class="slot-option flex">
-        <label for="format">${OOP_FORMAT_LABEL}</label>
+        <label for="format">${strings.oopFormatLabel()}</label>
         ${this.renderSlotFormatInput(slot)}
       </div>`;
   }
 
   private renderSlotSizeInput(slot: SampleSlotConfig) {
     return html` <slot-size-input
-      title="${SIZE_SECTION_TITLE}"
+      title="${strings.sizeSectionTitle()}"
       .config="${slot.size}"
       @update="${this.updateSlot}"
     ></slot-size-input>`;
@@ -422,7 +438,7 @@ export class SlotInput extends LitElement {
 
   private renderTargetingInput(slot: SampleSlotConfig) {
     return html` <targeting-input
-      title="${TARGETING_SECTION_TITLE}"
+      title="${strings.targetingSectionTitle()}"
       .config="${slot.targeting || []}"
       @update="${this.updateSlot}"
     ></targeting-input>`;
@@ -455,7 +471,7 @@ export class SlotInput extends LitElement {
         ${this.renderSlotTemplates(slot.slot)}
         <span
           class="material-icons md-24 button"
-          title="${REMOVE_SLOT_TITLE}"
+          title="${strings.removeSlotTitle()}"
           @click="${this.removeSlot}"
           >delete</span
         >
@@ -476,7 +492,7 @@ export class SlotInput extends LitElement {
         ${slots}
         <span
           class="material-icons md-24 add-slot button"
-          title="${ADD_SLOT_TITLE}"
+          title="${strings.addSlotTitle()}"
           @click="${this.addSlot}"
           >add</span
         >

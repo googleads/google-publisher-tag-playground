@@ -20,7 +20,7 @@ import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
 import 'playground-elements/playground-tab-bar';
 
-import {localized} from '@lit/localize';
+import {localized, msg} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
@@ -32,10 +32,12 @@ import type {ProjectManifest} from 'playground-elements/shared/worker-api.js';
 import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
 
 // Constant UI strings.
-const PREVIEW_DIALOG =
-  'This sample cannot be previewed in an iframe. ' +
-  'Click the button below to preview in a new window.';
-const PREVIEW_DIALOG_BUTTON = 'Open preview';
+const strings = {
+  previewDialog: () =>
+    msg('This sample cannot be previewed in an iframe. ') +
+    msg('Click the button below to preview in a new window.'),
+  previewDialogButton: () => msg('Open preview'),
+};
 
 // Playground component identifier.
 const PLAYGROUND_ID = 'gpt-sample';
@@ -221,7 +223,7 @@ export class GptPlayground extends LitElement {
   private renderPreviewDialog() {
     const buttons: PlaygroundDialogButton[] = [
       {
-        text: `${PREVIEW_DIALOG_BUTTON}`,
+        text: `${strings.previewDialogButton()}`,
         onClick: () => {
           this.previewWindow = window.open(
             this.generatePreviewUrl(),
@@ -233,7 +235,7 @@ export class GptPlayground extends LitElement {
 
     return html`
       <playground-dialog
-        .text="${[PREVIEW_DIALOG]}"
+        .text="${[strings.previewDialog()]}"
         .buttons="${buttons}"
         ?open="${!this.previewEnabled}"
         modal

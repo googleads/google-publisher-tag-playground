@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {localized} from '@lit/localize';
+import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, nothing, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {keyed} from 'lit/directives/keyed.js';
@@ -23,11 +23,13 @@ import {isEqual} from 'lodash-es';
 import {materialStyles} from './shared/styles.js';
 
 // Constant UI strings.
-const ADD_SIZE_TITLE = 'Add size';
-const FLUID_LABEL = 'Fluid';
-const HEIGHT_PLACEHOLDER = 'Height';
-const REMOVE_SIZE_TITLE = 'Remove size';
-const WIDTH_PLACEHOLDER = 'Width';
+const strings = {
+  addSizeTitle: () => msg('Add size'),
+  fluidLabel: () => msg('Fluid', {desc: 'The "fluid" size for native ads.'}),
+  heightPlaceholder: () => msg('Height'),
+  removeSizeTitle: () => msg('Remove size'),
+  widthPlaceholder: () => msg('Width'),
+};
 
 // Height and width validation patterns.
 const DIMENSION_VALIDATION_PATTERN = '[\\d]{1,4}';
@@ -302,7 +304,7 @@ export class SlotSizeInput extends LitElement {
           maxlength="4"
           name="width"
           pattern="${DIMENSION_VALIDATION_PATTERN}"
-          placeholder="${WIDTH_PLACEHOLDER}"
+          placeholder="${strings.widthPlaceholder()}"
           value="${!size || namedSize ? nothing : size[0]}"
           ?disabled="${namedSize}"
           @input="${this.updateSize}"
@@ -313,7 +315,7 @@ export class SlotSizeInput extends LitElement {
           maxlength="4"
           name="height"
           pattern="${DIMENSION_VALIDATION_PATTERN}"
-          placeholder="${HEIGHT_PLACEHOLDER}"
+          placeholder="${strings.heightPlaceholder()}"
           value="${!size || namedSize ? nothing : size[1]}"
           ?disabled="${namedSize}"
           @input="${this.updateSize}"
@@ -333,7 +335,7 @@ export class SlotSizeInput extends LitElement {
           ?checked="${fluid}"
           @input="${this.updateSize}"
         />
-        <label for="fluid">${FLUID_LABEL}</label>
+        <label for="fluid">${strings.fluidLabel()}</label>
       </div>
     `;
   }
@@ -350,7 +352,7 @@ export class SlotSizeInput extends LitElement {
           <div class="size-controls">
             <span
               class="material-icons md-24 button"
-              title="${REMOVE_SIZE_TITLE}"
+              title="${strings.removeSizeTitle()}"
               @click="${this.removeSize}"
               >delete</span
             >
@@ -372,7 +374,7 @@ export class SlotSizeInput extends LitElement {
         ${sizes}
         <span
           class="material-icons md-24 add-size button"
-          title="${ADD_SIZE_TITLE}"
+          title="${strings.addSizeTitle()}"
           @click="${this.addSize}"
           >add</span
         >

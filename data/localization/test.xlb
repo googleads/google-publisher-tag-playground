@@ -33,5 +33,36 @@
     <msg name="s34774a88f199f364">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
     <msg name="s0536dee760be4bf2">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="sd3926a53f7b06107">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="sba78b2039ea0dfb0">T̂́ĥî́ŝ ŝ́âm̂́p̂l̂́ê ĉ́ân̂́n̂ốt̂ b̂́ê p̂́r̂ếv̂î́êŵ́êd̂́ î́n̂ ấn̂ î́f̂r̂́âm̂́ê. </msg>
+    <msg name="sf107929dee6a6c72">Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
+    <msg name="s3be169991df10a5d">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
+    <msg name="s48390e2c954ba495">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (100x̂́100)</msg>
+    <msg name="sbba26a884a26c0c7">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (300x̂́250)</msg>
+    <msg name="s4121536e35beb2ed">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (728x̂́90)</msg>
+    <msg name="s703415876ae4626f">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (750x̂́200)</msg>
+    <msg name="s3400fb34f1e245a9">M̂́ûl̂́t̂î́-ŝ́îẑ́ê ấd̂</msg>
+    <msg name="s292d08a9cea72454">F̂́l̂û́îd̂́ ấd̂</msg>
+    <msg name="s1c59de6a71660855">Ấd̂d̂́ ŝ́îẑ́ê</msg>
+    <msg name="sffdadf0a576fd802">Ĥ́êî́ĝĥ́t̂</msg>
+    <msg name="sb55d0a3abebf97fe">R̂́êm̂́ôv̂́ê ŝ́îẑ́ê</msg>
+    <msg name="sf21fb4f4b9e8911f">Ŵ́îd̂́t̂ĥ́</msg>
+    <msg name="sed09c5dfcd2f8bc8">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́</msg>
+    <msg name="sf2057da4d0abd00e">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
+    <msg name="s716e903e2945c8cb">R̂́êm̂́ôv̂́ê t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
+    <msg name="s02c64e6a6306c0b0">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
+    <msg name="s2d647200b120ea41">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
+    <msg name="s08995feb9716ee48">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
+    <msg name="s8a2c4a3aa651b7fb">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
+    <msg name="s11a3c998dc1af0b1">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
+    <msg name="s4661d2a8c1259e58">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
+    <msg name="s7d28e0b73aced2d9">Ŝ́âm̂́p̂l̂́ê ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
+    <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>
+    <msg name="sf0cab2483f66aa2e" desc="Option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
+    <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
+    <msg name="s9691600b4b891cf3" desc="The &quot;fluid&quot; size for native ads.">F̂́l̂û́îd̂́</msg>
+    <msg name="s506b6a19d12f414c" desc="The key portion of a targeting key-value.">K̂́êŷ́</msg>
+    <msg name="s57472465a23b41db" desc="The values portion of a targeting key-value.">V̂́âl̂́ûếŝ</msg>
+    <msg name="s3e0b42b56e05829d" desc="Title for the section contain ad sizing options.">Ŝ́îẑ́êŝ́</msg>
+    <msg name="se6dd79643508bb80" desc="Title for the section containing ad targeting options.">T̂́âr̂́ĝết̂î́n̂ĝ́</msg>
   </messages>
 </localizationbundle>

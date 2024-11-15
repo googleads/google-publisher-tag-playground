@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import {localized} from '@lit/localize';
+import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {keyed} from 'lit/directives/keyed.js';
@@ -24,9 +24,16 @@ import type {SampleTargetingKV} from '../model/sample-config.js';
 
 import {materialStyles} from './shared/styles.js';
 
-const ADD_KEY_TITLE = 'Add targeting key';
-const ADD_VALUE_TITLE = 'Add targeting value';
-const REMOVE_VALUE_TITLE = 'Remove targeting value';
+// Constant UI strings.
+const strings = {
+  addKeyTitle: () => msg('Add targeting key'),
+  addValueTitle: () => msg('Add targeting value'),
+  keyColumnHeader: () =>
+    msg('Key', {desc: 'The key portion of a targeting key-value.'}),
+  removeValueTitle: () => msg('Remove targeting value'),
+  valuesColumnHeader: () =>
+    msg('Values', {desc: 'The values portion of a targeting key-value.'}),
+};
 
 // Characters invalid for both keys and values.
 const INVALID_CHARACTERS = '"\'=!+#\\*~;\\^\\(\\)<>\\[\\],&';
@@ -334,7 +341,7 @@ export class TargetingInput extends LitElement {
           : html`<span
               class="material-icons md-24 button"
               @click="${this.addValue}"
-              title="${ADD_VALUE_TITLE}"
+              title="${strings.addValueTitle()}"
               >add</span
             >`;
 
@@ -350,7 +357,7 @@ export class TargetingInput extends LitElement {
           <span
             class="material-icons md-24 button"
             @click="${this.removeValue}"
-            title="${REMOVE_VALUE_TITLE}"
+            title="${strings.removeValueTitle()}"
             >delete</span
           >
           ${addOrSpacer}
@@ -390,15 +397,15 @@ export class TargetingInput extends LitElement {
     return html`
       <fieldset>
         <div class="header">
-          <span>Key</span>
-          <span>Values</span>
+          <span>${strings.keyColumnHeader()}</span>
+          <span>${strings.valuesColumnHeader()}</span>
         </div>
         <legend>${this.title}</legend>
         ${keyValues}
         <span
           class="material-icons md-24 button add-key"
           @click="${this.addKey}"
-          title="${ADD_KEY_TITLE}"
+          title="${strings.addKeyTitle()}"
           >add</span
         >
       </fieldset>

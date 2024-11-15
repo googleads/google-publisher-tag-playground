@@ -41,6 +41,11 @@ import {GptPlayground} from './gpt-playground.js';
 import {SlotInput} from './slot-input.js';
 import {TargetingInput} from './targeting-input.js';
 
+// Constant UI strings.
+const strings = {
+  configuratorTitle: () => msg('Sample configuration'),
+};
+
 /**
  * Custom GPT sample configurator component.
  */
@@ -314,7 +319,7 @@ export class SampleConfigurator extends LitElement {
   private renderConfigurator() {
     return html` <div id="configurator">
       <div id="configurator-header">
-        <span>Sample configuration</span>
+        <span>${strings.configuratorTitle()}</span>
       </div>
       <div id="configurator-settings">
         ${this.renderPageSettings()} ${this.renderSlotSettings()}
