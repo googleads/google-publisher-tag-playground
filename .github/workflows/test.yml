@@ -36,7 +36,9 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Build project
-      run: npm run build
+      run: |
+        npm run build:ts
+        npm run build:rollup
     - name: Build samples
       working-directory: ./samples
       run: |
