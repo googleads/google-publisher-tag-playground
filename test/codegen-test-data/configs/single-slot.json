@@ -6,7 +6,13 @@
       "rdp": true,
       "tfcd": true,
       "tfua": true
-    }
+    },
+    "targeting": [
+      {
+        "key": "page",
+        "value": "red"
+      }
+    ]
   },
   "slots": [
     {
@@ -29,12 +35,6 @@
           "value": "yellow"
         }
       ]
-    }
-  ],
-  "targeting": [
-    {
-      "key": "page",
-      "value": "red"
     }
   ]
 }

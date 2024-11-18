@@ -15,18 +15,21 @@
     "fix": "gts fix",
     "lint": "gts lint",
     "serve": "wds --node-resolve --watch --root-dir dist/",
-    "test": "npm run build:ts && jasmine --config=jasmine.json"
+    "test": "npm run build:ts && jasmine --config=jasmine.json",
+    "test:playwright": "playwright test"
   },
   "dependencies": {
     "@lit/localize": "^0.12.2",
     "lit": "^3.2.1",
     "lodash-es": "^4.17.21",
     "playground-elements": "^0.18.1",
+    "playwright": "^1.48.2",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3"
   },
   "devDependencies": {
     "@lit/localize-tools": "^0.8.0",
+    "@playwright/test": "^1.48.2",
     "@rollup/plugin-commonjs": "^25.0.8",
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-terser": "^0.4.4",

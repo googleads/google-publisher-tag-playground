@@ -6,3 +6,6 @@ scripts/
 # Ignore JS files, except for the Rollup config file.
 **/*.js
 !rollup.config.js
+
+# Ignore Playwright config
+playwright.config.ts
