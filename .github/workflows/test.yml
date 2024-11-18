@@ -24,6 +24,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container: debian:stable
     steps:
     - uses: actions/checkout@v4
       with:
