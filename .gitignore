@@ -3,3 +3,9 @@ node_modules
 *.js
 !rollup.config.js
 !dist/js/*.js
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
