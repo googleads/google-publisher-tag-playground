@@ -24,9 +24,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    container: debian:stable
     steps:
-    - run: apt update && apt -y install git
     - uses: actions/checkout@v4
       with:
         submodules: true
