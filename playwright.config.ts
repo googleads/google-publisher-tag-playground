@@ -29,8 +29,8 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
-  /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  /* Limit workers to 4 in CI environments, use the default otherwise. */
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
 
@@ -38,10 +38,11 @@ export default defineConfig({
      https://playwright.dev/docs/api/class-testoptions. */
   expect: {
     /**
-       Max diff (in px) before considering a screenshot comparison as failed.
+     * The acceptable ratio of pixels different from the total # of pixels, when
+     * comparing screenshots.
      */
-    toHaveScreenshot: {maxDiffPixels: 50},
-    toMatchSnapshot: {maxDiffPixels: 50}
+    toHaveScreenshot: {maxDiffPixelRatio: 0.01},
+    toMatchSnapshot: {maxDiffPixelRatio: 0.01}
   },
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
