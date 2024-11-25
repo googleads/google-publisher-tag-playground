@@ -17,6 +17,7 @@
 import {msg} from '@lit/localize';
 
 import type {SampleSlotConfig} from '../../model/sample-config.js';
+import {outOfPageFormatNames} from '../../model/settings.js';
 
 export interface SampleAd {
   name: () => string;
@@ -25,23 +26,30 @@ export interface SampleAd {
 
 export const sampleAds: SampleAd[] = [
   {
-    name: () => msg('Fixed-size ad (100x100)'),
+    name: () =>
+      msg('Fixed-size ad (100x100)', {
+        desc: 'A sample ad with one valid size.',
+      }),
     slot: {adUnit: '/6355419/Travel/Europe', size: [100, 100]},
   },
   {
-    name: () => msg('Fixed-size ad (300x250)'),
+    name: () =>
+      msg('Fixed-size ad (300x250)', {desc: 'A sample ad with one valid size'}),
     slot: {adUnit: '/6355419/Travel/Europe', size: [300, 250]},
   },
   {
-    name: () => msg('Fixed-size ad (728x90)'),
+    name: () =>
+      msg('Fixed-size ad (728x90)', {desc: 'A sample ad with one valid size'}),
     slot: {adUnit: '/6355419/Travel/Europe', size: [728, 90]},
   },
   {
-    name: () => msg('Fixed-size ad (750x200)'),
+    name: () =>
+      msg('Fixed-size ad (750x200)', {desc: 'A sample ad with one valid size'}),
     slot: {adUnit: '/6355419/Travel/Europe', size: [750, 200]},
   },
   {
-    name: () => msg('Multi-size ad'),
+    name: () =>
+      msg('Multi-size ad', {desc: 'A sample ad with multiple valid sizes'}),
     slot: {
       adUnit: '/6355419/Travel/Europe',
       size: [
@@ -53,11 +61,14 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
-    name: () => msg('Fluid ad'),
+    name: () =>
+      msg('Fluid ad', {
+        desc: 'A sample native ad, which resizes to fit the space available.',
+      }),
     slot: {adUnit: '/6355419/Travel', size: 'fluid'},
   },
   {
-    name: () => msg('Anchor ad (bottom)'),
+    name: outOfPageFormatNames.BOTTOM_ANCHOR,
     slot: {
       adUnit: '/6355419/Travel',
       format: 'BOTTOM_ANCHOR',
@@ -66,7 +77,7 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
-    name: () => msg('Anchor ad (top)'),
+    name: outOfPageFormatNames.TOP_ANCHOR,
     slot: {
       adUnit: '/6355419/Travel',
       format: 'TOP_ANCHOR',
@@ -75,7 +86,7 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
-    name: () => msg('Side rail ad (left)'),
+    name: outOfPageFormatNames.LEFT_SIDE_RAIL,
     slot: {
       adUnit: '/6355419/Travel/Europe',
       format: 'LEFT_SIDE_RAIL',
@@ -83,7 +94,7 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
-    name: () => msg('Side rail ad (right)'),
+    name: outOfPageFormatNames.RIGHT_SIDE_RAIL,
     slot: {
       adUnit: '/6355419/Travel/Europe',
       format: 'RIGHT_SIDE_RAIL',
@@ -91,7 +102,7 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
-    name: () => msg('Web interstitial ad'),
+    name: outOfPageFormatNames.INTERSTITIAL,
     slot: {
       adUnit: '/6355419/Travel/Europe/France/Paris',
       format: 'INTERSTITIAL',

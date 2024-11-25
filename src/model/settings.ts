@@ -27,18 +27,28 @@ import {
  * Maps {@link SampleConfig} properties to their friendly names.
  */
 export const configNames: {[K in keyof SampleConfig]: () => string} = {
-  page: () => msg('Page settings'),
-  slots: () => msg('Slot settings'),
-  template: () => msg('Output settings'),
+  page: () => msg('Page settings', {desc: 'Section containing page settings.'}),
+  slots: () =>
+    msg('Slot settings', {desc: 'Section containing ad slot settings.'}),
+  template: () =>
+    msg('Output settings', {
+      desc: 'Section containing options to control output.',
+    }),
 };
 
 /**
  * Maps {@link SamplePageConfig} properties to their friendly names.
  */
 export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
-  privacy: () => msg('Privacy'),
-  sra: () => msg('Single Request Architecture (SRA)'),
-  targeting: () => msg('Page-level targeting'),
+  privacy: () => msg('Privacy', {desc: 'Section containing privacy settings.'}),
+  sra: () =>
+    msg('Single Request Architecture (SRA)', {
+      desc: 'Page-level setting label',
+    }),
+  targeting: () =>
+    msg('Page-level targeting', {
+      desc: 'Section containing page-level targeting options.',
+    }),
 };
 
 /**
@@ -47,11 +57,11 @@ export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
 export const privacyConfigNames: {
   [K in keyof SamplePrivacyConfig]: () => string;
 } = {
-  ltd: () => msg('Limited ads'),
-  npa: () => msg('Non-personalized ads'),
-  rdp: () => msg('Restrict data processing'),
-  tfcd: () => msg('Child-directed treatment'),
-  tfua: () => msg('Under the age of consent'),
+  ltd: () => msg('Limited ads', {desc: 'Privacy setting label'}),
+  npa: () => msg('Non-personalized ads', {desc: 'Privacy setting label'}),
+  rdp: () => msg('Restrict data processing', {desc: 'Privacy setting label'}),
+  tfcd: () => msg('Child-directed treatment', {desc: 'Privacy setting label'}),
+  tfua: () => msg('Under the age of consent', {desc: 'Privacy setting label'}),
 };
 
 /**
@@ -60,8 +70,8 @@ export const privacyConfigNames: {
 export const templateConfigNames: {
   [K in keyof SampleTemplateConfig]: () => string;
 } = {
-  type: () => msg('Sample template'),
-  target: () => msg('Output format'),
+  type: () => msg('Sample template', {desc: 'Output template label'}),
+  target: () => msg('Output format', {desc: 'Output format label'}),
 };
 
 /**
@@ -70,11 +80,16 @@ export const templateConfigNames: {
 export const outOfPageFormatNames: {
   [K in keyof typeof googletag.enums.OutOfPageFormat]: () => string;
 } = {
-  BOTTOM_ANCHOR: () => msg('Anchor ad (bottom)'),
-  TOP_ANCHOR: () => msg('Anchor ad (top)'),
-  GAME_MANUAL_INTERSTITIAL: () => msg('Gaming interstitial ad'),
-  REWARDED: () => msg('Rewarded ad'),
-  LEFT_SIDE_RAIL: () => msg('Side rail ad (left)'),
-  RIGHT_SIDE_RAIL: () => msg('Side rail ad (right)'),
-  INTERSTITIAL: () => msg('Web interstitial ad'),
+  BOTTOM_ANCHOR: () =>
+    msg('Anchor ad (bottom)', {desc: 'An out-of-page ad format'}),
+  TOP_ANCHOR: () => msg('Anchor ad (top)', {desc: 'An out-of-page ad format'}),
+  GAME_MANUAL_INTERSTITIAL: () =>
+    msg('Gaming interstitial ad', {desc: 'An out-of-page ad format'}),
+  REWARDED: () => msg('Rewarded ad', {desc: 'An out-of-page ad format'}),
+  LEFT_SIDE_RAIL: () =>
+    msg('Side rail ad (left)', {desc: 'An out-of-page ad format'}),
+  RIGHT_SIDE_RAIL: () =>
+    msg('Side rail ad (right)', {desc: 'An out-of-page ad format'}),
+  INTERSTITIAL: () =>
+    msg('Web interstitial ad', {desc: 'An out-of-page ad format'}),
 };

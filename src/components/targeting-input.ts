@@ -26,11 +26,11 @@ import {materialStyles} from './shared/styles.js';
 
 // Constant UI strings.
 const strings = {
-  addKeyTitle: () => msg('Add targeting key'),
-  addValueTitle: () => msg('Add targeting value'),
+  addKeyTitle: () => msg('Add targeting key', {desc: 'Button title'}),
+  addValueTitle: () => msg('Add targeting value', {desc: 'Button title'}),
   keyColumnHeader: () =>
     msg('Key', {desc: 'The key portion of a targeting key-value.'}),
-  removeValueTitle: () => msg('Remove targeting value'),
+  removeValueTitle: () => msg('Remove targeting value', {desc: 'Button title'}),
   valuesColumnHeader: () =>
     msg('Values', {desc: 'The values portion of a targeting key-value.'}),
 };

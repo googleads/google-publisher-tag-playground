@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="en">
   <messages>
-    <msg name="sf93d227444bc5687">Page settings</msg>
-    <msg name="s7b5fa742d13b462e">Slot settings</msg>
-    <msg name="sc907ffeeafb021d1">Output settings</msg>
-    <msg name="se78c02e9a98a0f47">Privacy</msg>
-    <msg name="s267a52c34c200ef0">Single Request Architecture (SRA)</msg>
-    <msg name="s758d8c59379ea482">Page-level targeting</msg>
-    <msg name="sd5ac53cfd233dbcb">Limited ads</msg>
-    <msg name="s0eb106f4b9813ad3">Non-personalized ads</msg>
-    <msg name="sb457d189f407a5a6">Restrict data processing</msg>
-    <msg name="s3132d1a0580760bc">Child-directed treatment</msg>
-    <msg name="sf915707accde585c">Under the age of consent</msg>
-    <msg name="s77b0113eae08368b">Sample template</msg>
-    <msg name="s4535f519744108bf">Output format</msg>
-    <msg name="s5bf3f3d517569ebd">Anchor ad (bottom)</msg>
-    <msg name="s710f900ef624e363">Anchor ad (top)</msg>
-    <msg name="s1163c710c6c9bccf">Gaming interstitial ad</msg>
-    <msg name="sefe480470a2c783c">Rewarded ad</msg>
-    <msg name="s09c694b6602d365d">Side rail ad (left)</msg>
-    <msg name="sccb7f7246c10ecb6">Side rail ad (right)</msg>
-    <msg name="secff207571282402">Web interstitial ad</msg>
-    <msg name="s0d576da69783c058"><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
-    <msg name="s352f8b213acc822a"><ph name="0">${format}</ph> is loaded.</msg>
-    <msg name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
-    <msg name="s9d21580cc7643953"><ph name="0">${format}</ph> is loading...</msg>
-    <msg name="s8233e942045a2b50"><ph name="0">${format}</ph> is not supported on this page.</msg>
-    <msg name="s71e012bd812c44a2">// Define static ad slots.</msg>
-    <msg name="s902dcca83f60a987">// Define out of page slots.</msg>
-    <msg name="sc5c8140d066b7231">// Enable GPT services.</msg>
-    <msg name="s5ec0955e7a33abf4">// Enable single request mode.</msg>
-    <msg name="s34774a88f199f364">// Configure page-level targeting.</msg>
-    <msg name="s0536dee760be4bf2">// Configure privacy settings.</msg>
-    <msg name="sd3926a53f7b06107">// Request and render all previously defined ad slots.</msg>
-    <msg name="sba78b2039ea0dfb0">This sample cannot be previewed in an iframe. </msg>
-    <msg name="sf107929dee6a6c72">Click the button below to preview in a new window.</msg>
-    <msg name="s3be169991df10a5d">Open preview</msg>
-    <msg name="s48390e2c954ba495">Fixed-size ad (100x100)</msg>
-    <msg name="sbba26a884a26c0c7">Fixed-size ad (300x250)</msg>
-    <msg name="s4121536e35beb2ed">Fixed-size ad (728x90)</msg>
-    <msg name="s703415876ae4626f">Fixed-size ad (750x200)</msg>
-    <msg name="s3400fb34f1e245a9">Multi-size ad</msg>
-    <msg name="s292d08a9cea72454">Fluid ad</msg>
-    <msg name="s1c59de6a71660855">Add size</msg>
-    <msg name="sffdadf0a576fd802">Height</msg>
-    <msg name="sb55d0a3abebf97fe">Remove size</msg>
-    <msg name="sf21fb4f4b9e8911f">Width</msg>
-    <msg name="sed09c5dfcd2f8bc8">Add targeting key</msg>
-    <msg name="sf2057da4d0abd00e">Add targeting value</msg>
-    <msg name="s716e903e2945c8cb">Remove targeting value</msg>
-    <msg name="s02c64e6a6306c0b0">Add slot</msg>
-    <msg name="s2d647200b120ea41">Ad unit path</msg>
-    <msg name="s08995feb9716ee48">Out-of-page format</msg>
-    <msg name="s8a2c4a3aa651b7fb">Remove slot</msg>
-    <msg name="s11a3c998dc1af0b1">Sample ads</msg>
-    <msg name="s4661d2a8c1259e58">Sample ads (out-of-page)</msg>
-    <msg name="s7d28e0b73aced2d9">Sample configuration</msg>
+    <msg name="s3400fb34f1e245a9" desc="A sample ad with multiple valid sizes">Multi-size ad</msg>
+    <msg name="sbba26a884a26c0c7" desc="A sample ad with one valid size">Fixed-size ad (300x250)</msg>
+    <msg name="s4121536e35beb2ed" desc="A sample ad with one valid size">Fixed-size ad (728x90)</msg>
+    <msg name="s703415876ae4626f" desc="A sample ad with one valid size">Fixed-size ad (750x200)</msg>
+    <msg name="s48390e2c954ba495" desc="A sample ad with one valid size.">Fixed-size ad (100x100)</msg>
+    <msg name="s292d08a9cea72454" desc="A sample native ad, which resizes to fit the space available.">Fluid ad</msg>
+    <msg name="s5bf3f3d517569ebd" desc="An out-of-page ad format">Anchor ad (bottom)</msg>
+    <msg name="s710f900ef624e363" desc="An out-of-page ad format">Anchor ad (top)</msg>
+    <msg name="s1163c710c6c9bccf" desc="An out-of-page ad format">Gaming interstitial ad</msg>
+    <msg name="sefe480470a2c783c" desc="An out-of-page ad format">Rewarded ad</msg>
+    <msg name="s09c694b6602d365d" desc="An out-of-page ad format">Side rail ad (left)</msg>
+    <msg name="sccb7f7246c10ecb6" desc="An out-of-page ad format">Side rail ad (right)</msg>
+    <msg name="secff207571282402" desc="An out-of-page ad format">Web interstitial ad</msg>
+    <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
+    <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
+    <msg name="s1c59de6a71660855" desc="Button title">Add size</msg>
+    <msg name="sb55d0a3abebf97fe" desc="Button title">Remove size</msg>
+    <msg name="sed09c5dfcd2f8bc8" desc="Button title">Add targeting key</msg>
+    <msg name="sf2057da4d0abd00e" desc="Button title">Add targeting value</msg>
+    <msg name="s716e903e2945c8cb" desc="Button title">Remove targeting value</msg>
+    <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
+    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// Request and render all previously defined ad slots.</msg>
+    <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
+    <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Enable single request mode.</msg>
+    <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
+    <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// Define out-of-page slots.</msg>
+    <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Configure page-level targeting.</msg>
+    <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
+    <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
+    <msg name="s08995feb9716ee48" desc="Drop-down label">Out-of-page format</msg>
+    <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Custom</msg>
+    <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Click the button below to preview in a new window.</msg>
+    <msg name="s11a3c998dc1af0b1" desc="Option group label">Sample ads</msg>
+    <msg name="s4661d2a8c1259e58" desc="Option group label">Sample ads (out-of-page)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">None</msg>
-    <msg name="sf0cab2483f66aa2e" desc="Option that allows users to input custom ad slot values.">Custom</msg>
+    <msg name="s4535f519744108bf" desc="Output format label">Output format</msg>
+    <msg name="s77b0113eae08368b" desc="Output template label">Sample template</msg>
+    <msg name="s267a52c34c200ef0" desc="Page-level setting label">Single Request Architecture (SRA)</msg>
+    <msg name="sffdadf0a576fd802" desc="Placeholder text">Height</msg>
+    <msg name="sf21fb4f4b9e8911f" desc="Placeholder text">Width</msg>
+    <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">Limited ads</msg>
+    <msg name="s0eb106f4b9813ad3" desc="Privacy setting label">Non-personalized ads</msg>
+    <msg name="sb457d189f407a5a6" desc="Privacy setting label">Restrict data processing</msg>
+    <msg name="s3132d1a0580760bc" desc="Privacy setting label">Child-directed treatment</msg>
+    <msg name="sf915707accde585c" desc="Privacy setting label">Under the age of consent</msg>
+    <msg name="s5fc316a7f287b7be" desc="Reason the embedded preview is unavailable.">This sample cannot be previewed in an iframe</msg>
+    <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Sizes</msg>
+    <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Slot settings</msg>
+    <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">Targeting</msg>
+    <msg name="s7d28e0b73aced2d9" desc="Section containing configurable sample options.">Sample configuration</msg>
+    <msg name="sc907ffeeafb021d1" desc="Section containing options to control output.">Output settings</msg>
+    <msg name="sf93d227444bc5687" desc="Section containing page settings.">Page settings</msg>
+    <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">Page-level targeting</msg>
+    <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">Privacy</msg>
+    <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> is loaded.</msg>
+    <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> is loading...</msg>
+    <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> is not supported on this page.</msg>
+    <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
+    <msg name="s2d647200b120ea41" desc="Text box label">Ad unit path</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Unavailable</msg>
     <msg name="s9691600b4b891cf3" desc="The &quot;fluid&quot; size for native ads.">Fluid</msg>
     <msg name="s506b6a19d12f414c" desc="The key portion of a targeting key-value.">Key</msg>
     <msg name="s57472465a23b41db" desc="The values portion of a targeting key-value.">Values</msg>
-    <msg name="s3e0b42b56e05829d" desc="Title for the section contain ad sizing options.">Sizes</msg>
-    <msg name="se6dd79643508bb80" desc="Title for the section containing ad targeting options.">Targeting</msg>
   </messages>
 </localizationbundle>

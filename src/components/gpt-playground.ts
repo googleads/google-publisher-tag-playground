@@ -20,7 +20,7 @@ import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
 import 'playground-elements/playground-tab-bar';
 
-import {localized, msg} from '@lit/localize';
+import {localized, msg, str} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
@@ -34,9 +34,17 @@ import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
 // Constant UI strings.
 const strings = {
   previewDialog: () =>
-    msg('This sample cannot be previewed in an iframe. ') +
-    msg('Click the button below to preview in a new window.'),
-  previewDialogButton: () => msg('Open preview'),
+    msg(
+      str`${strings.previewUnavailable()}. Click the button below to preview in a new window.`,
+      {
+        desc: 'Embedded preview is unavailable, sample must be viewed in a separate window.',
+      },
+    ),
+  previewUnavailable: () =>
+    msg('This sample cannot be previewed in an iframe', {
+      desc: 'Reason the embedded preview is unavailable.',
+    }),
+  previewDialogButton: () => msg('Open preview', {desc: 'Button text'}),
 };
 
 // Playground component identifier.

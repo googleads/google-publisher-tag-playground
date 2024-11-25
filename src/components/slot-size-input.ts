@@ -24,11 +24,11 @@ import {materialStyles} from './shared/styles.js';
 
 // Constant UI strings.
 const strings = {
-  addSizeTitle: () => msg('Add size'),
+  addSizeTitle: () => msg('Add size', {desc: 'Button title'}),
   fluidLabel: () => msg('Fluid', {desc: 'The "fluid" size for native ads.'}),
-  heightPlaceholder: () => msg('Height'),
-  removeSizeTitle: () => msg('Remove size'),
-  widthPlaceholder: () => msg('Width'),
+  heightPlaceholder: () => msg('Height', {desc: 'Placeholder text'}),
+  removeSizeTitle: () => msg('Remove size', {desc: 'Button title'}),
+  widthPlaceholder: () => msg('Width', {desc: 'Placeholder text'}),
 };
 
 // Height and width validation patterns.

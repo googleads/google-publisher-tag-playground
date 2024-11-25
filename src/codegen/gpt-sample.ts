@@ -25,14 +25,34 @@ import * as pubads from './api/pubads.js';
 /* Internal template strings */
 
 const strings = {
-  staticSlotComment: () => msg('// Define static ad slots.'),
-  outOfPageSlotComment: () => msg('// Define out of page slots.'),
-  enableServicesComment: () => msg('// Enable GPT services.'),
-  enableSraComment: () => msg('// Enable single request mode.'),
-  pageTargetingComment: () => msg('// Configure page-level targeting.'),
-  privacySettingsComment: () => msg('// Configure privacy settings.'),
+  staticSlotComment: () =>
+    msg('// Define static ad slots.', {
+      desc: 'Code comment preceding ad slot definitions.',
+    }),
+  outOfPageSlotComment: () =>
+    msg('// Define out-of-page slots.', {
+      desc: 'Code comment preceding out-of-page ad slot definitions.',
+    }),
+  enableServicesComment: () =>
+    msg('// Enable GPT services.', {
+      desc: 'Code comment preceding a call to googletag.enableServices().',
+    }),
+  enableSraComment: () =>
+    msg('// Enable single request mode.', {
+      desc: 'Code comment preceding a call to googletag.enableSingleRequest().',
+    }),
+  pageTargetingComment: () =>
+    msg('// Configure page-level targeting.', {
+      desc: 'Code comment preceding page-level targeting configuration.',
+    }),
+  privacySettingsComment: () =>
+    msg('// Configure privacy settings.', {
+      desc: 'Code comment preceding privacy settings configuration.',
+    }),
   requestAdsComment: () =>
-    msg('// Request and render all previously defined ad slots.'),
+    msg('// Request and render all previously defined ad slots.', {
+      desc: 'Code comment preceding a call to googletag.display().',
+    }),
 };
 
 /* Internal helper methods */

@@ -47,15 +47,28 @@ const outOfPage = {
       str`${
         format
       } slots return null if the page or device does not support them.`,
+      {
+        desc: 'Code comment: The specified out-of-page format may not be supported in all environments.',
+      },
     ),
-  loaded: (format: string) => msg(str`${format} is loaded.`),
+  loaded: (format: string) =>
+    msg(str`${format} is loaded.`, {
+      desc: 'Status message: An ad slot of the specified format has loaded.',
+    }),
   loadedNeedScroll: (format: string) =>
-    msg(str`${outOfPage.loaded(format)} Scroll page to activate.`),
+    msg(str`${outOfPage.loaded(format)} Scroll page to activate.`, {
+      desc: 'Status message: Users must scroll the page to activate an out-of-page ad.',
+    }),
   loadedUrl: (format: string) =>
     `<a href="https://www.example.com">${outOfPage.loaded(format)}</a>`,
-  loading: (format: string) => msg(str`${format} is loading...`),
+  loading: (format: string) =>
+    msg(str`${format} is loading...`, {
+      desc: 'Status message: An out-of-page ad is loading.',
+    }),
   notSupported: (format: string) =>
-    msg(str`${format} is not supported on this page.`),
+    msg(str`${format} is not supported on this page.`, {
+      desc: 'Status message: The specified out-of-page format is not supported on the current page.',
+    }),
 };
 
 const status = {

@@ -34,27 +34,28 @@ import {TargetingInput} from './targeting-input.js';
 
 // Constant UI strings.
 const strings = {
-  addSlotTitle: () => msg('Add slot'),
-  adUnitLabel: () => msg('Ad unit path'),
+  addSlotTitle: () => msg('Add slot', {desc: 'Button text'}),
+  adUnitLabel: () => msg('Ad unit path', {desc: 'Text box label'}),
   customOptionLabel: () =>
     msg('Custom', {
-      desc: 'Option that allows users to input custom ad slot values.',
+      desc: 'Drop-down option that allows users to input custom ad slot values.',
     }),
   oopFormatDisabled: () =>
     msg('Unavailable', {
       desc: 'Text shown when a drop-down option is disabled.',
     }),
-  oopFormatLabel: () => msg('Out-of-page format'),
+  oopFormatLabel: () => msg('Out-of-page format', {desc: 'Drop-down label'}),
   oopFormatUnselected: () =>
     msg('None', {desc: 'Option indicating no out-of-page format is selected.'}),
-  removeSlotTitle: () => msg('Remove slot'),
-  sampleAdsLabel: () => msg('Sample ads'),
-  sampleAdsOopLabel: () => msg('Sample ads (out-of-page)'),
+  removeSlotTitle: () => msg('Remove slot', {desc: 'Button title'}),
+  sampleAdsLabel: () => msg('Sample ads', {desc: 'Option group label'}),
+  sampleAdsOopLabel: () =>
+    msg('Sample ads (out-of-page)', {desc: 'Option group label'}),
   sizeSectionTitle: () =>
-    msg('Sizes', {desc: 'Title for the section contain ad sizing options.'}),
+    msg('Sizes', {desc: 'Section containing ad sizing options.'}),
   targetingSectionTitle: () =>
     msg('Targeting', {
-      desc: 'Title for the section containing ad targeting options.',
+      desc: 'Section containing ad targeting options.',
     }),
 };
 

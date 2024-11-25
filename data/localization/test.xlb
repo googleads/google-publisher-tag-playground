@@ -1,68 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="test">
   <messages>
-    <msg name="sf93d227444bc5687">P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
-    <msg name="s7b5fa742d13b462e">Ŝ́l̂ốt̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
-    <msg name="sc907ffeeafb021d1">Ốût̂́p̂û́t̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
-    <msg name="se78c02e9a98a0f47">P̂́r̂î́v̂ấĉŷ́</msg>
-    <msg name="s267a52c34c200ef0">Ŝ́în̂́ĝl̂́ê R̂́êq̂́ûếŝt̂́ Ấr̂ĉ́ĥî́t̂ếĉt̂́ûr̂́ê (Ŝ́R̂Ấ)</msg>
-    <msg name="s758d8c59379ea482">P̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́</msg>
-    <msg name="sd5ac53cfd233dbcb">L̂́îm̂́ît̂́êd̂́ ấd̂ŝ́</msg>
-    <msg name="s0eb106f4b9813ad3">N̂́ôn̂́-p̂́êr̂́ŝốn̂ấl̂î́ẑếd̂ ấd̂ŝ́</msg>
-    <msg name="sb457d189f407a5a6">R̂́êŝ́t̂r̂́îĉ́t̂ d̂́ât̂́â p̂́r̂ốĉếŝŝ́în̂́ĝ</msg>
-    <msg name="s3132d1a0580760bc">Ĉ́ĥî́l̂d̂́-d̂́îr̂́êĉ́t̂ếd̂ t̂́r̂ếât̂́m̂ến̂t̂́</msg>
-    <msg name="sf915707accde585c">Û́n̂d̂́êr̂́ t̂́ĥế ấĝế ốf̂ ĉ́ôn̂́ŝến̂t̂́</msg>
-    <msg name="s77b0113eae08368b">Ŝ́âm̂́p̂l̂́ê t̂́êm̂́p̂l̂́ât̂́ê</msg>
-    <msg name="s4535f519744108bf">Ốût̂́p̂û́t̂ f̂́ôr̂́m̂ất̂</msg>
-    <msg name="s5bf3f3d517569ebd">Ấn̂ĉ́ĥốr̂ ấd̂ (b̂́ôt̂́t̂ốm̂)</msg>
-    <msg name="s710f900ef624e363">Ấn̂ĉ́ĥốr̂ ấd̂ (t̂́ôp̂́)</msg>
-    <msg name="s1163c710c6c9bccf">Ĝ́âm̂́în̂́ĝ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
-    <msg name="sefe480470a2c783c">R̂́êŵ́âr̂́d̂ếd̂ ấd̂</msg>
-    <msg name="s09c694b6602d365d">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (l̂́êf̂́t̂)</msg>
-    <msg name="sccb7f7246c10ecb6">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (r̂́îĝ́ĥt̂́)</msg>
-    <msg name="secff207571282402">Ŵ́êb̂́ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
-    <msg name="s0d576da69783c058"><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
-    <msg name="s352f8b213acc822a"><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
-    <msg name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
-    <msg name="s9d21580cc7643953"><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
-    <msg name="s8233e942045a2b50"><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
-    <msg name="s71e012bd812c44a2">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
-    <msg name="s902dcca83f60a987">// D̂́êf̂́în̂́ê ốût̂́ ốf̂ p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
-    <msg name="sc5c8140d066b7231">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
-    <msg name="s5ec0955e7a33abf4">// Ến̂ấb̂l̂́ê ŝ́în̂́ĝl̂́ê r̂́êq̂́ûếŝt̂́ m̂́ôd̂́ê.</msg>
-    <msg name="s34774a88f199f364">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
-    <msg name="s0536dee760be4bf2">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
-    <msg name="sd3926a53f7b06107">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
-    <msg name="sba78b2039ea0dfb0">T̂́ĥî́ŝ ŝ́âm̂́p̂l̂́ê ĉ́ân̂́n̂ốt̂ b̂́ê p̂́r̂ếv̂î́êŵ́êd̂́ î́n̂ ấn̂ î́f̂r̂́âm̂́ê. </msg>
-    <msg name="sf107929dee6a6c72">Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
-    <msg name="s3be169991df10a5d">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
-    <msg name="s48390e2c954ba495">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (100x̂́100)</msg>
-    <msg name="sbba26a884a26c0c7">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (300x̂́250)</msg>
-    <msg name="s4121536e35beb2ed">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (728x̂́90)</msg>
-    <msg name="s703415876ae4626f">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (750x̂́200)</msg>
-    <msg name="s3400fb34f1e245a9">M̂́ûl̂́t̂î́-ŝ́îẑ́ê ấd̂</msg>
-    <msg name="s292d08a9cea72454">F̂́l̂û́îd̂́ ấd̂</msg>
-    <msg name="s1c59de6a71660855">Ấd̂d̂́ ŝ́îẑ́ê</msg>
-    <msg name="sffdadf0a576fd802">Ĥ́êî́ĝĥ́t̂</msg>
-    <msg name="sb55d0a3abebf97fe">R̂́êm̂́ôv̂́ê ŝ́îẑ́ê</msg>
-    <msg name="sf21fb4f4b9e8911f">Ŵ́îd̂́t̂ĥ́</msg>
-    <msg name="sed09c5dfcd2f8bc8">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́</msg>
-    <msg name="sf2057da4d0abd00e">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
-    <msg name="s716e903e2945c8cb">R̂́êm̂́ôv̂́ê t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
-    <msg name="s02c64e6a6306c0b0">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
-    <msg name="s2d647200b120ea41">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
-    <msg name="s08995feb9716ee48">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
-    <msg name="s8a2c4a3aa651b7fb">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
-    <msg name="s11a3c998dc1af0b1">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
-    <msg name="s4661d2a8c1259e58">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
-    <msg name="s7d28e0b73aced2d9">Ŝ́âm̂́p̂l̂́ê ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
+    <msg name="s3400fb34f1e245a9" desc="A sample ad with multiple valid sizes">M̂́ûl̂́t̂î́-ŝ́îẑ́ê ấd̂</msg>
+    <msg name="sbba26a884a26c0c7" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (300x̂́250)</msg>
+    <msg name="s4121536e35beb2ed" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (728x̂́90)</msg>
+    <msg name="s703415876ae4626f" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (750x̂́200)</msg>
+    <msg name="s48390e2c954ba495" desc="A sample ad with one valid size.">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (100x̂́100)</msg>
+    <msg name="s292d08a9cea72454" desc="A sample native ad, which resizes to fit the space available.">F̂́l̂û́îd̂́ ấd̂</msg>
+    <msg name="s5bf3f3d517569ebd" desc="An out-of-page ad format">Ấn̂ĉ́ĥốr̂ ấd̂ (b̂́ôt̂́t̂ốm̂)</msg>
+    <msg name="s710f900ef624e363" desc="An out-of-page ad format">Ấn̂ĉ́ĥốr̂ ấd̂ (t̂́ôp̂́)</msg>
+    <msg name="s1163c710c6c9bccf" desc="An out-of-page ad format">Ĝ́âm̂́în̂́ĝ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
+    <msg name="sefe480470a2c783c" desc="An out-of-page ad format">R̂́êŵ́âr̂́d̂ếd̂ ấd̂</msg>
+    <msg name="s09c694b6602d365d" desc="An out-of-page ad format">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (l̂́êf̂́t̂)</msg>
+    <msg name="sccb7f7246c10ecb6" desc="An out-of-page ad format">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (r̂́îĝ́ĥt̂́)</msg>
+    <msg name="secff207571282402" desc="An out-of-page ad format">Ŵ́êb̂́ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
+    <msg name="s3be169991df10a5d" desc="Button text">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
+    <msg name="s02c64e6a6306c0b0" desc="Button text">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
+    <msg name="s1c59de6a71660855" desc="Button title">Ấd̂d̂́ ŝ́îẑ́ê</msg>
+    <msg name="sb55d0a3abebf97fe" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́îẑ́ê</msg>
+    <msg name="sed09c5dfcd2f8bc8" desc="Button title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́</msg>
+    <msg name="sf2057da4d0abd00e" desc="Button title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
+    <msg name="s716e903e2945c8cb" desc="Button title">R̂́êm̂́ôv̂́ê t̂́âr̂́ĝết̂î́n̂ĝ́ v̂́âl̂́ûế</msg>
+    <msg name="s8a2c4a3aa651b7fb" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
+    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
+    <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Ến̂ấb̂l̂́ê ŝ́în̂́ĝl̂́ê r̂́êq̂́ûếŝt̂́ m̂́ôd̂́ê.</msg>
+    <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// D̂́êf̂́în̂́ê ốût̂́-ốf̂-p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
+    <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
+    <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
+    <msg name="s08995feb9716ee48" desc="Drop-down label">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
+    <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
+    <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
+    <msg name="s11a3c998dc1af0b1" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
+    <msg name="s4661d2a8c1259e58" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>
-    <msg name="sf0cab2483f66aa2e" desc="Option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
+    <msg name="s4535f519744108bf" desc="Output format label">Ốût̂́p̂û́t̂ f̂́ôr̂́m̂ất̂</msg>
+    <msg name="s77b0113eae08368b" desc="Output template label">Ŝ́âm̂́p̂l̂́ê t̂́êm̂́p̂l̂́ât̂́ê</msg>
+    <msg name="s267a52c34c200ef0" desc="Page-level setting label">Ŝ́în̂́ĝl̂́ê R̂́êq̂́ûếŝt̂́ Ấr̂ĉ́ĥî́t̂ếĉt̂́ûr̂́ê (Ŝ́R̂Ấ)</msg>
+    <msg name="sffdadf0a576fd802" desc="Placeholder text">Ĥ́êî́ĝĥ́t̂</msg>
+    <msg name="sf21fb4f4b9e8911f" desc="Placeholder text">Ŵ́îd̂́t̂ĥ́</msg>
+    <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">L̂́îm̂́ît̂́êd̂́ ấd̂ŝ́</msg>
+    <msg name="s0eb106f4b9813ad3" desc="Privacy setting label">N̂́ôn̂́-p̂́êr̂́ŝốn̂ấl̂î́ẑếd̂ ấd̂ŝ́</msg>
+    <msg name="sb457d189f407a5a6" desc="Privacy setting label">R̂́êŝ́t̂r̂́îĉ́t̂ d̂́ât̂́â p̂́r̂ốĉếŝŝ́în̂́ĝ</msg>
+    <msg name="s3132d1a0580760bc" desc="Privacy setting label">Ĉ́ĥî́l̂d̂́-d̂́îr̂́êĉ́t̂ếd̂ t̂́r̂ếât̂́m̂ến̂t̂́</msg>
+    <msg name="sf915707accde585c" desc="Privacy setting label">Û́n̂d̂́êr̂́ t̂́ĥế ấĝế ốf̂ ĉ́ôn̂́ŝến̂t̂́</msg>
+    <msg name="s5fc316a7f287b7be" desc="Reason the embedded preview is unavailable.">T̂́ĥî́ŝ ŝ́âm̂́p̂l̂́ê ĉ́ân̂́n̂ốt̂ b̂́ê p̂́r̂ếv̂î́êŵ́êd̂́ î́n̂ ấn̂ î́f̂r̂́âm̂́ê</msg>
+    <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Ŝ́îẑ́êŝ́</msg>
+    <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Ŝ́l̂ốt̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
+    <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">T̂́âr̂́ĝết̂î́n̂ĝ́</msg>
+    <msg name="s7d28e0b73aced2d9" desc="Section containing configurable sample options.">Ŝ́âm̂́p̂l̂́ê ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
+    <msg name="sc907ffeeafb021d1" desc="Section containing options to control output.">Ốût̂́p̂û́t̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
+    <msg name="sf93d227444bc5687" desc="Section containing page settings.">P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
+    <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">P̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́</msg>
+    <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">P̂́r̂î́v̂ấĉŷ́</msg>
+    <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
+    <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
+    <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
+    <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
+    <msg name="s2d647200b120ea41" desc="Text box label">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
     <msg name="s9691600b4b891cf3" desc="The &quot;fluid&quot; size for native ads.">F̂́l̂û́îd̂́</msg>
     <msg name="s506b6a19d12f414c" desc="The key portion of a targeting key-value.">K̂́êŷ́</msg>
     <msg name="s57472465a23b41db" desc="The values portion of a targeting key-value.">V̂́âl̂́ûếŝ</msg>
-    <msg name="s3e0b42b56e05829d" desc="Title for the section contain ad sizing options.">Ŝ́îẑ́êŝ́</msg>
-    <msg name="se6dd79643508bb80" desc="Title for the section containing ad targeting options.">T̂́âr̂́ĝết̂î́n̂ĝ́</msg>
   </messages>
 </localizationbundle>

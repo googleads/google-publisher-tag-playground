@@ -43,7 +43,10 @@ import {TargetingInput} from './targeting-input.js';
 
 // Constant UI strings.
 const strings = {
-  configuratorTitle: () => msg('Sample configuration'),
+  configuratorTitle: () =>
+    msg('Sample configuration', {
+      desc: 'Section containing configurable sample options.',
+    }),
 };
 
 /**
