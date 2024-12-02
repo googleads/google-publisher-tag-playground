@@ -22,9 +22,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  get-playwright-version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get-version.outputs.version }}
+    steps:
+      - id: get-version
+        run: echo "version=$(npm list --depth=0 playwright | awk -F@ '/playwright/ {print $2}')" >> "$GITHUB_OUTPUT"
+        
   test:
     timeout-minutes: 60
+    needs: get-playwright-version
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v${{ needs.get-playwright-version.outputs.version }}
     steps:
     - uses: actions/checkout@v4
       with:
