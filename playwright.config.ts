@@ -65,10 +65,10 @@ export default defineConfig({
       use: {...devices['Desktop Firefox']},
     },
 
-    // {
-    //   name: 'webkit',
-    //   use: {...devices['Desktop Safari']},
-    // },
+    {
+      name: 'webkit',
+      use: {...devices['Desktop Safari']},
+    },
   ],
 
   /* Run the local dev server before starting tests. */
