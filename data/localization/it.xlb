@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localizationbundle locale="it">
+  <messages>
+    <msg desc="A sample ad with multiple valid sizes" name="s3400fb34f1e245a9">Annuncio con più dimensioni</msg>
+    <msg desc="A sample ad with one valid size" name="sbba26a884a26c0c7">Annuncio con dimensioni fisse (300 x 250)</msg>
+    <msg desc="A sample ad with one valid size" name="s4121536e35beb2ed">Annuncio con dimensioni fisse (728 x 90)</msg>
+    <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Annuncio con dimensioni fisse (750 x 200)</msg>
+    <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Annuncio con dimensioni fisse (100 x 100)</msg>
+    <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Annuncio flessibile</msg>
+    <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Annuncio ancorato (in basso)</msg>
+    <msg desc="An out-of-page ad format" name="s710f900ef624e363">Annuncio ancorato (in alto)</msg>
+    <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Annuncio interstitial per giochi</msg>
+    <msg desc="An out-of-page ad format" name="sefe480470a2c783c">Annuncio con premio</msg>
+    <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Annuncio laterale (a sinistra)</msg>
+    <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Annuncio laterale (a destra)</msg>
+    <msg desc="An out-of-page ad format" name="secff207571282402">Annuncio interstitial per il web</msg>
+    <msg desc="Button text" name="s3be169991df10a5d">Apri anteprima</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">Aggiungi area</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Aggiungi dimensione</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Rimuovi dimensione</msg>
+    <msg desc="Button title" name="sed09c5dfcd2f8bc8">Aggiungi chiave di targeting</msg>
+    <msg desc="Button title" name="sf2057da4d0abd00e">Aggiungi valore di targeting</msg>
+    <msg desc="Button title" name="s716e903e2945c8cb">Rimuovi valore di targeting</msg>
+    <msg desc="Button title" name="s8a2c4a3aa651b7fb">Rimuovi area</msg>
+    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Richiedi e visualizza tutte le aree annuncio definite in precedenza.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Abilita i servizi GPT.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Abilita la modalità di richiesta singola.</msg>
+    <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Definisci aree annuncio statiche.</msg>
+    <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Definisci aree fuori pagina.</msg>
+    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Configura targeting a livello di pagina.</msg>
+    <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Configura impostazioni della privacy.</msg>
+    <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Le aree <ph name="0">${format}</ph> restituiscono un valore null se la pagina o il dispositivo non le supportano.</msg>
+    <msg desc="Drop-down label" name="s08995feb9716ee48">Formato fuori pagina</msg>
+    <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Personalizzato</msg>
+    <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Fai clic sul pulsante in basso per visualizzare l'anteprima in una nuova finestra.</msg>
+    <msg desc="Option group label" name="s11a3c998dc1af0b1">Esempi di annunci</msg>
+    <msg desc="Option group label" name="s4661d2a8c1259e58">Esempi di annunci (fuori pagina)</msg>
+    <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Nessuno</msg>
+    <msg desc="Output format label" name="s4535f519744108bf">Formato di output</msg>
+    <msg desc="Output template label" name="s77b0113eae08368b">Esempio di modello</msg>
+    <msg desc="Page-level setting label" name="s267a52c34c200ef0">SRA (Single Request Architecture, architettura di richiesta singola)</msg>
+    <msg desc="Placeholder text" name="sffdadf0a576fd802">Altezza</msg>
+    <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Larghezza</msg>
+    <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Annunci con limitazioni</msg>
+    <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Annunci non personalizzati</msg>
+    <msg desc="Privacy setting label" name="sb457d189f407a5a6">Limita il trattamento dati</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Trattamento per siti o servizi destinati ai minori</msg>
+    <msg desc="Privacy setting label" name="sf915707accde585c">Sotto l'età del consenso digitale</msg>
+    <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Impossibile visualizzare l'anteprima di questo esempio in un iframe</msg>
+    <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Dimensioni</msg>
+    <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Impostazioni area</msg>
+    <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Targeting</msg>
+    <msg desc="Section containing configurable sample options." name="s7d28e0b73aced2d9">Esempio di configurazione</msg>
+    <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Impostazioni di output</msg>
+    <msg desc="Section containing page settings." name="sf93d227444bc5687">Impostazioni della pagina</msg>
+    <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Targeting a livello di pagina</msg>
+    <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privacy</msg>
+    <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> è stata caricata.</msg>
+    <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">Caricamento di <ph name="0">${format}</ph> in corso…</msg>
+    <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50"><ph name="0">${format}</ph> non è supportato in questa pagina.</msg>
+    <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scorri la pagina per attivare.</msg>
+    <msg desc="Text box label" name="s2d647200b120ea41">Percorso unità pubblicitaria</msg>
+    <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Non disponibile</msg>
+    <msg desc="The &quot;fluid&quot; size for native ads." name="s9691600b4b891cf3">Flessibili</msg>
+    <msg desc="The key portion of a targeting key-value." name="s506b6a19d12f414c">Chiave</msg>
+    <msg desc="The values portion of a targeting key-value." name="s57472465a23b41db">Valori</msg>
+  </messages>
+</localizationbundle>

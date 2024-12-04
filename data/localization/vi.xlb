@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localizationbundle locale="vi">
+  <messages>
+    <msg desc="A sample ad with multiple valid sizes" name="s3400fb34f1e245a9">Quảng cáo có nhiều kích thước</msg>
+    <msg desc="A sample ad with one valid size" name="sbba26a884a26c0c7">Quảng cáo có kích thước cố định (300x250)</msg>
+    <msg desc="A sample ad with one valid size" name="s4121536e35beb2ed">Quảng cáo có kích thước cố định (728x90)</msg>
+    <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Quảng cáo có kích thước cố định (750x200)</msg>
+    <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Quảng cáo có kích thước cố định (100x100)</msg>
+    <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Quảng cáo linh hoạt</msg>
+    <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Quảng cáo cố định (dưới cùng)</msg>
+    <msg desc="An out-of-page ad format" name="s710f900ef624e363">Quảng cáo cố định (trên cùng)</msg>
+    <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Quảng cáo xen kẽ trong trò chơi</msg>
+    <msg desc="An out-of-page ad format" name="sefe480470a2c783c">Quảng cáo có tặng thưởng</msg>
+    <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Dải quảng cáo dọc cạnh trang (bên trái)</msg>
+    <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Dải quảng cáo dọc cạnh trang (bên phải)</msg>
+    <msg desc="An out-of-page ad format" name="secff207571282402">Quảng cáo xen kẽ trên web</msg>
+    <msg desc="Button text" name="s3be169991df10a5d">Mở bản xem trước</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">Thêm vị trí</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Thêm kích thước</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Xoá kích thước</msg>
+    <msg desc="Button title" name="sed09c5dfcd2f8bc8">Thêm khoá nhắm mục tiêu</msg>
+    <msg desc="Button title" name="sf2057da4d0abd00e">Thêm giá trị nhắm mục tiêu</msg>
+    <msg desc="Button title" name="s716e903e2945c8cb">Xoá giá trị nhắm mục tiêu</msg>
+    <msg desc="Button title" name="s8a2c4a3aa651b7fb">Xoá vị trí</msg>
+    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Yêu cầu và hiển thị tất cả các vị trí quảng cáo đã xác định trước đó.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Bật các dịch vụ GPT.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Bật chế độ một yêu cầu.</msg>
+    <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Xác định vị trí quảng cáo tĩnh.</msg>
+    <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Xác định vị trí nằm ngoài trang.</msg>
+    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Định cấu hình tiêu chí nhắm mục tiêu cấp trang.</msg>
+    <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Định cấu hình chế độ cài đặt quyền riêng tư.</msg>
+    <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Các vị trí <ph name="0">${format}</ph> sẽ trả về giá trị rỗng nếu trang hoặc thiết bị không hỗ trợ.</msg>
+    <msg desc="Drop-down label" name="s08995feb9716ee48">Định dạng nằm ngoài trang</msg>
+    <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Tuỳ chỉnh</msg>
+    <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Nhấp vào nút bên dưới để xem trước trong một cửa sổ mới.</msg>
+    <msg desc="Option group label" name="s11a3c998dc1af0b1">Quảng cáo mẫu</msg>
+    <msg desc="Option group label" name="s4661d2a8c1259e58">Quảng cáo mẫu (nằm ngoài trang)</msg>
+    <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Không có</msg>
+    <msg desc="Output format label" name="s4535f519744108bf">Định dạng đầu ra</msg>
+    <msg desc="Output template label" name="s77b0113eae08368b">Mẫu</msg>
+    <msg desc="Page-level setting label" name="s267a52c34c200ef0">Cấu trúc yêu cầu duy nhất (SRA)</msg>
+    <msg desc="Placeholder text" name="sffdadf0a576fd802">Chiều cao</msg>
+    <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Chiều rộng</msg>
+    <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Quảng cáo bị hạn chế</msg>
+    <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Quảng cáo không được cá nhân hoá</msg>
+    <msg desc="Privacy setting label" name="sb457d189f407a5a6">Hạn chế hoạt động xử lý dữ liệu</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Được dành cho trẻ em</msg>
+    <msg desc="Privacy setting label" name="sf915707accde585c">Dưới độ tuổi hợp pháp để tự quản lý tài khoản</msg>
+    <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Không thể xem trước mẫu này trong iframe</msg>
+    <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Kích thước</msg>
+    <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Cài đặt vị trí</msg>
+    <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Nhắm mục tiêu</msg>
+    <msg desc="Section containing configurable sample options." name="s7d28e0b73aced2d9">Cấu hình mẫu</msg>
+    <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Cài đặt đầu ra</msg>
+    <msg desc="Section containing page settings." name="sf93d227444bc5687">Cài đặt trang</msg>
+    <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Nhắm mục tiêu cấp trang</msg>
+    <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Quyền riêng tư</msg>
+    <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">Đã tải <ph name="0">${format}</ph>.</msg>
+    <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> đang tải...</msg>
+    <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">Trang này không hỗ trợ <ph name="0">${format}</ph>.</msg>
+    <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Cuộn trang để kích hoạt.</msg>
+    <msg desc="Text box label" name="s2d647200b120ea41">Đường dẫn đơn vị quảng cáo</msg>
+    <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Không có sẵn</msg>
+    <msg desc="The &quot;fluid&quot; size for native ads." name="s9691600b4b891cf3">Linh hoạt</msg>
+    <msg desc="The key portion of a targeting key-value." name="s506b6a19d12f414c">Khoá</msg>
+    <msg desc="The values portion of a targeting key-value." name="s57472465a23b41db">Giá trị</msg>
+  </messages>
+</localizationbundle>

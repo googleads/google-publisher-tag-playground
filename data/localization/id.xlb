@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localizationbundle locale="id">
+  <messages>
+    <msg desc="A sample ad with multiple valid sizes" name="s3400fb34f1e245a9">Iklan multi-ukuran</msg>
+    <msg desc="A sample ad with one valid size" name="sbba26a884a26c0c7">Iklan ukuran tetap (300x250)</msg>
+    <msg desc="A sample ad with one valid size" name="s4121536e35beb2ed">Iklan ukuran tetap (728x90)</msg>
+    <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Iklan ukuran tetap (750x200)</msg>
+    <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Iklan ukuran tetap (100x100)</msg>
+    <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Iklan dapat menyesuaikan</msg>
+    <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Iklan anchor (bagian bawah)</msg>
+    <msg desc="An out-of-page ad format" name="s710f900ef624e363">Iklan anchor (atas)</msg>
+    <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Iklan interstisial game</msg>
+    <msg desc="An out-of-page ad format" name="sefe480470a2c783c">Iklan reward</msg>
+    <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Iklan kolom samping (kiri)</msg>
+    <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Iklan kolom samping (kanan)</msg>
+    <msg desc="An out-of-page ad format" name="secff207571282402">Iklan interstisial web</msg>
+    <msg desc="Button text" name="s3be169991df10a5d">Buka pratinjau</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">Tambahkan slot</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Tambahkan ukuran</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Hapus ukuran</msg>
+    <msg desc="Button title" name="sed09c5dfcd2f8bc8">Tambahkan kunci penargetan</msg>
+    <msg desc="Button title" name="sf2057da4d0abd00e">Tambahkan nilai penargetan</msg>
+    <msg desc="Button title" name="s716e903e2945c8cb">Hapus nilai penargetan</msg>
+    <msg desc="Button title" name="s8a2c4a3aa651b7fb">Hapus slot</msg>
+    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Minta dan render semua slot iklan yang ditentukan sebelumnya.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Aktifkan layanan GPT.</msg>
+    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Aktifkan mode permintaan tunggal.</msg>
+    <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Tentukan slot iklan statis.</msg>
+    <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Tentukan slot di luar halaman.</msg>
+    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Konfigurasikan penargetan tingkat halaman.</msg>
+    <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Konfigurasikan setelan privasi.</msg>
+    <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Slot <ph name="0">${format}</ph> menampilkan null jika halaman atau perangkat tidak mendukungnya.</msg>
+    <msg desc="Drop-down label" name="s08995feb9716ee48">Format di luar halaman</msg>
+    <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Kustom</msg>
+    <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Klik tombol di bawah untuk melihat pratinjau di jendela baru.</msg>
+    <msg desc="Option group label" name="s11a3c998dc1af0b1">Contoh iklan</msg>
+    <msg desc="Option group label" name="s4661d2a8c1259e58">Contoh iklan (di luar halaman)</msg>
+    <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Tidak ada</msg>
+    <msg desc="Output format label" name="s4535f519744108bf">Format output</msg>
+    <msg desc="Output template label" name="s77b0113eae08368b">Contoh template</msg>
+    <msg desc="Page-level setting label" name="s267a52c34c200ef0">Arsitektur Permintaan Tunggal (SRA)</msg>
+    <msg desc="Placeholder text" name="sffdadf0a576fd802">Tinggi</msg>
+    <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Lebar</msg>
+    <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Iklan terbatas</msg>
+    <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Iklan yang tidak dipersonalisasi</msg>
+    <msg desc="Privacy setting label" name="sb457d189f407a5a6">Batasi pemrosesan data</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Perlakuan untuk anak-anak</msg>
+    <msg desc="Privacy setting label" name="sf915707accde585c">Di bawah usia dewasa</msg>
+    <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Sampel ini tidak dapat dipratinjau dalam iframe</msg>
+    <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Ukuran</msg>
+    <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Setelan slot</msg>
+    <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Penargetan</msg>
+    <msg desc="Section containing configurable sample options." name="s7d28e0b73aced2d9">Contoh konfigurasi</msg>
+    <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Setelan output</msg>
+    <msg desc="Section containing page settings." name="sf93d227444bc5687">Setelan halaman</msg>
+    <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Penargetan tingkat halaman</msg>
+    <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privasi</msg>
+    <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> dimuat.</msg>
+    <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> sedang dimuat...</msg>
+    <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50"><ph name="0">${format}</ph> tidak didukung di halaman ini.</msg>
+    <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scroll halaman untuk mengaktifkan.</msg>
+    <msg desc="Text box label" name="s2d647200b120ea41">Jalur unit iklan</msg>
+    <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Tidak tersedia</msg>
+    <msg desc="The &quot;fluid&quot; size for native ads." name="s9691600b4b891cf3">Cairan</msg>
+    <msg desc="The key portion of a targeting key-value." name="s506b6a19d12f414c">Kunci</msg>
+    <msg desc="The values portion of a targeting key-value." name="s57472465a23b41db">Nilai</msg>
+  </messages>
+</localizationbundle>
