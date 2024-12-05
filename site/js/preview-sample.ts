@@ -21,7 +21,10 @@ import ts from 'typescript';
 import {SampleConfig} from '../../src/model/sample-config.js';
 import {createTemplate} from '../../src/template/template-factory.js';
 import * as base64url from '../../src/util/base64url.js';
+import {setLocale} from '../../src/util/localization-utils.js';
 import * as urlHash from '../../src/util/url-hash.js';
+
+setLocale(urlHash.getParameter('hl') ?? 'en');
 
 const configParam = urlHash.getParameter('config');
 const config: SampleConfig = configParam

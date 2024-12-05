@@ -130,6 +130,17 @@ describe('Utility', () => {
       expect(getLocale()).toEqual(startingLocale);
       expect(console.error).toHaveBeenCalled();
     });
+
+    it('is case-insensitive', () => {
+      const locale = 'EN';
+
+      spyOn(console, 'info');
+      spyOn(console, 'error');
+      setLocale(locale);
+      expect(getLocale().toLowerCase()).toEqual(locale.toLowerCase());
+      expect(console.info).toHaveBeenCalled();
+      expect(console.error).toHaveBeenCalledTimes(0);
+    });
   });
 
   describe('template-utils', () => {

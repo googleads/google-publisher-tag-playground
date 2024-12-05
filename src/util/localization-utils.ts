@@ -40,9 +40,12 @@ export const {getLocale} = localization;
  * @param newLocale
  */
 export function setLocale(newLocale: string) {
-  if ((allLocales as readonly string[]).includes(newLocale)) {
-    console.info(`Loading supported locale: ${newLocale}.`);
-    void localization.setLocale(newLocale);
+  const targetLocale = (allLocales as readonly string[]).find(
+    locale => locale.toLowerCase() === newLocale.toLowerCase(),
+  );
+  if (targetLocale) {
+    console.info(`Loading supported locale: ${targetLocale}.`);
+    void localization.setLocale(targetLocale);
   } else {
     console.error(`Unsupported locale specified: ${newLocale}.`);
   }

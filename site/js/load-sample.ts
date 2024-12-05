@@ -18,7 +18,10 @@ import '../../src/components/gpt-playground';
 
 import {html, render} from 'lit-html';
 
+import {setLocale} from '../../src/util/localization-utils.js';
 import * as urlHash from '../../src/util/url-hash.js';
+
+setLocale(urlHash.getParameter('hl') ?? 'en');
 
 // The sample to fall back to if nothing is specified.
 const DEFAULT_SAMPLE = 'config/display-test-ad-js.json';
