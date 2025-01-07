@@ -60,7 +60,8 @@ const strings = {
 };
 
 // Ad unit path validation.
-const AD_UNIT_VALIDATION_PATTERN = '[\\da-zA-Z_\\-.*\\/\\\\!:\\(\\)]+';
+const AD_UNIT_VALIDATION_PATTERN =
+  '\\/\\d+(,\\d+)?(\\/[\\da-zA-Z_\\-.*\\/\\\\!\\[:\\(\\)]{1,100})*(\\/)?';
 const AD_UNIT_VALIDATION_REGEX = new RegExp(`^${AD_UNIT_VALIDATION_PATTERN}$`);
 
 // Unsupported out-of-page formats.
