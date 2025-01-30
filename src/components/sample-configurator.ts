@@ -15,9 +15,9 @@
  */
 
 import './gpt-playground';
+import './configurator/page-settings';
 import './configurator/slot-settings';
 import './ui-controls/config-section';
-import './ui-controls/targeting-input';
 
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
@@ -29,18 +29,13 @@ import ts from 'typescript';
 import * as base64url from '../../src/util/base64url.js';
 import * as urlHash from '../../src/util/url-hash.js';
 import type {SampleConfig} from '../model/sample-config.js';
-import {
-  configNames,
-  pageConfigNames,
-  privacyConfigNames,
-  templateConfigNames,
-} from '../model/settings.js';
+import {configNames, templateConfigNames} from '../model/settings.js';
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
+import {PageSettings} from './configurator/page-settings.js';
 import {SlotSettings} from './configurator/slot-settings.js';
 import {GptPlayground} from './gpt-playground.js';
-import {TargetingInput} from './ui-controls/targeting-input.js';
 
 // Constant UI strings.
 const strings = {
@@ -61,8 +56,8 @@ export class SampleConfigurator extends LitElement {
 
   @state() private template: Template;
   @query('gpt-playground') private playground!: GptPlayground;
-  @query('targeting-input.page') private pageTargetingInput!: TargetingInput;
   @query('slot-settings') private slotSettings!: SlotSettings;
+  @query('page-settings') private pageSettings!: PageSettings;
 
   static styles = css`
     :host {
@@ -92,22 +87,8 @@ export class SampleConfigurator extends LitElement {
       overflow: scroll;
     }
 
-    config-section label {
-      display: block;
-    }
-
-    config-section input[type='checkbox'] {
-      float: left;
-    }
-
     config-section select {
       float: right;
-    }
-
-    config-section.page div,
-    config-section.privacy div {
-      width: 33%;
-      min-width: 200px;
     }
 
     config-section.template div {
@@ -129,10 +110,6 @@ export class SampleConfigurator extends LitElement {
   constructor() {
     super();
     this.template = createTemplate(this.config);
-  }
-
-  private getInputById(id: string): HTMLInputElement {
-    return this.renderRoot.querySelector(`#${id}`) as HTMLInputElement;
   }
 
   private getSelectById(id: string): HTMLSelectElement {
@@ -171,28 +148,6 @@ export class SampleConfigurator extends LitElement {
     }
   }
 
-  private updateBooleanSettings() {
-    const config = structuredClone(this.config);
-
-    // Ensure relevant configs are defined.
-    config.page = config.page || {};
-    config.page.privacy = config.page.privacy || {};
-
-    // Update page settings.
-    const page = config.page;
-    page.sra = this.getInputById('sra').checked;
-
-    // Update privacy settings.
-    const privacy = config.page.privacy;
-    privacy.ltd = this.getInputById('ltd').checked;
-    privacy.npa = this.getInputById('npa').checked;
-    privacy.rdp = this.getInputById('rdp').checked;
-    privacy.tfcd = this.getInputById('tfcd').checked;
-    privacy.tfua = this.getInputById('tfua').checked;
-
-    this.config = config;
-  }
-
   private updateStringSettings() {
     const config = structuredClone(this.config);
 
@@ -210,74 +165,25 @@ export class SampleConfigurator extends LitElement {
     this.config = config;
   }
 
-  private updatePageTargeting() {
+  private updateSettings() {
     const config = structuredClone(this.config);
 
     // Ensure relevant configs are defined.
     config.page = config.page || {};
-    config.page.targeting = this.pageTargetingInput.config;
-
-    this.config = config;
-  }
-
-  private updateSlotSettings() {
-    const config = structuredClone(this.config);
-
-    // Ensure relevant configs are defined.
+    config.page.privacy = config.page.privacy || {};
     config.slots = config.slots || [];
+
+    config.page = this.pageSettings.config;
     config.slots = this.slotSettings.config;
 
     this.config = config;
-  }
-
-  private checkbox(setting: string, name: string, enabled = false) {
-    return html` <div>
-      <input
-        type="checkbox"
-        id="${setting}"
-        ?checked="${enabled}"
-        @click="${this.updateBooleanSettings}"
-      />
-      <label for="${setting}">${name}</label>
-    </div>`;
-  }
-
-  private renderPageSettings() {
-    const settings = this.config?.page;
-
-    return html`<config-section class="page" title="${configNames.page!()}">
-      ${this.checkbox('sra', pageConfigNames.sra!(), settings?.sra)}
-      ${this.renderPrivacySettings()}
-      <targeting-input
-        class="page"
-        .config="${settings?.targeting}"
-        title="${pageConfigNames.targeting!()}"
-        @update="${this.updatePageTargeting}"
-      >
-      </targeting-input>
-    </config-section>`;
-  }
-
-  private renderPrivacySettings() {
-    const settings = this.config?.page?.privacy;
-
-    return html`<config-section
-      class="privacy"
-      title="${pageConfigNames.privacy!()}"
-    >
-      ${this.checkbox('tfcd', privacyConfigNames.tfcd!(), settings?.tfcd)}
-      ${this.checkbox('ltd', privacyConfigNames.ltd!(), settings?.ltd)}
-      ${this.checkbox('npa', privacyConfigNames.npa!(), settings?.npa)}
-      ${this.checkbox('rdp', privacyConfigNames.rdp!(), settings?.rdp)}
-      ${this.checkbox('tfua', privacyConfigNames.tfua!(), settings?.tfua)}
-    </config-section>`;
   }
 
   private renderSlotSettings() {
     return html` <slot-settings
       title="${configNames.slots()}"
       .config="${this.config?.slots}"
-      @update="${this.updateSlotSettings}"
+      @update="${this.updateSettings}"
     >
     </slot-settings>`;
   }
@@ -319,8 +225,11 @@ export class SampleConfigurator extends LitElement {
         <span>${strings.configuratorTitle()}</span>
       </div>
       <div id="configurator-settings">
-        ${this.renderPageSettings()} ${this.renderSlotSettings()}
-        ${this.renderTemplateSettings()}
+        <page-settings
+          .config="${this.config?.page || {}}"
+          @update="${this.updateSettings}"
+        ></page-settings>
+        ${this.renderSlotSettings()} ${this.renderTemplateSettings()}
       </div>
     </div>`;
   }

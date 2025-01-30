@@ -57,10 +57,11 @@ export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
 export const privacyConfigNames: {
   [K in keyof SamplePrivacyConfig]: () => string;
 } = {
+  // Order here defines the order of settings in the configurator.
+  tfcd: () => msg('Child-directed treatment', {desc: 'Privacy setting label'}),
   ltd: () => msg('Limited ads', {desc: 'Privacy setting label'}),
   npa: () => msg('Non-personalized ads', {desc: 'Privacy setting label'}),
   rdp: () => msg('Restrict data processing', {desc: 'Privacy setting label'}),
-  tfcd: () => msg('Child-directed treatment', {desc: 'Privacy setting label'}),
   tfua: () => msg('Under the age of consent', {desc: 'Privacy setting label'}),
 };
 
