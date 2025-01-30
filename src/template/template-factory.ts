@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import ts from 'typescript';
-
 import {SampleConfig} from '../model/sample-config.js';
 
 import {BasicSample} from './basic-sample.js';

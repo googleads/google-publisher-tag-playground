@@ -15,8 +15,8 @@
  */
 
 import './gpt-playground';
-import './targeting-input';
-import './slot-input';
+import './ui-controls/targeting-input';
+import './configurator/slot-settings';
 
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
@@ -37,9 +37,9 @@ import {
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
+import {SlotSettings} from './configurator/slot-settings.js';
 import {GptPlayground} from './gpt-playground.js';
-import {SlotInput} from './slot-input.js';
-import {TargetingInput} from './targeting-input.js';
+import {TargetingInput} from './ui-controls/targeting-input.js';
 
 // Constant UI strings.
 const strings = {
@@ -61,7 +61,7 @@ export class SampleConfigurator extends LitElement {
   @state() private template: Template;
   @query('gpt-playground') private playground!: GptPlayground;
   @query('targeting-input.page') private pageTargetingInput!: TargetingInput;
-  @query('slot-input') private slotInput!: SlotInput;
+  @query('slot-settings') private slotSettings!: SlotSettings;
 
   static styles = css`
     :host {
@@ -180,7 +180,7 @@ export class SampleConfigurator extends LitElement {
     }
   }
 
-  private updateBooleanSettings(e: Event) {
+  private updateBooleanSettings() {
     const config = structuredClone(this.config);
 
     // Ensure relevant configs are defined.
@@ -202,7 +202,7 @@ export class SampleConfigurator extends LitElement {
     this.config = config;
   }
 
-  private updateStringSettings(e: Event) {
+  private updateStringSettings() {
     const config = structuredClone(this.config);
 
     // Ensure relevant configs are defined.
@@ -219,7 +219,7 @@ export class SampleConfigurator extends LitElement {
     this.config = config;
   }
 
-  private updatePageTargeting(e: Event) {
+  private updatePageTargeting() {
     const config = structuredClone(this.config);
 
     // Ensure relevant configs are defined.
@@ -229,12 +229,12 @@ export class SampleConfigurator extends LitElement {
     this.config = config;
   }
 
-  private updateSlotSettings(e: Event) {
+  private updateSlotSettings() {
     const config = structuredClone(this.config);
 
     // Ensure relevant configs are defined.
     config.slots = config.slots || [];
-    config.slots = this.slotInput.config;
+    config.slots = this.slotSettings.config;
 
     this.config = config;
   }
@@ -282,12 +282,12 @@ export class SampleConfigurator extends LitElement {
   }
 
   private renderSlotSettings() {
-    return html` <slot-input
+    return html` <slot-settings
       title="${configNames.slots()}"
       .config="${this.config?.slots}"
       @update="${this.updateSlotSettings}"
     >
-    </slot-input>`;
+    </slot-settings>`;
   }
 
   private renderTemplateSettings() {
@@ -295,7 +295,7 @@ export class SampleConfigurator extends LitElement {
 
     const jsTargets: TemplateResult[] = [];
     Object.entries(ts.ScriptTarget)
-      .filter(([k, v]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
+      .filter(([k]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
       .forEach(([k, v]) => {
         jsTargets.push(
           html`<option

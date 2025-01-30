@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import './slot-size-input';
-import './targeting-input';
+import '../ui-controls/slot-size-input';
+import '../ui-controls/targeting-input';
 
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, ReactiveElement, TemplateResult} from 'lit';
@@ -24,13 +24,12 @@ import {classMap} from 'lit/directives/class-map.js';
 import {when} from 'lit/directives/when.js';
 import {isEqual} from 'lodash-es';
 
-import type {SampleSlotConfig} from '../model/sample-config.js';
-import {outOfPageFormatNames} from '../model/settings.js';
-
-import {sampleAds} from './shared/sample-ads.js';
-import {materialStyles} from './shared/styles.js';
-import {SlotSizeInput} from './slot-size-input.js';
-import {TargetingInput} from './targeting-input.js';
+import {sampleAds} from '../../model/sample-ads.js';
+import type {SampleSlotConfig} from '../../model/sample-config.js';
+import {outOfPageFormatNames} from '../../model/settings.js';
+import {materialIcons} from '../styles/material-icons.js';
+import {SlotSizeInput} from '../ui-controls/slot-size-input.js';
+import {TargetingInput} from '../ui-controls/targeting-input.js';
 
 // Constant UI strings.
 const strings = {
@@ -84,13 +83,13 @@ type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
  * Custom component for displaying/editing an array of GPT slots.
  */
 @localized()
-@customElement('slot-input')
-export class SlotInput extends LitElement {
+@customElement('slot-settings')
+export class SlotSettings extends LitElement {
   @state() private dirtyConfig: KeyedSlot[] = [];
   private disabledFormats = new Set<OutOfPageFormat>();
 
   static styles = [
-    materialStyles,
+    materialIcons,
     css`
       :host {
         width: 100%;
@@ -390,7 +389,7 @@ export class SlotInput extends LitElement {
     const formats: TemplateResult[] = [];
     Object.entries(outOfPageFormatNames)
       // Remove formats we don't yet support.
-      .filter(([k, v]) => !EXCLUDED_OOP_FORMATS.includes(k as OutOfPageFormat))
+      .filter(([k]) => !EXCLUDED_OOP_FORMATS.includes(k as OutOfPageFormat))
       .forEach(([k, v]) => {
         const format = k as OutOfPageFormat;
         const disabled = this.isFormatDisabledForSlot(slot, format);

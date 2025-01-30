@@ -19,7 +19,7 @@ import {css} from 'lit';
 /**
  * Styles used to activate material icons in the shadow DOM.
  */
-export const materialStyles = css`
+export const materialIcons = css`
   .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -34,15 +34,19 @@ export const materialStyles = css`
     direction: ltr;
     -webkit-font-smoothing: antialiased;
   }
+
   .material-icons.md-18 {
     font-size: 18px;
   }
+
   .material-icons.md-24 {
     font-size: 24px;
   }
+
   .material-icons.md-36 {
     font-size: 36px;
   }
+
   .material-icons.md-48 {
     font-size: 48px;
   }

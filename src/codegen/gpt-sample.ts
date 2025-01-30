@@ -69,7 +69,7 @@ function globalSlotDeclarations(config: SampleConfig) {
 function slotDefinitions(config: SampleConfig, outOfPage = false) {
   let slotDefs = '';
 
-  config.slots.forEach((slot: SampleSlotConfig, i) => {
+  config.slots.forEach((slot: SampleSlotConfig) => {
     if (!outOfPage && !slot.format) {
       slotDefs += googletag.defineSlot(config, slot) + '\n';
     } else if (outOfPage && slot.format) {

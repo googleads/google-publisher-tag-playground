@@ -219,7 +219,7 @@ export function displayAll(config: SampleConfig) {
     if (index === -1) index = config.slots.length - 1;
     displayAll = display(config, config.slots[index]);
   } else {
-    config.slots.forEach((slot: SampleSlotConfig, i) => {
+    config.slots.forEach((slot: SampleSlotConfig) => {
       displayAll += display(config, slot);
     });
   }

@@ -20,9 +20,8 @@ import {customElement, property, state} from 'lit/decorators.js';
 import {keyed} from 'lit/directives/keyed.js';
 import {isEqual} from 'lodash-es';
 
-import type {SampleTargetingKV} from '../model/sample-config.js';
-
-import {materialStyles} from './shared/styles.js';
+import type {SampleTargetingKV} from '../../model/sample-config.js';
+import {materialIcons} from '../styles/material-icons.js';
 
 // Constant UI strings.
 const strings = {
@@ -78,7 +77,7 @@ export class TargetingInput extends LitElement {
   private focusIndex?: number;
 
   static styles = [
-    materialStyles,
+    materialIcons,
     css`
       :host {
         width: 100%;

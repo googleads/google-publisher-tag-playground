@@ -16,8 +16,8 @@
 
 import {msg} from '@lit/localize';
 
-import type {SampleSlotConfig} from '../../model/sample-config.js';
-import {outOfPageFormatNames} from '../../model/settings.js';
+import type {SampleSlotConfig} from './sample-config.js';
+import {outOfPageFormatNames} from './settings.js';
 
 export interface SampleAd {
   name: () => string;
