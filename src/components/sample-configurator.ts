@@ -15,8 +15,9 @@
  */
 
 import './gpt-playground';
-import './ui-controls/targeting-input';
 import './configurator/slot-settings';
+import './ui-controls/config-section';
+import './ui-controls/targeting-input';
 
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
@@ -91,35 +92,25 @@ export class SampleConfigurator extends LitElement {
       overflow: scroll;
     }
 
-    fieldset {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    fieldset > fieldset,
-    fieldset > targeting-input {
-      margin: 15px 0 0;
-    }
-
-    fieldset label {
+    config-section label {
       display: block;
     }
 
-    fieldset input[type='checkbox'] {
+    config-section input[type='checkbox'] {
       float: left;
     }
 
-    fieldset select {
+    config-section select {
       float: right;
     }
 
-    fieldset.page div,
-    fieldset.privacy div {
+    config-section.page div,
+    config-section.privacy div {
       width: 33%;
       min-width: 200px;
     }
 
-    fieldset.template div {
+    config-section.template div {
       width: 50%;
       min-width: 200px;
     }
@@ -254,8 +245,7 @@ export class SampleConfigurator extends LitElement {
   private renderPageSettings() {
     const settings = this.config?.page;
 
-    return html` <fieldset class="page">
-      <legend>${configNames.page!()}</legend>
+    return html`<config-section class="page" title="${configNames.page!()}">
       ${this.checkbox('sra', pageConfigNames.sra!(), settings?.sra)}
       ${this.renderPrivacySettings()}
       <targeting-input
@@ -265,20 +255,22 @@ export class SampleConfigurator extends LitElement {
         @update="${this.updatePageTargeting}"
       >
       </targeting-input>
-    </fieldset>`;
+    </config-section>`;
   }
 
   private renderPrivacySettings() {
     const settings = this.config?.page?.privacy;
 
-    return html` <fieldset class="privacy">
-      <legend>${pageConfigNames.privacy!()}</legend>
+    return html`<config-section
+      class="privacy"
+      title="${pageConfigNames.privacy!()}"
+    >
       ${this.checkbox('tfcd', privacyConfigNames.tfcd!(), settings?.tfcd)}
       ${this.checkbox('ltd', privacyConfigNames.ltd!(), settings?.ltd)}
       ${this.checkbox('npa', privacyConfigNames.npa!(), settings?.npa)}
       ${this.checkbox('rdp', privacyConfigNames.rdp!(), settings?.rdp)}
       ${this.checkbox('tfua', privacyConfigNames.tfua!(), settings?.tfua)}
-    </fieldset>`;
+    </config-section>`;
   }
 
   private renderSlotSettings() {
@@ -307,8 +299,10 @@ export class SampleConfigurator extends LitElement {
         );
       });
 
-    return html` <fieldset class="template">
-      <legend>${configNames.template!()}</legend>
+    return html`<config-section
+      class="template"
+      title="${configNames.template!()}"
+    >
       <div>
         <select id="target" name="target" @change=${this.updateStringSettings}>
           <option value="">TypeScript</option>
@@ -316,7 +310,7 @@ export class SampleConfigurator extends LitElement {
         </select>
         <label for="target">${templateConfigNames.target!()}</label>
       </div>
-    </fieldset>`;
+    </config-section>`;
   }
 
   private renderConfigurator() {

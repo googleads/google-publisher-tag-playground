@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import './config-section';
+
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, nothing, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
@@ -68,11 +70,6 @@ export class SlotSizeInput extends LitElement {
         width: 100%;
       }
 
-      fieldset {
-        display: flex;
-        flex-flow: row wrap;
-      }
-
       .size {
         align-items: center;
         display: flex;
@@ -82,12 +79,12 @@ export class SlotSizeInput extends LitElement {
         width: 100%;
       }
 
-      .size:nth-child(odd) {
+      .size:nth-child(even) {
         background-color: darkgrey;
         color: white;
       }
 
-      .size:nth-child(odd) .material-icons {
+      .size:nth-child(even) .material-icons {
         color: black;
       }
 
@@ -126,7 +123,7 @@ export class SlotSizeInput extends LitElement {
   ];
 
   /**
-   * The title to display for the generated `<fieldset>`.
+   * The title to display for the generated `<config-section>`.
    */
   @property({attribute: 'title', type: String}) title = '';
 
@@ -369,8 +366,7 @@ export class SlotSizeInput extends LitElement {
     });
 
     return html`
-      <fieldset>
-        <legend>${this.title}</legend>
+      <config-section title="${this.title}">
         ${sizes}
         <span
           class="material-icons md-24 add-size button"
@@ -378,7 +374,7 @@ export class SlotSizeInput extends LitElement {
           @click="${this.addSize}"
           >add</span
         >
-      </fieldset>
+      </config-section>
     `;
   }
 

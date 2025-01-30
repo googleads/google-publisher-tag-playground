@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import './config-section';
+
 import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
@@ -83,11 +85,6 @@ export class TargetingInput extends LitElement {
         width: 100%;
       }
 
-      fieldset {
-        display: flex;
-        flex-flow: row wrap;
-      }
-
       .header,
       .key-value {
         display: flex;
@@ -104,7 +101,7 @@ export class TargetingInput extends LitElement {
         margin-left: 24px;
       }
 
-      .key-value:nth-child(even) {
+      .key-value:nth-child(odd) {
         background-color: darkgrey;
       }
 
@@ -153,7 +150,7 @@ export class TargetingInput extends LitElement {
   ];
 
   /**
-   * The title to display for the generated `<fieldset>`.
+   * The title to display for the generated `<config-section>`.
    */
   @property({attribute: 'title', type: String}) title = '';
 
@@ -394,12 +391,11 @@ export class TargetingInput extends LitElement {
     });
 
     return html`
-      <fieldset>
+      <config-section title="${this.title}">
         <div class="header">
           <span>${strings.keyColumnHeader()}</span>
           <span>${strings.valuesColumnHeader()}</span>
         </div>
-        <legend>${this.title}</legend>
         ${keyValues}
         <span
           class="material-icons md-24 button add-key"
@@ -407,7 +403,7 @@ export class TargetingInput extends LitElement {
           title="${strings.addKeyTitle()}"
           >add</span
         >
-      </fieldset>
+      </config-section>
     `;
   }
 

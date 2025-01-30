@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import '../ui-controls/config-section';
 import '../ui-controls/slot-size-input';
 import '../ui-controls/targeting-input';
 
@@ -95,9 +96,7 @@ export class SlotSettings extends LitElement {
         width: 100%;
       }
 
-      fieldset {
-        display: flex;
-        flex-flow: column wrap;
+      config-section {
         margin: 15px 0 0;
       }
 
@@ -105,7 +104,7 @@ export class SlotSettings extends LitElement {
         padding: 10px;
       }
 
-      .slot:nth-child(odd) {
+      .slot:nth-child(even) {
         background-color: lightgrey;
       }
 
@@ -126,8 +125,11 @@ export class SlotSettings extends LitElement {
       }
 
       .add-slot {
+        display: flex;
+        flex-direction: column;
         margin: 0 24px 0;
         text-align: center;
+        width: 100%;
       }
 
       .button {
@@ -159,7 +161,7 @@ export class SlotSettings extends LitElement {
   ];
 
   /**
-   * The title to display for the generated `<fieldset>`.
+   * The title to display for the generated `<config-section>`.
    */
   @property({attribute: 'title', type: String}) title = '';
 
@@ -488,8 +490,7 @@ export class SlotSettings extends LitElement {
     });
 
     return html`
-      <fieldset>
-        <legend>${this.title}</legend>
+      <config-section title="${this.title}">
         ${slots}
         <span
           class="material-icons md-24 add-slot button"
@@ -497,7 +498,7 @@ export class SlotSettings extends LitElement {
           @click="${this.addSlot}"
           >add</span
         >
-      </fieldset>
+      </config-section>
     `;
   }
 }
