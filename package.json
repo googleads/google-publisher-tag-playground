@@ -19,32 +19,33 @@
     "test:playwright": "playwright test"
   },
   "dependencies": {
+    "@lit-labs/signals": "^0.1.1",
     "@lit/localize": "^0.12.2",
     "lit": "^3.2.1",
     "lodash-es": "^4.17.21",
     "playground-elements": "^0.18.1",
-    "playwright": "^1.49.0",
-    "prettier": "^3.4.1",
-    "typescript": "^5.7.2"
+    "playwright": "^1.49.1",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
     "@lit/localize-tools": "^0.8.0",
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.49.1",
     "@rollup/plugin-commonjs": "^25.0.8",
-    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-terser": "^0.4.4",
-    "@types/google-publisher-tag": "^1.20241118.0",
+    "@types/google-publisher-tag": "^1.20250113.0",
     "@types/jasmine": "^5.1.5",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20.17.9",
+    "@types/node": "^20.17.14",
     "@web/dev-server": "^0.3.7",
     "@web/rollup-plugin-import-meta-assets": "^2.2.1",
     "glob": "^10.4.5",
-    "jasmine": "^5.4.0",
+    "gts": "^6.0.2",
+    "jasmine": "^5.5.0",
     "rollup": "^2.79.2",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-minify-html-literals": "^1.2.6",
-    "ts-node": "^10.9.2",
-    "gts": "^6.0.2"
+    "ts-node": "^10.9.2"
   }
 }

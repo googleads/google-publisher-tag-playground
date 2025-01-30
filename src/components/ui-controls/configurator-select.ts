@@ -139,11 +139,11 @@ export class ConfiguratorSelect extends LitElement {
   /**
    * Type guard to distinguish OptGroups from Options.
    */
-  private isOptGroup(x: ConfiguratorSelectOption): x is ConfiguratorOptGroup {
+  protected isOptGroup(x: ConfiguratorSelectOption): x is ConfiguratorOptGroup {
     return (x as ConfiguratorOptGroup).options !== undefined;
   }
 
-  private handleInput() {
+  protected handleInput() {
     // Fire an event to let the configurator know a value has changed.
     this.dispatchEvent(
       new CustomEvent('update', {bubbles: true, composed: true}),
@@ -156,7 +156,7 @@ export class ConfiguratorSelect extends LitElement {
    * @param option The {@link ConfiguratorSelectOption} to render.
    * @returns
    */
-  private renderOption(option: ConfiguratorSelectOption): TemplateResult {
+  protected renderOption(option: ConfiguratorSelectOption): TemplateResult {
     if (this.isOptGroup(option)) {
       return html`
         <optgroup label="${option.label}">

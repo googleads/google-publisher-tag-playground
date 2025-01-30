@@ -15,6 +15,9 @@
  */
 
 import '../ui-controls/config-section';
+import '../ui-controls/configurator-format-select';
+import '../ui-controls/configurator-icon-button';
+import '../ui-controls/configurator-text-field';
 import '../ui-controls/slot-size-input';
 import '../ui-controls/targeting-input';
 
@@ -27,8 +30,14 @@ import {isEqual} from 'lodash-es';
 
 import {sampleAds} from '../../model/sample-ads.js';
 import type {SampleSlotConfig} from '../../model/sample-config.js';
-import {outOfPageFormatNames} from '../../model/settings.js';
-import {materialIcons} from '../styles/material-icons.js';
+import {configNames, outOfPageFormatNames} from '../../model/settings.js';
+import {
+  ConfiguratorFormatOptGroup,
+  ConfiguratorFormatOption,
+  ConfiguratorFormatSelect,
+  ConfiguratorFormatSelectOption,
+} from '../ui-controls/configurator-format-select.js';
+import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {SlotSizeInput} from '../ui-controls/slot-size-input.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
 
@@ -39,10 +48,6 @@ const strings = {
   customOptionLabel: () =>
     msg('Custom', {
       desc: 'Drop-down option that allows users to input custom ad slot values.',
-    }),
-  oopFormatDisabled: () =>
-    msg('Unavailable', {
-      desc: 'Text shown when a drop-down option is disabled.',
     }),
   oopFormatLabel: () => msg('Out-of-page format', {desc: 'Drop-down label'}),
   oopFormatUnselected: () =>
@@ -87,10 +92,8 @@ type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
 @customElement('slot-settings')
 export class SlotSettings extends LitElement {
   @state() private dirtyConfig: KeyedSlot[] = [];
-  private disabledFormats = new Set<OutOfPageFormat>();
 
   static styles = [
-    materialIcons,
     css`
       :host {
         width: 100%;
@@ -101,7 +104,14 @@ export class SlotSettings extends LitElement {
       }
 
       .slot {
+        align-items: center;
+        display: grid;
+        grid:
+          'id template delete'
+          'id settings settings'
+          / 24px minmax(150px, 1fr) 24px;
         padding: 10px;
+        width: 100%;
       }
 
       .slot:nth-child(even) {
@@ -109,19 +119,27 @@ export class SlotSettings extends LitElement {
       }
 
       .slot-id {
-        flex: 0 1;
-        align-self: center;
-        min-width: 24px;
+        grid-area: id;
       }
 
-      .slot-option {
-        align-items: center;
-        padding: 3px 0;
+      .slot-template {
+        grid-area: template;
       }
 
-      .slot-option label {
-        min-width: 125px;
-        padding-right: 5px;
+      .slot-delete {
+        grid-area: delete;
+      }
+
+      .slot-settings {
+        display: flex;
+        flex-flow: row wrap;
+        grid-area: settings;
+        padding-top: 5px;
+      }
+
+      .slot-settings configurator-format-select,
+      .slot-settings configurator-text-field {
+        padding: 3px 5px;
       }
 
       .add-slot {
@@ -132,38 +150,11 @@ export class SlotSettings extends LitElement {
         width: 100%;
       }
 
-      .button {
-        cursor: pointer;
-      }
-
-      .flex {
-        display: flex;
-        flex: 1;
-        flex-flow: row wrap;
-      }
-
-      .row {
-        flex: 0 1 100%;
-      }
-
       .hidden {
         display: none;
       }
-
-      .padded {
-        padding: 5px;
-      }
-
-      input:invalid {
-        background-color: lightpink;
-      }
     `,
   ];
-
-  /**
-   * The title to display for the generated `<config-section>`.
-   */
-  @property({attribute: 'title', type: String}) title = '';
 
   /**
    * Set the active slot config.
@@ -180,8 +171,6 @@ export class SlotSettings extends LitElement {
           template: this.isTemplateAd(slot),
         });
       });
-
-      this.updateDisabledFormats();
     }
   }
 
@@ -231,57 +220,11 @@ export class SlotSettings extends LitElement {
     this.dirtyConfig = updatedConfig;
 
     if (cleanConfigUpdated) {
-      this.updateDisabledFormats();
-
       // Fire an event to let the configurator know a value has changed.
       this.dispatchEvent(
         new CustomEvent('update', {bubbles: true, composed: true}),
       );
     }
-  }
-
-  /**
-   * Determine which {@link OutOfPageFormat}s should be disabled, based on which
-   * are currently configured.
-   */
-  private updateDisabledFormats() {
-    const disabledFormats = new Set<OutOfPageFormat>();
-
-    this.dirtyConfig.forEach(keyedSlot => {
-      const format = keyedSlot.slot.format;
-      if (!format) return;
-
-      if (format === 'BOTTOM_ANCHOR' || format === 'TOP_ANCHOR') {
-        // Only one of top or bottom anchor is allowed per page.
-        disabledFormats.add('BOTTOM_ANCHOR');
-        disabledFormats.add('TOP_ANCHOR');
-      } else {
-        disabledFormats.add(format);
-      }
-    });
-
-    this.disabledFormats = disabledFormats;
-  }
-
-  /**
-   * Helper method to determine if an {@link OutOfPageFormat} should be
-   * disabled for a given slot.
-   */
-  private isFormatDisabledForSlot(
-    slot: SampleSlotConfig,
-    format: OutOfPageFormat,
-  ) {
-    if (format === 'BOTTOM_ANCHOR' || format === 'TOP_ANCHOR') {
-      // If slot is an anchor, allow swapping between top and bottom formats.
-      // Otherwise, disable both if either is selected elsewhere.
-      return (
-        this.disabledFormats.has(format) &&
-        slot.format !== 'BOTTOM_ANCHOR' &&
-        slot.format !== 'TOP_ANCHOR'
-      );
-    }
-
-    return this.disabledFormats.has(format) && slot.format !== format;
   }
 
   /**
@@ -320,24 +263,26 @@ export class SlotSettings extends LitElement {
     );
 
     const template = (
-      parent.querySelector('select[name=templates]') as HTMLSelectElement
+      parent.querySelector(
+        'configurator-format-select[name=templates]',
+      ) as ConfiguratorFormatSelect
     ).selectedOptions[0];
 
-    if (template.dataset && template.dataset.index) {
+    if (template.value) {
       // A sample ad was selected.
       config[index].template = true;
-      config[index].slot = sampleAds[Number(template.dataset.index)].slot;
+      config[index].slot = sampleAds[Number(template.value)].slot;
     } else {
       // The custom option was selected.
       config[index].template = false;
 
       // Prepopulate inputs with any previously selected sample ad values.
       const adUnitPath = parent.querySelector(
-        'input[name=adUnit]',
-      ) as HTMLInputElement;
-      const format = (
-        parent.querySelector('select[name=formats]') as HTMLSelectElement
-      )?.selectedOptions[0];
+        'configurator-text-field[name=adUnit]',
+      ) as ConfiguratorTextField;
+      const format = parent.querySelector(
+        'configurator-format-select[name=formats]',
+      ) as ConfiguratorFormatSelect;
       const sizes = parent.querySelector(
         'slot-size-input',
       ) as ReactiveElement as SlotSizeInput;
@@ -347,7 +292,7 @@ export class SlotSettings extends LitElement {
 
       config[index].slot = {
         adUnit: adUnitPath?.value,
-        format: format?.value as OutOfPageFormat,
+        format: format?.format,
         size: sizes?.config || [],
         targeting: targeting?.config || [],
       };
@@ -357,78 +302,89 @@ export class SlotSettings extends LitElement {
   }
 
   private renderSlotTemplates(slot: SampleSlotConfig) {
-    const templates: TemplateResult[] = [];
-    const oopTemplates: TemplateResult[] = [];
+    const templates: ConfiguratorFormatOptGroup = {
+      label: strings.sampleAdsLabel(),
+      options: [],
+    };
 
+    const oopTemplates: ConfiguratorFormatOptGroup = {
+      label: strings.sampleAdsOopLabel(),
+      options: [],
+    };
+
+    let isTemplate = false;
     sampleAds.forEach((sampleAd, i) => {
       const format = sampleAd.slot.format as OutOfPageFormat;
-      const disabled = this.isFormatDisabledForSlot(slot, format);
-      const template = html` <option
-        data-index="${i}"
-        ?disabled="${disabled}"
-        ?selected="${isEqual(slot, sampleAd.slot)}"
-      >
-        ${sampleAd.name()}
-        ${when(disabled, () => ` (${strings.oopFormatDisabled()})`)}
-      </option>`;
-      (format ? oopTemplates : templates).push(template);
+      const selected = isEqual(slot, sampleAd.slot);
+      const template: ConfiguratorFormatOption = {
+        label: sampleAd.name(),
+        selected: selected,
+        value: String(i),
+        format: format,
+      };
+      (format ? oopTemplates : templates).options.push(template);
+      isTemplate = isTemplate || selected;
     });
 
-    return html` <select
-      class="flex padded"
+    const options: ConfiguratorFormatSelectOption[] = [
+      {
+        label: strings.customOptionLabel(),
+        selected: !isTemplate,
+        value: '',
+        format: slot.format,
+      },
+      templates,
+      oopTemplates,
+    ];
+
+    return html`<configurator-format-select
+      class="slot-template"
       name="templates"
-      @input="${this.updateSlot}"
+      .options="${options}"
+      @update="${this.updateSlot}"
     >
-      <option>${strings.customOptionLabel()}</option>
-      <optgroup label="${strings.sampleAdsLabel()}">${templates}</optgroup>
-      <optgroup label="${strings.sampleAdsOopLabel()}">
-        ${oopTemplates}
-      </optgroup>
-    </select>`;
+    </configurator-format-select>`;
   }
 
   private renderSlotFormatInput(slot: SampleSlotConfig) {
-    const formats: TemplateResult[] = [];
+    const formats: ConfiguratorFormatSelectOption[] = [
+      {
+        // Add the "no format selected" option.
+        label: strings.oopFormatUnselected(),
+        value: '',
+      },
+    ];
+
     Object.entries(outOfPageFormatNames)
       // Remove formats we don't yet support.
       .filter(([k]) => !EXCLUDED_OOP_FORMATS.includes(k as OutOfPageFormat))
       .forEach(([k, v]) => {
-        const format = k as OutOfPageFormat;
-        const disabled = this.isFormatDisabledForSlot(slot, format);
-        const option = html` <option
-          value="${k}"
-          ?disabled="${disabled}"
-          ?selected="${slot.format === format}"
-        >
-          ${v()} ${when(disabled, () => ` (${strings.oopFormatDisabled()})`)}
-        </option>`;
-        formats.push(option);
+        formats.push({
+          label: v(),
+          selected: slot.format === (k as OutOfPageFormat),
+          format: k,
+        } as ConfiguratorFormatOption);
       });
 
     return html`
-      <select class="flex padded" name="formats" @input="${this.updateSlot}">
-        <option value="">${strings.oopFormatUnselected()}</option>
-        ${formats}
-      </select>
+      <configurator-format-select
+        label="${strings.oopFormatLabel()}"
+        name="formats"
+        .options="${formats}"
+        @update="${this.updateSlot}"
+      ></configurator-format-select>
     `;
   }
 
   private renderSlotOptions(slot: SampleSlotConfig) {
-    return html` <div class="slot-option flex">
-        <label for="adUnit">${strings.adUnitLabel()}</label>
-        <input
-          class="flex padded"
-          type="text"
-          name="adUnit"
-          pattern="${AD_UNIT_VALIDATION_PATTERN}"
-          value="${slot.adUnit}"
-          @input="${this.updateSlot}"
-        />
-      </div>
-      <div class="slot-option flex">
-        <label for="format">${strings.oopFormatLabel()}</label>
-        ${this.renderSlotFormatInput(slot)}
-      </div>`;
+    return html` <configurator-text-field
+        label="${strings.adUnitLabel()}"
+        name="adUnit"
+        pattern="${AD_UNIT_VALIDATION_PATTERN}"
+        value="${slot.adUnit}"
+        @update="${this.updateSlot}"
+      ></configurator-text-field>
+      ${this.renderSlotFormatInput(slot)}`;
   }
 
   private renderSlotSizeInput(slot: SampleSlotConfig) {
@@ -447,38 +403,31 @@ export class SlotSettings extends LitElement {
     ></targeting-input>`;
   }
 
-  private renderSlotSettings(slot: SampleSlotConfig, hidden: boolean) {
-    const classes = {row: true, hidden};
-    const classesWithPadding = {...classes, padded: true};
-
+  private renderSlotSettings(slot: SampleSlotConfig) {
     return html`
-      <div class="${classMap(classesWithPadding)}">
-        ${this.renderSlotOptions(slot)}
-      </div>
-      ${when(
-        !slot.format,
-        () => html`
-          <div class="${classMap(classes)}">
-            ${this.renderSlotSizeInput(slot)}
-          </div>
-        `,
-      )}
-      <div class="${classMap(classes)}">${this.renderTargetingInput(slot)}</div>
+      ${this.renderSlotOptions(slot)}
+      ${when(!slot.format, () => this.renderSlotSizeInput(slot))}
+      ${this.renderTargetingInput(slot)}
     `;
   }
 
   private renderSlot(slot: KeyedSlot, index: number) {
-    return html` <div class="slot flex">
+    return html`<div class="slot">
       <span class="slot-id">${index + 1}</span>
-      <div class="slot-settings flex">
-        ${this.renderSlotTemplates(slot.slot)}
-        <span
-          class="material-icons md-24 button"
-          title="${strings.removeSlotTitle()}"
-          @click="${this.removeSlot}"
-          >delete</span
-        >
-        ${this.renderSlotSettings(slot.slot, slot.template)}
+      ${this.renderSlotTemplates(slot.slot)}
+      <configurator-icon-button
+        class="slot-delete"
+        icon="delete"
+        title="${strings.removeSlotTitle()}"
+        @click="${this.removeSlot}"
+      ></configurator-icon-button>
+      <div
+        class="${classMap({
+          'slot-settings': true,
+          hidden: slot.template,
+        })}"
+      >
+        ${this.renderSlotSettings(slot.slot)}
       </div>
     </div>`;
   }
@@ -490,14 +439,14 @@ export class SlotSettings extends LitElement {
     });
 
     return html`
-      <config-section title="${this.title}">
+      <config-section title="${configNames.slots()}">
         ${slots}
-        <span
-          class="material-icons md-24 add-slot button"
+        <configurator-icon-button
+          class="add-slot"
+          icon="add"
           title="${strings.addSlotTitle()}"
           @click="${this.addSlot}"
-          >add</span
-        >
+        ></configurator-icon-button>
       </config-section>
     `;
   }

@@ -28,7 +28,6 @@ import {debounce} from 'lodash-es';
 import * as base64url from '../../src/util/base64url.js';
 import * as urlHash from '../../src/util/url-hash.js';
 import type {SampleConfig} from '../model/sample-config.js';
-import {configNames} from '../model/settings.js';
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
@@ -152,15 +151,6 @@ export class SampleConfigurator extends LitElement {
     this.config = config;
   }
 
-  private renderSlotSettings() {
-    return html` <slot-settings
-      title="${configNames.slots()}"
-      .config="${this.config?.slots}"
-      @update="${this.updateSettings}"
-    >
-    </slot-settings>`;
-  }
-
   private renderConfigurator() {
     return html` <div id="configurator">
       <div id="configurator-header">
@@ -171,7 +161,10 @@ export class SampleConfigurator extends LitElement {
           .config="${this.config?.page || {}}"
           @update="${this.updateSettings}"
         ></page-settings>
-        ${this.renderSlotSettings()}
+        <slot-settings
+          .config="${this.config?.slots}"
+          @update="${this.updateSettings}"
+        ></slot-settings>
         <output-settings
           .config="${this.config?.template || {}}"
           @update="${this.updateSettings}"
@@ -187,8 +180,7 @@ export class SampleConfigurator extends LitElement {
         ?preview-enabled=${this.isPreviewable()}
         readonly
         vertical
-      >
-      </gpt-playground>`;
+      ></gpt-playground>`;
   }
 
   updated() {
