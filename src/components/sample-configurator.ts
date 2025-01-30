@@ -15,24 +15,24 @@
  */
 
 import './gpt-playground';
+import './configurator/output-settings';
 import './configurator/page-settings';
 import './configurator/slot-settings';
-import './ui-controls/config-section';
 
 import {localized, msg} from '@lit/localize';
-import {css, html, LitElement, TemplateResult} from 'lit';
+import {css, html, LitElement} from 'lit';
 import {until} from 'lit-html/directives/until.js';
 import {customElement, property, query, state} from 'lit/decorators.js';
 import {debounce} from 'lodash-es';
-import ts from 'typescript';
 
 import * as base64url from '../../src/util/base64url.js';
 import * as urlHash from '../../src/util/url-hash.js';
 import type {SampleConfig} from '../model/sample-config.js';
-import {configNames, templateConfigNames} from '../model/settings.js';
+import {configNames} from '../model/settings.js';
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
 
+import {OutputSettings} from './configurator/output-settings.js';
 import {PageSettings} from './configurator/page-settings.js';
 import {SlotSettings} from './configurator/slot-settings.js';
 import {GptPlayground} from './gpt-playground.js';
@@ -56,8 +56,9 @@ export class SampleConfigurator extends LitElement {
 
   @state() private template: Template;
   @query('gpt-playground') private playground!: GptPlayground;
-  @query('slot-settings') private slotSettings!: SlotSettings;
+  @query('output-settings') private outputSettings!: OutputSettings;
   @query('page-settings') private pageSettings!: PageSettings;
+  @query('slot-settings') private slotSettings!: SlotSettings;
 
   static styles = css`
     :host {
@@ -86,15 +87,6 @@ export class SampleConfigurator extends LitElement {
       padding: 0 8px 8px;
       overflow: scroll;
     }
-
-    config-section select {
-      float: right;
-    }
-
-    config-section.template div {
-      width: 50%;
-      min-width: 200px;
-    }
   `;
 
   @property({attribute: 'config', type: Object})
@@ -110,10 +102,6 @@ export class SampleConfigurator extends LitElement {
   constructor() {
     super();
     this.template = createTemplate(this.config);
-  }
-
-  private getSelectById(id: string): HTMLSelectElement {
-    return this.renderRoot.querySelector(`#${id}`) as HTMLSelectElement;
   }
 
   private isPreviewable() {
@@ -148,23 +136,6 @@ export class SampleConfigurator extends LitElement {
     }
   }
 
-  private updateStringSettings() {
-    const config = structuredClone(this.config);
-
-    // Ensure relevant configs are defined.
-    config.template = config.template || {};
-
-    // Update template settings.
-    const template = config.template;
-    const target = this.getSelectById('target').value;
-    template.target =
-      target.length > 0
-        ? ts.ScriptTarget[target as keyof typeof ts.ScriptTarget]
-        : undefined;
-
-    this.config = config;
-  }
-
   private updateSettings() {
     const config = structuredClone(this.config);
 
@@ -172,9 +143,11 @@ export class SampleConfigurator extends LitElement {
     config.page = config.page || {};
     config.page.privacy = config.page.privacy || {};
     config.slots = config.slots || [];
+    config.template = config.template || {};
 
     config.page = this.pageSettings.config;
     config.slots = this.slotSettings.config;
+    config.template = this.outputSettings.config;
 
     this.config = config;
   }
@@ -188,37 +161,6 @@ export class SampleConfigurator extends LitElement {
     </slot-settings>`;
   }
 
-  private renderTemplateSettings() {
-    const settings = this.config?.template;
-
-    const jsTargets: TemplateResult[] = [];
-    Object.entries(ts.ScriptTarget)
-      .filter(([k]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
-      .forEach(([k, v]) => {
-        jsTargets.push(
-          html`<option
-            value="${k}"
-            ?selected="${settings && settings.target === v}"
-          >
-            JavaScript (${k})
-          </option>`,
-        );
-      });
-
-    return html`<config-section
-      class="template"
-      title="${configNames.template!()}"
-    >
-      <div>
-        <select id="target" name="target" @change=${this.updateStringSettings}>
-          <option value="">TypeScript</option>
-          ${jsTargets}
-        </select>
-        <label for="target">${templateConfigNames.target!()}</label>
-      </div>
-    </config-section>`;
-  }
-
   private renderConfigurator() {
     return html` <div id="configurator">
       <div id="configurator-header">
@@ -229,7 +171,11 @@ export class SampleConfigurator extends LitElement {
           .config="${this.config?.page || {}}"
           @update="${this.updateSettings}"
         ></page-settings>
-        ${this.renderSlotSettings()} ${this.renderTemplateSettings()}
+        ${this.renderSlotSettings()}
+        <output-settings
+          .config="${this.config?.template || {}}"
+          @update="${this.updateSettings}"
+        ></output-settings>
       </div>
     </div>`;
   }
