@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">ウェブ インタースティシャル広告</msg>
     <msg desc="Button text" name="s3be169991df10a5d">プレビューを開く</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">スロットを追加</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">サイズを指定</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">サイズを削除</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">ターゲティング キーを追加</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">ターゲティング値を追加</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">ターゲティング値を削除</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">サイズを指定</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">サイズを削除</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">スロットを削除</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// 事前に定義したすべての広告スロットをリクエストしてレンダリングします。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// GPT サービスを有効にします。</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">シングル リクエスト アーキテクチャ（SRA）</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">高さ</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">幅</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">子供向け取り扱い</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">制限付き広告</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">パーソナライズされていない広告</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">データ処理を制限する</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">子供向け取り扱い</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">同意年齢未満</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">このサンプルは iframe でプレビューできません</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">サイズ</msg>

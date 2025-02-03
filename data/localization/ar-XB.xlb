@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">‏‮Web‬‏ ‏‮interstitial‬‏ ‏‮ad‬‏</msg>
     <msg desc="Button text" name="s3be169991df10a5d">‏‮Open‬‏ ‏‮preview‬‏</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">‏‮Add‬‏ ‏‮slot‬‏</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">‏‮Add‬‏ ‏‮size‬‏</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">‏‮Remove‬‏ ‏‮size‬‏</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">‏‮Add‬‏ ‏‮targeting‬‏ ‏‮key‬‏</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">‏‮Add‬‏ ‏‮targeting‬‏ ‏‮value‬‏</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">‏‮Remove‬‏ ‏‮targeting‬‏ ‏‮value‬‏</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">‏‮Add‬‏ ‏‮size‬‏</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">‏‮Remove‬‏ ‏‮size‬‏</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">‏‮Remove‬‏ ‏‮slot‬‏</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// ‏‮Request‬‏ ‏‮and‬‏ ‏‮render‬‏ ‏‮all‬‏ ‏‮previously‬‏ ‏‮defined‬‏ ‏‮ad‬‏ ‏‮slots‬‏.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// ‏‮Enable‬‏ ‏‮GPT‬‏ ‏‮services‬‏.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">‏‮Single‬‏ ‏‮Request‬‏ ‏‮Architecture‬‏ (‏‮SRA‬‏)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">‏‮Height‬‏</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">‏‮Width‬‏</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">‏‮Child‬‏-‏‮directed‬‏ ‏‮treatment‬‏</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">‏‮Limited‬‏ ‏‮ads‬‏</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">‏‮Non‬‏-‏‮personalized‬‏ ‏‮ads‬‏</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">‏‮Restrict‬‏ ‏‮data‬‏ ‏‮processing‬‏</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">‏‮Child‬‏-‏‮directed‬‏ ‏‮treatment‬‏</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">‏‮Under‬‏ ‏‮the‬‏ ‏‮age‬‏ ‏‮of‬‏ ‏‮consent‬‏</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">‏‮This‬‏ ‏‮sample‬‏ ‏‮cannot‬‏ ‏‮be‬‏ ‏‮previewed‬‏ ‏‮in‬‏ ‏‮an‬‏ ‏‮iframe‬‏</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">‏‮Sizes‬‏</msg>

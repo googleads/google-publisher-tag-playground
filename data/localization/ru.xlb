@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">Межстраничное объявление на сайте</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Посмотреть</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Добавить рекламное место</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">Добавить размер</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">Удалить размер</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">Добавить ключ таргетинга</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">Добавить значение таргетинга</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">Удалить значение таргетинга</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Добавить размер</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Удалить размер</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Удалить рекламное место</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Запрашивает и отображает все ранее настроенные рекламные места.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Включает методы тега GPT.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Режим единого запроса (РЕЗ)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">Высота</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Ширина</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Ресурс для детей</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Ограниченный показ рекламы</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Неперсонализированная реклама</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Отказаться от обработки пользовательских данных</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Ресурс для детей</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">Лица, не достигшие минимального возраста</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Просмотр в окне iframe невозможен.</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Размеры</msg>

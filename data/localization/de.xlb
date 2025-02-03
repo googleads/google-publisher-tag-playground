@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">Web-Interstitial-Anzeige</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Vorschau öffnen</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Anzeigenfläche hinzufügen</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">Größe hinzufügen</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">Größe entfernen</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">Targeting-Schlüssel hinzufügen</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">Targeting-Wert hinzufügen</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">Targeting-Wert entfernen</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Größe hinzufügen</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Größe entfernen</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Anzeigenfläche entfernen</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Request and render all previously defined ad slots.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Enable GPT services.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Einzelanfrage-Architektur</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">Höhe</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Breite</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Inhalte für Kinder</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">eingeschränktes Anzeigen-Targeting</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Nicht personalisierte Anzeigen</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Datenverarbeitung einschränken</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Inhalte für Kinder</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">Inhalte für Minderjährige</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Für dieses Beispiel kann keine Vorschau in einem iFrame angezeigt werden</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Größen</msg>

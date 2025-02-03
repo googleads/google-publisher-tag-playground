@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">Annonce interstitielle pour le Web</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Ouvrir l'aperçu</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Ajouter un espace</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">Ajouter la taille</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">Supprimer la taille</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">Ajouter une clé de ciblage</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">Ajouter une valeur de ciblage</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">Supprimer la valeur de ciblage</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Ajouter la taille</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Supprimer la taille</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Supprimer l'espace</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Demander et afficher tous les espaces publicitaires définis précédemment.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Activer les services GPT.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Architecture de demande simple (SRA)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">Hauteur</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Largeur</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traitement adapté aux contenus destinés aux enfants</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Annonces limitées</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Annonces non personnalisées</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Traitement restreint des données</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traitement adapté aux contenus destinés aux enfants</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">En dessous de l'âge minimal requis</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Impossible de prévisualiser cet exemple dans un iFrame</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Tailles</msg>

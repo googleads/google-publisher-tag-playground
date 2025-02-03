@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import {DOMParser, XMLSerializer} from '@xmldom/xmldom';
 import * as fs from 'fs';
 import * as path from 'path';
 import {fileURLToPath} from 'url';
@@ -26,19 +27,33 @@ const XLB_DIR = path.resolve(CURRENT_DIR, '../data/localization');
 const INPUT_XLB = path.join(XLB_DIR, `${INPUT_LOCALE}.xlb`);
 const OUTPUT_XLB = path.join(XLB_DIR, `${OUTPUT_LOCALE}.xlb`);
 
+/**
+ * Parses the EN translation (XLB) file, adds diacritical marks to
+ * each alphabetic character in every message, and outputs the
+ * result as a new test translation file. This is then used to test
+ * that mesages are rendered correctly in non-EN locales during
+ * development.
+ */
 (() => {
   const inputContent = fs.readFileSync(INPUT_XLB).toString();
+  const doc = new DOMParser().parseFromString(inputContent, 'text/xml');
 
-  const outputContent = inputContent
-    .replace(/(<msg.*>)(.+)(<\/msg>)/gim, (match, p1, p2, p3) => {
-      // Add alternating diacritical marks to each character.
-      // First regex replaces odd characters, second replaces even.
-      let accentedStr = p2.replace(/([a-z])([a-z])?/gim, '$1\u0301$2');
-      accentedStr = accentedStr.replace(/([a-z])/gim, '$1\u0302');
-      return `${p1}${accentedStr}${p3}`;
-    })
-    .replace(`locale="${INPUT_LOCALE}"`, `locale="${OUTPUT_LOCALE}"`);
+  for (let elem of doc.getElementsByTagName('msg')) {
+    for (let child of elem.childNodes) {
+      if (child.nodeType === doc.TEXT_NODE && child.textContent) {
+        let accentedStr = child.textContent;
 
-  const output = fs.createWriteStream(OUTPUT_XLB);
-  output.write(outputContent);
+        // Add alternating diacritical marks to each character.
+        // First regex replaces odd characters, second replaces even.
+        accentedStr = accentedStr.replace(/([a-z])([a-z])?/gim, '$1\u0301$2');
+        accentedStr = accentedStr.replace(/([a-z])/gim, '$1\u0302');
+
+        child.textContent = accentedStr;
+      }
+    }
+  }
+
+  const outputContent = new XMLSerializer().serializeToString(doc).replace(
+      `locale="${INPUT_LOCALE}"`, `locale="${OUTPUT_LOCALE}"`);
+  fs.createWriteStream(OUTPUT_XLB).write(outputContent);
 })();

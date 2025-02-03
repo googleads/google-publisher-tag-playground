@@ -16,11 +16,11 @@
     <msg name="secff207571282402" desc="An out-of-page ad format">Web interstitial ad</msg>
     <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
-    <msg name="s1c59de6a71660855" desc="Button title">Add size</msg>
-    <msg name="sb55d0a3abebf97fe" desc="Button title">Remove size</msg>
     <msg name="sed09c5dfcd2f8bc8" desc="Button title">Add targeting key</msg>
     <msg name="sf2057da4d0abd00e" desc="Button title">Add targeting value</msg>
     <msg name="s716e903e2945c8cb" desc="Button title">Remove targeting value</msg>
+    <msg name="s1c59de6a71660855" desc="Button title">Add size</msg>
+    <msg name="sb55d0a3abebf97fe" desc="Button title">Remove size</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// Request and render all previously defined ad slots.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
@@ -41,10 +41,10 @@
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Single Request Architecture (SRA)</msg>
     <msg name="sffdadf0a576fd802" desc="Placeholder text">Height</msg>
     <msg name="sf21fb4f4b9e8911f" desc="Placeholder text">Width</msg>
+    <msg name="s3132d1a0580760bc" desc="Privacy setting label">Child-directed treatment</msg>
     <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">Limited ads</msg>
     <msg name="s0eb106f4b9813ad3" desc="Privacy setting label">Non-personalized ads</msg>
     <msg name="sb457d189f407a5a6" desc="Privacy setting label">Restrict data processing</msg>
-    <msg name="s3132d1a0580760bc" desc="Privacy setting label">Child-directed treatment</msg>
     <msg name="sf915707accde585c" desc="Privacy setting label">Under the age of consent</msg>
     <msg name="s5fc316a7f287b7be" desc="Reason the embedded preview is unavailable.">This sample cannot be previewed in an iframe</msg>
     <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Sizes</msg>

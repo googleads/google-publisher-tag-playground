@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">웹 전면 광고</msg>
     <msg desc="Button text" name="s3be169991df10a5d">미리보기 열기</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">슬롯 추가</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">크기 추가</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">크기 삭제</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">타겟팅 키 추가</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">타겟팅 값 추가</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">타겟팅 값 삭제</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">크기 추가</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">크기 삭제</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">슬롯 삭제</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// 이전에 정의된 모든 광고 슬롯을 요청하고 렌더링합니다.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// GPT 서비스를 사용 설정합니다.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">단일 요청 아키텍처(SRA)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">높이</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">너비</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">아동 대상 서비스로 취급</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">제한적인 광고</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">개인 맞춤이 아닌 광고</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">데이터 처리 제한</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">아동 대상 서비스로 취급</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">동의 연령 미만</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">이 샘플은 iframe에서 미리 볼 수 없습니다.</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">크기</msg>

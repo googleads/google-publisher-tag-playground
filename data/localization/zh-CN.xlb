@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">网站插页式广告</msg>
     <msg desc="Button text" name="s3be169991df10a5d">打开预览页面</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">添加广告位</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">添加尺寸</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">移除尺寸</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">添加定位键</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">添加定位值</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">移除定位值</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">添加尺寸</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">移除尺寸</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除广告位</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// 请求并呈现所有之前定义的广告位。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// 启用 GPT 服务。</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">单一请求架构 (SRA)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">高度</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">宽度</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">面向儿童的内容</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">受限广告</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">非个性化广告</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">限制数据处理</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">面向儿童的内容</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">未达到同意年龄</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">此示例无法在 iframe 中预览</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">尺寸</msg>

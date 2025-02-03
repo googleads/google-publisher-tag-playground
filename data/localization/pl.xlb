@@ -16,11 +16,11 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">Reklama pełnoekranowa w przeglądarce</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Otwórz podgląd</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Dodaj boks</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">Dodaj rozmiar</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">Usuń rozmiar</msg>
     <msg desc="Button title" name="sed09c5dfcd2f8bc8">Dodaj klucz kierowania</msg>
     <msg desc="Button title" name="sf2057da4d0abd00e">Dodaj wartość kierowania</msg>
     <msg desc="Button title" name="s716e903e2945c8cb">Usuń wartość kierowania</msg>
+    <msg desc="Button title" name="s1c59de6a71660855">Dodaj rozmiar</msg>
+    <msg desc="Button title" name="sb55d0a3abebf97fe">Usuń rozmiar</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Usuń boks</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Zażądaj wyrenderowania wszystkich wcześniej zdefiniowanych boksów reklamowych.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Włącz usługi GPT.</msg>
@@ -41,10 +41,10 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Architektura z pojedynczym żądaniem (SRA)</msg>
     <msg desc="Placeholder text" name="sffdadf0a576fd802">Wysokość</msg>
     <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Szerokość</msg>
+    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traktowanie jako reklamy skierowanej do dzieci</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Ograniczone wyświetlanie reklam</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Reklamy niespersonalizowane</msg>
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Ogranicz przetwarzanie danych</msg>
-    <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traktowanie jako reklamy skierowanej do dzieci</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">Poniżej wieku świadomego wyrażenia zgody</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Nie można wyświetlić podglądu tego przykładu w elemencie iframe</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Rozmiary</msg>
