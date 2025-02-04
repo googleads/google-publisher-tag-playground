@@ -94,4 +94,30 @@ export const configuratorExpect = expect.extend({
       };
     }
   },
+
+  /**
+   * Ensures the {@link Locator} points to a valid input element.
+   *
+   * @param locator
+   * @returns
+   */
+  async toBeValid(locator: Locator) {
+    try {
+      expect(
+        await locator.evaluate(
+          elem => (elem as HTMLInputElement).validity.valid,
+        ),
+      ).toBe(true);
+
+      return {
+        pass: true,
+        message: () => 'Expected validity state to be invalid, but was valid.',
+      };
+    } catch (e) {
+      return {
+        pass: false,
+        message: () => 'Expected validity state to be valid, but was invalid.',
+      };
+    }
+  },
 });

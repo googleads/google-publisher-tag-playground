@@ -84,6 +84,15 @@ export class Configurator {
   }
 
   /**
+   * Returns configurator text field element(s).
+   */
+  getTextField(label: string, parent: Locator = this.page.locator('body')) {
+    return parent
+      .locator(`md-filled-text-field[label="${label}"]`)
+      .locator('input');
+  }
+
+  /**
    * Selects the specified option of the specified configurator select.
    *
    * This method asserts that the provided {@link Locator} points to a

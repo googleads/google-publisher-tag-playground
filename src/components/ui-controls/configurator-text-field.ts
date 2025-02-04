@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
+import '@material/web/textfield/filled-text-field';
+
 import {localized} from '@lit/localize';
+import {MdFilledTextField} from '@material/web/textfield/filled-text-field.js';
 import {css, html, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
-import {when} from 'lit/directives/when.js';
 
 @localized()
 @customElement('configurator-text-field')
 export class ConfiguratorTextField extends LitElement {
-  @query('input') input?: HTMLInputElement;
+  @query('md-filled-text-field') private input?: MdFilledTextField;
 
   static styles = css`
     :host {
@@ -32,19 +34,14 @@ export class ConfiguratorTextField extends LitElement {
       width: 100%;
     }
 
-    label {
-      min-width: 125px;
-      padding: 5px;
-      padding-inline-start: 0;
-    }
+    md-filled-text-field {
+      width: 100%;
 
-    input {
-      flex-grow: 1;
-      padding: 5px;
-    }
-
-    input:invalid {
-      background-color: lightpink;
+      --md-filled-field-leading-space: 10px;
+      --md-filled-field-top-space: calc(0.75rem - 2px);
+      --md-filled-field-trailing-space: 10px;
+      --md-filled-field-with-label-bottom-space: 4px;
+      --md-filled-field-with-label-top-space: 2px;
     }
   `;
 
@@ -55,6 +52,12 @@ export class ConfiguratorTextField extends LitElement {
    */
   @property({attribute: 'id', type: String})
   id = `text-field-${Date.now().toString()}`;
+
+  /**
+   * Custom error text to be shown when the input state is
+   * invalid. Only used when `pattern` is specified.
+   */
+  @property({attribute: 'error-text', type: String}) errorText?: string;
 
   /**
    * User-friendly label for the element.
@@ -86,27 +89,49 @@ export class ConfiguratorTextField extends LitElement {
     if (this.input) this.input.value = this.internalValue;
   }
 
+  /**
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/reportValidity}
+   */
+  reportValidity() {
+    if (this.pattern) {
+      // Disable custom validity to re-enable default constraint validation.
+      this.setCustomValidity('');
+
+      if (!this.input?.validity.valid && this.errorText) {
+        // Set a custom validation message if the input is invalid.
+        this.setCustomValidity(this.errorText);
+      }
+    }
+
+    return this.input?.reportValidity();
+  }
+
+  /**
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setCustomValidity}
+   */
+  setCustomValidity(error: string) {
+    this.input?.setCustomValidity(error);
+  }
+
   private handleInput() {
     this.internalValue = this.input!.value;
 
-    // Fire an event to let the configurator know a value has changed.
-    this.dispatchEvent(
-      new CustomEvent('update', {bubbles: true, composed: true}),
-    );
+    if (this.reportValidity()) {
+      // Fire an event to let the configurator know a value has changed.
+      this.dispatchEvent(
+        new CustomEvent('update', {bubbles: true, composed: true}),
+      );
+    }
   }
 
   render() {
-    return html`${when(
-        this.label,
-        () => html`<label for="${this.id}">${this.label}</label>`,
-      )}
-      <input
-        type="text"
-        id="${this.id}"
-        name="${ifDefined(this.name)}"
-        pattern="${ifDefined(this.pattern)}"
-        value="${this.internalValue}"
-        @input="${this.handleInput}"
-      />`;
+    return html`<md-filled-text-field
+      id="${this.id}"
+      label="${ifDefined(this.label)}"
+      name="${ifDefined(this.name)}"
+      pattern="${ifDefined(this.pattern)}"
+      value="${this.value}"
+      @input="${this.handleInput}"
+    ></md-filled-text-field>`;
   }
 }

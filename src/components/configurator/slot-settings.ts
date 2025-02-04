@@ -63,6 +63,8 @@ const strings = {
     msg('Targeting', {
       desc: 'Section containing ad targeting options.',
     }),
+  validationErrorAdUnitPath: () =>
+    msg('Please specify a valid ad unit path.', {desc: 'Validation error.'}),
 };
 
 // Ad unit path validation.
@@ -382,6 +384,7 @@ export class SlotSettings extends LitElement {
   private renderSlotOptions(slot: SampleSlotConfig) {
     return html` <configurator-text-field
         label="${strings.adUnitLabel()}"
+        error-text="${strings.validationErrorAdUnitPath()}"
         name="adUnit"
         pattern="${AD_UNIT_VALIDATION_PATTERN}"
         value="${slot.adUnit}"

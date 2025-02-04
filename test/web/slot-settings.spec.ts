@@ -20,9 +20,9 @@ import {outOfPageFormatNames} from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
 
-const AD_UNIT_SELECTOR = 'input[name=adUnit]';
 const CODE_EDITOR_SELECTOR = 'playground-file-editor';
 
+const AD_UNIT_TEXT_FIELD_LABEL = 'Ad unit path';
 const SLOT_SETTINGS_TITLE = 'Slot settings';
 const FORMAT_SELECT_LABEL = 'Out-of-page format';
 const TEMPLATE_SELECT_LABEL = 'Slot template';
@@ -46,14 +46,15 @@ test.describe('Ad unit path validation', () => {
     adUnitPath: string,
     shouldBeValid = true,
   ): Promise<void> {
-    await configurator.page.locator(AD_UNIT_SELECTOR).fill(adUnitPath);
+    const adUnitInput = configurator.getTextField(
+      AD_UNIT_TEXT_FIELD_LABEL,
+      configurator.getConfigSection(SLOT_SETTINGS_TITLE),
+    );
+    await adUnitInput.fill(adUnitPath);
+
     return shouldBeValid
-      ? expect(
-          configurator.page.locator(`${AD_UNIT_SELECTOR}:invalid`),
-        ).not.toBeVisible()
-      : expect(
-          configurator.page.locator(`${AD_UNIT_SELECTOR}:invalid`),
-        ).toBeVisible();
+      ? expect(adUnitInput).toBeValid()
+      : expect(adUnitInput).not.toBeValid();
   }
 
   test('Supported ad unit code characters are valid.', async ({
@@ -119,10 +120,9 @@ test.describe('Ad template select', () => {
       configurator,
       page,
     }) => {
-      const slotSettings = configurator.getConfigSection(SLOT_SETTINGS_TITLE);
       const templateSelect = configurator.getSelect(
         TEMPLATE_SELECT_LABEL,
-        slotSettings,
+        configurator.getConfigSection(SLOT_SETTINGS_TITLE),
       );
       await expect(templateSelect).toBeVisible();
 
@@ -158,10 +158,9 @@ test.describe('Ad format select', () => {
         configurator,
         page,
       }) => {
-        const slotSettings = configurator.getConfigSection(SLOT_SETTINGS_TITLE);
         const formatSelect = configurator.getSelect(
           FORMAT_SELECT_LABEL,
-          slotSettings,
+          configurator.getConfigSection(SLOT_SETTINGS_TITLE),
         );
         await expect(formatSelect).toBeVisible();
 
@@ -189,8 +188,10 @@ test.describe('Ad format exclusions', () => {
     configurator: Configurator,
     label: string,
   ) {
-    const slotSection = configurator.getConfigSection(SLOT_SETTINGS_TITLE);
-    const select = configurator.getSelect(label, slotSection);
+    const select = configurator.getSelect(
+      label,
+      configurator.getConfigSection(SLOT_SETTINGS_TITLE),
+    );
     await expect(select).toHaveCount(2);
 
     // Ensure that the slot that selects an anchor format can freely switch
@@ -225,8 +226,10 @@ test.describe('Ad format exclusions', () => {
     configurator: Configurator,
     label: string,
   ) {
-    const slotSection = configurator.getConfigSection(SLOT_SETTINGS_TITLE);
-    const select = configurator.getSelect(label, slotSection);
+    const select = configurator.getSelect(
+      label,
+      configurator.getConfigSection(SLOT_SETTINGS_TITLE),
+    );
     await expect(select).toHaveCount(2);
 
     // Ensure that slot 1 can select the interstitial format.
@@ -248,8 +251,10 @@ test.describe('Ad format exclusions', () => {
     configurator: Configurator,
     label: string,
   ) {
-    const slotSection = configurator.getConfigSection(SLOT_SETTINGS_TITLE);
-    const select = configurator.getSelect(label, slotSection);
+    const select = configurator.getSelect(
+      label,
+      configurator.getConfigSection(SLOT_SETTINGS_TITLE),
+    );
     await expect(select).toHaveCount(2);
 
     // Ensure that slot 1 has access to both side rail formats.
