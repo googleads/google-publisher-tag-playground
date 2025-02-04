@@ -19,12 +19,12 @@ import './configurator-text-field';
 import '@material/web/chips/chip-set';
 import '@material/web/chips/input-chip';
 
-import {MdInputChip} from '@material/web/chips/input-chip.js';
 import {css, html, LitElement} from 'lit';
 import {property, query, state} from 'lit/decorators.js';
+import {MdInputChip} from '@material/web/chips/input-chip.js';
+
 import {repeat} from 'lit/directives/repeat.js';
 import {isEqual} from 'lodash-es';
-
 import {ConfiguratorTextField} from './configurator-text-field.js';
 
 /**
@@ -61,7 +61,8 @@ export abstract class ChipInput extends LitElement {
    *
    * @memberof ChipInput
    */
-  @property({attribute: 'title', type: String}) title = '';
+  @property({attribute: 'title', type: String})
+  title = '';
 
   /**
    * The values to be displayed.
@@ -71,7 +72,8 @@ export abstract class ChipInput extends LitElement {
    * @type {string[]}
    * @memberof ChipInput
    */
-  @state() protected abstract chips: string[];
+  @state()
+  protected abstract chips: string[];
 
   /**
    * A set of strings which can be used to delimit multiple values.
@@ -249,6 +251,14 @@ export abstract class ChipInput extends LitElement {
     this.announceUpdate();
   }
 
+  /**
+   * Stop the provided event and prevent propagation.
+   */
+  private ignoreEvent(event: Event) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+
   render() {
     // We use repeat below to avoid re-rendering the entire chip set
     // when values are added/removed. If the order of existing values
@@ -274,8 +284,8 @@ export abstract class ChipInput extends LitElement {
           label="${this.chipInputLabel()}"
           placeholder="${this.chipInputPlaceholder()}"
           @keydown="${this.handleChipInputKeydown}"
-        >
-        </configurator-text-field>
+          @update="${this.ignoreEvent}"
+        ></configurator-text-field>
       </config-section>
     `;
   }

@@ -42,11 +42,12 @@ const strings = {
         desc: 'Embedded preview is unavailable, sample must be viewed in a separate window.',
       },
     ),
+  previewDialogButton: () => msg('Open preview', {desc: 'Button text'}),
+  previewToolbarLabel: () => msg('Preview', {desc: 'Preview toolbar label'}),
   previewUnavailable: () =>
     msg('This sample cannot be previewed in an iframe', {
       desc: 'Reason the embedded preview is unavailable.',
     }),
-  previewDialogButton: () => msg('Open preview', {desc: 'Button text'}),
 };
 
 // Playground component identifier.
@@ -58,8 +59,8 @@ const PLAYGROUND_ID = 'gpt-sample';
 @localized()
 @customElement('gpt-playground')
 export class GptPlayground extends LitElement {
-  @query('playground-preview') private preview!: PlaygroundPreview;
-  @query('playground-dialog') private previewDialog!: PlaygroundDialog;
+  @query('playground-preview') private preview?: PlaygroundPreview;
+  @query('playground-dialog') private previewDialog?: PlaygroundDialog;
 
   // Declare shadow DOM styles.
   static styles = [
@@ -95,6 +96,8 @@ export class GptPlayground extends LitElement {
       #lhs {
         border-inline-end: 2px solid
           var(--md-sys-color-surface-container-highest);
+        display: flex;
+        flex-direction: column;
         min-width: 200px;
         height: 100%;
         width: calc(100% - 2px);
@@ -181,19 +184,19 @@ export class GptPlayground extends LitElement {
   previewWindow: Window | null = null;
 
   /**
-   * Disconnect the preview pane and display the preview diaalog.
+   * Disconnect the preview pane and display the preview dialog.
    */
   disablePreview() {
-    this.preview.project = '';
-    this.previewDialog.open = true;
+    if (this.preview) this.preview.project = '';
+    if (this.previewDialog) this.previewDialog.open = true;
   }
 
   /**
    * Connect the preview pane and hide the preview dialog.
    */
   enablePreview() {
-    this.preview.project = PLAYGROUND_ID;
-    this.previewDialog.open = false;
+    if (this.preview) this.preview.project = PLAYGROUND_ID;
+    if (this.previewDialog) this.previewDialog.open = false;
   }
 
   /**
@@ -242,7 +245,7 @@ export class GptPlayground extends LitElement {
         ${this.renderPreviewDialog()}
         <playground-preview
           id="${PLAYGROUND_ID}-preview"
-          location="Preview"
+          location="${strings.previewToolbarLabel()}"
           .project="${this.previewEnabled ? PLAYGROUND_ID : undefined}"
         >
         </playground-preview>
