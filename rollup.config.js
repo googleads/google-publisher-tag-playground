@@ -81,8 +81,19 @@ export default [
       }),
       resolve(),
       importMetaAssets(),
-      // TODO: see if this is viable with sample generator templates.
-      minifyHTML(),
+      minifyHTML({
+        options: {
+          shouldMinifyCSS: template => {
+            return (
+              template.tag &&
+              template.tag === 'css' &&
+              // Skip any CSS containing statements that are unsupported
+              // by the version of clean-css this plugin is locked to.
+              !template.parts.some(part => part.text.match('@layer'))
+            );
+          },
+        },
+      }),
       copy({
         targets: [
           {

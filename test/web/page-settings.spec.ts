@@ -14,39 +14,93 @@
  * limitations under the License.
  */
 
-import {expect, test} from '@playwright/test';
-
+import {SampleConfig, SamplePageConfig} from '../../src/model/sample-config.js';
 import {pageConfigNames, privacyConfigNames} from '../../src/model/settings.js';
 
+import {expect, test} from './fixtures/configurator.js';
+
+/**
+ * Maps page-level setting labels to the GPT API functions/properties they
+ * control and the {@link SamplePageConfig} necessary to enable them.
+ */
+const BOOLEAN_SETTINGS: {
+  label: string;
+  expectedText: string;
+  setting: SamplePageConfig;
+}[] = [
+  {
+    label: pageConfigNames.sra!(),
+    expectedText: 'enableSingleRequest',
+    setting: {sra: true},
+  },
+  {
+    label: privacyConfigNames.ltd!(),
+    expectedText: 'limitedAds',
+    setting: {privacy: {ltd: true}},
+  },
+  {
+    label: privacyConfigNames.npa!(),
+    expectedText: 'nonPersonalizedAds',
+    setting: {privacy: {npa: true}},
+  },
+  {
+    label: privacyConfigNames.rdp!(),
+    expectedText: 'restrictDataProcessing',
+    setting: {privacy: {rdp: true}},
+  },
+  {
+    label: privacyConfigNames.tfcd!(),
+    expectedText: 'childDirectedTreatment',
+    setting: {privacy: {tfcd: true}},
+  },
+  {
+    label: privacyConfigNames.tfua!(),
+    expectedText: 'underAgeOfConsent',
+    setting: {privacy: {tfua: true}},
+  },
+];
+
 test.describe('Enable/disable checkboxes', () => {
-  // Maps page-level setting labels to the GPT API functions/properties we
-  // expect to see in code when the setting is enabled.
-  const settings = [
-    {label: pageConfigNames.sra!(), expectedText: 'enableSingleRequest'},
-    {label: privacyConfigNames.ltd!(), expectedText: 'limitedAds'},
-    {label: privacyConfigNames.npa!(), expectedText: 'nonPersonalizedAds'},
-    {label: privacyConfigNames.rdp!(), expectedText: 'restrictDataProcessing'},
-    {label: privacyConfigNames.tfcd!(), expectedText: 'childDirectedTreatment'},
-    {label: privacyConfigNames.tfua!(), expectedText: 'underAgeOfConsent'},
-  ];
-
-  settings.forEach(({label, expectedText}) => {
-    test(`${label} adds ${expectedText}`, async ({page}) => {
-      await page.goto('/configurator');
-
-      // Ensure the label is visible.
-      await expect(page.getByLabel(label)).toBeVisible();
+  BOOLEAN_SETTINGS.forEach(({label, expectedText, setting}) => {
+    test(`${label} adds ${expectedText}`, async ({configurator, page}) => {
+      const checkbox = configurator.getCheckbox(
+        label,
+        configurator.getConfigSection('Page settings'),
+      );
 
       // Enable the setting and ensure expected string appears in code.
-      await page.getByLabel(label).click();
+      await checkbox.check();
       await expect(page.locator('gpt-playground')).toContainText(expectedText);
 
       // Disable the setting and ensure expected string no longer appears in
       // code.
-      await page.getByLabel(label).click();
+      await checkbox.uncheck();
       await expect(page.locator('gpt-playground')).not.toContainText(
         expectedText,
       );
+    });
+
+    test.describe('Prepopulation', () => {
+      const emptyConfig = {
+        page: {},
+        slots: [],
+      } as SampleConfig;
+
+      // Load the configurator with a SampleConfig that enables the property
+      // under test.
+      test.use({config: {...emptyConfig, page: setting}});
+
+      test(`${label} adds ${expectedText}`, async ({configurator, page}) => {
+        await expect(
+          configurator.getCheckbox(
+            label,
+            configurator.getConfigSection('Page settings'),
+          ),
+        ).toBeChecked();
+        await expect(page.locator('gpt-playground')).toContainText(
+          expectedText,
+        );
+      });
     });
   });
 });

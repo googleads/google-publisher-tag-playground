@@ -21,6 +21,7 @@
   "dependencies": {
     "@lit-labs/signals": "^0.1.1",
     "@lit/localize": "^0.12.2",
+    "@material/web": "^2.2.0",
     "lit": "^3.2.1",
     "lodash-es": "^4.17.21",
     "playground-elements": "^0.18.1",

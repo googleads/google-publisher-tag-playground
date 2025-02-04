@@ -14,23 +14,39 @@
  * limitations under the License.
  */
 
+import '@material/web/switch/switch';
+
 import {localized} from '@lit/localize';
+import {MdSwitch} from '@material/web/switch/switch.js';
 import {css, html, LitElement} from 'lit';
-import {customElement, property} from 'lit/decorators.js';
+import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
 
 @localized()
 @customElement('configurator-checkbox')
 export class ConfiguratorCheckbox extends LitElement {
+  @query('md-switch') input!: MdSwitch;
+
   static styles = css`
     :host {
       display: flex;
-      width: 33%;
       min-width: 200px;
+      padding: 8px 0;
+      width: 50%;
+
+      --md-switch-track-height: 24px;
+      --md-switch-track-width: 36px;
+      --md-switch-selected-handle-height: 18px;
+      --md-switch-selected-handle-width: 18px;
     }
 
-    input[type='checkbox'] {
-      align-self: flex-start;
+    label {
+      align-items: center;
+      display: flex;
+    }
+
+    md-switch {
+      padding: 0 8px;
     }
   `;
 
@@ -56,8 +72,8 @@ export class ConfiguratorCheckbox extends LitElement {
    */
   @property({type: Boolean}) checked = false;
 
-  private handleClick(event: Event) {
-    this.checked = (event.target as HTMLInputElement).checked;
+  private handleClick() {
+    this.checked = this.input.selected;
 
     // Fire an event to let the configurator know a value has changed.
     this.dispatchEvent(
@@ -66,13 +82,15 @@ export class ConfiguratorCheckbox extends LitElement {
   }
 
   render() {
-    return html`<input
-        type="checkbox"
+    return html`<label for="${this.id}">
+      <md-switch
         id="${this.id}"
         name="${ifDefined(this.name)}"
-        ?checked="${this.checked}"
-        @click="${this.handleClick}"
-      />
-      <label for="${this.id}">${this.label}</label>`;
+        ?selected="${this.checked}"
+        @change="${this.handleClick}"
+      >
+      </md-switch>
+      ${this.label}
+    </label>`;
   }
 }
