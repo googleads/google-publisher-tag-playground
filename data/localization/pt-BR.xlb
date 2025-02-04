@@ -16,11 +16,6 @@
     <msg desc="An out-of-page ad format" name="secff207571282402">Anúncio intersticial da Web</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Abrir a visualização</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Adicionar espaço</msg>
-    <msg desc="Button title" name="sed09c5dfcd2f8bc8">Adicionar chave de segmentação</msg>
-    <msg desc="Button title" name="sf2057da4d0abd00e">Adicionar valor de segmentação</msg>
-    <msg desc="Button title" name="s716e903e2945c8cb">Remover valor de segmentação</msg>
-    <msg desc="Button title" name="s1c59de6a71660855">Adicionar tamanho</msg>
-    <msg desc="Button title" name="sb55d0a3abebf97fe">Remover tamanho</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Remover espaço</msg>
     <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Solicitar e renderizar todos os espaços de anúncio definidos anteriormente.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Ativar serviços da GPT.</msg>
@@ -31,16 +26,17 @@
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Definir as configurações de privacidade.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Os espaços de <ph name="0">${format}</ph> retornam nulo se a página ou o dispositivo não forem compatíveis com eles.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Formato fora da página</msg>
+    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Slot template</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Personalizado</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Clique no botão abaixo para ver uma prévia em uma nova janela.</msg>
+    <msg desc="Input field label" name="s53a96edcf36221b2">Ad slot sizes</msg>
+    <msg desc="Input field title" name="s42278ac7b37a5245">Add targeting key-values</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Exemplos de anúncios</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Exemplos de anúncios (fora da página)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Nenhum</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Formato de saída</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Modelo de exemplo</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Arquitetura de solicitação única (SRA)</msg>
-    <msg desc="Placeholder text" name="sffdadf0a576fd802">Altura</msg>
-    <msg desc="Placeholder text" name="sf21fb4f4b9e8911f">Largura</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Tratamento para direcionamento a crianças</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Anúncios limitados</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Anúncios não personalizados</msg>
@@ -50,7 +46,6 @@
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Tamanhos</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Configurações do espaço</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Segmentação</msg>
-    <msg desc="Section containing configurable sample options." name="s7d28e0b73aced2d9">Exemplo de configuração</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Configurações de saída</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Configurações da página</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Segmentação no nível da página</msg>
@@ -61,8 +56,13 @@
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Role a página para ativar.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Caminho do bloco de anúncios</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Indisponível</msg>
-    <msg desc="The &quot;fluid&quot; size for native ads." name="s9691600b4b891cf3">Fluido</msg>
-    <msg desc="The key portion of a targeting key-value." name="s506b6a19d12f414c">Chave</msg>
-    <msg desc="The values portion of a targeting key-value." name="s57472465a23b41db">Valores</msg>
+    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
+    <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
+    <msg desc="Validation error" name="sa9c78a7a0167358f">Duplicate key: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4fb36c094a78d99">Invalid key: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="s3870e706a2084c79">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
+    <msg desc="Validation error" name="sd4801ff24e6e00e1">No value for key: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">Invalid size: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="sab590a46db406ca7">Please specify a valid ad unit path.</msg>
   </messages>
 </localizationbundle>
