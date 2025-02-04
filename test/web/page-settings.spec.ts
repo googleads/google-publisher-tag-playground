@@ -104,3 +104,77 @@ test.describe('Enable/disable checkboxes', () => {
     });
   });
 });
+
+test.describe('Configure targeting', () => {
+  const testKey = 'test-key';
+  const testValue = 'test-value';
+
+  test('Adding/removing KV updates code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Page settings',
+      'Page-level targeting',
+    );
+
+    await targetingInput.addValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).toContainText(testKey);
+    await expect(page.locator('gpt-playground')).toContainText(testValue);
+
+    await targetingInput.deleteValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(testKey);
+    await expect(page.locator('gpt-playground')).not.toContainText(testValue);
+  });
+
+  test('Editing KV removes it from code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Page settings',
+      'Page-level targeting',
+    );
+
+    await targetingInput.addValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).toContainText(testKey);
+    await expect(page.locator('gpt-playground')).toContainText(testValue);
+
+    await targetingInput.editValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(testKey);
+    await expect(page.locator('gpt-playground')).not.toContainText(testValue);
+  });
+
+  test('Invalid KV does not appear in code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Page settings',
+      'Page-level targeting',
+    );
+
+    await targetingInput.addValue(`1${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      `1${testKey}`,
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      `${testValue}`,
+    );
+  });
+
+  test.describe('Prepopulation', () => {
+    test.use({
+      config: {
+        page: {targeting: [{key: testKey, value: testValue}]},
+        slots: [],
+      },
+    });
+
+    test('Prepopulated targeting KV appears in code', async ({
+      configurator,
+      page,
+    }) => {
+      const targetingInput = configurator.getChipInput(
+        'Page settings',
+        'Page-level targeting',
+      );
+      await expect(
+        targetingInput.getChip(`${testKey}=${testValue}`),
+      ).toBeVisible();
+      await expect(page.locator('gpt-playground')).toContainText(testKey);
+      await expect(page.locator('gpt-playground')).toContainText(testValue);
+    });
+  });
+});

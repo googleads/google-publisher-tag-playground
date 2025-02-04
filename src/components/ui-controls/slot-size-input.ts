@@ -14,378 +14,135 @@
  * limitations under the License.
  */
 
-import './config-section';
+import '@material/web/chips/chip-set';
+import '@material/web/chips/input-chip';
+import '@material/web/textfield/filled-text-field';
 
-import {localized, msg} from '@lit/localize';
-import {css, html, LitElement, nothing, TemplateResult} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
-import {keyed} from 'lit/directives/keyed.js';
+import {localized, msg, str} from '@lit/localize';
+import {customElement, property} from 'lit/decorators.js';
 import {isEqual} from 'lodash-es';
 
-import {materialIcons} from '../styles/material-icons.js';
+import {ChipInput} from './chip-input.js';
 
 // Constant UI strings.
 const strings = {
-  addSizeTitle: () => msg('Add size', {desc: 'Button title'}),
-  fluidLabel: () => msg('Fluid', {desc: 'The "fluid" size for native ads.'}),
-  heightPlaceholder: () => msg('Height', {desc: 'Placeholder text'}),
-  removeSizeTitle: () => msg('Remove size', {desc: 'Button title'}),
-  widthPlaceholder: () => msg('Width', {desc: 'Placeholder text'}),
+  slotSizeInputPlaceholder: () =>
+    msg('100x100,fluid,...', {desc: 'Valid formats for user size input'}),
+  slotSizeInputLabel: () => msg('Ad slot sizes', {desc: 'Input field label'}),
+  validationErrorInvalidSize: (size: string) =>
+    msg(str`Invalid size: ${size}`, {
+      desc: 'Validation error',
+    }),
 };
 
 // Height and width validation patterns.
-const DIMENSION_VALIDATION_PATTERN = '[\\d]{1,4}';
-const DIMENSION_VALIDATION_REGEX = new RegExp(
-  `^${DIMENSION_VALIDATION_PATTERN}$`,
-);
-
-/**
- * Custom wrapper around {@link SingleSize} that:
- *
- * 1. Associates a unique ID with the size.
- * 2. Treats height and width as strings.
- *
- * The ID is used to control when Lit updates elements. String dimensions
- * allow us to preserve invalid values as users are editing.
- */
-type Size = [string, string] | googletag.NamedSize;
-interface KeyedSize {
-  id: number;
-  size?: Size;
-}
+const DIMENSION_PAIR_VALIDATION_REGEX = new RegExp('^[\\d]{1,4}x[\\d]{1,4}$');
 
 /**
  * Custom component for displaying/editing GPT slot sizes.
  */
 @localized()
 @customElement('slot-size-input')
-export class SlotSizeInput extends LitElement {
-  @state() private dirtyConfig: KeyedSize[] = [];
-  private focusIndex?: number;
+export class SlotSizeInput extends ChipInput {
+  override chips: string[] = [];
+  override delimiters: string[] = [',', ' '];
 
-  static styles = [
-    materialIcons,
-    css`
-      :host {
-        width: 100%;
-      }
-
-      .size {
-        align-items: center;
-        display: flex;
-        flex-direction: row;
-        margin: 0 24px 0;
-        padding: 5px;
-        width: 100%;
-      }
-
-      .size:nth-child(even) {
-        background-color: darkgrey;
-        color: white;
-      }
-
-      .size:nth-child(even) .material-icons {
-        color: black;
-      }
-
-      .dimensions input,
-      .size-input {
-        flex: 1;
-      }
-
-      .size-controls {
-        display: flex;
-        align-self: flex-start;
-      }
-
-      .dimensions {
-        display: flex;
-      }
-
-      .dimension-separator {
-        padding: 0 5px 0;
-      }
-
-      .add-size {
-        width: 100%;
-        text-align: center;
-        margin: 0 24px 0;
-      }
-
-      .button {
-        cursor: pointer;
-      }
-
-      input:invalid {
-        background-color: lightpink;
-      }
-    `,
-  ];
-
-  /**
-   * The title to display for the generated `<config-section>`.
-   */
-  @property({attribute: 'title', type: String}) title = '';
+  override chipInputLabel = strings.slotSizeInputLabel;
+  override chipInputPlaceholder = strings.slotSizeInputPlaceholder;
 
   /**
    * Set the active slot size config.
    */
   @property({attribute: 'config', type: Array})
   set config(config: googletag.GeneralSize) {
-    if (config && !isEqual(config, this.clean(this.dirtyConfig))) {
-      this.dirtyConfig = [];
-
-      if (Array.isArray(config)) {
-        // Convert SingleSize to MultiSize for simplicity.
-        const sizes =
-          config.length <= 2 && !Array.isArray(config[0]) ? [config] : config;
-
-        sizes.forEach(s => {
-          const size: Size = !Array.isArray(s)
-            ? // NamedSize -> 'fluid'
-              ([s] as googletag.NamedSize)
-            : // NamedSize -> ['fluid']
-              s.length === 1
-              ? (s as googletag.NamedSize)
-              : // SingleSize -> [1,1]
-                [String(s[0]), String(s[1])];
-
-          this.dirtyConfig.push({id: Date.now(), size});
-        });
-      } else {
-        // NamedSize -> 'fluid'
-        this.dirtyConfig.push({id: Date.now(), size: [config]});
-      }
+    if (config && !isEqual(this.sizesToChips(config), this.chips)) {
+      this.chips = this.sizesToChips(config);
     }
   }
 
   /**
-   * Get the active slot configuration.
+   * Get the active slot size config.
    */
   get config() {
-    return this.clean(this.dirtyConfig);
+    const sizes = this.chipsToSizes();
+    return sizes.length === 1 ? sizes[0] : Array.from(sizes);
   }
 
-  /**
-   * Returns a "clean" copy of the provided config.
-   */
-  private clean(config: KeyedSize[]) {
-    const cleanConfig: googletag.SingleSize[] = [];
-
-    config.forEach(({size}) => {
-      if (Array.isArray(size)) {
-        if (size.length === 1 && size[0]) {
-          // NamedSize -> ['fluid']
-          cleanConfig.push(size[0]);
-        } else {
-          // SingleSize -> [1,1]
-          if (
-            DIMENSION_VALIDATION_REGEX.test(size[0]) &&
-            DIMENSION_VALIDATION_REGEX.test(size[1])
-          ) {
-            cleanConfig.push([Number(size[0]), Number(size[1])]);
-          }
-        }
-      } else if (size) {
-        // NamedSize -> 'fluid'
-        cleanConfig.push(size);
-      }
-    });
-
-    return cleanConfig.length === 1 ? cleanConfig[0] : Array.from(cleanConfig);
-  }
-
-  /**
-   * Create a copy of the "dirty" config object.
-   */
-  private cloneConfig(): KeyedSize[] {
-    return structuredClone(this.dirtyConfig);
-  }
-
-  /**
-   * Update the "dirty" config object.
-   */
-  private updateConfig(updatedConfig: KeyedSize[]) {
-    // Check whether changes affect the "clean" config.
-    const cleanConfigUpdated = !isEqual(
-      this.clean(updatedConfig),
-      this.clean(this.dirtyConfig),
+  override sortChips(chips: string[]): string[] {
+    return this.sortSizes(this.chipsToSizes(chips)).map(size =>
+      this.toChip(size),
     );
+  }
 
-    this.dirtyConfig = updatedConfig;
+  override validateChip(chip: string): string | null {
+    return this.toSingleSize(chip)
+      ? ''
+      : strings.validationErrorInvalidSize(chip);
+  }
 
-    if (cleanConfigUpdated) {
-      // Fire an event to let the configurator know a value has changed.
-      this.dispatchEvent(
-        new CustomEvent('update', {bubbles: true, composed: true}),
-      );
+  private sortSizes(sizes: googletag.SingleSize[]) {
+    // Sort sizes such that NamedSizes appear first, followed by naturally
+    // ordered SingleSizes.
+    return sizes.sort((a, b) => {
+      if (this.isNamedSize(a)) return -1;
+      if (this.isNamedSize(b)) return 1;
+      return a[0] !== b[0] ? a[0] - b[0] : a[1] - b[1];
+    });
+  }
+
+  private chipsToSizes(chips: string[] = this.chips): googletag.SingleSize[] {
+    return chips.map(chip => this.toSingleSize(chip)).filter(chip => !!chip);
+  }
+
+  private sizesToChips(sizes: googletag.GeneralSize) {
+    let cleanedSizes: googletag.SingleSize[];
+
+    // Convert SingleSize -> MultiSize to simplify iteration.
+    if (Array.isArray(sizes)) {
+      if (sizes.length === 0) {
+        cleanedSizes = [];
+      } else if (sizes.length === 1 && this.isNamedSize(sizes[0])) {
+        // ['fluid'] -> [['fluid']]
+        cleanedSizes = [sizes] as googletag.MultiSize;
+      } else if (sizes.length === 2 && Number.isInteger(sizes[0])) {
+        // [100, 200] -> [[100, 200]]
+        cleanedSizes = [sizes] as googletag.MultiSize;
+      } else {
+        cleanedSizes = sizes as googletag.MultiSize;
+      }
+    } else {
+      // 'fluid' -> [['fluid']]
+      cleanedSizes = [[sizes]];
     }
+
+    return this.sortSizes(cleanedSizes).map(size => this.toChip(size));
   }
 
   /**
-   * Helper method to determine whether the provided size is a NamedSize.
+   * Type guard to distinguish NamedSize from SingleSize.
    */
-  private isNamedSize(size: Size) {
+  private isNamedSize(size: googletag.SingleSize): size is googletag.NamedSize {
     const namedSizes = ['fluid'];
     return Array.isArray(size)
-      ? size.length === 1 && namedSizes.includes(size[0])
+      ? size.length === 1 && namedSizes.includes(String(size[0]))
       : namedSizes.includes(size);
   }
 
-  /**
-   * Helper method to create a Size object from HTML.
-   * Note that the returned object is not "cleaned" in any way.
-   */
-  size(sizeElem: HTMLElement): Size {
-    const fluidElem = sizeElem.querySelector(
-      'input[name=fluid]',
-    ) as HTMLInputElement;
-
-    if (fluidElem.checked) {
-      return ['fluid'];
-    } else {
-      const widthElem = sizeElem.querySelector(
-        'input[name=width]',
-      ) as HTMLInputElement;
-      const heightElem = sizeElem.querySelector(
-        'input[name=height]',
-      ) as HTMLInputElement;
-
-      return [widthElem.value, heightElem.value];
+  private toSingleSize(sizeString: string) {
+    if (this.isNamedSize(sizeString as googletag.SingleSize)) {
+      return sizeString as googletag.NamedSize;
+    } else if (DIMENSION_PAIR_VALIDATION_REGEX.test(sizeString)) {
+      return sizeString
+        .split('x')
+        .map(dimension => Number(dimension)) as googletag.SingleSizeArray;
     }
   }
 
-  private addSize() {
-    const config = this.cloneConfig();
-    config.push({id: Date.now()});
-
-    // Attempt to focus the newly added row.
-    this.focusIndex = config.length - 1;
-    this.updateConfig(config);
-  }
-
-  private removeSize(event: Event) {
-    const config = this.cloneConfig();
-
-    const parent = (event.target as HTMLElement).closest('.size');
-    const index = Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(
-      parent!,
-    );
-
-    config.splice(index, 1);
-
-    // Attempt to focus the previous row.
-    this.focusIndex = Math.max(index - 1, 0);
-    this.updateConfig(config);
-  }
-
-  private updateSize(event: Event) {
-    const config = this.cloneConfig();
-
-    const parent = (event.target as HTMLElement).closest('.size');
-    const index = Array.from(this.renderRoot.querySelectorAll('.size')).indexOf(
-      parent!,
-    );
-
-    config[index].size = this.size(parent as HTMLElement);
-    this.updateConfig(config);
-  }
-
-  private renderDimensions(size?: Size) {
-    const namedSize = size && this.isNamedSize(size);
-
-    return html`
-      <div class="dimensions">
-        <input
-          type="text"
-          maxlength="4"
-          name="width"
-          pattern="${DIMENSION_VALIDATION_PATTERN}"
-          placeholder="${strings.widthPlaceholder()}"
-          value="${!size || namedSize ? nothing : size[0]}"
-          ?disabled="${namedSize}"
-          @input="${this.updateSize}"
-        />
-        <span class="dimension-separator">x</span>
-        <input
-          type="text"
-          maxlength="4"
-          name="height"
-          pattern="${DIMENSION_VALIDATION_PATTERN}"
-          placeholder="${strings.heightPlaceholder()}"
-          value="${!size || namedSize ? nothing : size[1]}"
-          ?disabled="${namedSize}"
-          @input="${this.updateSize}"
-        />
-      </div>
-    `;
-  }
-
-  private renderNamedSizes(size?: Size) {
-    const fluid = size && this.isNamedSize(size);
-
-    return html`
-      <div class="fluid">
-        <input
-          name="fluid"
-          type="checkbox"
-          ?checked="${fluid}"
-          @input="${this.updateSize}"
-        />
-        <label for="fluid">${strings.fluidLabel()}</label>
-      </div>
-    `;
-  }
-
-  private renderSize(size: KeyedSize) {
-    return html` ${keyed(
-      size.id,
-      html`
-        <div class="size">
-          <div class="size-input">
-            ${this.renderDimensions(size.size)}
-            ${this.renderNamedSizes(size.size)}
-          </div>
-          <div class="size-controls">
-            <span
-              class="material-icons md-24 button"
-              title="${strings.removeSizeTitle()}"
-              @click="${this.removeSize}"
-              >delete</span
-            >
-          </div>
-        </div>
-      `,
-    )}`;
-  }
-
-  render() {
-    const sizes: TemplateResult[] = [];
-    this.dirtyConfig.forEach(size => {
-      sizes.push(this.renderSize(size));
-    });
-
-    return html`
-      <config-section title="${this.title}">
-        ${sizes}
-        <span
-          class="material-icons md-24 add-size button"
-          title="${strings.addSizeTitle()}"
-          @click="${this.addSize}"
-          >add</span
-        >
-      </config-section>
-    `;
-  }
-
-  updated() {
-    if (this.focusIndex === undefined) return;
-
-    // Focus the first input of the specified size.
-    const container =
-      this.renderRoot.querySelectorAll('.size')[this.focusIndex!];
-    (container?.querySelector('input[name=width]') as HTMLElement)?.focus();
-
-    this.focusIndex = undefined;
+  private toChip(size: googletag.SingleSize) {
+    return this.isNamedSize(size)
+      ? Array.isArray(size)
+        ? (size as googletag.NamedSize)[0]
+        : size
+      : (size as googletag.SingleSizeArray).join('x');
   }
 }

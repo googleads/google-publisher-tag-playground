@@ -74,6 +74,29 @@ export class ConfiguratorTextField extends LitElement {
    */
   @property({attribute: 'pattern', type: String}) pattern?: string;
 
+  /**
+   * The text shown when the element has no value.
+   */
+  @property({attribute: 'placeholder', type: String}) placeholder?: string;
+
+  /**
+   * Returns the end offset of a text selection.
+   *
+   * @readonly
+   */
+  get selectionEnd() {
+    return this.input?.selectionEnd;
+  }
+
+  /**
+   * Returns the start offset of a text selection.
+   *
+   * @readonly
+   */
+  get selectionStart() {
+    return this.input?.selectionStart;
+  }
+
   private internalValue = '';
 
   /**
@@ -87,6 +110,13 @@ export class ConfiguratorTextField extends LitElement {
   set value(value: string) {
     this.internalValue = value;
     if (this.input) this.input.value = this.internalValue;
+  }
+
+  /**
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus}
+   */
+  focus() {
+    this.input?.focus();
   }
 
   /**
@@ -124,14 +154,38 @@ export class ConfiguratorTextField extends LitElement {
     }
   }
 
+  private refireEvent(event: Event) {
+    this.internalValue = this.input!.value;
+
+    // Prevent the event from bubbling.
+    event.stopImmediatePropagation();
+
+    // Dispatch a copy of the event, originating from this component.
+    const clonedEvent = Reflect.construct(event.constructor, [
+      event.type,
+      event,
+    ]);
+    const dispatched = this.dispatchEvent(clonedEvent);
+
+    // Prevent default if the dispatched event wasn't cancelled.
+    if (!dispatched) {
+      event.preventDefault();
+    }
+  }
+
   render() {
     return html`<md-filled-text-field
       id="${this.id}"
       label="${ifDefined(this.label)}"
       name="${ifDefined(this.name)}"
       pattern="${ifDefined(this.pattern)}"
+      placeholder="${ifDefined(this.placeholder)}"
       value="${this.value}"
+      @change="${this.refireEvent}"
       @input="${this.handleInput}"
+      @keydown="${this.refireEvent}"
+      @keyup="${this.refireEvent}"
+      @select="${this.refireEvent}"
     ></md-filled-text-field>`;
   }
 }

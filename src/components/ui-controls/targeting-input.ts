@@ -14,26 +14,32 @@
  * limitations under the License.
  */
 
-import './config-section';
-
-import {localized, msg} from '@lit/localize';
-import {css, html, LitElement, TemplateResult} from 'lit';
-import {customElement, property, state} from 'lit/decorators.js';
-import {keyed} from 'lit/directives/keyed.js';
+import {localized, msg, str} from '@lit/localize';
+import {customElement, property} from 'lit/decorators.js';
 import {isEqual} from 'lodash-es';
 
 import type {SampleTargetingKV} from '../../model/sample-config.js';
-import {materialIcons} from '../styles/material-icons.js';
+
+import {ChipInput} from './chip-input.js';
 
 // Constant UI strings.
 const strings = {
-  addKeyTitle: () => msg('Add targeting key', {desc: 'Button title'}),
-  addValueTitle: () => msg('Add targeting value', {desc: 'Button title'}),
-  keyColumnHeader: () =>
-    msg('Key', {desc: 'The key portion of a targeting key-value.'}),
-  removeValueTitle: () => msg('Remove targeting value', {desc: 'Button title'}),
-  valuesColumnHeader: () =>
-    msg('Values', {desc: 'The values portion of a targeting key-value.'}),
+  targetingInputLabel: () =>
+    msg('Add targeting key-values', {desc: 'Input field title'}),
+  targetingInputPlaceholder: () =>
+    msg('Key=Value1,Value2,...', {
+      desc: 'Valid format for user key-value input',
+    }),
+  validationErrorDuplicateKey: (key: string) =>
+    msg(str`Duplicate key: ${key}`, {desc: 'Validation error'}),
+  validationErrorInvalidKey: (key: string) =>
+    msg(str`Invalid key: ${key}`, {desc: 'Validation error'}),
+  validationErrorInvalidValue: (key: string, value: string) =>
+    msg(str`Invalid value for key ${key}: ${value}`, {
+      desc: 'Validation error',
+    }),
+  validationErrorNoValue: (key: string) =>
+    msg(str`No value for key: ${key}`, {desc: 'Validation error'}),
 };
 
 // Characters invalid for both keys and values.
@@ -54,116 +60,24 @@ const VALUE_VALIDATION_PATTERN = `[^${INVALID_CHARACTERS}]{1,40}`;
 const VALUE_VALIDATION_REGEX = new RegExp(`^${VALUE_VALIDATION_PATTERN}$`);
 
 /**
- * A wrapper around {@link SampleTargetingKV} that associates a unique ID
- * with a key-value pair. This ID can be passed to Lit to prevent DOM
- * elements from being improperly reused as key-values are added/removed.
- */
-interface KeyedSampleTargetingKV {
-  id: number;
-  targeting: SampleTargetingKV;
-}
-
-/**
  * Custom component for displaying/editing GPT targeting key-values.
  */
 @localized()
 @customElement('targeting-input')
-export class TargetingInput extends LitElement {
-  /**
-   * The "dirty" config contains the current (potentially invalid) targeting
-   * key-values, as configured by the user. This is in contrast to the public
-   * {@link config}, which always returns a clean, valid config based
-   * on the current configuration.
-   */
-  @state() private dirtyConfig: KeyedSampleTargetingKV[] = [];
-  private focusIndex?: number;
+export class TargetingInput extends ChipInput {
+  override chips: string[] = [];
+  override delimiters: string[] = [';', ' '];
 
-  static styles = [
-    materialIcons,
-    css`
-      :host {
-        width: 100%;
-      }
-
-      .header,
-      .key-value {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-      }
-
-      .header {
-        margin: 0 24px 0;
-      }
-
-      .key-value {
-        padding: 5px;
-        margin-left: 24px;
-      }
-
-      .key-value:nth-child(odd) {
-        background-color: darkgrey;
-      }
-
-      .header span,
-      .key,
-      .values {
-        align-items: baseline;
-        display: flex;
-        flex: 1;
-        justify-content: center;
-      }
-
-      .key,
-      .values {
-        flex-direction: column;
-        flex: 1;
-        align-items: center;
-        padding: 5px;
-      }
-
-      .key input,
-      .value input {
-        width: 100%;
-      }
-
-      .value {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .add-key {
-        width: 100%;
-        text-align: center;
-        margin: 0 24px 0;
-      }
-
-      .button {
-        cursor: pointer;
-      }
-
-      input:invalid {
-        background-color: lightpink;
-      }
-    `,
-  ];
-
-  /**
-   * The title to display for the generated `<config-section>`.
-   */
-  @property({attribute: 'title', type: String}) title = '';
+  override chipInputLabel = strings.targetingInputLabel;
+  override chipInputPlaceholder = strings.targetingInputPlaceholder;
 
   /**
    * Set active targeting configuration.
    */
   @property({attribute: 'config', type: Array})
   set config(config: SampleTargetingKV[]) {
-    if (config && !isEqual(config, this.clean(this.dirtyConfig))) {
-      this.dirtyConfig = [];
-      config.forEach(kv => {
-        this.dirtyConfig.push({id: Date.now(), targeting: kv});
-      });
+    if (config && !isEqual(this.keyValuestoChips(config), this.chips)) {
+      this.chips = this.keyValuestoChips(config);
     }
   }
 
@@ -171,261 +85,64 @@ export class TargetingInput extends LitElement {
    * Get the active targeting configuration.
    */
   get config() {
-    return this.clean(this.dirtyConfig);
+    return this.chips
+      .map(chip => this.toKeyValue(chip))
+      .filter(kv => !this.validateKeyValue(kv));
   }
 
-  /**
-   * Returns a "clean" copy of the provided config.
-   */
-  private clean(config: KeyedSampleTargetingKV[]) {
-    const cleanConfig: SampleTargetingKV[] = [];
+  override validateChip(chip: string): string | null {
+    const kv = this.toKeyValue(chip);
 
-    config.forEach(keyedKV => {
-      const {key, value} = keyedKV.targeting;
-      if (
-        key &&
-        key.trim().length > 0 &&
-        KEY_VALIDATION_REGEX.test(key.trim())
-      ) {
-        const values = Array.isArray(value) ? value : [value];
-        const cleanValues = values.filter(
-          v => v && v.trim().length > 0 && VALUE_VALIDATION_REGEX.test(v),
-        );
-        if (cleanValues.length > 0) {
-          cleanConfig.push({
-            key,
-            value: cleanValues.length > 1 ? cleanValues : cleanValues[0],
-          });
-        }
-      }
-    });
+    const validationError = this.validateKeyValue(kv);
+    if (validationError) {
+      return validationError;
+    } else if (this.chips.some(chip => chip.startsWith(`${kv.key}=`))) {
+      return strings.validationErrorDuplicateKey(kv.key);
+    }
 
-    return cleanConfig;
+    return null;
   }
 
-  /**
-   * Create a copy of the "dirty" config object.
-   */
-  private cloneConfig() {
-    return structuredClone(this.dirtyConfig);
-  }
+  private validateKeyValue(kv: SampleTargetingKV): string | null {
+    if (!kv.key || !KEY_VALIDATION_REGEX.test(kv.key)) {
+      return strings.validationErrorInvalidKey(kv.key);
+    }
 
-  /**
-   * Update the "dirty" config object.
-   */
-  private updateConfig(updatedConfig: KeyedSampleTargetingKV[]) {
-    // Check whether changes affect the "clean" config.
-    const cleanConfigUpdated = !isEqual(
-      this.clean(updatedConfig),
-      this.clean(this.dirtyConfig),
+    if (!kv.value || kv.value.length === 0) {
+      return strings.validationErrorNoValue(kv.key);
+    }
+
+    const values = Array.isArray(kv.value) ? kv.value : [kv.value];
+    const index = values.findIndex(
+      value => !VALUE_VALIDATION_REGEX.test(value),
     );
-
-    this.dirtyConfig = updatedConfig;
-
-    if (cleanConfigUpdated) {
-      // Fire an event to let the configurator know a value has changed.
-      this.dispatchEvent(
-        new CustomEvent('update', {bubbles: true, composed: true}),
-      );
-    }
-  }
-
-  private addKey() {
-    const config = this.cloneConfig();
-    config.push({id: Date.now(), targeting: {key: '', value: ''}});
-
-    // Force the key input to be focused on update.
-    this.focusIndex = config.length - 1;
-    this.updateConfig(config);
-  }
-
-  private updateKey(event: InputEvent) {
-    // Retrieve key-value index from the enclosing div.
-    const parent = (event.target as HTMLElement).closest('.key-value')!;
-    const index = Number(parent.id);
-
-    const config = this.cloneConfig();
-    config[index].targeting.key = (event.target as HTMLInputElement).value;
-    this.updateConfig(config);
-  }
-
-  private removeKey(event: Event) {
-    // Retrieve key-value index from the enclosing div.
-    const parent = (event.target as HTMLElement).closest('.key-value')!;
-    const index = Number(parent.id);
-
-    const config = this.cloneConfig();
-    config.splice(index, 1);
-
-    // Maybe focus the nearest empty key/value on update.
-    this.focusIndex = Math.max(index - 1, 0);
-    this.updateConfig(config);
-  }
-
-  private addValue(event: Event) {
-    // Retrieve key-value index from the enclosing div.
-    const parent = (event.target as HTMLElement).closest('.key-value')!;
-    const index = Number(parent.id);
-
-    let values = this.dirtyConfig[index].targeting.value;
-    values = Array.isArray(values) ? values : [values];
-
-    const config = this.cloneConfig();
-    config[index].targeting.value = [...values, ''];
-
-    // Force the value input to be focused on update.
-    this.focusIndex = index;
-    this.updateConfig(config);
-  }
-
-  private removeValue(event: Event) {
-    // Retrieve the associated value input.
-    const parent = (event.target as HTMLElement).closest('.value')!;
-    const input = parent.querySelector('input');
-
-    // Retrieve key-value index from the enclosing div.
-    const grandparent = parent.closest('.key-value')!;
-    const index = Number(grandparent.id);
-
-    // Rebuild the entire values array, excluding the value being removed.
-    const config = this.cloneConfig();
-    config[index].targeting.value = Array.from(
-      grandparent.querySelectorAll('.value input'),
-    )
-      .filter(e => e !== input)
-      .map(e => (e as HTMLInputElement).value);
-
-    // Update the unique ID for this row to force the template to refresh.
-    // TODO: look into keying individual values, to make updates more efficient.
-    config[index].id = Date.now();
-
-    if (
-      !config[index].targeting.value ||
-      config[index].targeting.value.length === 0
-    ) {
-      // No values remain, so remove the key.
-      this.removeKey(event);
-    } else {
-      // Maybe focus the nearest key/value input on update.
-      this.focusIndex = index;
-      this.updateConfig(config);
-    }
-  }
-
-  private updateValue(event: InputEvent) {
-    // Retrieve key-value index from the enclosing div.
-    const parent = (event.target as HTMLElement).closest('.key-value')!;
-    const index = Number(parent.id);
-
-    // Rebuild the entire values array.
-    const config = this.cloneConfig();
-    config[index].targeting.value = Array.from(
-      parent.querySelectorAll('.value input'),
-    ).map(e => (e as HTMLInputElement).value);
-    this.updateConfig(config);
-  }
-
-  private renderValues(value: string | string[]) {
-    const values = Array.isArray(value) ? value : [value];
-
-    const valueElems: TemplateResult[] = [];
-    values.forEach((value, i) => {
-      // The last value gets an "Add" button. The rest get a spacer.
-      const addOrSpacer =
-        i < values.length - 1
-          ? html`<span class="spacer"></span>`
-          : html`<span
-              class="material-icons md-24 button"
-              @click="${this.addValue}"
-              title="${strings.addValueTitle()}"
-              >add</span
-            >`;
-
-      valueElems.push(
-        html` <div class="value">
-          <input
-            type="text"
-            value="${value}"
-            maxlength="40"
-            pattern="${VALUE_VALIDATION_PATTERN}"
-            @input="${this.updateValue}"
-          />
-          <span
-            class="material-icons md-24 button"
-            @click="${this.removeValue}"
-            title="${strings.removeValueTitle()}"
-            >delete</span
-          >
-          ${addOrSpacer}
-        </div>`,
-      );
-    });
-
-    return valueElems;
-  }
-
-  private renderKeyValue(kv: KeyedSampleTargetingKV, index: number) {
-    // Manually key these DOM elements by their unique ID, to prevent them from
-    // from being reused incorrectly by Lit as rows are added/removed.
-    return html` ${keyed(
-      kv.id,
-      html` <div class="key-value" id="${index}">
-        <div class="key">
-          <input
-            type="text"
-            value="${kv.targeting.key}"
-            maxlength="20"
-            pattern="${KEY_VALIDATION_PATTERN}"
-            @input="${this.updateKey}"
-          />
-        </div>
-        <div class="values">${this.renderValues(kv.targeting.value)}</div>
-      </div>`,
-    )}`;
-  }
-
-  render() {
-    const keyValues: TemplateResult[] = [];
-    this.dirtyConfig.forEach((kv, i) => {
-      keyValues.push(this.renderKeyValue(kv, i));
-    });
-
-    return html`
-      <config-section title="${this.title}">
-        <div class="header">
-          <span>${strings.keyColumnHeader()}</span>
-          <span>${strings.valuesColumnHeader()}</span>
-        </div>
-        ${keyValues}
-        <span
-          class="material-icons md-24 button add-key"
-          @click="${this.addKey}"
-          title="${strings.addKeyTitle()}"
-          >add</span
-        >
-      </config-section>
-    `;
-  }
-
-  updated() {
-    if (this.focusIndex === undefined) return;
-
-    const container =
-      this.renderRoot.querySelectorAll('.key-value')[this.focusIndex!];
-
-    // If the key input is empty focus it. Else, if the last value is empty,
-    // focus that.
-    const key = container?.querySelector('.key input') as HTMLInputElement;
-    if (key?.value.trim().length === 0) {
-      key.focus();
-    } else {
-      const values = container?.querySelector('.values');
-      const value = values?.lastElementChild?.querySelector(
-        'input',
-      ) as HTMLInputElement;
-      if (value?.value.trim().length === 0) value.focus();
+    if (index > -1) {
+      return strings.validationErrorInvalidValue(kv.key, values[index]);
     }
 
-    this.focusIndex = undefined;
+    return null;
+  }
+
+  private toChip({key, value}: SampleTargetingKV): string {
+    return `${key}=${Array.isArray(value) ? value.join(',') : value}`;
+  }
+
+  private toKeyValue(chip: string): SampleTargetingKV {
+    const kv = chip.split('=');
+    const key = kv[0];
+    const value = kv.length === 2 ? kv[1].split(',') : [];
+
+    return {
+      key: key,
+      value: value.length === 0 ? '' : value.length === 1 ? value[0] : value,
+    };
+  }
+
+  private keyValuestoChips(keyValues: SampleTargetingKV[]) {
+    return this.sortChips(
+      keyValues
+        .filter(kv => !this.validateKeyValue(kv))
+        .map(kv => this.toChip(kv)),
+    );
   }
 }

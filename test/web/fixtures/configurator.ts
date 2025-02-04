@@ -69,6 +69,10 @@ export class Configurator {
       .locator('input');
   }
 
+  getChipInput(...titleHeirarchy: string[]) {
+    return new ChipInput(this, this.getConfigSection(...titleHeirarchy));
+  }
+
   /**
    * Returns configurator select element(s).
    */
@@ -114,5 +118,51 @@ export class Configurator {
 
     // Ensure the option was actually selected.
     await expect(option).toBeSelected();
+  }
+}
+
+export class ChipInput {
+  constructor(
+    private configurator: Configurator,
+    public readonly input: Locator,
+  ) {}
+
+  /**
+   * Attempts to add the provided value to this chip input.
+   *
+   * This method does not assert that the value was added successfuly.
+   */
+  async addValue(value: string) {
+    await this.getTextField().fill(value);
+    await this.getTextField().press('Enter');
+  }
+
+  async deleteValue(value: string) {
+    await this.getChip(value).getByLabel('Remove').click();
+  }
+
+  async editValue(value: string) {
+    await this.getChip(value).click();
+  }
+
+  /**
+   * Returns the chip with the specified value.
+   */
+  getChip(value: string) {
+    return this.input.locator(`md-input-chip[title="${value}"]`);
+  }
+
+  /**
+   * Returns the text field associated with this chip input.
+   */
+  getTextField() {
+    return this.input.locator('input[type="text"]');
+  }
+
+  /**
+   * Returns the validation error associated with this chip input.
+   */
+  getValidationError() {
+    return this.input.getByRole('alert');
   }
 }
