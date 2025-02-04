@@ -14,18 +14,14 @@
  * limitations under the License.
  */
 
-import {
-  expect as baseExpect,
-  Locator,
-  mergeExpects,
-  Page,
-  test as baseTest,
-} from '@playwright/test';
+import {Locator, mergeExpects, Page, test as baseTest} from '@playwright/test';
 
 import {SampleConfig} from '../../../src/model/sample-config.js';
 import {encode} from '../../../src/util/base64url.js';
 
-export const expect = baseExpect;
+import {configuratorExpect} from './configurator-expect.js';
+
+export const expect = mergeExpects(configuratorExpect);
 
 export const test = baseTest.extend<{
   config: SampleConfig;
@@ -71,5 +67,43 @@ export class Configurator {
     return parent
       .locator(`configurator-checkbox[label="${label}"]`)
       .locator('input');
+  }
+
+  /**
+   * Returns configurator select element(s).
+   */
+  getSelect(label: string, parent: Locator = this.page.locator('body')) {
+    return parent.locator(`md-filled-select[label="${label}"]`);
+  }
+
+  /**
+   * Returns configurator select option(s).
+   */
+  getSelectOption(selectElem: Locator, optionText: string) {
+    return selectElem.locator('md-select-option').filter({hasText: optionText});
+  }
+
+  /**
+   * Selects the specified option of the specified configurator select.
+   *
+   * This method asserts that the provided {@link Locator} points to a
+   * valid configurator select element, and that the specified option
+   * was actually selected.
+   */
+  async selectOption(selectElem: Locator, optionText: string) {
+    // Ensure the provided selector actually points to a select element.
+    expect(
+      (await selectElem.evaluate(elem => elem.tagName)).toLowerCase(),
+    ).toBe('md-filled-select');
+
+    // Open the select.
+    await selectElem.click();
+
+    // Find the specified option and try to click it.
+    const option = this.getSelectOption(selectElem, optionText);
+    await option.click();
+
+    // Ensure the option was actually selected.
+    await expect(option).toBeSelected();
   }
 }

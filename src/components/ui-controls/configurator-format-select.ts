@@ -14,16 +14,17 @@
  * limitations under the License.
  */
 
+import {signal, SignalWatcher} from '@lit-labs/signals';
 import {localized, msg} from '@lit/localize';
+import {TemplateResult} from 'lit';
 import {customElement, property} from 'lit/decorators.js';
+import {isEqual} from 'lodash-es';
+
 import {
   ConfiguratorOptGroup,
   ConfiguratorOption,
   ConfiguratorSelect,
 } from './configurator-select.js';
-import {signal, SignalWatcher} from '@lit-labs/signals';
-import {TemplateResult} from 'lit';
-import {isEqual} from 'lodash-es';
 
 const ANCHOR_FORMATS: OutOfPageFormat[] = ['BOTTOM_ANCHOR', 'TOP_ANCHOR'];
 
@@ -145,15 +146,21 @@ export class ConfiguratorFormatSelect extends SignalWatcher(
 
   override renderOption(
     option: ConfiguratorFormatSelectOption,
+    nested = false,
   ): TemplateResult {
     if (this.isOptGroup(option)) return super.renderOption(option);
 
     const formatDisabled = this.isFormatDisabled(option.format);
-    return super.renderOption({
-      ...option,
-      disabled: option.disabled || formatDisabled,
-      label: `${option.label}${formatDisabled ? ` (${strings.formatDisabled()})` : ''}`,
-    });
+    return super.renderOption(
+      {
+        ...option,
+        disabled: option.disabled || formatDisabled,
+        label: `${option.label}${
+          formatDisabled ? ` (${strings.formatDisabled()})` : ''
+        }`,
+      },
+      nested,
+    );
   }
 
   disconnectedCallback() {

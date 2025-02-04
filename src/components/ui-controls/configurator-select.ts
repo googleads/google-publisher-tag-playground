@@ -14,11 +14,28 @@
  * limitations under the License.
  */
 
+import '@material/web/select/filled-select';
+import '@material/web/select/select-option';
+
 import {localized} from '@lit/localize';
+import {MdFilledSelect} from '@material/web/select/filled-select.js';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
 import {ifDefined} from 'lit/directives/if-defined.js';
 import {when} from 'lit/directives/when.js';
+
+/**
+ * Whether menu animations are enabled.
+ *
+ * Menu animations don't seem to play nice with disabled elements
+ * at present, so keeping this disabled for now.
+ */
+const MENU_ANIMATION_ENABLED = false;
+
+/**
+ * The number of spaces to indent options nested under an opt group.
+ */
+const OPT_GROUP_INDENT = 2;
 
 /**
  * Describes an `<option>` element.
@@ -48,7 +65,7 @@ export type ConfiguratorSelectOption =
 @localized()
 @customElement('configurator-select')
 export class ConfiguratorSelect extends LitElement {
-  @query('select') selectElement?: HTMLSelectElement;
+  @query('md-filled-select') selectElement?: MdFilledSelect;
 
   static styles = css`
     :host {
@@ -57,15 +74,22 @@ export class ConfiguratorSelect extends LitElement {
       width: 100%;
     }
 
-    label {
-      min-width: 125px;
-      padding: 5px;
-      padding-inline-start: 0;
+    md-filled-select {
+      width: 100%;
+
+      --md-filled-field-leading-space: 10px;
+      --md-filled-field-top-space: calc(0.75rem - 2px);
+      --md-filled-field-trailing-space: 10px;
+      --md-filled-field-with-label-bottom-space: 4px;
+      --md-filled-field-with-label-top-space: 2px;
     }
 
-    select {
-      flex-grow: 1;
-      padding: 5px;
+    md-select-option {
+      --md-menu-item-bottom-space: 0;
+      --md-menu-item-leading-space: 10px;
+      --md-menu-item-one-line-container-height: 46px;
+      --md-menu-item-top-space: 0;
+      --md-menu-item-trailing-space: 10px;
     }
   `;
 
@@ -112,7 +136,7 @@ export class ConfiguratorSelect extends LitElement {
    */
   get selectedOptions(): ConfiguratorOption[] {
     const options = this.internalOptions.flatMap(option => {
-      return this.isOptGroup(option) ? option.options : option;
+      return this.isOptGroup(option) ? [option, ...option.options] : option;
     });
 
     // Order of precedence:
@@ -154,37 +178,48 @@ export class ConfiguratorSelect extends LitElement {
    * Renders a single {@link ConfiguratorSelectOption}.
    *
    * @param option The {@link ConfiguratorSelectOption} to render.
+   * @param nested Whether the option to be rendered is a member of an opt
+   *     group.
    * @returns
    */
-  protected renderOption(option: ConfiguratorSelectOption): TemplateResult {
+  protected renderOption(
+    option: ConfiguratorSelectOption,
+    nested = false,
+  ): TemplateResult {
     if (this.isOptGroup(option)) {
+      // MdSelect doesn't support opt groups. Emulate this behavior by rendering
+      // a disabled option, then manually indenting all nested options.
       return html`
-        <optgroup label="${option.label}">
-          ${option.options.map(opt => this.renderOption(opt))}
-        </optgroup>
+        <md-select-option disabled>
+          <div slot="headline">${option.label}</div>
+        </md-select-option>
+        ${option.options.map(opt => this.renderOption(opt, true))}
       `;
     }
 
-    return html` <option
+    return html`<md-select-option
       ?disabled="${option.disabled}"
       ?selected="${option.selected}"
       value="${ifDefined(option.value)}"
     >
-      ${option.label}
-    </option>`;
+      <div slot="headline">
+        ${when(nested, () =>
+          Array<TemplateResult>(OPT_GROUP_INDENT).fill(html`&nbsp;`),
+        )}${option.label}
+      </div>
+    </md-select-option>`;
   }
 
   render() {
-    return html`${when(
-        this.label,
-        () => html`<label for="${this.id}">${this.label}</label>`,
-      )}
-      <select
-        id="${this.id}"
-        name="${ifDefined(this.name)}"
-        @input=${this.handleInput}
-      >
-        ${this.internalOptions.map(option => this.renderOption(option))}
-      </select>`;
+    return html`<md-filled-select
+      id="${this.id}"
+      label="${ifDefined(this.label)}"
+      name="${ifDefined(this.name)}"
+      ?quick="${!MENU_ANIMATION_ENABLED}"
+      .displayText="${this.selectedOptions[0].label}"
+      @input=${this.handleInput}
+    >
+      ${this.internalOptions.map(option => this.renderOption(option))}
+    </md-filled-select>`;
   }
 }

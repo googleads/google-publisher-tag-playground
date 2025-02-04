@@ -15,8 +15,8 @@
  */
 
 import '../ui-controls/config-section';
-import '../ui-controls/configurator-format-select';
 import '../ui-controls/configurator-icon-button';
+import '../ui-controls/configurator-format-select';
 import '../ui-controls/configurator-text-field';
 import '../ui-controls/slot-size-input';
 import '../ui-controls/targeting-input';
@@ -58,6 +58,7 @@ const strings = {
     msg('Sample ads (out-of-page)', {desc: 'Option group label'}),
   sizeSectionTitle: () =>
     msg('Sizes', {desc: 'Section containing ad sizing options.'}),
+  slotTemplateLabel: () => msg('Slot template', {desc: 'Drop-down label'}),
   targetingSectionTitle: () =>
     msg('Targeting', {
       desc: 'Section containing ad targeting options.',
@@ -339,6 +340,7 @@ export class SlotSettings extends LitElement {
 
     return html`<configurator-format-select
       class="slot-template"
+      label="${strings.slotTemplateLabel()}"
       name="templates"
       .options="${options}"
       @update="${this.updateSlot}"
@@ -351,6 +353,7 @@ export class SlotSettings extends LitElement {
       {
         // Add the "no format selected" option.
         label: strings.oopFormatUnselected(),
+        selected: !slot.format,
         value: '',
       },
     ];
