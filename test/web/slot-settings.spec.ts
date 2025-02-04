@@ -115,6 +115,31 @@ test.describe('Ad template select', () => {
     } as SampleConfig,
   });
 
+  test('Slot settings show/hide as expected', async ({configurator}) => {
+    const templateSelect = configurator.getSelect(
+      TEMPLATE_SELECT_LABEL,
+      configurator.getConfigSection(SLOT_SETTINGS_TITLE),
+    );
+    await expect(templateSelect).toBeVisible();
+
+    // Ensure page loads with slot settings visible.
+    await expect(
+      configurator.getTextField(AD_UNIT_TEXT_FIELD_LABEL),
+    ).toBeVisible();
+
+    // Ensure selecting a template hides slot settings.
+    await configurator.selectOption(templateSelect, sampleAds[0].name());
+    await expect(
+      configurator.getTextField(AD_UNIT_TEXT_FIELD_LABEL),
+    ).not.toBeVisible();
+
+    // Ensure selecting custom shows slot settings again.
+    await configurator.selectOption(templateSelect, 'Custom');
+    await expect(
+      configurator.getTextField(AD_UNIT_TEXT_FIELD_LABEL),
+    ).toBeVisible();
+  });
+
   sampleAds.forEach(sampleAd => {
     test(`Selecting ${sampleAd.name()} changes code`, async ({
       configurator,
@@ -131,7 +156,6 @@ test.describe('Ad template select', () => {
       });
 
       await configurator.selectOption(templateSelect, sampleAd.name());
-
       const newCode = await page.locator(CODE_EDITOR_SELECTOR).screenshot({
         animations: 'disabled',
       });

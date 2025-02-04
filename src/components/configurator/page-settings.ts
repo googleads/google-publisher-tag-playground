@@ -83,6 +83,7 @@ export class PageSettings extends LitElement {
     const privacy = this.config.privacy || {};
     return html`<config-section
       class="privacy"
+      nested
       title="${pageConfigNames.privacy!()}"
     >
       ${Object.keys(privacyConfigNames).map((setting: string) => {

@@ -102,8 +102,13 @@ export class SlotSettings extends LitElement {
         width: 100%;
       }
 
-      config-section {
-        margin: 15px 0 0;
+      .add-slot {
+        text-align: center;
+        width: 100%;
+      }
+
+      .hidden {
+        display: none !important;
       }
 
       .slot {
@@ -118,7 +123,7 @@ export class SlotSettings extends LitElement {
       }
 
       .slot:nth-child(even) {
-        background-color: lightgrey;
+        background-color: var(--md-sys-color-surface-container-highest);
       }
 
       .slot-id {
@@ -134,27 +139,20 @@ export class SlotSettings extends LitElement {
       }
 
       .slot-settings {
+        border-inline-start: 1px solid var(--md-sys-color-surface-dim);
         display: flex;
         flex-flow: row wrap;
         grid-area: settings;
-        padding-top: 5px;
+        padding: 5px 0 0 10px;
       }
 
       .slot-settings configurator-format-select,
       .slot-settings configurator-text-field {
-        padding: 3px 5px;
+        padding: 5px 0;
       }
 
-      .add-slot {
-        display: flex;
-        flex-direction: column;
-        margin: 0 24px 0;
-        text-align: center;
-        width: 100%;
-      }
-
-      .hidden {
-        display: none;
+      .slot-settings slot-size-input {
+        padding-block-start: 5px;
       }
     `,
   ];

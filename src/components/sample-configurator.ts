@@ -15,11 +15,12 @@
  */
 
 import './gpt-playground';
+import './ui-controls/resizable-area';
 import './configurator/output-settings';
 import './configurator/page-settings';
 import './configurator/slot-settings';
 
-import {localized, msg} from '@lit/localize';
+import {localized} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {until} from 'lit-html/directives/until.js';
 import {customElement, property, query, state} from 'lit/decorators.js';
@@ -35,14 +36,8 @@ import {OutputSettings} from './configurator/output-settings.js';
 import {PageSettings} from './configurator/page-settings.js';
 import {SlotSettings} from './configurator/slot-settings.js';
 import {GptPlayground} from './gpt-playground.js';
-
-// Constant UI strings.
-const strings = {
-  configuratorTitle: () =>
-    msg('Sample configuration', {
-      desc: 'Section containing configurable sample options.',
-    }),
-};
+import {fontStyles} from './styles/fonts.js';
+import {materialStyles} from './styles/material-theme.js';
 
 /**
  * Custom GPT sample configurator component.
@@ -59,34 +54,30 @@ export class SampleConfigurator extends LitElement {
   @query('page-settings') private pageSettings!: PageSettings;
   @query('slot-settings') private slotSettings!: SlotSettings;
 
-  static styles = css`
-    :host {
-      display: flex;
-      height: 100%;
-    }
+  static styles = [
+    fontStyles,
+    materialStyles,
+    css`
+      :host {
+        display: flex;
+        height: 100%;
+      }
 
-    #configurator {
-      display: flex;
-      flex-direction: column;
-      width: var(--configurator-width, 33%);
-      background-color: var(--playground-tab-bar-background, #eaeaea);
-    }
+      #configurator {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        background-color: white;
+        min-width: 300px;
+      }
 
-    #configurator-header {
-      align-items: center;
-      display: flex;
-      flex: 0 0 var(--playground-bar-height, 40px);
-      padding: 0 8px 0;
-      border-bottom: var(--playground-border, solid 1px #ddd);
-    }
-
-    #configurator-settings {
-      flex: 1 1 0%;
-      max-height: 100%;
-      padding: 0 8px 8px;
-      overflow: scroll;
-    }
-  `;
+      #configurator-settings {
+        flex: 1 1 0%;
+        max-height: 100%;
+        overflow: scroll;
+      }
+    `,
+  ];
 
   @property({attribute: 'config', type: Object})
   set config(config: SampleConfig) {
@@ -152,10 +143,7 @@ export class SampleConfigurator extends LitElement {
   }
 
   private renderConfigurator() {
-    return html` <div id="configurator">
-      <div id="configurator-header">
-        <span>${strings.configuratorTitle()}</span>
-      </div>
+    return html` <div id="configurator" slot="primary">
       <div id="configurator-settings">
         <page-settings
           .config="${this.config?.page || {}}"
@@ -174,13 +162,16 @@ export class SampleConfigurator extends LitElement {
   }
 
   render() {
-    return html` ${this.renderConfigurator()}
+    return html`<resizable-area primary-percent="33">
+      ${this.renderConfigurator()}
       <gpt-playground
         .config="${until(this.template?.playgroundConfig(), null)}"
         ?preview-enabled=${this.isPreviewable()}
+        slot="secondary"
         readonly
         vertical
-      ></gpt-playground>`;
+      ></gpt-playground>
+    </resizable-area>`;
   }
 
   updated() {

@@ -1,11 +1,11 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2023 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -46,8 +46,12 @@ export abstract class ChipInput extends LitElement {
       }
 
       md-input-chip {
-        background-color: lavender;
+        background-color: var(--md-sys-color-secondary-fixed);
         max-width: 100%;
+
+        --md-input-chip-label-text-color: var(
+          --md-sys-color-on-secondary-fixed
+        );
       }
     `,
   ];
@@ -251,7 +255,7 @@ export abstract class ChipInput extends LitElement {
     // changes, those elements are rearranged in the DOM rather than
     // being deleted/recreated.
     return html`
-      <config-section title="${this.title}">
+      <config-section nested title="${this.title}">
         <md-chip-set>
           ${repeat(
             this.chips,

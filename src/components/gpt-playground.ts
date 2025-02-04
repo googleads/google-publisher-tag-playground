@@ -15,6 +15,7 @@
  */
 
 import './playground-dialog';
+import './ui-controls/resizable-area';
 import 'playground-elements/playground-file-editor';
 import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
@@ -24,12 +25,13 @@ import {localized, msg, str} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
-import {when} from 'lit/directives/when.js';
 import {PlaygroundPreview} from 'playground-elements/playground-preview.js';
 import type {PlaygroundProject} from 'playground-elements/playground-project.js';
 import type {ProjectManifest} from 'playground-elements/shared/worker-api.js';
 
 import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
+import {fontStyles} from './styles/fonts.js';
+import {materialStyles} from './styles/material-theme.js';
 
 // Constant UI strings.
 const strings = {
@@ -60,61 +62,83 @@ export class GptPlayground extends LitElement {
   @query('playground-dialog') private previewDialog!: PlaygroundDialog;
 
   // Declare shadow DOM styles.
-  static styles = css`
-    :host {
-      flex: 1;
-    }
+  static styles = [
+    fontStyles,
+    materialStyles,
+    css`
+      :host {
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: 8px;
+        display: flex;
+        height: calc(100% - 2px);
+        overflow: hidden;
 
-    #playground {
-      display: flex;
-      flex: 1;
-      height: 100%;
-    }
+        --playground-border-color: var(--md-sys-color-surface-container-high);
+        --playground-tab-bar-active-color: rgb(39 148 59);
+        --playground-highlight-color: rgb(39 148 59);
+        --playground-tab-bar-background: var(
+          --md-sys-color-surface-container-low
+        );
+        --playground-tab-bar-foreground-color: var(--md-sys-color-on-surface);
+        --playground-preview-toolbar-background: var(
+          --md-sys-color-surface-container-low
+        );
+        --playground-preview-toolbar-foreground-color: var(
+          --md-sys-color-on-surface
+        );
 
-    #playground.vertical {
-      flex-direction: column;
-    }
+        --playground-code-font-size: var(--code-font-size);
+        --playground-code-font-family: var(--code-font-family);
+        --playground-tab-bar-font-size: 15px;
+      }
 
-    #lhs {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      min-width: 200px;
-      height: var(--tabs-and-editor-height, 100%);
-      width: var(--tabs-and-editor-width, 50%);
-    }
+      #lhs {
+        border-inline-end: 2px solid
+          var(--md-sys-color-surface-container-highest);
+        min-width: 200px;
+        height: 100%;
+        width: calc(100% - 2px);
+      }
 
-    #lhs.full,
-    #playground.vertical #lhs {
-      --tabs-and-editor-width: 100%;
-    }
+      [vertical] #lhs {
+        border: unset;
+        width: 100%;
+      }
 
-    #rhs {
-      flex: 1;
-      margin-left: -3px;
-      min-height: 200px;
-      min-width: 200px;
-      position: relative;
-    }
+      #rhs {
+        min-height: 200px;
+        min-width: 200px;
+        position: relative;
+      }
 
-    #playground.vertical #rhs {
-      margin-left: 0;
-    }
+      playground-tab-bar {
+        border-block-end: none;
+        height: auto;
+        min-width: 0;
+      }
 
-    playground-tab-bar {
-      border-bottom: none;
-      height: auto;
-      min-width: 0;
-    }
+      playground-file-editor {
+        flex: 1 0 0;
+        height: 100%;
+        min-height: 0;
+      }
 
-    playground-file-editor {
-      flex: 1 0 0;
-    }
+      playground-preview {
+        font: var(--standard-font);
+        height: 100%;
+      }
 
-    playground-preview {
-      height: 100%;
-    }
-  `;
+      playground-preview::part(preview-toolbar) {
+        border-block-end: none;
+      }
+
+      [vertical] playground-preview::part(preview-toolbar) {
+        border-block-end: 1px solid var(--playground-border-color);
+        border-block-start: 1px solid var(--playground-border-color);
+        border-radius: 8px 8px 0 0;
+      }
+    `,
+  ];
 
   /**
    * An optional configuration object to pass to the {@link PlaygroundProject}
@@ -180,23 +204,20 @@ export class GptPlayground extends LitElement {
     return html`
       <playground-project
         id="${PLAYGROUND_ID}"
-        .config="${ifDefined(this.config)}"
+        .config="${this.config}"
         project-src="${ifDefined(this.projectSrc)}"
       >
       </playground-project>
 
-      <div
-        id="playground"
-        class="${ifDefined(this.vertical ? 'vertical' : '')}"
-      >
+      <resizable-area primary-percent="50" ?vertical="${this.vertical}">
         ${this.renderFilePane()} ${this.renderPreviewPane()}
-      </div>
+      </resizable-area>
     `;
   }
 
   private renderFilePane() {
     return html`
-      <div id="lhs">
+      <div id="lhs" slot="primary">
         <playground-tab-bar
           id="${PLAYGROUND_ID}-tab-bar"
           project="${PLAYGROUND_ID}"
@@ -217,11 +238,12 @@ export class GptPlayground extends LitElement {
 
   private renderPreviewPane() {
     return html`
-      <div id="rhs">
+      <div id="rhs" slot="secondary">
         ${this.renderPreviewDialog()}
         <playground-preview
           id="${PLAYGROUND_ID}-preview"
-          project="${when(this.previewEnabled, () => PLAYGROUND_ID)}"
+          location="Preview"
+          .project="${this.previewEnabled ? PLAYGROUND_ID : undefined}"
         >
         </playground-preview>
       </div>
