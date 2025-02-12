@@ -26,17 +26,18 @@
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Định cấu hình chế độ cài đặt quyền riêng tư.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Các vị trí <ph name="0">${format}</ph> sẽ trả về giá trị rỗng nếu trang hoặc thiết bị không hỗ trợ.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Định dạng nằm ngoài trang</msg>
-    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Slot template</msg>
+    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Mẫu vị trí</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Tuỳ chỉnh</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Nhấp vào nút bên dưới để xem trước trong một cửa sổ mới.</msg>
-    <msg desc="Input field label" name="s53a96edcf36221b2">Ad slot sizes</msg>
-    <msg desc="Input field title" name="s42278ac7b37a5245">Add targeting key-values</msg>
+    <msg desc="Input field label" name="s53a96edcf36221b2">Kích thước vị trí quảng cáo</msg>
+    <msg desc="Input field title" name="s42278ac7b37a5245">Thêm khoá-giá trị nhắm mục tiêu</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Quảng cáo mẫu</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Quảng cáo mẫu (nằm ngoài trang)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Không có</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Định dạng đầu ra</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Mẫu</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Cấu trúc yêu cầu duy nhất (SRA)</msg>
+    <msg desc="Preview toolbar label" name="s417b90913e05bc17">Xem trước</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Được dành cho trẻ em</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Quảng cáo bị hạn chế</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Quảng cáo không được cá nhân hoá</msg>
@@ -56,13 +57,13 @@
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Cuộn trang để kích hoạt.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Đường dẫn đơn vị quảng cáo</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Không có sẵn</msg>
-    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
+    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Khoá=Giá trị1,Giá trị2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
-    <msg desc="Validation error" name="sa9c78a7a0167358f">Duplicate key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4fb36c094a78d99">Invalid key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="s3870e706a2084c79">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
-    <msg desc="Validation error" name="sd4801ff24e6e00e1">No value for key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Invalid size: <ph name="0">${size}</ph></msg>
-    <msg desc="Validation error." name="sab590a46db406ca7">Please specify a valid ad unit path.</msg>
+    <msg desc="Validation error" name="sa9c78a7a0167358f">Trùng khoá: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4fb36c094a78d99">Khoá không hợp lệ: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="s3870e706a2084c79">Giá trị không hợp lệ cho khoá <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
+    <msg desc="Validation error" name="sd4801ff24e6e00e1">Không có giá trị cho khoá: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">Kích thước không hợp lệ: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="sab590a46db406ca7">Vui lòng chỉ định một đường dẫn đơn vị quảng cáo hợp lệ.</msg>
   </messages>
 </localizationbundle>

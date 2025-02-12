@@ -26,17 +26,18 @@
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 개인 정보 보호 설정을 구성합니다.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">페이지 또는 기기가 <ph name="0">${format}</ph> 슬롯을 지원하지 않는 경우 슬롯이 null을 반환합니다.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">페이지 외부 형식</msg>
-    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Slot template</msg>
+    <msg desc="Drop-down label" name="s06d92c8a54c8a011">슬롯 템플릿</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">사용자설정</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. 새 창에서 미리 보려면 아래 버튼을 클릭하세요.</msg>
-    <msg desc="Input field label" name="s53a96edcf36221b2">Ad slot sizes</msg>
-    <msg desc="Input field title" name="s42278ac7b37a5245">Add targeting key-values</msg>
+    <msg desc="Input field label" name="s53a96edcf36221b2">광고 슬롯 크기</msg>
+    <msg desc="Input field title" name="s42278ac7b37a5245">타겟팅 키-값 추가</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">샘플 광고</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">샘플 광고(페이지 외부)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">없음</msg>
     <msg desc="Output format label" name="s4535f519744108bf">출력 형식</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">샘플 템플릿</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">단일 요청 아키텍처(SRA)</msg>
+    <msg desc="Preview toolbar label" name="s417b90913e05bc17">미리보기</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">아동 대상 서비스로 취급</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">제한적인 광고</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">개인 맞춤이 아닌 광고</msg>
@@ -58,11 +59,11 @@
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">사용할 수 없음</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
-    <msg desc="Validation error" name="sa9c78a7a0167358f">Duplicate key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4fb36c094a78d99">Invalid key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="s3870e706a2084c79">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
-    <msg desc="Validation error" name="sd4801ff24e6e00e1">No value for key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Invalid size: <ph name="0">${size}</ph></msg>
-    <msg desc="Validation error." name="sab590a46db406ca7">Please specify a valid ad unit path.</msg>
+    <msg desc="Validation error" name="sa9c78a7a0167358f">중복 키: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4fb36c094a78d99">잘못된 키: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="s3870e706a2084c79">유효하지 않은 <ph name="0">${key}</ph> 키 값: <ph name="1">${value}</ph></msg>
+    <msg desc="Validation error" name="sd4801ff24e6e00e1">키 값이 없음: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">잘못된 크기: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="sab590a46db406ca7">유효한 광고 단위 경로를 지정하세요.</msg>
   </messages>
 </localizationbundle>

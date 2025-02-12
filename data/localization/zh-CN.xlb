@@ -26,17 +26,18 @@
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 配置隐私设置。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">如果网页或设备不支持<ph name="0">${format}</ph>广告位，这些广告位会返回 null。</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">页外广告格式</msg>
-    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Slot template</msg>
+    <msg desc="Drop-down label" name="s06d92c8a54c8a011">广告位模板</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">自定义</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>。点击下方的按钮即可在新窗口中预览。</msg>
-    <msg desc="Input field label" name="s53a96edcf36221b2">Ad slot sizes</msg>
-    <msg desc="Input field title" name="s42278ac7b37a5245">Add targeting key-values</msg>
+    <msg desc="Input field label" name="s53a96edcf36221b2">广告位尺寸</msg>
+    <msg desc="Input field title" name="s42278ac7b37a5245">添加定位键值对</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">广告示例</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">广告示例（页外）</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">无</msg>
     <msg desc="Output format label" name="s4535f519744108bf">输出格式</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">示例模板</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">单一请求架构 (SRA)</msg>
+    <msg desc="Preview toolbar label" name="s417b90913e05bc17">预览</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">面向儿童的内容</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">受限广告</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">非个性化广告</msg>
@@ -56,13 +57,13 @@
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph>滚动页面即可激活。</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">广告单元路径</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">不可用</msg>
-    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
-    <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
-    <msg desc="Validation error" name="sa9c78a7a0167358f">Duplicate key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4fb36c094a78d99">Invalid key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="s3870e706a2084c79">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
-    <msg desc="Validation error" name="sd4801ff24e6e00e1">No value for key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Invalid size: <ph name="0">${size}</ph></msg>
-    <msg desc="Validation error." name="sab590a46db406ca7">Please specify a valid ad unit path.</msg>
+    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">键=值1,值2,…</msg>
+    <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,自适应,…</msg>
+    <msg desc="Validation error" name="sa9c78a7a0167358f">重复的键：<ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4fb36c094a78d99">无效的键：<ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="s3870e706a2084c79">键“<ph name="0">${key}</ph>”的值无效：<ph name="1">${value}</ph></msg>
+    <msg desc="Validation error" name="sd4801ff24e6e00e1">键“<ph name="0">${key}</ph>”没有值</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">无效的尺寸：<ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="sab590a46db406ca7">请指定一个有效的广告单元路径。</msg>
   </messages>
 </localizationbundle>

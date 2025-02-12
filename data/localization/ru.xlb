@@ -26,17 +26,18 @@
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Задает настройки конфиденциальности.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058"><ph name="0">${format}</ph>: возвращается пустое значение, если страница или устройство не поддерживает их.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Формат внестраничного объявления</msg>
-    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Slot template</msg>
+    <msg desc="Drop-down label" name="s06d92c8a54c8a011">Шаблон рекламного места</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Свое значение</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Чтобы выполнить просмотр в отдельном окне, нажмите кнопку ниже.</msg>
-    <msg desc="Input field label" name="s53a96edcf36221b2">Ad slot sizes</msg>
-    <msg desc="Input field title" name="s42278ac7b37a5245">Add targeting key-values</msg>
+    <msg desc="Input field label" name="s53a96edcf36221b2">Размеры рекламных мест</msg>
+    <msg desc="Input field title" name="s42278ac7b37a5245">Добавьте ключи и значения таргетинга</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Образцы объявлений</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Образцы внестраничных объявлений</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Нет</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Формат вывода</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Образец шаблона</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Режим единого запроса (РЕЗ)</msg>
+    <msg desc="Preview toolbar label" name="s417b90913e05bc17">Предварительный просмотр</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Ресурс для детей</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Ограниченный показ рекламы</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Неперсонализированная реклама</msg>
@@ -56,13 +57,13 @@
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Чтобы активировать, прокрутите страницу.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Путь к рекламному блоку</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Недоступно</msg>
-    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
-    <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
-    <msg desc="Validation error" name="sa9c78a7a0167358f">Duplicate key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4fb36c094a78d99">Invalid key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="s3870e706a2084c79">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
-    <msg desc="Validation error" name="sd4801ff24e6e00e1">No value for key: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Invalid size: <ph name="0">${size}</ph></msg>
-    <msg desc="Validation error." name="sab590a46db406ca7">Please specify a valid ad unit path.</msg>
+    <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Ключ=Значение1,Значение2,…</msg>
+    <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,…</msg>
+    <msg desc="Validation error" name="sa9c78a7a0167358f">Неуникальный ключ: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4fb36c094a78d99">Недопустимый ключ: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="s3870e706a2084c79">Недопустимое значение ключа <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
+    <msg desc="Validation error" name="sd4801ff24e6e00e1">Нет значения ключа: <ph name="0">${key}</ph></msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">Недействительный размер: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="sab590a46db406ca7">Укажите действительный путь к рекламному блоку.</msg>
   </messages>
 </localizationbundle>

@@ -28,14 +28,14 @@ export const fontStyles = css`
     --code-font-size: 90%;
 
     --title-font: 500 16px/24px var(--title-font-family);
-    --title-font-family: Google Sans, Noto Sans, Noto Sans JP, Noto Sans KR,
-      Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali,
-      sans-serif;
+    --title-font-family:
+      Google Sans, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic,
+      Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
 
     --standard-font: 400 16px/24px var(--standard-font-family);
-    --standard-font-family: Roboto, Noto Sans, Noto Sans JP, Noto Sans KR,
-      Noto Naskh Arabic, Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali,
-      sans-serif;
+    --standard-font-family:
+      Roboto, Noto Sans, Noto Sans JP, Noto Sans KR, Noto Naskh Arabic,
+      Noto Sans Thai, Noto Sans Hebrew, Noto Sans Bengali, sans-serif;
 
     -webkit-font-smoothing: antialiased;
   }
