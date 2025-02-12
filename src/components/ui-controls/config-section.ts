@@ -49,11 +49,12 @@ export class ConfigSection extends LitElement {
     fieldset {
       background-color: var(--md-sys-color-surface-container);
       border: 1px solid var(--md-sys-color-outline);
+      border-radius: 8px;
       color: var(--md-sys-color-on-surface);
       display: flex;
       flex-flow: row wrap;
-      margin: var(--config-section-spacing) var(--config-section-spacing)
-        calc(var(--config-section-spacing) * 2);
+      margin-block-end: calc(var(--config-section-spacing) * 2);
+      margin-inline-end: calc(var(--config-section-spacing) * 2);
       min-width: 0;
       padding: var(--config-section-spacing);
       width: 100%;
