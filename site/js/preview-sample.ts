@@ -16,9 +16,9 @@
 
 import {html, render} from 'lit-html';
 import {unsafeHTML} from 'lit/directives/unsafe-html.js';
-import ts from 'typescript';
 
 import {SampleConfig} from '../../src/model/sample-config.js';
+import {ScriptTarget} from '../../src/model/typescript.js';
 import {createTemplate} from '../../src/template/template-factory.js';
 import * as base64url from '../../src/util/base64url.js';
 import {setLocale} from '../../src/util/localization-utils.js';
@@ -34,7 +34,7 @@ const config: SampleConfig = configParam
 if (config) {
   const template = createTemplate(config);
   // Force the target output to ES2020, so it can be rendered directly.
-  template.jsTarget = ts.ScriptTarget.ES2020;
+  template.jsTarget = ScriptTarget.ES2020;
 
   // Inject link tags.
   template.stylesheets.forEach(s => {

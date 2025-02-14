@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-import ts from 'typescript';
-
-import {TemplateType} from '../template/template-factory.js';
+import {ScriptTarget} from './typescript.js';
 
 /**
  * Configuration options for a single custom GPT sample.
@@ -69,6 +67,13 @@ export interface SampleTargetingKV {
  * Custom sample template options.
  */
 export interface SampleTemplateConfig {
-  type?: TemplateType;
-  target?: ts.ScriptTarget;
+  type?: SampleTemplateType;
+  target?: ScriptTarget;
+}
+
+/**
+ * Custom sample template types.
+ */
+export enum SampleTemplateType {
+  BASIC,
 }

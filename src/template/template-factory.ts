@@ -14,27 +14,20 @@
  * limitations under the License.
  */
 
-import {SampleConfig} from '../model/sample-config.js';
+import {SampleConfig, SampleTemplateType} from '../model/sample-config.js';
 
 import {BasicSample} from './basic-sample.js';
 import {Template} from './template.js';
-
-/**
- * Supported custom sample templates.
- */
-export enum TemplateType {
-  BASIC,
-}
 
 /**
  * Returns an appropriate {@link Template} instance for the specified
  * {@link SampleConfig}.
  */
 export function createTemplate(config: SampleConfig): Template {
-  const templateType = config.template?.type || TemplateType.BASIC;
+  const templateType = config.template?.type || SampleTemplateType.BASIC;
 
   switch (templateType) {
-    case TemplateType.BASIC:
+    case SampleTemplateType.BASIC:
       return new BasicSample(config, config.template?.target);
     default:
       throw new Error(`Unsupported template type: ${templateType}`);

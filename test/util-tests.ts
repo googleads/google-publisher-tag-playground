@@ -16,9 +16,8 @@
 
 import 'jasmine';
 
-import ts from 'typescript';
-
 import {SampleSlotConfig} from '../src/model/sample-config.js';
+import {ScriptTarget} from '../src/model/typescript.js';
 import * as base64url from '../src/util/base64url.js';
 import {formatHtml, formatTypeScript} from '../src/util/format-code.js';
 import {getLocale, setLocale} from '../src/util/localization-utils.js';
@@ -188,8 +187,8 @@ describe('Utility', () => {
         const testData = transpileTestCases[testCase];
 
         const typescript = testData.typescript.trim();
-        const es5 = tsToJs(typescript, ts.ScriptTarget.ES5);
-        const es2020 = tsToJs(typescript, ts.ScriptTarget.ES2020);
+        const es5 = tsToJs(typescript, ScriptTarget.ES5);
+        const es2020 = tsToJs(typescript, ScriptTarget.ES2020);
 
         expect(unformat(es5)).toEqual(unformat(testData.es5));
         expect(unformat(es2020)).toEqual(unformat(testData.es2020));

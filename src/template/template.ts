@@ -16,10 +16,10 @@
 
 import {css} from 'lit';
 import {ProjectManifest} from 'playground-elements/shared/worker-api.js';
-import ts from 'typescript';
 
 import * as samplegen from '../codegen/gpt-sample.js';
 import {SampleConfig} from '../model/sample-config.js';
+import {ScriptTarget} from '../model/typescript.js';
 import {formatHtml} from '../util/format-code.js';
 import {tsToJs} from '../util/transpile-code.js';
 
@@ -48,7 +48,7 @@ export abstract class Template {
    */
   constructor(
     public sampleConfig: SampleConfig,
-    public jsTarget?: ts.ScriptTarget,
+    public jsTarget?: ScriptTarget,
   ) {}
 
   /**

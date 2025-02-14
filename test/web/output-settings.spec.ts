@@ -15,7 +15,8 @@
  */
 
 import {Page} from '@playwright/test';
-import {ScriptTarget} from 'typescript';
+
+import {ScriptTarget} from '../../src/model/typescript.js';
 
 import {expect, test} from './fixtures/configurator.js';
 

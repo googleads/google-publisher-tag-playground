@@ -16,6 +16,8 @@
 
 import ts from 'typescript';
 
+import {ScriptTarget} from '../model/typescript.js';
+
 const PLACEHOLDER_COMMENT = '/* NEW_LINE_PLACEHOLDER */';
 
 const TSC_OPTIONS: ts.CompilerOptions = {
@@ -37,7 +39,7 @@ function toggleBlankLines(source: string) {
  * @param target The output JavaScript target.
  * @returns
  */
-export function tsToJs(source: string, target = ts.ScriptTarget.ES2020) {
+export function tsToJs(source: string, target = ScriptTarget.ES2020) {
   const js = ts.transpileModule(toggleBlankLines(source), {
     compilerOptions: {...TSC_OPTIONS, target},
   }).outputText;

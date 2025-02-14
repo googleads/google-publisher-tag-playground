@@ -20,10 +20,10 @@ import '../ui-controls/configurator-select';
 import {localized} from '@lit/localize';
 import {html, LitElement} from 'lit';
 import {customElement, property, query} from 'lit/decorators.js';
-import ts from 'typescript';
 
 import {SampleTemplateConfig} from '../../model/sample-config.js';
 import {configNames, templateConfigNames} from '../../model/settings.js';
+import {ScriptTarget} from '../../model/typescript.js';
 import {
   ConfiguratorOption,
   ConfiguratorSelect,
@@ -48,7 +48,7 @@ export class OutputSettings extends LitElement {
     const target = this.targetSelect.value;
     this.config.target =
       target && target.length > 0
-        ? ts.ScriptTarget[target as keyof typeof ts.ScriptTarget]
+        ? ScriptTarget[target as keyof typeof ScriptTarget]
         : undefined;
 
     // Fire an event to let the configurator know a value has changed.
@@ -66,8 +66,8 @@ export class OutputSettings extends LitElement {
       },
     ];
 
-    Object.entries(ts.ScriptTarget)
-      .filter(([k]) => isNaN(Number(k)) && !['ES3', 'JSON'].includes(k))
+    Object.entries(ScriptTarget)
+      .filter(([k]) => isNaN(Number(k)))
       .forEach(([k, v]) => {
         options.push({
           label: `JavaScript (${k})`,
