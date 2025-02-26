@@ -50,6 +50,7 @@ export interface SamplePrivacyConfig {
  */
 export interface SampleSlotConfig {
   adUnit: string;
+  config?: googletag.config.SlotSettingsConfig;
   format?: keyof typeof googletag.enums.OutOfPageFormat;
   size: googletag.GeneralSize;
   targeting?: SampleTargetingKV[];

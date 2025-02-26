@@ -1,0 +1,79 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import {isEmpty, isObject, isUndefined} from 'lodash-es';
+
+/* Internal template strings */
+
+const api = {
+  setConfig: (settings: string) => `setConfig(${settings})`,
+};
+
+/* Internal helper methods */
+
+/**
+ * Prunes all undefined config properties.
+ *
+ * This method recurses through all nested config objects, removing
+ * any that become empty due to pruning.
+ *
+ * The provided object is modified in place.
+ *
+ * @param obj
+ * @returns
+ */
+function removeEmptyConfigs(obj: Object) {
+  let key: keyof typeof obj;
+  for (key in obj) {
+    const value = obj[key];
+    if (
+      isUndefined(value) ||
+      (isObject(value) && isEmpty(removeEmptyConfigs(value)))
+    ) {
+      delete obj[key];
+    }
+  }
+
+  return obj;
+}
+
+/* Public exports */
+
+/**
+ * Generates code for setting a {@link googletag.config.SlotSettingsConfig}.
+ *
+ * @param config
+ * @returns
+ */
+export function setSlotConfig(config: googletag.config.SlotSettingsConfig) {
+  // Copy only the settings that we explicitly support.
+  const cleanConfig: googletag.config.SlotSettingsConfig = {
+    interstitial: {
+      requireStorageAccess: config.interstitial?.requireStorageAccess,
+      triggers: {
+        navBar: config.interstitial?.triggers?.navBar,
+        unhideWindow: config.interstitial?.triggers?.unhideWindow,
+      },
+    },
+  };
+
+  // Remove undefined properties and empty nested configs.
+  removeEmptyConfigs(cleanConfig);
+
+  return isEmpty(cleanConfig)
+    ? ''
+    : '.' + api.setConfig(JSON.stringify(cleanConfig));
+}

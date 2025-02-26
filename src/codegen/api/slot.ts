@@ -20,6 +20,8 @@ import {
 } from '../../model/sample-config.js';
 import {sanitizeJs} from '../sanitize.js';
 
+import * as config from './config.js';
+
 /* Internal template strings */
 
 const api = {
@@ -34,16 +36,20 @@ const api = {
  * Generates code for configuring slot settings inline with a slot definition.
  */
 export function addInlineSlotSettings(
-  config: SampleSlotConfig,
+  slotConfig: SampleSlotConfig,
   slotDefinition: string,
 ) {
   let slotSettings = slotDefinition;
 
-  config.targeting?.forEach((kv: SampleTargetingKV) => {
+  slotConfig.targeting?.forEach((kv: SampleTargetingKV) => {
     slotSettings += '.' + api.setTargeting(kv);
   });
 
-  slotSettings += '.' + api.addService() + ';';
+  slotSettings += '.' + api.addService();
 
-  return slotSettings;
+  if (slotConfig.config) {
+    slotSettings += config.setSlotConfig(slotConfig.config);
+  }
+
+  return slotSettings + ';';
 }

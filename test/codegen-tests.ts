@@ -21,6 +21,7 @@ import path from 'path';
 import {create} from 'ts-node';
 import {fileURLToPath} from 'url';
 
+import * as config from '../src/codegen/api/config.js';
 import * as codegen from '../src/codegen/gpt-sample.js';
 import {SampleConfig} from '../src/model/sample-config.js';
 
@@ -48,4 +49,69 @@ describe('Codegen', () => {
       expect(output.length).not.toBe(0);
     });
   }
+});
+
+describe('Codegen API: config', () => {
+  it('returns valid SlotSettingsConfig unmodified.', () => {
+    const input: googletag.config.SlotSettingsConfig = {
+      interstitial: {
+        requireStorageAccess: true,
+        triggers: {
+          navBar: true,
+          unhideWindow: true,
+        },
+      },
+    };
+
+    const output = config.setSlotConfig(input);
+    expect(output).toContain(JSON.stringify(input));
+  });
+
+  it('returns nothing if the SlotSettingsConfig is empty.', () => {
+    const input: googletag.config.SlotSettingsConfig = {
+      interstitial: {},
+    };
+
+    const output = config.setSlotConfig(input);
+    expect(output).toBe('');
+  });
+
+  it('removes invalid properties from SlotSettingsConfig.', () => {
+    const input = {
+      interstitial: {
+        requireStorageAccess: true,
+      },
+      fakeProp: 'no',
+    } as googletag.config.SlotSettingsConfig;
+
+    const expectedOutput: googletag.config.SlotSettingsConfig = {
+      interstitial: {
+        requireStorageAccess: true,
+      },
+    };
+
+    const output = config.setSlotConfig(input);
+    expect(output).toContain(JSON.stringify(expectedOutput));
+  });
+
+  it('prunes empty nested configs of SlotSettingsConfig.', () => {
+    const input: googletag.config.SlotSettingsConfig = {
+      interstitial: {
+        requireStorageAccess: true,
+        triggers: {
+          navBar: undefined,
+          unhideWindow: undefined,
+        },
+      },
+    };
+
+    const expectedOutput: googletag.config.SlotSettingsConfig = {
+      interstitial: {
+        requireStorageAccess: true,
+      },
+    };
+
+    const output = config.setSlotConfig(input);
+    expect(output).toContain(JSON.stringify(expectedOutput));
+  });
 });
