@@ -72,6 +72,11 @@ export class ConfiguratorCheckbox extends LitElement {
    */
   @property({type: Boolean}) checked = false;
 
+  /**
+   * Whether the checkbox can be interacted with.
+   */
+  @property({type: Boolean}) disabled = false;
+
   private handleClick() {
     this.checked = this.input.selected;
 
@@ -86,6 +91,7 @@ export class ConfiguratorCheckbox extends LitElement {
       <md-switch
         id="${this.id}"
         name="${ifDefined(this.name)}"
+        ?disabled="${this.disabled}"
         ?selected="${this.checked}"
         @change="${this.handleClick}"
       >

@@ -16,7 +16,12 @@
 
 import {sampleAds} from '../../src/model/sample-ads.js';
 import {SampleConfig, SampleSlotConfig} from '../../src/model/sample-config.js';
-import {outOfPageFormatNames} from '../../src/model/settings.js';
+import {
+  configNames,
+  interstitialConfigNames,
+  interstitialTriggerNames,
+  outOfPageFormatNames,
+} from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
 
@@ -355,5 +360,89 @@ test.describe('Ad format exclusions', () => {
     configurator,
   }) => {
     await assertSideRailFormatExclusion(configurator, TEMPLATE_SELECT_LABEL);
+  });
+});
+
+test.describe('Interstitial settings', () => {
+  /**
+   * Maps interstitial setting labels to the config properties they
+   * control and the {@link googletag.config.InterstitialConfig} necessary
+   * to enable them.
+   */
+  const booleanSettings: {
+    label: string;
+    expectedText: string;
+    setting: googletag.config.InterstitialConfig;
+  }[] = [
+    {
+      label: interstitialConfigNames.requireStorageAccess(),
+      expectedText: 'requireStorageAccess',
+      setting: {requireStorageAccess: true},
+    },
+    {
+      label: interstitialTriggerNames.navBar(),
+      expectedText: 'navBar',
+      setting: {triggers: {navBar: true}},
+    },
+    {
+      label: interstitialTriggerNames.unhideWindow(),
+      expectedText: 'unhideWindow',
+      setting: {triggers: {unhideWindow: true}},
+    },
+  ];
+
+  const interstitialSlotConfig: SampleSlotConfig = {
+    adUnit: '/123/Test',
+    format: 'INTERSTITIAL',
+    size: [],
+  };
+
+  booleanSettings.forEach(({label, expectedText, setting}) => {
+    test.describe('Enable/disable checkboxes', () => {
+      // Load the configurator with interstitial config settings visible.
+      test.use({config: {slots: [interstitialSlotConfig]}});
+
+      test(`${label} adds ${expectedText}`, async ({configurator, page}) => {
+        const checkbox = configurator.getCheckbox(
+          label,
+          configurator.getConfigSection(configNames.slots()),
+        );
+
+        // Enable the setting and ensure expected string appears in code.
+        await checkbox.check();
+        await expect(page.locator('gpt-playground')).toContainText(
+          expectedText,
+        );
+
+        // Disable the setting and ensure expected string no longer appears in
+        // code.
+        await checkbox.uncheck();
+        await expect(page.locator('gpt-playground')).not.toContainText(
+          expectedText,
+        );
+      });
+    });
+
+    test.describe('Prepopulation', () => {
+      // Load the configurator with a SampleConfig that enables the property
+      // under test.
+      test.use({
+        config: {
+          slots: [{...interstitialSlotConfig, config: {interstitial: setting}}],
+        },
+      });
+
+      test(`${label} adds ${expectedText}`, async ({configurator, page}) => {
+        await expect(
+          configurator.getCheckbox(
+            label,
+            configurator.getConfigSection(configNames.slots()),
+          ),
+        ).toBeChecked();
+        await expect(page.locator('gpt-playground')).toContainText(
+          expectedText,
+        );
+      });
+    });
   });
 });

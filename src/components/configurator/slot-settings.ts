@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import '../ui-controls/configurator-checkbox';
 import '../ui-controls/config-section';
 import '../ui-controls/configurator-icon-button';
 import '../ui-controls/configurator-format-select';
@@ -22,7 +23,7 @@ import '../ui-controls/slot-size-input';
 import '../ui-controls/targeting-input';
 
 import {localized, msg} from '@lit/localize';
-import {css, html, LitElement, ReactiveElement, TemplateResult} from 'lit';
+import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
 import {when} from 'lit/directives/when.js';
@@ -30,7 +31,13 @@ import {isEqual} from 'lodash-es';
 
 import {sampleAds} from '../../model/sample-ads.js';
 import type {SampleSlotConfig} from '../../model/sample-config.js';
-import {configNames, outOfPageFormatNames} from '../../model/settings.js';
+import {
+  configNames,
+  interstitialConfigNames,
+  interstitialTriggerNames,
+  outOfPageFormatNames,
+} from '../../model/settings.js';
+import {ConfiguratorCheckbox} from '../ui-controls/configurator-checkbox.js';
 import {
   ConfiguratorFormatOptGroup,
   ConfiguratorFormatOption,
@@ -45,6 +52,8 @@ import {TargetingInput} from '../ui-controls/targeting-input.js';
 const strings = {
   addSlotTitle: () => msg('Add slot', {desc: 'Button text'}),
   adUnitLabel: () => msg('Ad unit path', {desc: 'Text box label'}),
+  defaultInterstitialTrigger: () =>
+    msg('Link click', {desc: 'The action of clicking on a link.'}),
   customOptionLabel: () =>
     msg('Custom', {
       desc: 'Drop-down option that allows users to input custom ad slot values.',
@@ -153,6 +162,10 @@ export class SlotSettings extends LitElement {
 
       .slot-settings slot-size-input {
         padding-block-start: 5px;
+      }
+
+      configurator-checkbox[name='storage'] {
+        width: 100%;
       }
     `,
   ];
@@ -264,12 +277,10 @@ export class SlotSettings extends LitElement {
     );
 
     const template = (
-      parent.querySelector(
-        'configurator-format-select[name=templates]',
-      ) as ConfiguratorFormatSelect
-    ).selectedOptions[0];
+      parent.querySelector('[name=templates]') as ConfiguratorFormatSelect
+    )?.selectedOptions[0];
 
-    if (template.value) {
+    if (template?.value) {
       // A sample ad was selected.
       config[index].template = true;
       config[index].slot = sampleAds[Number(template.value)].slot;
@@ -279,27 +290,108 @@ export class SlotSettings extends LitElement {
 
       // Prepopulate inputs with any previously selected sample ad values.
       const adUnitPath = parent.querySelector(
-        'configurator-text-field[name=adUnit]',
+        '[name=adUnit]',
       ) as ConfiguratorTextField;
       const format = parent.querySelector(
-        'configurator-format-select[name=formats]',
+        '[name=formats]',
       ) as ConfiguratorFormatSelect;
-      const sizes = parent.querySelector(
-        'slot-size-input',
-      ) as ReactiveElement as SlotSizeInput;
+      const sizes = parent.querySelector('slot-size-input') as SlotSizeInput;
       const targeting = parent.querySelector(
         'targeting-input',
-      ) as ReactiveElement as TargetingInput;
+      ) as TargetingInput;
 
       config[index].slot = {
-        adUnit: adUnitPath?.value,
+        adUnit: adUnitPath?.value || '',
         format: format?.format,
         size: sizes?.config || [],
         targeting: targeting?.config || [],
       };
+
+      this.updateSlotConfig(config[index].slot, parent);
     }
 
     this.updateConfig(config);
+  }
+
+  private updateSlotConfig(slot: SampleSlotConfig, parent: Element) {
+    // Populate slot-level config.
+    const slotConfig: googletag.config.SlotSettingsConfig = {};
+
+    if (slot.format === 'INTERSTITIAL') {
+      const interstitialConfig: googletag.config.InterstitialConfig = {};
+
+      const requireStorageAccess = (
+        parent.querySelector('[name=storage]') as ConfiguratorCheckbox
+      )?.checked;
+
+      if (requireStorageAccess) {
+        interstitialConfig.requireStorageAccess = true;
+      }
+
+      const triggers: Partial<
+        Record<googletag.config.InterstitialTrigger, boolean>
+      > = {};
+      Object.keys(interstitialTriggerNames).map(key => {
+        const trigger = key as googletag.config.InterstitialTrigger;
+        const triggerEnabled = (
+          parent.querySelector(`[name=${trigger}]`) as ConfiguratorCheckbox
+        )?.checked;
+        if (triggerEnabled) triggers[trigger] = true;
+      });
+
+      if (Object.keys(triggers).length > 0) {
+        interstitialConfig.triggers = triggers;
+      }
+
+      if (Object.keys(interstitialConfig).length > 0) {
+        slotConfig.interstitial = interstitialConfig;
+      }
+    }
+
+    if (Object.keys(slotConfig).length > 0) {
+      slot.config = slotConfig;
+    }
+  }
+
+  private renderInterstitialSlotSettings(slot: SampleSlotConfig) {
+    const triggers: TemplateResult[] = [];
+
+    // Add a disabled checkbox to represent the default trigger, which isn't
+    // customizable.
+    triggers.push(html`
+      <configurator-checkbox
+        label="${strings.defaultInterstitialTrigger()}"
+        ?checked=${true}
+        ?disabled=${true}
+      ></configurator-checkbox>
+    `);
+
+    Object.entries(interstitialTriggerNames).map(([key, label]) => {
+      const trigger = key as googletag.config.InterstitialTrigger;
+      triggers.push(
+        html` <configurator-checkbox
+          label="${label()}"
+          name="${trigger}"
+          ?checked="${slot.config?.interstitial?.triggers?.[trigger]}"
+          @update="${this.updateSlot}"
+        ></configurator-checkbox>`,
+      );
+    });
+
+    return html`
+      <configurator-checkbox
+        label="${interstitialConfigNames.requireStorageAccess()}"
+        name="storage"
+        ?checked="${slot.config?.interstitial?.requireStorageAccess}"
+        @update="${this.updateSlot}"
+      ></configurator-checkbox>
+      <config-section
+        title="${interstitialConfigNames.triggers()}"
+        ?nested=${true}
+      >
+        ${triggers}
+      </config-section>
+    `;
   }
 
   private renderSlotTemplates(slot: SampleSlotConfig) {
@@ -410,6 +502,9 @@ export class SlotSettings extends LitElement {
   private renderSlotSettings(slot: SampleSlotConfig) {
     return html`
       ${this.renderSlotOptions(slot)}
+      ${when(slot.format && slot.format === 'INTERSTITIAL', () =>
+        this.renderInterstitialSlotSettings(slot),
+      )}
       ${when(!slot.format, () => this.renderSlotSizeInput(slot))}
       ${this.renderTargetingInput(slot)}
     `;

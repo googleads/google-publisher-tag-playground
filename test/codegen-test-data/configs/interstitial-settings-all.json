@@ -1,0 +1,18 @@
+{
+  "slots": [
+    {
+      "adUnit": "/123/abc",
+      "size": [],
+      "format": "INTERSTITIAL",
+      "config": {
+        "interstitial": {
+          "requireStorageAccess": true,
+          "triggers": {
+            "navBar": true,
+            "unhideWindow": true
+          }
+        }
+      }
+    }
+  ]
+}

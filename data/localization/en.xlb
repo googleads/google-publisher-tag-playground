@@ -57,6 +57,10 @@
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
     <msg name="s2d647200b120ea41" desc="Text box label">Ad unit path</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Unavailable</msg>
+    <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
+    <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Unhide window</msg>
+    <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">Browser navigation</msg>
+    <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Interstitial triggers</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">Key=Value1,Value2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x100,fluid,...</msg>
     <msg name="sa9c78a7a0167358f" desc="Validation error">Duplicate key: <ph name="0">${key}</ph></msg>
@@ -65,5 +69,6 @@
     <msg name="sd4801ff24e6e00e1" desc="Validation error">No value for key: <ph name="0">${key}</ph></msg>
     <msg name="sb4a18873f72e8f57" desc="Validation error">Invalid size: <ph name="0">${size}</ph></msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">Please specify a valid ad unit path.</msg>
+    <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">Require local storage consent</msg>
   </messages>
 </localizationbundle>

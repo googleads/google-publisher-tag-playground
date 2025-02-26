@@ -26,7 +26,7 @@ import {
 /**
  * Maps {@link SampleConfig} properties to their friendly names.
  */
-export const configNames: {[K in keyof SampleConfig]: () => string} = {
+export const configNames: Record<keyof SampleConfig, () => string> = {
   page: () => msg('Page settings', {desc: 'Section containing page settings.'}),
   slots: () =>
     msg('Slot settings', {desc: 'Section containing ad slot settings.'}),
@@ -39,7 +39,7 @@ export const configNames: {[K in keyof SampleConfig]: () => string} = {
 /**
  * Maps {@link SamplePageConfig} properties to their friendly names.
  */
-export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
+export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
   privacy: () => msg('Privacy', {desc: 'Section containing privacy settings.'}),
   sra: () =>
     msg('Single Request Architecture (SRA)', {
@@ -54,9 +54,10 @@ export const pageConfigNames: {[K in keyof SamplePageConfig]: () => string} = {
 /**
  * Maps {@link SamplePrivacyConfig} properties to their friendly names.
  */
-export const privacyConfigNames: {
-  [K in keyof SamplePrivacyConfig]: () => string;
-} = {
+export const privacyConfigNames: Record<
+  keyof SamplePrivacyConfig,
+  () => string
+> = {
   // Order here defines the order of settings in the configurator.
   tfcd: () => msg('Child-directed treatment', {desc: 'Privacy setting label'}),
   ltd: () => msg('Limited ads', {desc: 'Privacy setting label'}),
@@ -68,9 +69,10 @@ export const privacyConfigNames: {
 /**
  * Maps {@link SampleTemplateConfig} properties to their friendly names.
  */
-export const templateConfigNames: {
-  [K in keyof SampleTemplateConfig]: () => string;
-} = {
+export const templateConfigNames: Record<
+  keyof SampleTemplateConfig,
+  () => string
+> = {
   type: () => msg('Sample template', {desc: 'Output template label'}),
   target: () => msg('Output format', {desc: 'Output format label'}),
 };
@@ -78,9 +80,10 @@ export const templateConfigNames: {
 /**
  * Maps `googletag.enums.OutOfPageFormat` keys to their friendly names.
  */
-export const outOfPageFormatNames: {
-  [K in keyof typeof googletag.enums.OutOfPageFormat]: () => string;
-} = {
+export const outOfPageFormatNames: Record<
+  keyof typeof googletag.enums.OutOfPageFormat,
+  () => string
+> = {
   BOTTOM_ANCHOR: () =>
     msg('Anchor ad (bottom)', {desc: 'An out-of-page ad format'}),
   TOP_ANCHOR: () => msg('Anchor ad (top)', {desc: 'An out-of-page ad format'}),
@@ -93,4 +96,39 @@ export const outOfPageFormatNames: {
     msg('Side rail ad (right)', {desc: 'An out-of-page ad format'}),
   INTERSTITIAL: () =>
     msg('Web interstitial ad', {desc: 'An out-of-page ad format'}),
+};
+
+/**
+ * Maps `googletag.config.InterstitialConfig` properties to their friendly
+ * names.
+ */
+export const interstitialConfigNames: Record<
+  keyof googletag.config.InterstitialConfig,
+  () => string
+> = {
+  triggers: () =>
+    msg('Interstitial triggers', {
+      desc: 'User actions that can trigger an intersitial ad.',
+    }),
+  requireStorageAccess: () =>
+    msg('Require local storage consent', {
+      desc: 'Whether user consent is required to access local storage.',
+    }),
+};
+
+/**
+ * Maps `googletag.config.InterstitialTrigger` values to their friendly names.
+ */
+export const interstitialTriggerNames: Record<
+  googletag.config.InterstitialTrigger,
+  () => string
+> = {
+  navBar: () =>
+    msg('Browser navigation', {
+      desc: 'The action of interacting with the browser navigation bar.',
+    }),
+  unhideWindow: () =>
+    msg('Unhide window', {
+      desc: 'The action of hiding and then returning to the page (for example, by switching tabs).',
+    }),
 };

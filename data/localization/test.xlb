@@ -57,6 +57,10 @@
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
     <msg name="s2d647200b120ea41" desc="Text box label">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
+    <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
+    <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Û́n̂ĥ́îd̂́ê ŵ́în̂́d̂ốŵ</msg>
+    <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">B̂́r̂ốŵŝ́êr̂́ n̂́âv̂́îĝ́ât̂́îốn̂</msg>
+    <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ t̂́r̂î́ĝĝ́êr̂́ŝ</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">K̂́êŷ́=V̂́âl̂́ûế1,V̂́âl̂́ûế2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x̂́100,f̂́l̂û́îd̂́,...</msg>
     <msg name="sa9c78a7a0167358f" desc="Validation error">D̂́ûp̂́l̂î́ĉất̂ế k̂́êŷ́: <ph name="0">${key}</ph></msg>
@@ -65,5 +69,6 @@
     <msg name="sd4801ff24e6e00e1" desc="Validation error">N̂́ô v̂́âl̂́ûế f̂́ôr̂́ k̂́êŷ́: <ph name="0">${key}</ph></msg>
     <msg name="sb4a18873f72e8f57" desc="Validation error">Î́n̂v̂́âl̂́îd̂́ ŝ́îẑ́ê: <ph name="0">${size}</ph></msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">P̂́l̂ếâŝ́ê ŝ́p̂ếĉî́f̂ŷ́ ấ v̂́âl̂́îd̂́ ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ.</msg>
+    <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">R̂́êq̂́ûî́r̂ế l̂́ôĉ́âl̂́ ŝ́t̂ốr̂ấĝế ĉ́ôn̂́ŝến̂t̂́</msg>
   </messages>
 </localizationbundle>
