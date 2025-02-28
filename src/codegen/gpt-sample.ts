@@ -25,6 +25,10 @@ import * as pubads from './api/pubads.js';
 /* Internal template strings */
 
 const strings = {
+  setAdSenseAttributesComment: () =>
+    msg('// Set AdSense attributes.', {
+      desc: 'Code comment preceding calls to configure AdSense settings.',
+    }),
   staticSlotComment: () =>
     msg('// Define static ad slots.', {
       desc: 'Code comment preceding ad slot definitions.',
@@ -91,6 +95,9 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
   const staticSlots = slotDefinitions(config);
   const outOfPageSlots = slotDefinitions(config, true);
 
+  const adSenseAttributes = pubads.setAdSenseAttributes(
+    config.page?.adsense || {},
+  );
   const pageTargeting = pubads.setTargeting(config.page?.targeting || []);
   const privacySettings = pubads.setPrivacySettings(config.page?.privacy || {});
 
@@ -106,6 +113,9 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
 
     ${pageTargeting.length > 0 ? strings.pageTargetingComment() : ''}
     ${pageTargeting}
+
+    ${adSenseAttributes.length > 0 ? strings.setAdSenseAttributesComment() : ''}
+    ${adSenseAttributes}
 
     ${config.page?.sra ? strings.enableSraComment() : ''}
     ${config.page?.sra ? pubads.enableSingleRequest() : ''}

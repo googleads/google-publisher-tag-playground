@@ -21,6 +21,7 @@
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
     <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Enable single request mode.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
+    <msg name="s2fe608b6b49c885b" desc="Code comment preceding calls to configure AdSense settings.">// Set AdSense attributes.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// Define out-of-page slots.</msg>
     <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Configure page-level targeting.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
@@ -51,6 +52,7 @@
     <msg name="sf93d227444bc5687" desc="Section containing page settings.">Page settings</msg>
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">Page-level targeting</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">Privacy</msg>
+    <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">AdSense attributes</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> is loaded.</msg>
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> is loading...</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> is not supported on this page.</msg>
@@ -60,6 +62,7 @@
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Unhide window</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">Browser navigation</msg>
+    <msg name="s1c67a1fa4d07bd8b" desc="The page URL to associate with ad requests.">Page URL</msg>
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Interstitial triggers</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">Key=Value1,Value2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x100,fluid,...</msg>

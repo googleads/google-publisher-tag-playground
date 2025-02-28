@@ -17,6 +17,7 @@
 import {msg} from '@lit/localize';
 
 import {
+  SampleAdSenseAttributeConfig,
   SampleConfig,
   SamplePageConfig,
   SamplePrivacyConfig,
@@ -40,6 +41,10 @@ export const configNames: Record<keyof SampleConfig, () => string> = {
  * Maps {@link SamplePageConfig} properties to their friendly names.
  */
 export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
+  adsense: () =>
+    msg('AdSense attributes', {
+      desc: 'Settings that affect AdSense behavior.',
+    }),
   privacy: () => msg('Privacy', {desc: 'Section containing privacy settings.'}),
   sra: () =>
     msg('Single Request Architecture (SRA)', {
@@ -48,6 +53,19 @@ export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
   targeting: () =>
     msg('Page-level targeting', {
       desc: 'Section containing page-level targeting options.',
+    }),
+};
+
+/**
+ * Maps {@link SampleAdSenseAttributeConfig} properties to their friendly names.
+ */
+export const adSenseAttributeConfigNames: Record<
+  keyof SampleAdSenseAttributeConfig,
+  () => string
+> = {
+  pageUrl: () =>
+    msg('Page URL', {
+      desc: 'The page URL to associate with ad requests.',
     }),
 };
 

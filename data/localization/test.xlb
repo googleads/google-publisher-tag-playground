@@ -21,6 +21,7 @@
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
     <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Ến̂ấb̂l̂́ê ŝ́în̂́ĝl̂́ê r̂́êq̂́ûếŝt̂́ m̂́ôd̂́ê.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="s2fe608b6b49c885b" desc="Code comment preceding calls to configure AdSense settings.">// Ŝ́êt̂́ Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// D̂́êf̂́în̂́ê ốût̂́-ốf̂-p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
@@ -51,6 +52,7 @@
     <msg name="sf93d227444bc5687" desc="Section containing page settings.">P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">P̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">P̂́r̂î́v̂ấĉŷ́</msg>
+    <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
@@ -60,6 +62,7 @@
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Û́n̂ĥ́îd̂́ê ŵ́în̂́d̂ốŵ</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">B̂́r̂ốŵŝ́êr̂́ n̂́âv̂́îĝ́ât̂́îốn̂</msg>
+    <msg name="s1c67a1fa4d07bd8b" desc="The page URL to associate with ad requests.">P̂́âĝ́ê Û́R̂L̂́</msg>
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ t̂́r̂î́ĝĝ́êr̂́ŝ</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">K̂́êŷ́=V̂́âl̂́ûế1,V̂́âl̂́ûế2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x̂́100,f̂́l̂û́îd̂́,...</msg>

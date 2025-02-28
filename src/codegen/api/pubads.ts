@@ -15,6 +15,7 @@
  */
 
 import {
+  SampleAdSenseAttributeConfig,
   SamplePrivacyConfig,
   SampleTargetingKV,
 } from '../../model/sample-config.js';
@@ -42,6 +43,11 @@ const api = {
       `childDirectedTreatment: ${sanitizeJs(enabled)}`,
     tfua: (enabled: boolean) => `underAgeOfConsent: ${sanitizeJs(enabled)}`,
   },
+
+  set: {
+    pageUrl: (url: string) =>
+      `${api.pubAdsService()}.set('page_url', ${sanitizeJs(url)})`,
+  },
 };
 
 /* Public exports */
@@ -62,6 +68,21 @@ export function addEventListener(event: GptEvent, code: string) {
  */
 export function enableSingleRequest() {
   return api.enableSingleRequest() + ';';
+}
+
+/**
+ * Generates code for setting AdSense attributes.
+ */
+export function setAdSenseAttributes(
+  adSenseConfig: SampleAdSenseAttributeConfig,
+) {
+  const adSenseAttributes: string[] = [];
+
+  if (adSenseConfig.pageUrl) {
+    adSenseAttributes.push(api.set.pageUrl(adSenseConfig.pageUrl) + ';');
+  }
+
+  return adSenseAttributes.length > 0 ? adSenseAttributes.join('\n') : '';
 }
 
 /**

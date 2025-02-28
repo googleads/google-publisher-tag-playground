@@ -29,9 +29,17 @@ export interface SampleConfig {
  * Page-level GPT settings.
  */
 export interface SamplePageConfig {
+  adsense?: SampleAdSenseAttributeConfig;
   privacy?: SamplePrivacyConfig;
   sra?: boolean;
   targeting?: SampleTargetingKV[];
+}
+
+/**
+ * AdSense attributes.
+ */
+export interface SampleAdSenseAttributeConfig {
+  pageUrl?: string;
 }
 
 /**
