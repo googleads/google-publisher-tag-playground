@@ -15,9 +15,14 @@
  */
 
 import {SampleConfig, SamplePageConfig} from '../../src/model/sample-config.js';
-import {pageConfigNames, privacyConfigNames} from '../../src/model/settings.js';
+import {
+  adSenseAttributeConfigNames,
+  configNames,
+  pageConfigNames,
+  privacyConfigNames,
+} from '../../src/model/settings.js';
 
-import {expect, test} from './fixtures/configurator.js';
+import {Configurator, expect, test} from './fixtures/configurator.js';
 
 /**
  * Maps page-level setting labels to the GPT API functions/properties they
@@ -175,6 +180,83 @@ test.describe('Configure targeting', () => {
       ).toBeVisible();
       await expect(page.locator('gpt-playground')).toContainText(testKey);
       await expect(page.locator('gpt-playground')).toContainText(testValue);
+    });
+  });
+});
+
+test.describe('Page URL', () => {
+  test.describe('Prepopulation', () => {
+    const testUrl = 'https://one.two.test.co.uk';
+
+    test.use({
+      config: {
+        page: {adsense: {pageUrl: testUrl}},
+        slots: [],
+      },
+    });
+
+    test('Prepopulated page URL appears in code', async ({
+      configurator,
+      page,
+    }) => {
+      const pageUrlInput = configurator.getTextField(
+        adSenseAttributeConfigNames.pageUrl(),
+        configurator.getConfigSection(configNames.page()),
+      );
+
+      await expect(pageUrlInput).toHaveValue(testUrl);
+      await expect(page.locator('gpt-playground')).toContainText('page_url');
+      await expect(page.locator('gpt-playground')).toContainText(testUrl);
+    });
+  });
+
+  test.describe('Validation', () => {
+    async function validatePageUrl(
+      configurator: Configurator,
+      url: string,
+      shouldBeValid = true,
+    ): Promise<void> {
+      const pageUrlInput = configurator.getTextField(
+        adSenseAttributeConfigNames.pageUrl(),
+        configurator.getConfigSection(configNames.page()),
+      );
+      await pageUrlInput.fill(url);
+
+      return shouldBeValid
+        ? expect(pageUrlInput).toBeValid()
+        : expect(pageUrlInput).not.toBeValid();
+    }
+
+    test('Protocol is required', async ({configurator}) => {
+      await validatePageUrl(configurator, 'www.google.com', false);
+      await validatePageUrl(configurator, 'https://www.google.com');
+    });
+
+    test('Unsupported protocols are invalid', async ({configurator}) => {
+      await validatePageUrl(configurator, 'file://file.txt', false);
+      await validatePageUrl(configurator, 'ftp://1270.0.0.1', false);
+      await validatePageUrl(configurator, 'javascript:alert("")', false);
+    });
+
+    test('Subdomain is optional', async ({configurator}) => {
+      await validatePageUrl(configurator, 'https://google.com');
+    });
+
+    test('Multiple subdomains are supported', async ({configurator}) => {
+      await validatePageUrl(configurator, 'https://one.two.google.com');
+    });
+
+    test('Top-level domain is required', async ({configurator}) => {
+      await validatePageUrl(configurator, 'https://google', false);
+      await validatePageUrl(configurator, 'https://google.com');
+    });
+
+    test('Second-level domains are supported', async ({configurator}) => {
+      await validatePageUrl(configurator, 'https://www.google.co.uk');
+    });
+
+    test('Paths are supported', async ({configurator}) => {
+      await validatePageUrl(configurator, 'https://www.google.com/one/two');
     });
   });
 });

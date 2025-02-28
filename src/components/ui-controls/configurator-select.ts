@@ -75,6 +75,7 @@ export class ConfiguratorSelect extends LitElement {
     }
 
     md-filled-select {
+      padding: 0 0 8px;
       width: 100%;
 
       --md-filled-field-leading-space: 10px;

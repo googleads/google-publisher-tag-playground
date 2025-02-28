@@ -71,6 +71,7 @@
     <msg name="s3870e706a2084c79" desc="Validation error">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
     <msg name="sd4801ff24e6e00e1" desc="Validation error">No value for key: <ph name="0">${key}</ph></msg>
     <msg name="sb4a18873f72e8f57" desc="Validation error">Invalid size: <ph name="0">${size}</ph></msg>
+    <msg name="s49b92d61c8e9e116" desc="Validation error.">Please specify a valid URL.</msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">Please specify a valid ad unit path.</msg>
     <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">Require local storage consent</msg>
   </messages>

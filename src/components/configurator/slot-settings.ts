@@ -152,16 +152,7 @@ export class SlotSettings extends LitElement {
         display: flex;
         flex-flow: row wrap;
         grid-area: settings;
-        padding: 5px 0 0 10px;
-      }
-
-      .slot-settings configurator-format-select,
-      .slot-settings configurator-text-field {
-        padding: 5px 0;
-      }
-
-      .slot-settings slot-size-input {
-        padding-block-start: 5px;
+        padding: 0 0 0 10px;
       }
 
       configurator-checkbox[name='storage'] {

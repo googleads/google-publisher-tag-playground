@@ -1,0 +1,22 @@
+{
+  "slots": [
+    {
+      "adUnit": "/123/abc",
+      "size": [
+        300,
+        250
+      ],
+      "targeting": [
+        {
+          "key": "slot",
+          "value": "blue"
+        }
+      ]
+    }
+  ],
+  "page": {
+    "adsense": {
+      "pageUrl": "https://www.google.com"
+    }
+  }
+}

@@ -35,6 +35,7 @@ export class ConfiguratorTextField extends LitElement {
     }
 
     md-filled-text-field {
+      padding: 0 0 8px;
       width: 100%;
 
       --md-filled-field-leading-space: 10px;
