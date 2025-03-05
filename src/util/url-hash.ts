@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {window} from '../model/window.js';
+
 /**
  * Safely retrieve the current URL hash parameters.
  */
@@ -45,5 +47,10 @@ export function setParameter(
 ) {
   const params = getUrlHashParameters();
   params.set(name, value);
-  hist.replaceState(null, '', `#${params.toString()}`);
+
+  try {
+    hist.replaceState(null, '', `#${params.toString()}`);
+  } catch (ignored) {
+    // Unable to set history, silently fail.
+  }
 }

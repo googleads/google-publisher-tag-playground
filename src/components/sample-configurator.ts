@@ -27,10 +27,11 @@ import {customElement, property, query, state} from 'lit/decorators.js';
 import {debounce} from 'lodash-es';
 
 import * as base64url from '../../src/util/base64url.js';
-import * as urlHash from '../../src/util/url-hash.js';
 import type {SampleConfig} from '../model/sample-config.js';
+import {window} from '../model/window.js';
 import {createTemplate} from '../template/template-factory.js';
 import {Template} from '../template/template.js';
+import {PlaygroundConfig} from '../util/playground-config.js';
 
 import {OutputSettings} from './configurator/output-settings.js';
 import {PageSettings} from './configurator/page-settings.js';
@@ -110,8 +111,8 @@ export class SampleConfigurator extends LitElement {
   private updateConfigStateInternal() {
     const configHash = base64url.encode(JSON.stringify(this.config));
 
-    // Update the window URL with the current config state.
-    urlHash.setParameter('config', configHash);
+    // Update playground config state.
+    PlaygroundConfig.sampleConfigHash = configHash;
 
     if (window.parent) {
       // Post a message to the parent window with the current config state.
@@ -121,8 +122,7 @@ export class SampleConfigurator extends LitElement {
     // Update the preview window, if one is open.
     const previewWindow = this.playground.previewWindow;
     if (previewWindow) {
-      urlHash.setParameter('config', configHash, previewWindow.history);
-      previewWindow.location.reload();
+      previewWindow.location = this.playground.generatePreviewUrl();
     }
   }
 

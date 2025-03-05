@@ -21,13 +21,12 @@ import {html, render} from 'lit-html';
 import {SampleConfig} from '../../src/model/sample-config.js';
 import * as base64url from '../../src/util/base64url.js';
 import {setLocale} from '../../src/util/localization-utils.js';
-import * as urlHash from '../../src/util/url-hash.js';
+import {PlaygroundConfig} from '../../src/util/playground-config.js';
 
-setLocale(urlHash.getParameter('hl') ?? 'en');
+setLocale(PlaygroundConfig.locale);
 
-const configParam = urlHash.getParameter('config');
-const config: SampleConfig = configParam
-  ? JSON.parse(base64url.decode(configParam))
+const config: SampleConfig = PlaygroundConfig.sampleConfigHash
+  ? JSON.parse(base64url.decode(PlaygroundConfig.sampleConfigHash))
   : {slots: []};
 
 render(

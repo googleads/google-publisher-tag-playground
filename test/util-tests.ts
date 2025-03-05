@@ -18,9 +18,11 @@ import 'jasmine';
 
 import {SampleSlotConfig} from '../src/model/sample-config.js';
 import {ScriptTarget} from '../src/model/typescript.js';
+import {window} from '../src/model/window.js';
 import * as base64url from '../src/util/base64url.js';
 import {formatHtml, formatTypeScript} from '../src/util/format-code.js';
 import {getLocale, setLocale} from '../src/util/localization-utils.js';
+import {PlaygroundConfig} from '../src/util/playground-config.js';
 import {getSlotStyles} from '../src/util/template-utils.js';
 import {tsToJs} from '../src/util/transpile-code.js';
 
@@ -194,5 +196,147 @@ describe('Utility', () => {
         expect(unformat(es2020)).toEqual(unformat(testData.es2020));
       });
     });
+  });
+
+  describe('playground-config', () => {
+    afterEach(() => {
+      window.playgroundConfig = {};
+    });
+
+    beforeEach(() => {
+      window.playgroundConfig = {};
+    });
+
+    it('retrieves values from global config', () => {
+      const testConfig = {
+        config: '123',
+        locale: 'de',
+        preview: false,
+        sample: '456',
+      };
+
+      window.playgroundConfig = {...testConfig};
+
+      expect(PlaygroundConfig.locale).toEqual(testConfig.locale);
+      expect(PlaygroundConfig.preview).toEqual(testConfig.preview);
+      expect(PlaygroundConfig.sample).toEqual(testConfig.sample);
+      expect(PlaygroundConfig.sampleConfigHash).toEqual(testConfig.config);
+    });
+
+    it('retrieves values from URL hash', () => {
+      const testConfig = {
+        config: 'abc',
+        locale: 'fr',
+        preview: false,
+        sample: 'def',
+      };
+
+      window.location = jasmine.createSpyObj('location', [], {
+        hash: `#config=${testConfig.config}&hl=${testConfig.locale}&preview=${
+          testConfig.preview
+        }&sample=${testConfig.sample}`,
+      });
+
+      expect(PlaygroundConfig.locale).toEqual(testConfig.locale);
+      expect(PlaygroundConfig.preview).toEqual(testConfig.preview);
+      expect(PlaygroundConfig.sample).toEqual(testConfig.sample);
+      expect(PlaygroundConfig.sampleConfigHash).toEqual(testConfig.config);
+    });
+
+    it('prefers global config over URL hash', () => {
+      const testConfig = {
+        config: '123',
+        locale: 'de',
+        preview: false,
+        sample: '456',
+      };
+
+      window.playgroundConfig = {...testConfig};
+
+      window.location = jasmine.createSpyObj('location', [], {
+        hash: '#config=abc&hl=fr&preview=true&sample=def',
+      });
+
+      expect(PlaygroundConfig.locale).toEqual(testConfig.locale);
+      expect(PlaygroundConfig.preview).toEqual(testConfig.preview);
+      expect(PlaygroundConfig.sample).toEqual(testConfig.sample);
+      expect(PlaygroundConfig.sampleConfigHash).toEqual(testConfig.config);
+    });
+
+    it('returns expected defaults', () => {
+      window.location = jasmine.createSpyObj('location', [], {hash: ''});
+
+      expect(PlaygroundConfig.locale).toEqual('en');
+      expect(PlaygroundConfig.preview).toBeTrue();
+      expect(PlaygroundConfig.sample).toBeNull();
+      expect(PlaygroundConfig.sampleConfigHash).toBeNull();
+    });
+
+    it('sets state as expected', () => {
+      window.location = jasmine.createSpyObj('location', [], {hash: ''});
+
+      window.history = {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        replaceState: (...args) => {},
+      } as History;
+      const replaceStateSpy = spyOn(window.history, 'replaceState');
+
+      const testConfig = {
+        locale: 'de',
+        preview: false,
+        sample: 'abc',
+        sampleConfig: 'def',
+      };
+
+      PlaygroundConfig.locale = testConfig.locale;
+      expect(PlaygroundConfig.locale).toEqual(testConfig.locale);
+      expect(replaceStateSpy).toHaveBeenCalledWith(
+        null,
+        '',
+        `#hl=${testConfig.locale}`,
+      );
+
+      PlaygroundConfig.preview = testConfig.preview;
+      expect(PlaygroundConfig.preview).toEqual(testConfig.preview);
+      expect(replaceStateSpy).toHaveBeenCalledWith(
+        null,
+        '',
+        `#preview=${testConfig.preview}`,
+      );
+
+      PlaygroundConfig.sample = testConfig.sample;
+      expect(PlaygroundConfig.sample).toEqual(testConfig.sample);
+      expect(replaceStateSpy).toHaveBeenCalledWith(
+        null,
+        '',
+        `#sample=${testConfig.sample}`,
+      );
+
+      PlaygroundConfig.sampleConfigHash = testConfig.sampleConfig;
+      expect(PlaygroundConfig.sampleConfigHash).toEqual(
+        testConfig.sampleConfig,
+      );
+      expect(replaceStateSpy).toHaveBeenCalledWith(
+        null,
+        '',
+        `#config=${testConfig.sampleConfig}`,
+      );
+    });
+  });
+
+  it('base URL is handled correctly', () => {
+    window.location = jasmine.createSpyObj('location', [], {
+      origin: 'https://www.example.com',
+      hash: '#config=abc&hl=de',
+      pathname: '/subdir/configurator',
+    });
+
+    expect(PlaygroundConfig.baseUrl).toEqual('https://www.example.com/subdir');
+
+    window.playgroundConfig = {
+      baseUrl: 'https://www.example2.com/',
+    };
+
+    expect(PlaygroundConfig.baseUrl).toEqual('https://www.example2.com');
   });
 });

@@ -22,10 +22,13 @@ import {
   targetLocales,
 } from '../generated/locale-codes.js';
 
+import {PlaygroundConfig} from './playground-config.js';
+
 const localization = configureLocalization({
   sourceLocale,
   targetLocales,
-  loadLocale: locale => import(`../locales/${locale}.js`),
+  loadLocale: locale =>
+    import(`${PlaygroundConfig.baseUrl}/locales/${locale}.js`),
 });
 
 /**

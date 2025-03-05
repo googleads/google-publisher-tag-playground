@@ -29,6 +29,9 @@ import {PlaygroundPreview} from 'playground-elements/playground-preview.js';
 import type {PlaygroundProject} from 'playground-elements/playground-project.js';
 import type {ProjectManifest} from 'playground-elements/shared/worker-api.js';
 
+import {window} from '../model/window.js';
+import {PlaygroundConfig} from '../util/playground-config.js';
+
 import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
 import {fontStyles} from './styles/fonts.js';
 import {materialStyles} from './styles/material-theme.js';
@@ -109,6 +112,7 @@ export class GptPlayground extends LitElement {
       }
 
       #rhs {
+        height: 100%;
         min-height: 200px;
         min-width: 200px;
         position: relative;
@@ -277,16 +281,19 @@ export class GptPlayground extends LitElement {
     `;
   }
 
-  private generatePreviewUrl() {
-    if (this.projectSrc) {
-      // Extract sample ID from the project src
-      // Ex: 'config/display-test-ad-js.json' -> 'display-test-ad'
-      const sample = this.projectSrc.replace(/.*?\/(.*?)-[jt]s.json/, '$1');
+  generatePreviewUrl() {
+    if (PlaygroundConfig.sample) {
+      // Extract sample ID.
+      // Ex: 'display-test-ad-js' -> 'display-test-ad'
+      const sample = PlaygroundConfig.sample.replace(/(.*?)-[jt]s/, '$1');
       return `https://googleads.github.io/google-publisher-tag-samples/${
         sample
       }/js/demo.html`;
     }
 
-    return window.location.href.replace('/configurator', '/preview');
+    const previewPath = `preview#config=${
+      PlaygroundConfig.sampleConfigHash
+    }&hl=${PlaygroundConfig.locale}`;
+    return `${PlaygroundConfig.baseUrl}/${previewPath}`;
   }
 }

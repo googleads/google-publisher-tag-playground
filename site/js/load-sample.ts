@@ -19,30 +19,24 @@ import '../../src/components/gpt-playground';
 import {html, render} from 'lit-html';
 
 import {setLocale} from '../../src/util/localization-utils.js';
-import * as urlHash from '../../src/util/url-hash.js';
+import {PlaygroundConfig} from '../../src/util/playground-config.js';
 
-setLocale(urlHash.getParameter('hl') ?? 'en');
+setLocale(PlaygroundConfig.locale);
 
 // The sample to fall back to if nothing is specified.
 const DEFAULT_SAMPLE = 'config/display-test-ad-js.json';
 
-// Attempt to retrive sample details from the URL hash.
-const previewParam = urlHash.getParameter('preview');
-const previewEnabled = previewParam
-  ? !['0', 'false'].includes(previewParam)
-  : true;
-
-const sampleParam = urlHash.getParameter('sample');
-const sampleToDisplay = sampleParam
-  ? `config/${sampleParam}.json`
+// Attempt to retrive sample details from config
+const sampleToDisplay = PlaygroundConfig.sample
+  ? `config/${PlaygroundConfig.sample}.json`
   : DEFAULT_SAMPLE;
 
 // Load the specified (or default) sample.
 render(
   html`
     <gpt-playground
-      project-src="${sampleToDisplay}"
-      ?preview-enabled="${previewEnabled}"
+      project-src="${PlaygroundConfig.baseUrl}/${sampleToDisplay}"
+      ?preview-enabled="${PlaygroundConfig.preview}"
     >
     </gpt-playground>
   `,
