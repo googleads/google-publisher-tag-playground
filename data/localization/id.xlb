@@ -21,6 +21,7 @@
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Aktifkan layanan GPT.</msg>
     <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Aktifkan mode permintaan tunggal.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Tentukan slot iklan statis.</msg>
+    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Tetapkan atribut AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Tentukan slot di luar halaman.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Konfigurasikan penargetan tingkat halaman.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Konfigurasikan setelan privasi.</msg>
@@ -51,12 +52,18 @@
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Setelan halaman</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Penargetan tingkat halaman</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privasi</msg>
+    <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Atribut AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> dimuat.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> sedang dimuat...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50"><ph name="0">${format}</ph> tidak didukung di halaman ini.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scroll halaman untuk mengaktifkan.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Jalur unit iklan</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Tidak tersedia</msg>
+    <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Link diklik</msg>
+    <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Perlihatkan jendela</msg>
+    <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Navigasi browser</msg>
+    <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">URL Halaman</msg>
+    <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Pemicu interstisial</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Kunci=Nilai1,Nilai2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Kunci duplikat: <ph name="0">${key}</ph></msg>
@@ -64,6 +71,8 @@
     <msg desc="Validation error" name="s3870e706a2084c79">Nilai tidak valid untuk kunci <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">Tidak ada nilai untuk kunci: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4a18873f72e8f57">Ukuran tidak valid: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="s49b92d61c8e9e116">Harap tentukan URL yang valid.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Tentukan jalur unit iklan yang valid.</msg>
+    <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Memerlukan izin penyimpanan lokal</msg>
   </messages>
 </localizationbundle>

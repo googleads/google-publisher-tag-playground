@@ -21,6 +21,7 @@
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Abilita i servizi GPT.</msg>
     <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Abilita la modalità di richiesta singola.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Definisci aree annuncio statiche.</msg>
+    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Imposta gli attributi AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Definisci aree fuori pagina.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Configura targeting a livello di pagina.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Configura impostazioni della privacy.</msg>
@@ -51,12 +52,18 @@
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Impostazioni della pagina</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Targeting a livello di pagina</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privacy</msg>
+    <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Attributi AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> è stata caricata.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">Caricamento di <ph name="0">${format}</ph> in corso…</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50"><ph name="0">${format}</ph> non è supportato in questa pagina.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scorri la pagina per attivare.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Percorso unità pubblicitaria</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Non disponibile</msg>
+    <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Clic su link</msg>
+    <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Mostra finestra</msg>
+    <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Navigazione nel browser</msg>
+    <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">URL pagina</msg>
+    <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Attivatori di annunci interstitial</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Chiave duplicata: <ph name="0">${key}</ph></msg>
@@ -64,6 +71,8 @@
     <msg desc="Validation error" name="s3870e706a2084c79">Valore non valido per la chiave <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">Nessun valore per la chiave: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4a18873f72e8f57">Dimensioni non valide: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="s49b92d61c8e9e116">Specifica un URL valido.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Specifica un percorso dell'unità pubblicitaria valido.</msg>
+    <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Richiedi il consenso per l'archiviazione locale</msg>
   </messages>
 </localizationbundle>

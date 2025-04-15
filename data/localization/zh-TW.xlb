@@ -21,6 +21,7 @@
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// 啟用 GPT 服務。</msg>
     <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// 啟用單一請求模式。</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 定義靜態廣告版位。</msg>
+    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// 設定 AdSense 屬性。</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// 定義非頁內廣告版位。</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// 設定網頁層級指定目標。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 調整隱私權設定。</msg>
@@ -51,12 +52,18 @@
     <msg desc="Section containing page settings." name="sf93d227444bc5687">網頁設定</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">網頁層級指定目標</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">隱私權</msg>
+    <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense 屬性</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">已載入<ph name="0">${format}</ph>。</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">正在載入<ph name="0">${format}</ph>...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">這個頁面不支援<ph name="0">${format}</ph>。</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph>捲動頁面即可啟用。</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">廣告單元路徑</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">無法使用</msg>
+    <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">連結點擊</msg>
+    <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">取消隱藏視窗</msg>
+    <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">瀏覽器導覽</msg>
+    <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">網頁網址</msg>
+    <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">插頁式廣告觸發條件</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">鍵=值1,值2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">重複的鍵：<ph name="0">${key}</ph></msg>
@@ -64,6 +71,8 @@
     <msg desc="Validation error" name="s3870e706a2084c79">鍵「<ph name="0">${key}</ph>」的值無效：<ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">鍵「<ph name="0">${key}</ph>」沒有值</msg>
     <msg desc="Validation error" name="sb4a18873f72e8f57">無效的大小：<ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="s49b92d61c8e9e116">請指定有效的網址。</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">請指定有效的廣告單元路徑。</msg>
+    <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">必須取得本機儲存空間的存取權</msg>
   </messages>
 </localizationbundle>

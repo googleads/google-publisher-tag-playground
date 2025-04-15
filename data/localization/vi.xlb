@@ -21,6 +21,7 @@
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Bật các dịch vụ GPT.</msg>
     <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Bật chế độ một yêu cầu.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Xác định vị trí quảng cáo tĩnh.</msg>
+    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Đặt thuộc tính trong AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Xác định vị trí nằm ngoài trang.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Định cấu hình tiêu chí nhắm mục tiêu cấp trang.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Định cấu hình chế độ cài đặt quyền riêng tư.</msg>
@@ -51,12 +52,18 @@
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Cài đặt trang</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Nhắm mục tiêu cấp trang</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Quyền riêng tư</msg>
+    <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Thuộc tính trong AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">Đã tải <ph name="0">${format}</ph>.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> đang tải...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">Trang này không hỗ trợ <ph name="0">${format}</ph>.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Cuộn trang để kích hoạt.</msg>
     <msg desc="Text box label" name="s2d647200b120ea41">Đường dẫn đơn vị quảng cáo</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Không có sẵn</msg>
+    <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Nhấp vào đường liên kết</msg>
+    <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Hiện cửa sổ</msg>
+    <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Điều hướng trên trình duyệt</msg>
+    <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">URL của trang</msg>
+    <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Hành động kích hoạt quảng cáo xen kẽ</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Khoá=Giá trị1,Giá trị2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Trùng khoá: <ph name="0">${key}</ph></msg>
@@ -64,6 +71,8 @@
     <msg desc="Validation error" name="s3870e706a2084c79">Giá trị không hợp lệ cho khoá <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">Không có giá trị cho khoá: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4a18873f72e8f57">Kích thước không hợp lệ: <ph name="0">${size}</ph></msg>
+    <msg desc="Validation error." name="s49b92d61c8e9e116">Vui lòng chỉ định một URL hợp lệ.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Vui lòng chỉ định một đường dẫn đơn vị quảng cáo hợp lệ.</msg>
+    <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Yêu cầu sự đồng ý để truy cập vào bộ nhớ cục bộ</msg>
   </messages>
 </localizationbundle>
