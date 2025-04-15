@@ -14,15 +14,14 @@
  * limitations under the License.
  */
 
-import {expect, Page, test} from '@playwright/test';
+import {Locator, Page} from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
 
-import {encode} from '../../src/util/base64url.js';
+import {SampleConfig} from '../../src/model/sample-config.js';
 
-// The last label in the configurator.
-const LAST_LABEL = 'Output format';
+import {expect, test} from './fixtures/configurator.js';
 
 test.describe('Configurator screenshots', () => {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -35,29 +34,50 @@ test.describe('Configurator screenshots', () => {
     const sample = fs.readFileSync(path.join(CONFIG_DIR, config), 'utf-8');
     const sampleName = config.replace('.json', '');
 
-    test(`Sample config ${sampleName} prepopulates correctly.`, async ({
-      page,
-    }) => {
-      await page.setViewportSize({width: 1920, height: 1080});
-      await page.goto(`/configurator#config=${encode(sample)}`);
-      await ensureLabelIsVisible(LAST_LABEL, page);
-      expect(await page.locator('#configurator').screenshot()).toMatchSnapshot(
-        `samplePrepopulate-${sampleName}.png`,
-      );
+    test.describe('', () => {
+      // Prepopulate the configurator with the sample config under test.
+      test.use({
+        config: JSON.parse(sample) as SampleConfig,
+      });
+
+      test(`Sample config ${sampleName} prepopulates correctly.`, async ({
+        configurator,
+        page,
+      }) => {
+        // Set the viewport to a standard size, so screenshots are
+        // consistent.
+        await page.setViewportSize({width: 1920, height: 1080});
+
+        // Expand the viewport as necessary to ensure the entire
+        // configurator is visible.
+        const lastControl = configurator.getSelect(
+          'Output format',
+          configurator.getConfigSection('Output settings'),
+        );
+        await ensureElementIsVisible(lastControl, page);
+
+        // Take a screenshot of the configurator and compare it to the
+        // golden image.
+        expect(
+          await page.locator('#configurator').screenshot(),
+        ).toMatchSnapshot(`samplePrepopulate-${sampleName}.png`);
+      });
     });
   }
 });
 
 /**
- * Resizes the viewport height until the specified configurator label is
+ * Resizes the viewport height until the specified element is
  * visible.
  *
- * @param label
+ * @param elem
  * @param page
  * @returns
  */
-async function ensureLabelIsVisible(label: string, page: Page): Promise<void> {
-  const elem = page.getByLabel(label);
+async function ensureElementIsVisible(
+  elem: Locator,
+  page: Page,
+): Promise<void> {
   const elemSize = await elem.boundingBox();
   const viewportSize = page.viewportSize()!;
   if (elemSize!.y + elemSize!.height > viewportSize.height) {
@@ -65,7 +85,7 @@ async function ensureLabelIsVisible(label: string, page: Page): Promise<void> {
       width: viewportSize.width,
       height: viewportSize.height + 50,
     });
-    return ensureLabelIsVisible(label, page);
+    return ensureElementIsVisible(elem, page);
   }
   return Promise.resolve();
 }
