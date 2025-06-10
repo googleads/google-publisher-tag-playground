@@ -15,5 +15,5 @@
  */
 
 export default {
-  ...(await import('gts/.prettierrc.json', {assert: { type: 'json'}})).default
+  ...(await import('gts/.prettierrc.json', {with: { type: 'json'}})).default
 }
