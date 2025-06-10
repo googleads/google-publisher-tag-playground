@@ -119,6 +119,47 @@ test.describe('Toolbar controls', () => {
       await consentControl.click();
       await expect(consentControl).not.toHaveAttribute('checked');
     });
+
+    test('Ad request includes TCData values only when enabled', async ({
+      browserName,
+      configurator,
+    }) => {
+      test.skip(
+        browserName !== 'chromium',
+        'Mocking network requests from service workers is only supported in Chrome.',
+      );
+
+      const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
+      const consentControl = configurator.getCheckbox(
+        CONSENT_LABEL,
+        previewPane,
+      );
+
+      const pagePromise = configurator.page.context().waitForEvent('page');
+      let requestPromise = configurator.page.waitForRequest('**/gampad/ads?**');
+
+      // Enable consent and check for TCData values in the ad request.
+      await consentControl.click();
+
+      const consentPage = await pagePromise;
+      await consentPage.evaluate(data => {
+        window.opener.postMessage(data, window.location.origin);
+      }, TEST_TCDATA);
+
+      let adRequest = await requestPromise;
+      expect(adRequest.url()).toContain(TEST_TCDATA.tcString);
+      expect(adRequest.url()).toContain(TEST_AC_STRING);
+
+      requestPromise = configurator.page.waitForRequest('**/gampad/ads?**');
+
+      // Disable consent and ensure TCData values are not included in the ad
+      // request.
+      await consentControl.click();
+
+      adRequest = await requestPromise;
+      expect(adRequest.url()).not.toContain(TEST_TCDATA.tcString);
+      expect(adRequest.url()).not.toContain(TEST_AC_STRING);
+    });
   });
 });
 

@@ -22,6 +22,20 @@ import glob from 'glob';
 import copy from 'rollup-plugin-copy';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 
+const MINIFY_HTML_OPTIONS = {
+  options: {
+    shouldMinifyCSS: template => {
+      return (
+        template.tag &&
+        template.tag === 'css' &&
+        // Skip any CSS containing statements that are unsupported
+        // by the version of clean-css this plugin is locked to.
+        !template.parts.some(part => part.text.match('@layer'))
+      );
+    },
+  },
+};
+
 const TERSER_OPTIONS = {
   warnings: true,
   ecma: 2020,
@@ -35,6 +49,22 @@ const TERSER_OPTIONS = {
     inline_script: false,
   },
 };
+
+// Process direct includes individually to ensure they're bundled with all dependencies.
+const includes = glob.sync('site/includes/*.js').map(include => {
+  return {
+    input: include,
+    output: {
+      dir: 'dist/includes/',
+      format: 'es',
+    },
+    plugins: [
+      resolve(),
+      minifyHTML(MINIFY_HTML_OPTIONS),
+      terser(TERSER_OPTIONS),
+    ],
+  };
+});
 
 // Process locale files individually to ensure they aren't chunked together.
 const locales = glob.sync('src/generated/locales/*.js').map(locale => {
@@ -81,23 +111,11 @@ export default [
       }),
       resolve(),
       importMetaAssets(),
-      minifyHTML({
-        options: {
-          shouldMinifyCSS: template => {
-            return (
-              template.tag &&
-              template.tag === 'css' &&
-              // Skip any CSS containing statements that are unsupported
-              // by the version of clean-css this plugin is locked to.
-              !template.parts.some(part => part.text.match('@layer'))
-            );
-          },
-        },
-      }),
+      minifyHTML(MINIFY_HTML_OPTIONS),
       copy({
         targets: [
           {
-            src: ['site/*', '!site/js'],
+            src: ['site/*', '!site/includes', '!site/js'],
             dest: 'dist',
           },
         ],
@@ -106,5 +124,6 @@ export default [
       terser(TERSER_OPTIONS),
     ],
   },
+  ...includes,
   ...locales,
 ];

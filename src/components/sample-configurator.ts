@@ -86,8 +86,7 @@ export class SampleConfigurator extends LitElement {
     this.internalConfig = config;
 
     const template = createTemplate(config);
-    // TODO: pass in consent state.
-    // console.log(`Consent state: ${JSON.stringify(consentSignal.get())}`);
+    template.consentData = consentSignal.get().data;
 
     this.template = template;
   }

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import {TCData} from '@iabtechlabtcf/cmpapi';
 import {css} from 'lit';
 import {ProjectManifest} from 'playground-elements/shared/worker-api.js';
 
@@ -21,6 +22,7 @@ import * as samplegen from '../codegen/gpt-sample.js';
 import {SampleConfig} from '../model/sample-config.js';
 import {ScriptTarget} from '../model/typescript.js';
 import {formatHtml} from '../util/format-code.js';
+import {PlaygroundConfig} from '../util/playground-config.js';
 import {tsToJs} from '../util/transpile-code.js';
 
 const GPT_STANDARD_URL = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
@@ -39,6 +41,11 @@ export abstract class Template {
   readonly scripts: string[] = [this.gptUrl()];
   /** Stylesheets to include in the main HTML document. */
   readonly stylesheets: string[] = [];
+
+  /**
+   * A {@link TCData} object to inject into the rendered template.
+   */
+  consentData?: TCData;
 
   /* Public methods. */
 
@@ -79,10 +86,22 @@ export abstract class Template {
       .map(s => `<link href="${s}" rel="stylesheet" />`)
       .join('');
 
+    // If a consent string is available, a hidden `consent.js` file will be
+    // added to the project manifest. Add a hidden script include here to ensure
+    // it's loaded on the page, and consent data is made available.
+    const consent = this.consentData
+      ? `<!-- playground-hide -->
+         <script>window.consentData = ${JSON.stringify(
+           this.consentData,
+         )};</script>
+         <script src="./consent.js"></script>
+         <!-- playground-hide-end -->`
+      : '';
+
     return `
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    ${stylesheets}${scripts}${modules}${gptInit}${inlineStyles}
+    ${consent}${stylesheets}${scripts}${modules}${gptInit}${inlineStyles}
     `.trim();
   }
 
@@ -152,6 +171,19 @@ export abstract class Template {
       // Include a hidden package.json, to enable autocomplete of GPT methods.
       config.files!['package.json'] = {
         content: '{"dependencies": {"@types/google-publisher-tag": "^1.0.0"}}',
+        hidden: true,
+      };
+    }
+
+    // If a consent string is available, add a hidden script to handle
+    // injecting the string into the rendered page.
+    if (this.consentData) {
+      const consentScript = await fetch(
+        `${PlaygroundConfig.baseUrl}/includes/set-consent.js`,
+      ).then(response => response.text());
+
+      config.files!['consent.js'] = {
+        content: consentScript,
         hidden: true,
       };
     }
