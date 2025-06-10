@@ -14,6 +14,7 @@
     <msg name="s09c694b6602d365d" desc="An out-of-page ad format">Side rail ad (left)</msg>
     <msg name="sccb7f7246c10ecb6" desc="An out-of-page ad format">Side rail ad (right)</msg>
     <msg name="secff207571282402" desc="An out-of-page ad format">Web interstitial ad</msg>
+    <msg name="s68fe43baedc49318" desc="Button text">Refresh preview</msg>
     <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
@@ -30,8 +31,11 @@
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Slot template</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Custom</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Click the button below to preview in a new window.</msg>
+    <msg name="s733564cddc33799f" desc="Error message.">Error: unable to connect to the GPT Sample Builder</msg>
     <msg name="s53a96edcf36221b2" desc="Input field label">Ad slot sizes</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Add targeting key-values</msg>
+    <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">EU user consent</msg>
+    <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">Loading consent dialog...</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Sample ads</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Sample ads (out-of-page)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">None</msg>

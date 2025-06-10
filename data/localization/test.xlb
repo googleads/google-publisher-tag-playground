@@ -14,6 +14,7 @@
     <msg name="s09c694b6602d365d" desc="An out-of-page ad format">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (l̂́êf̂́t̂)</msg>
     <msg name="sccb7f7246c10ecb6" desc="An out-of-page ad format">Ŝ́îd̂́ê r̂́âî́l̂ ấd̂ (r̂́îĝ́ĥt̂́)</msg>
     <msg name="secff207571282402" desc="An out-of-page ad format">Ŵ́êb̂́ î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ ấd̂</msg>
+    <msg name="s68fe43baedc49318" desc="Button text">R̂́êf̂́r̂ếŝĥ́ p̂́r̂ếv̂î́êŵ́</msg>
     <msg name="s3be169991df10a5d" desc="Button text">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
@@ -30,8 +31,11 @@
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
+    <msg name="s733564cddc33799f" desc="Error message.">Ếr̂r̂́ôr̂́: û́n̂ấb̂l̂́ê t̂́ô ĉ́ôn̂́n̂ếĉt̂́ t̂́ô t̂́ĥế Ĝ́P̂T̂́ Ŝ́âm̂́p̂l̂́ê B̂́ûî́l̂d̂́êr̂́</msg>
     <msg name="s53a96edcf36221b2" desc="Input field label">Ấd̂ ŝ́l̂ốt̂ ŝ́îẑ́êŝ́</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́-v̂́âl̂́ûếŝ</msg>
+    <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">ẾÛ û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́</msg>
+    <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">L̂́ôấd̂î́n̂ĝ́ ĉ́ôn̂́ŝến̂t̂́ d̂́îấl̂ốĝ...</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>

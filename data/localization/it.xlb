@@ -14,6 +14,7 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Annuncio laterale (a sinistra)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Annuncio laterale (a destra)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Annuncio interstitial per il web</msg>
+    <msg desc="Button text" name="s68fe43baedc49318">Refresh preview</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Apri anteprima</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Aggiungi area</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Rimuovi area</msg>
@@ -30,8 +31,11 @@
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Modello area</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Personalizzato</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Fai clic sul pulsante in basso per visualizzare l'anteprima in una nuova finestra.</msg>
+    <msg desc="Error message." name="s733564cddc33799f">Error: unable to connect to the GPT Sample Builder</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Dimensioni aree annunci</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Aggiungi coppie chiave-valore di targeting</msg>
+    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU user consent</msg>
+    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Loading consent dialog...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Esempi di annunci</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Esempi di annunci (fuori pagina)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Nessuno</msg>
