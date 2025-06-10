@@ -27,6 +27,7 @@ import {customElement, property, query, state} from 'lit/decorators.js';
 import {debounce} from 'lodash-es';
 
 import * as base64url from '../../src/util/base64url.js';
+import {consentSignal} from '../model/consent.js';
 import type {SampleConfig} from '../model/sample-config.js';
 import {window} from '../model/window.js';
 import {createTemplate} from '../template/template-factory.js';
@@ -83,7 +84,12 @@ export class SampleConfigurator extends LitElement {
   @property({attribute: 'config', type: Object})
   set config(config: SampleConfig) {
     this.internalConfig = config;
-    this.template = createTemplate(config);
+
+    const template = createTemplate(config);
+    // TODO: pass in consent state.
+    // console.log(`Consent state: ${JSON.stringify(consentSignal.get())}`);
+
+    this.template = template;
   }
 
   get config() {
@@ -93,6 +99,9 @@ export class SampleConfigurator extends LitElement {
   constructor() {
     super();
     this.template = createTemplate(this.config);
+
+    // Enable consent.
+    consentSignal.get().enabled = true;
   }
 
   private isPreviewable() {
@@ -168,6 +177,7 @@ export class SampleConfigurator extends LitElement {
         .config="${until(this.template?.playgroundConfig(), null)}"
         ?preview-enabled=${this.isPreviewable()}
         slot="secondary"
+        @consentChanged="${this.updateSettings}"
         readonly
         vertical
       ></gpt-playground>

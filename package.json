@@ -19,6 +19,7 @@
     "test:playwright": "playwright test"
   },
   "dependencies": {
+    "@iabtechlabtcf/cmpapi": "^1.5.16",
     "@lit-labs/signals": "^0.1.2",
     "@lit/localize": "^0.12.2",
     "@material/web": "^2.3.0",
@@ -36,6 +37,7 @@
     "@rollup/plugin-node-resolve": "^15.3.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/google-publisher-tag": "^1.20250210.0",
+    "@types/googlefc": "^1.0.5",
     "@types/jasmine": "^5.1.7",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.17.30",

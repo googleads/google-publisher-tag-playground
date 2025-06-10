@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {TCData} from '@iabtechlabtcf/cmpapi';
+
 import {SampleConfig} from '../../src/model/sample-config.js';
 
 import {expect, test} from './fixtures/configurator.js';
@@ -23,6 +25,102 @@ const SAMPLE_AD_SLOT: SampleConfig = {
 };
 
 const PREVIEW_PAGE_GLOB = '**/index.html';
+const PREVIEW_SELECTOR = 'gpt-playground-preview';
+
+test.describe('Toolbar controls', () => {
+  test.use({config: SAMPLE_AD_SLOT});
+
+  test.describe('EU user consent', () => {
+    const CONSENT_LABEL = 'EU user consent';
+
+    /**
+     * Test Additional Consent (AC) string.
+     *
+     * Example AC string from
+     * https://support.google.com/admanager/answer/9681920.
+     */
+    const TEST_AC_STRING = '2~1.35.41.101~dv.9.21.81';
+
+    /**
+     * Test TCData object.
+     * TCString generated using default values from https://iabtcf.com/#/encode.
+     */
+    const TEST_TCDATA = {
+      cmpId: 300, // Google LLC
+      cmpVersion: 0,
+      tcString:
+        'CQStAtkQStAtkEsAAAENCZCAAAAAAAAAAAAAAAAAAAAA.II7Nd_X__bX9n-_7_6ft0eY1f9_r37uQzDhfNs-8F3L_W_LwX32E7NF36tq4KmR4ku1bBIQNtHMnUDUmxaolVrzHsak2cpyNKJ_JkknsZe2dYGF9Pn9lD-YKZ7_5_9_f52T_9_9_-39z3_9f___dv_-__-vjf_599n_v9fV_78_Kf9______-____________8A',
+      addtlConsent: TEST_AC_STRING,
+    } as unknown as TCData;
+
+    test('Disabled by default', async ({configurator}) => {
+      const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
+      const consentControl = configurator.getCheckbox(
+        CONSENT_LABEL,
+        previewPane,
+      );
+      await expect(consentControl).not.toBeChecked();
+    });
+
+    test('Enabling launches consent window', async ({configurator}) => {
+      const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
+      const consentControl = configurator.getCheckbox(
+        CONSENT_LABEL,
+        previewPane,
+      );
+
+      const pagePromise = configurator.page.context().waitForEvent('page');
+      await consentControl.click();
+      expect(await pagePromise).toBeDefined();
+    });
+
+    test('Only enables when consent response is recieved', async ({
+      configurator,
+    }) => {
+      const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
+      const consentControl = configurator.getCheckbox(
+        CONSENT_LABEL,
+        previewPane,
+      );
+
+      const pagePromise = configurator.page.context().waitForEvent('page');
+      await consentControl.click();
+      await expect(consentControl).not.toBeChecked();
+
+      const consentPage = await pagePromise;
+      await consentPage.evaluate(data => {
+        window.opener.postMessage(data, window.location.origin);
+      }, TEST_TCDATA);
+
+      // For some reason expect(...).toBeChecked() never returns `true` here.
+      // Instead, explicitly look for the `checked` attribute.
+      await expect(consentControl).toHaveAttribute('checked');
+    });
+
+    test('Disabling unchecks checkbox', async ({configurator}) => {
+      const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
+      const consentControl = configurator.getCheckbox(
+        CONSENT_LABEL,
+        previewPane,
+      );
+
+      const pagePromise = configurator.page.context().waitForEvent('page');
+      await consentControl.click();
+      await expect(consentControl).not.toBeChecked();
+
+      const consentPage = await pagePromise;
+      await consentPage.evaluate(data => {
+        window.opener.postMessage(data, window.location.origin);
+      }, TEST_TCDATA);
+
+      // For some reason expect(...).toBeChecked() never returns `true` here.
+      // Instead, explicitly look for the `checked` attribute.
+      await expect(consentControl).toHaveAttribute('checked');
+      await consentControl.click();
+      await expect(consentControl).not.toHaveAttribute('checked');
+    });
+  });
+});
 
 test.describe('Toolbar buttons', () => {
   test.use({config: SAMPLE_AD_SLOT});
@@ -63,7 +161,7 @@ test.describe('Toolbar buttons', () => {
     });
 
     // Click the refresh button and wait for the preview to reload.
-    const previewPane = configurator.page.locator('gpt-playground-preview');
+    const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
     await previewPane.getByText('refresh').click();
     await previewFrame?.waitForLoadState('networkidle');
     expect(previewRequestCount).toEqual(2);
