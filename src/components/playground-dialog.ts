@@ -39,6 +39,10 @@ export interface PlaygroundDialogButton {
 export class PlaygroundDialog extends LitElement {
   static styles = css`
     :host {
+      display: none;
+    }
+
+    :host([open]) {
       display: grid;
       place-items: center;
       position: absolute;
@@ -51,7 +55,6 @@ export class PlaygroundDialog extends LitElement {
       backdrop-filter: blur(3px);
       display: none;
       max-width: 50%;
-      z-index: 9999;
     }
 
     [part='backdrop'].modal {
@@ -66,6 +69,7 @@ export class PlaygroundDialog extends LitElement {
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 9999;
     }
 
     [part='dialog'] {

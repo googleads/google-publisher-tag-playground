@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
+import './gpt-playground-preview';
 import './playground-dialog';
 import './ui-controls/resizable-area';
 import 'playground-elements/playground-file-editor';
-import 'playground-elements/playground-preview';
 import 'playground-elements/playground-project';
 import 'playground-elements/playground-tab-bar';
 
@@ -25,13 +25,13 @@ import {localized, msg, str} from '@lit/localize';
 import {css, html, LitElement} from 'lit';
 import {ifDefined} from 'lit-html/directives/if-defined.js';
 import {customElement, property, query} from 'lit/decorators.js';
-import {PlaygroundPreview} from 'playground-elements/playground-preview.js';
 import type {PlaygroundProject} from 'playground-elements/playground-project.js';
 import type {ProjectManifest} from 'playground-elements/shared/worker-api.js';
 
 import {window} from '../model/window.js';
 import {PlaygroundConfig} from '../util/playground-config.js';
 
+import type {GptPlaygroundPreview} from './gpt-playground-preview.js';
 import {PlaygroundDialog, PlaygroundDialogButton} from './playground-dialog.js';
 import {fontStyles} from './styles/fonts.js';
 import {materialStyles} from './styles/material-theme.js';
@@ -62,7 +62,7 @@ const PLAYGROUND_ID = 'gpt-sample';
 @localized()
 @customElement('gpt-playground')
 export class GptPlayground extends LitElement {
-  @query('playground-preview') private preview?: PlaygroundPreview;
+  @query('gpt-playground-preview') private preview?: GptPlaygroundPreview;
   @query('playground-dialog') private previewDialog?: PlaygroundDialog;
 
   // Declare shadow DOM styles.
@@ -130,16 +130,11 @@ export class GptPlayground extends LitElement {
         min-height: 0;
       }
 
-      playground-preview {
-        font: var(--standard-font);
-        height: 100%;
-      }
-
-      playground-preview::part(preview-toolbar) {
+      gpt-playground-preview::part(toolbar) {
         border-block-end: none;
       }
 
-      [vertical] playground-preview::part(preview-toolbar) {
+      [vertical] gpt-playground-preview::part(toolbar) {
         border-block-end: 1px solid var(--playground-border-color);
         border-block-start: 1px solid var(--playground-border-color);
         border-radius: 8px 8px 0 0;
@@ -191,7 +186,7 @@ export class GptPlayground extends LitElement {
    * Disconnect the preview pane and display the preview dialog.
    */
   disablePreview() {
-    if (this.preview) this.preview.project = '';
+    if (this.preview) this.preview.project = undefined;
     if (this.previewDialog) this.previewDialog.open = true;
   }
 
@@ -199,7 +194,7 @@ export class GptPlayground extends LitElement {
    * Connect the preview pane and hide the preview dialog.
    */
   enablePreview() {
-    if (this.preview) this.preview.project = PLAYGROUND_ID;
+    if (this.preview) this.preview.project = this.project;
     if (this.previewDialog) this.previewDialog.open = false;
   }
 
@@ -247,12 +242,8 @@ export class GptPlayground extends LitElement {
     return html`
       <div id="rhs" slot="secondary">
         ${this.renderPreviewDialog()}
-        <playground-preview
-          id="${PLAYGROUND_ID}-preview"
-          location="${strings.previewToolbarLabel()}"
-          .project="${this.previewEnabled ? PLAYGROUND_ID : undefined}"
-        >
-        </playground-preview>
+        <gpt-playground-preview id="${PLAYGROUND_ID}-preview">
+        </gpt-playground-preview>
       </div>
     `;
   }
@@ -295,5 +286,11 @@ export class GptPlayground extends LitElement {
       PlaygroundConfig.sampleConfigHash
     }&hl=${PlaygroundConfig.locale}`;
     return `${PlaygroundConfig.baseUrl}/${previewPath}`;
+  }
+
+  firstUpdated() {
+    // Connect the preview pane on first update, when the parent project is
+    // guaranteed available.
+    if (this.previewEnabled) this.preview!.project = this.project;
   }
 }
