@@ -25,9 +25,9 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          push-to-fork: publisher-ads-audits-bot/google-publisher-tag-playground
+          push-to-fork: google-publisher-tag/google-publisher-tag-playground
           token: ${{ secrets.PUBTAGS_BOT_REPO_TOKEN }}
-          committer: Google Publisher Tags Bot <publisher-ads-audits-bot@google.com>
+          committer: Google Publisher Tag Bot <publisher-ads-audits-bot@google.com>
           title: "Update submodules"
           body: "Automated PR to update submodules of googleads/google-publisher-tag-playground"
           commit-message: "Update submodules"
