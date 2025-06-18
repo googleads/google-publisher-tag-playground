@@ -26,6 +26,8 @@ import * as config from './config.js';
 
 const api = {
   addService: () => 'addService(googletag.pubads())',
+  setConfig: (config: googletag.config.SlotSettingsConfig) =>
+    `setConfig(${JSON.stringify(config)})`,
   setTargeting: (kv: SampleTargetingKV) =>
     `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
 };
@@ -48,7 +50,8 @@ export function addInlineSlotSettings(
   slotSettings += '.' + api.addService();
 
   if (slotConfig.config) {
-    slotSettings += config.setSlotConfig(slotConfig.config);
+    const cleanConfig = config.slotConfig(slotConfig.config);
+    slotSettings += cleanConfig ? '.' + api.setConfig(cleanConfig) : '';
   }
 
   return slotSettings + ';';

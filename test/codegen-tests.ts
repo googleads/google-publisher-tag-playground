@@ -52,6 +52,17 @@ describe('Codegen', () => {
 });
 
 describe('Codegen API: config', () => {
+  it('returns valid PageSettingsConfig unmodified.', () => {
+    const input: googletag.config.PageSettingsConfig = {
+      privacyTreatments: {
+        treatments: ['disablePersonalization'],
+      },
+    };
+
+    const output = config.pageConfig(input);
+    expect(output).toEqual(input);
+  });
+
   it('returns valid SlotSettingsConfig unmodified.', () => {
     const input: googletag.config.SlotSettingsConfig = {
       interstitial: {
@@ -63,8 +74,19 @@ describe('Codegen API: config', () => {
       },
     };
 
-    const output = config.setSlotConfig(input);
-    expect(output).toContain(JSON.stringify(input));
+    const output = config.slotConfig(input);
+    expect(output).toEqual(input);
+  });
+
+  it('returns nothing if the PageSettingsConfig is empty.', () => {
+    const input: googletag.config.PageSettingsConfig = {
+      privacyTreatments: {
+        treatments: [],
+      },
+    };
+
+    const output = config.pageConfig(input);
+    expect(output).toBeNull();
   });
 
   it('returns nothing if the SlotSettingsConfig is empty.', () => {
@@ -72,8 +94,26 @@ describe('Codegen API: config', () => {
       interstitial: {},
     };
 
-    const output = config.setSlotConfig(input);
-    expect(output).toBe('');
+    const output = config.slotConfig(input);
+    expect(output).toBeNull();
+  });
+
+  it('removes invalid properties from PageSettingsConfig.', () => {
+    const input = {
+      privacyTreatments: {
+        treatments: ['disablePersonalization'],
+      },
+      fakeProp: 'no',
+    } as googletag.config.PageSettingsConfig;
+
+    const expectedOutput: googletag.config.PageSettingsConfig = {
+      privacyTreatments: {
+        treatments: ['disablePersonalization'],
+      },
+    };
+
+    const output = config.pageConfig(input);
+    expect(output).toEqual(expectedOutput);
   });
 
   it('removes invalid properties from SlotSettingsConfig.', () => {
@@ -90,8 +130,8 @@ describe('Codegen API: config', () => {
       },
     };
 
-    const output = config.setSlotConfig(input);
-    expect(output).toContain(JSON.stringify(expectedOutput));
+    const output = config.slotConfig(input);
+    expect(output).toEqual(expectedOutput);
   });
 
   it('prunes empty nested configs of SlotSettingsConfig.', () => {
@@ -111,7 +151,7 @@ describe('Codegen API: config', () => {
       },
     };
 
-    const output = config.setSlotConfig(input);
-    expect(output).toContain(JSON.stringify(expectedOutput));
+    const output = config.slotConfig(input);
+    expect(output).toEqual(expectedOutput);
   });
 });

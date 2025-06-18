@@ -45,6 +45,10 @@ export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
     msg('AdSense attributes', {
       desc: 'Settings that affect AdSense behavior.',
     }),
+  config: () =>
+    msg('Page-level configuration', {
+      desc: 'Section containing page-level configuration settings.',
+    }),
   privacy: () => msg('Privacy', {desc: 'Section containing privacy settings.'}),
   sra: () =>
     msg('Single Request Architecture (SRA)', {

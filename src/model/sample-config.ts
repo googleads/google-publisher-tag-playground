@@ -30,6 +30,7 @@ export interface SampleConfig {
  */
 export interface SamplePageConfig {
   adsense?: SampleAdSenseAttributeConfig;
+  config?: googletag.config.PageSettingsConfig;
   privacy?: SamplePrivacyConfig;
   sra?: boolean;
   targeting?: SampleTargetingKV[];

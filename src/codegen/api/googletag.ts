@@ -16,10 +16,15 @@
 
 import {msg, str} from '@lit/localize';
 
-import {SampleConfig, SampleSlotConfig} from '../../model/sample-config.js';
+import {
+  SampleConfig,
+  SamplePageConfig,
+  SampleSlotConfig,
+} from '../../model/sample-config.js';
 import {outOfPageFormatNames} from '../../model/settings.js';
 import {sanitizeJs} from '../sanitize.js';
 
+import * as config from './config.js';
 import * as pubads from './pubads.js';
 import * as slot from './slot.js';
 
@@ -39,6 +44,8 @@ const api = {
     )}, googletag.enums.OutOfPageFormat.${String(slot.format)})`,
   display: (idOrSlot: string) => `googletag.display(${idOrSlot})`,
   enableServices: () => 'googletag.enableServices()',
+  setConfig: (config: googletag.config.PageSettingsConfig) =>
+    `googletag.setConfig(${JSON.stringify(config)})`,
 };
 
 const outOfPage = {
@@ -85,12 +92,15 @@ const status = {
  * Generates a slotOnload event callback function body for the
  * specified slot.
  */
-function getSlotOnloadCallback(config: SampleConfig, slot: SampleSlotConfig) {
-  const id = getSlotIdentifer(config, slot);
-  const formatStr = outOfPageFormatNames[slot.format!]();
+function getSlotOnloadCallback(
+  sampleConfig: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
+  const id = getSlotIdentifer(sampleConfig, slotConfig);
+  const formatStr = outOfPageFormatNames[slotConfig.format!]();
 
   let statusUpdate = '';
-  switch (slot.format) {
+  switch (slotConfig.format) {
     case 'INTERSTITIAL':
       statusUpdate = status.updateHtml(id, outOfPage.loadedUrl(formatStr));
       break;
@@ -132,42 +142,46 @@ export function enableServices() {
  * This must be called before defining an out-of-page slot, since the
  * reference is needed to support error checking.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @param slotConfig The slot within this config to generate a declaration for.
  * @returns
  */
 export function declareSlot(
-  config: SampleConfig,
+  sampleConfig: SampleConfig,
   slotConfig: SampleSlotConfig,
 ) {
-  return api.declareSlot(getSlotIdentifer(config, slotConfig)) + ';';
+  return api.declareSlot(getSlotIdentifer(sampleConfig, slotConfig)) + ';';
 }
 
 /**
  * Generates code for defining a single (static) ad slot.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @param slotConfig The slot within this config to define.
  * @returns
  */
-export function defineSlot(config: SampleConfig, slotConfig: SampleSlotConfig) {
+export function defineSlot(
+  sampleConfig: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
   const slotDef =
-    api.defineSlot(slotConfig, getSlotIdentifer(config, slotConfig)) + '!';
+    api.defineSlot(slotConfig, getSlotIdentifer(sampleConfig, slotConfig)) +
+    '!';
   return slot.addInlineSlotSettings(slotConfig, slotDef);
 }
 
 /**
  * Generates code for defining a single out-of-page ad slot.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @param slotConfig The slot within this config to define.
  * @returns
  */
 export function defineOutOfPageSlot(
-  config: SampleConfig,
+  sampleConfig: SampleConfig,
   slotConfig: SampleSlotConfig,
 ) {
-  const slotVar = getSlotIdentifer(config, slotConfig);
+  const slotVar = getSlotIdentifer(sampleConfig, slotConfig);
 
   const formatString = outOfPageFormatNames[slotConfig.format!]();
   return `
@@ -183,7 +197,7 @@ export function defineOutOfPageSlot(
 
       ${pubads.addEventListener(
         'slotOnload',
-        getSlotOnloadCallback(config, slotConfig),
+        getSlotOnloadCallback(sampleConfig, slotConfig),
       )}
     }
   `.trim();
@@ -192,12 +206,15 @@ export function defineOutOfPageSlot(
 /**
  * Generates code for requesting and rendering a single ad slot.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @param slotConfig The slot within this config to request/render.
  * @returns
  */
-export function display(config: SampleConfig, slotConfig: SampleSlotConfig) {
-  const id = getSlotIdentifer(config, slotConfig);
+export function display(
+  sampleConfig: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
+  const id = getSlotIdentifer(sampleConfig, slotConfig);
   const idOrSlot = slotConfig.format ? id : `'${id}'`;
 
   return slotConfig.format
@@ -208,19 +225,21 @@ export function display(config: SampleConfig, slotConfig: SampleSlotConfig) {
 /**
  * Generates code for requesting/rendering all ad slots.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @returns
  */
-export function displayAll(config: SampleConfig) {
+export function displayAll(sampleConfig: SampleConfig) {
   let displayAll = '';
-  if (config.page?.sra) {
+  if (sampleConfig.page?.sra) {
     // Prefer a static slot, since OOP slots have a higher chance of being null.
-    let index = config.slots.findIndex((s: SampleSlotConfig) => !s.format);
-    if (index === -1) index = config.slots.length - 1;
-    displayAll = display(config, config.slots[index]);
+    let index = sampleConfig.slots.findIndex(
+      (s: SampleSlotConfig) => !s.format,
+    );
+    if (index === -1) index = sampleConfig.slots.length - 1;
+    displayAll = display(sampleConfig, sampleConfig.slots[index]);
   } else {
-    config.slots.forEach((slot: SampleSlotConfig) => {
-      displayAll += display(config, slot);
+    sampleConfig.slots.forEach((slot: SampleSlotConfig) => {
+      displayAll += display(sampleConfig, slot);
     });
   }
 
@@ -228,17 +247,33 @@ export function displayAll(config: SampleConfig) {
 }
 
 /**
+ * Generates code for setting page-level config.
+ *
+ * @param pageConfig The current page config.
+ * @returns
+ */
+export function setConfig(pageConfig: SamplePageConfig) {
+  let cleanConfig;
+
+  if (pageConfig.config) {
+    cleanConfig = config.pageConfig(pageConfig.config);
+  }
+
+  return cleanConfig ? api.setConfig(cleanConfig) + ';' : '';
+}
+
+/**
  * Returns a unique identifier for the specified slot.
  *
  * This identifier can be used to refer to the slot.
  *
- * @param config The sample config.
+ * @param sampleConfig The sample config.
  * @param slotConfig The slot within this config to return an identifier for.
  * @returns
  */
 export function getSlotIdentifer(
-  config: SampleConfig,
+  sampleConfig: SampleConfig,
   slotConfig: SampleSlotConfig,
 ) {
-  return `slot${config.slots.indexOf(slotConfig) + 1}`;
+  return `slot${sampleConfig.slots.indexOf(slotConfig) + 1}`;
 }

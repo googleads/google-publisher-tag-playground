@@ -45,6 +45,10 @@ const strings = {
     msg('// Enable single request mode.', {
       desc: 'Code comment preceding a call to googletag.enableSingleRequest().',
     }),
+  pageSettingsComment: () =>
+    msg('// Configure page-level settings.', {
+      desc: 'Code comment preceding page-level configuration.',
+    }),
   pageTargetingComment: () =>
     msg('// Configure page-level targeting.', {
       desc: 'Code comment preceding page-level targeting configuration.',
@@ -98,6 +102,7 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
   const adSenseAttributes = pubads.setAdSenseAttributes(
     config.page?.adsense || {},
   );
+  const pageSettings = googletag.setConfig(config.page || {});
   const pageTargeting = pubads.setTargeting(config.page?.targeting || []);
   const privacySettings = pubads.setPrivacySettings(config.page?.privacy || {});
 
@@ -116,6 +121,9 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
 
     ${adSenseAttributes.length > 0 ? strings.setAdSenseAttributesComment() : ''}
     ${adSenseAttributes}
+
+    ${pageSettings.length > 0 ? strings.pageSettingsComment() : ''}
+    ${pageSettings}
 
     ${config.page?.sra ? strings.enableSraComment() : ''}
     ${config.page?.sra ? pubads.enableSingleRequest() : ''}

@@ -16,12 +16,6 @@
 
 import {isEmpty, isObject, isUndefined} from 'lodash-es';
 
-/* Internal template strings */
-
-const api = {
-  setConfig: (settings: string) => `setConfig(${settings})`,
-};
-
 /* Internal helper methods */
 
 /**
@@ -53,12 +47,32 @@ function removeEmptyConfigs(obj: Object) {
 /* Public exports */
 
 /**
- * Generates code for setting a {@link googletag.config.SlotSettingsConfig}.
+ * Generates a clean {@link googletag.config.PageSettingsConfig}
+ * from a provided config object.
  *
  * @param config
  * @returns
  */
-export function setSlotConfig(config: googletag.config.SlotSettingsConfig) {
+export function pageConfig(config: googletag.config.PageSettingsConfig) {
+  // Copy only the settings that we explicitly support.
+  const cleanConfig: googletag.config.PageSettingsConfig = {
+    privacyTreatments: config.privacyTreatments,
+  };
+
+  // Remove undefined properties and empty nested configs.
+  removeEmptyConfigs(cleanConfig);
+
+  return isEmpty(cleanConfig) ? null : cleanConfig;
+}
+
+/**
+ * Generates a clean {@link googletag.config.SlotSettingsConfig}
+ * from a provided config object.
+ *
+ * @param config
+ * @returns
+ */
+export function slotConfig(config: googletag.config.SlotSettingsConfig) {
   // Copy only the settings that we explicitly support.
   const cleanConfig: googletag.config.SlotSettingsConfig = {
     interstitial: {
@@ -73,7 +87,5 @@ export function setSlotConfig(config: googletag.config.SlotSettingsConfig) {
   // Remove undefined properties and empty nested configs.
   removeEmptyConfigs(cleanConfig);
 
-  return isEmpty(cleanConfig)
-    ? ''
-    : '.' + api.setConfig(JSON.stringify(cleanConfig));
+  return isEmpty(cleanConfig) ? null : cleanConfig;
 }
