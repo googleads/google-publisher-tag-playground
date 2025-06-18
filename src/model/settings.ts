@@ -154,3 +154,29 @@ export const interstitialTriggerNames: Record<
       desc: 'The action of hiding and then returning to the page (for example, by switching tabs).',
     }),
 };
+
+/**
+ * Maps {@link PrivacyTreatmentsConfig} properties to their friendly names.
+ */
+export const privacyTreatmentConfigNames: Record<
+  keyof googletag.config.PrivacyTreatmentsConfig,
+  () => string
+> = {
+  treatments: () =>
+    msg('Treatments', {
+      desc: 'Setting to control privacy treatments',
+    }),
+};
+
+/**
+ * Maps {@link PrivacyTreatment} values to their friendly names.
+ */
+export const privacyTreatmentNames: Record<
+  googletag.config.PrivacyTreatment,
+  () => string
+> = {
+  disablePersonalization: () =>
+    msg('Disable ads personalization', {
+      desc: 'Setting to control ads personalization privacy treatment,',
+    }),
+};

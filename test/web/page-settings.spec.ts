@@ -20,6 +20,7 @@ import {
   configNames,
   pageConfigNames,
   privacyConfigNames,
+  privacyTreatmentNames,
 } from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
@@ -34,34 +35,41 @@ const BOOLEAN_SETTINGS: {
   setting: SamplePageConfig;
 }[] = [
   {
-    label: pageConfigNames.sra!(),
+    label: pageConfigNames.sra(),
     expectedText: 'enableSingleRequest',
     setting: {sra: true},
   },
   {
-    label: privacyConfigNames.ltd!(),
+    label: privacyConfigNames.ltd(),
     expectedText: 'limitedAds',
     setting: {privacy: {ltd: true}},
   },
   {
-    label: privacyConfigNames.npa!(),
+    label: privacyConfigNames.npa(),
     expectedText: 'nonPersonalizedAds',
     setting: {privacy: {npa: true}},
   },
   {
-    label: privacyConfigNames.rdp!(),
+    label: privacyConfigNames.rdp(),
     expectedText: 'restrictDataProcessing',
     setting: {privacy: {rdp: true}},
   },
   {
-    label: privacyConfigNames.tfcd!(),
+    label: privacyConfigNames.tfcd(),
     expectedText: 'childDirectedTreatment',
     setting: {privacy: {tfcd: true}},
   },
   {
-    label: privacyConfigNames.tfua!(),
+    label: privacyConfigNames.tfua(),
     expectedText: 'underAgeOfConsent',
     setting: {privacy: {tfua: true}},
+  },
+  {
+    label: privacyTreatmentNames.disablePersonalization(),
+    expectedText: 'disablePersonalization',
+    setting: {
+      config: {privacyTreatments: {treatments: ['disablePersonalization']}},
+    },
   },
 ];
 

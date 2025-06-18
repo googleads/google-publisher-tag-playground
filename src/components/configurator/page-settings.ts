@@ -33,6 +33,8 @@ import {
   configNames,
   pageConfigNames,
   privacyConfigNames,
+  privacyTreatmentConfigNames,
+  privacyTreatmentNames,
 } from '../../model/settings.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
@@ -63,6 +65,8 @@ export class PageSettings extends LitElement {
   @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
   @queryAll('.privacy configurator-checkbox')
   private privacySettings!: HTMLInputElement[];
+  @queryAll('.privacy .treatments configurator-checkbox')
+  private privacyTreatments!: HTMLInputElement[];
   @query('targeting-input') private targetingInput!: TargetingInput;
   @query('configurator-text-field#pageUrl')
   private pageUrl!: ConfiguratorTextField;
@@ -89,6 +93,23 @@ export class PageSettings extends LitElement {
     )
       ? this.pageUrl.value
       : undefined;
+
+    // Populate page-level config.
+    const pageConfig: googletag.config.PageSettingsConfig = {};
+
+    const treatments: googletag.config.PrivacyTreatment[] = [];
+    this.privacyTreatments.forEach(input => {
+      if (input.checked) {
+        treatments.push(input.id as googletag.config.PrivacyTreatment);
+      }
+    });
+
+    pageConfig.privacyTreatments =
+      treatments.length > 0 ? {treatments: treatments} : undefined;
+
+    if (Object.keys(pageConfig).length > 0) {
+      this.config.config = pageConfig;
+    }
 
     // Fire an event to let the configurator know a value has changed.
     this.dispatchEvent(
@@ -122,6 +143,8 @@ export class PageSettings extends LitElement {
 
   private renderPrivacySettings() {
     const privacy = this.config.privacy || {};
+    const treatment = this.config.config?.privacyTreatments || {treatments: []};
+
     return html`<config-section
       class="privacy"
       nested
@@ -131,10 +154,25 @@ export class PageSettings extends LitElement {
         const key = setting as keyof SamplePrivacyConfig;
         return this.renderCheckbox(
           key,
-          privacyConfigNames[key]!(),
+          privacyConfigNames[key](),
           privacy[key],
         );
       })}
+
+      <config-section
+        class="treatments"
+        nested
+        title="${privacyTreatmentConfigNames.treatments()}"
+      >
+        ${Object.keys(privacyTreatmentNames).map((setting: string) => {
+          const key = setting as googletag.config.PrivacyTreatment;
+          return this.renderCheckbox(
+            key,
+            privacyTreatmentNames[key](),
+            treatment.treatments?.includes(key),
+          );
+        })}
+      </config-section>
     </config-section>`;
   }
 

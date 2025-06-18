@@ -24,6 +24,7 @@
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
     <msg name="s2fe608b6b49c885b" desc="Code comment preceding calls to configure AdSense settings.">// Set AdSense attributes.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// Define out-of-page slots.</msg>
+    <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
     <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Configure page-level targeting.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
@@ -54,8 +55,11 @@
     <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">Targeting</msg>
     <msg name="sc907ffeeafb021d1" desc="Section containing options to control output.">Output settings</msg>
     <msg name="sf93d227444bc5687" desc="Section containing page settings.">Page settings</msg>
+    <msg name="sdb90b681e373be33" desc="Section containing page-level configuration settings.">Page-level configuration</msg>
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">Page-level targeting</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">Privacy</msg>
+    <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">Disable ads personalization</msg>
+    <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">Treatments</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">AdSense attributes</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> is loaded.</msg>
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> is loading...</msg>
