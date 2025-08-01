@@ -29,10 +29,13 @@ export interface SampleConfig {
  * Page-level GPT settings.
  */
 export interface SamplePageConfig {
+  /** @deprecated */
   adsense?: SampleAdSenseAttributeConfig;
   config?: googletag.config.PageSettingsConfig;
   privacy?: SamplePrivacyConfig;
+  /** @deprecated */
   sra?: boolean;
+  /** @deprecated */
   targeting?: SampleTargetingKV[];
 }
 
@@ -62,6 +65,7 @@ export interface SampleSlotConfig {
   config?: googletag.config.SlotSettingsConfig;
   format?: keyof typeof googletag.enums.OutOfPageFormat;
   size: googletag.GeneralSize;
+  /** @deprecated */
   targeting?: SampleTargetingKV[];
 }
 

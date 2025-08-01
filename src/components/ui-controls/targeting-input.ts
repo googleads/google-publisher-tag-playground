@@ -18,9 +18,12 @@ import {localized, msg, str} from '@lit/localize';
 import {customElement, property} from 'lit/decorators.js';
 import {isEqual} from 'lodash-es';
 
-import type {SampleTargetingKV} from '../../model/sample-config.js';
-
 import {ChipInput} from './chip-input.js';
+
+type TargetingKey = string;
+type TargetingValue = string | string[] | null;
+type TargetingKV = [TargetingKey, TargetingValue];
+type TargetingKVRecord = Record<TargetingKey, TargetingValue>;
 
 // Constant UI strings.
 const strings = {
@@ -75,7 +78,7 @@ export class TargetingInput extends ChipInput {
    * Set active targeting configuration.
    */
   @property({attribute: 'config', type: Array})
-  set config(config: SampleTargetingKV[]) {
+  set config(config: TargetingKVRecord) {
     if (config && !isEqual(this.keyValuestoChips(config), this.chips)) {
       this.chips = this.keyValuestoChips(config);
     }
@@ -85,62 +88,64 @@ export class TargetingInput extends ChipInput {
    * Get the active targeting configuration.
    */
   get config() {
-    return this.chips
-      .map(chip => this.toKeyValue(chip))
-      .filter(kv => !this.validateKeyValue(kv));
+    return Object.fromEntries(
+      this.chips
+        .map(chip => this.toKeyValue(chip))
+        .filter(kv => !this.validateKeyValue(kv)),
+    );
   }
 
   override validateChip(chip: string): string | null {
-    const kv = this.toKeyValue(chip);
+    const [key, value] = this.toKeyValue(chip);
 
-    const validationError = this.validateKeyValue(kv);
+    const validationError = this.validateKeyValue([key, value]);
     if (validationError) {
       return validationError;
-    } else if (this.chips.some(chip => chip.startsWith(`${kv.key}=`))) {
-      return strings.validationErrorDuplicateKey(kv.key);
+    } else if (this.chips.some(chip => chip.startsWith(`${key}=`))) {
+      return strings.validationErrorDuplicateKey(key);
     }
 
     return null;
   }
 
-  private validateKeyValue(kv: SampleTargetingKV): string | null {
-    if (!kv.key || !KEY_VALIDATION_REGEX.test(kv.key)) {
-      return strings.validationErrorInvalidKey(kv.key);
+  private validateKeyValue([key, value]: TargetingKV): string | null {
+    if (!key || !KEY_VALIDATION_REGEX.test(key)) {
+      return strings.validationErrorInvalidKey(key);
     }
 
-    if (!kv.value || kv.value.length === 0) {
-      return strings.validationErrorNoValue(kv.key);
+    if (!value || value.length === 0) {
+      return strings.validationErrorNoValue(key);
     }
 
-    const values = Array.isArray(kv.value) ? kv.value : [kv.value];
+    const values = Array.isArray(value) ? value : [value];
     const index = values.findIndex(
       value => !VALUE_VALIDATION_REGEX.test(value),
     );
     if (index > -1) {
-      return strings.validationErrorInvalidValue(kv.key, values[index]);
+      return strings.validationErrorInvalidValue(key, values[index]);
     }
 
     return null;
   }
 
-  private toChip({key, value}: SampleTargetingKV): string {
+  private toChip([key, value]: TargetingKV): string {
     return `${key}=${Array.isArray(value) ? value.join(',') : value}`;
   }
 
-  private toKeyValue(chip: string): SampleTargetingKV {
+  private toKeyValue(chip: string): TargetingKV {
     const kv = chip.split('=');
     const key = kv[0];
     const value = kv.length === 2 ? kv[1].split(',') : [];
 
-    return {
-      key: key,
-      value: value.length === 0 ? '' : value.length === 1 ? value[0] : value,
-    };
+    return [
+      key,
+      value.length === 0 ? '' : value.length === 1 ? value[0] : value,
+    ];
   }
 
-  private keyValuestoChips(keyValues: SampleTargetingKV[]) {
+  private keyValuestoChips(keyValues: TargetingKVRecord) {
     return this.sortChips(
-      keyValues
+      Object.entries(keyValues)
         .filter(kv => !this.validateKeyValue(kv))
         .map(kv => this.toChip(kv)),
     );

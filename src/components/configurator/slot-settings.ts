@@ -287,15 +287,11 @@ export class SlotSettings extends LitElement {
         '[name=formats]',
       ) as ConfiguratorFormatSelect;
       const sizes = parent.querySelector('slot-size-input') as SlotSizeInput;
-      const targeting = parent.querySelector(
-        'targeting-input',
-      ) as TargetingInput;
 
       config[index].slot = {
         adUnit: adUnitPath?.value || '',
         format: format?.format,
         size: sizes?.config || [],
-        targeting: targeting?.config || [],
       };
 
       this.updateSlotConfig(config[index].slot, parent);
@@ -307,6 +303,9 @@ export class SlotSettings extends LitElement {
   private updateSlotConfig(slot: SampleSlotConfig, parent: Element) {
     // Populate slot-level config.
     const slotConfig: googletag.config.SlotSettingsConfig = {};
+
+    const targeting = parent.querySelector('targeting-input') as TargetingInput;
+    slotConfig.targeting = targeting?.config;
 
     if (slot.format === 'INTERSTITIAL') {
       const interstitialConfig: googletag.config.InterstitialConfig = {};
@@ -485,7 +484,7 @@ export class SlotSettings extends LitElement {
   private renderTargetingInput(slot: SampleSlotConfig) {
     return html` <targeting-input
       title="${strings.targetingSectionTitle()}"
-      .config="${slot.targeting || []}"
+      .config="${slot.config?.targeting || []}"
       @update="${this.updateSlot}"
     ></targeting-input>`;
   }

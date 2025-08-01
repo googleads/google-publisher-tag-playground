@@ -20,6 +20,7 @@ import {html, render} from 'lit-html';
 
 import {SampleConfig} from '../../src/model/sample-config.js';
 import * as base64url from '../../src/util/base64url.js';
+import {migrateLegacyProperties} from '../../src/util/compatibility-utils.js';
 import {setLocale} from '../../src/util/localization-utils.js';
 import {PlaygroundConfig} from '../../src/util/playground-config.js';
 
@@ -30,6 +31,10 @@ const config: SampleConfig = PlaygroundConfig.sampleConfigHash
   : {slots: []};
 
 render(
-  html` <sample-configurator .config="${config}"></sample-configurator> `,
+  html`
+    <sample-configurator
+      .config="${migrateLegacyProperties(config)}"
+    ></sample-configurator>
+  `,
   document.body,
 );

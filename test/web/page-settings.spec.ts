@@ -36,8 +36,8 @@ const BOOLEAN_SETTINGS: {
 }[] = [
   {
     label: pageConfigNames.sra(),
-    expectedText: 'enableSingleRequest',
-    setting: {sra: true},
+    expectedText: 'singleRequest',
+    setting: {config: {singleRequest: true}},
   },
   {
     label: privacyConfigNames.ltd(),
@@ -170,7 +170,7 @@ test.describe('Configure targeting', () => {
   test.describe('Prepopulation', () => {
     test.use({
       config: {
-        page: {targeting: [{key: testKey, value: testValue}]},
+        page: {config: {targeting: {[testKey]: testValue}}},
         slots: [],
       },
     });
@@ -198,7 +198,7 @@ test.describe('Page URL', () => {
 
     test.use({
       config: {
-        page: {adsense: {pageUrl: testUrl}},
+        page: {config: {adsenseAttributes: {page_url: testUrl}}},
         slots: [],
       },
     });

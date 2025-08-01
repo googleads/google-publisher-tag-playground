@@ -77,25 +77,24 @@ export class PageSettings extends LitElement {
   @property({attribute: 'config', type: Object}) config: SamplePageConfig = {};
 
   private handleUpdate() {
-    this.config.sra = this.sraInput.checked;
-
     this.config.privacy = this.config.privacy || {};
     this.privacySettings.forEach(input => {
       this.config.privacy![input.id as keyof SamplePrivacyConfig] =
         input.checked;
     });
 
-    this.config.targeting = this.targetingInput.config;
+    // Populate page-level config.
+    const pageConfig: googletag.config.PageSettingsConfig = {};
+    pageConfig.singleRequest = this.sraInput.checked || undefined;
 
-    this.config.adsense = this.config.adsense || {};
-    this.config.adsense.pageUrl = PAGE_URL_VALIDATION_REGEX.test(
+    pageConfig.adsenseAttributes = pageConfig.adsenseAttributes || {};
+    pageConfig.adsenseAttributes.page_url = PAGE_URL_VALIDATION_REGEX.test(
       this.pageUrl.value,
     )
       ? this.pageUrl.value
       : undefined;
 
-    // Populate page-level config.
-    const pageConfig: googletag.config.PageSettingsConfig = {};
+    pageConfig.targeting = this.targetingInput.config;
 
     const treatments: googletag.config.PrivacyTreatment[] = [];
     this.privacyTreatments.forEach(input => {
@@ -128,14 +127,20 @@ export class PageSettings extends LitElement {
 
   private renderGeneralSettings() {
     return html`
-      ${this.renderCheckbox('sra', pageConfigNames.sra!(), this.config.sra)}
+      ${this.renderCheckbox(
+        'sra',
+        pageConfigNames.sra!(),
+        this.config.config?.singleRequest || undefined,
+      )}
       <configurator-text-field
         id="pageUrl"
         label="${adSenseAttributeConfigNames.pageUrl()}"
         error-text="${strings.validationErrorPageUrl()}"
         pattern="${PAGE_URL_VALIDATION_PATTERN}"
         placeholder="https://www.example.com"
-        value="${ifDefined(this.config.adsense?.pageUrl)}"
+        value="${ifDefined(
+          this.config.config?.adsenseAttributes?.page_url || undefined,
+        )}"
         @update="${this.handleUpdate}"
       ></configurator-text-field>
     `;
@@ -180,7 +185,7 @@ export class PageSettings extends LitElement {
     return html`<targeting-input
       class="page"
       title="${pageConfigNames.targeting!()}"
-      .config="${this.config.targeting || []}"
+      .config="${this.config.config?.targeting || []}"
       @update="${this.handleUpdate}"
     >
     </targeting-input>`;

@@ -56,7 +56,12 @@ function removeEmptyConfigs(obj: Object) {
 export function pageConfig(config: googletag.config.PageSettingsConfig) {
   // Copy only the settings that we explicitly support.
   const cleanConfig: googletag.config.PageSettingsConfig = {
+    adsenseAttributes: {
+      page_url: config.adsenseAttributes?.page_url,
+    },
     privacyTreatments: config.privacyTreatments,
+    singleRequest: config.singleRequest,
+    targeting: config.targeting,
   };
 
   // Remove undefined properties and empty nested configs.
@@ -82,6 +87,7 @@ export function slotConfig(config: googletag.config.SlotSettingsConfig) {
         unhideWindow: config.interstitial?.triggers?.unhideWindow,
       },
     },
+    targeting: config.targeting,
   };
 
   // Remove undefined properties and empty nested configs.
