@@ -4,7 +4,7 @@
   "description": "An interactive GPT sample configurator and code playground.",
   "type": "module",
   "engines": {
-    "node": ">=11.0.0"
+    "node": ">=12.0.0"
   },
   "scripts": {
     "build": "npm run build:l10n && npm run fix && npm run build:ts && npm run build:rollup",
