@@ -14,7 +14,7 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Dải quảng cáo dọc cạnh trang (bên trái)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Dải quảng cáo dọc cạnh trang (bên phải)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Quảng cáo xen kẽ trên web</msg>
-    <msg desc="Button text" name="s68fe43baedc49318">Refresh preview</msg>
+    <msg desc="Button text" name="s68fe43baedc49318">Làm mới bản xem trước</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Mở bản xem trước</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Thêm vị trí</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Xoá vị trí</msg>
@@ -24,6 +24,7 @@
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Xác định vị trí quảng cáo tĩnh.</msg>
     <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Đặt thuộc tính trong AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Xác định vị trí nằm ngoài trang.</msg>
+    <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Định cấu hình chế độ cài đặt cấp trang.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Định cấu hình tiêu chí nhắm mục tiêu cấp trang.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Định cấu hình chế độ cài đặt quyền riêng tư.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Các vị trí <ph name="0">${format}</ph> sẽ trả về giá trị rỗng nếu trang hoặc thiết bị không hỗ trợ.</msg>
@@ -31,11 +32,11 @@
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Mẫu vị trí</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Tuỳ chỉnh</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Nhấp vào nút bên dưới để xem trước trong một cửa sổ mới.</msg>
-    <msg desc="Error message." name="s733564cddc33799f">Error: unable to connect to the GPT Sample Builder</msg>
+    <msg desc="Error message." name="s733564cddc33799f">Lỗi: không kết nối được với Trình tạo mẫu GPT</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Kích thước vị trí quảng cáo</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Thêm khoá-giá trị nhắm mục tiêu</msg>
-    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU user consent</msg>
-    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Loading consent dialog...</msg>
+    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Sự đồng ý của người dùng ở Liên minh Châu Âu</msg>
+    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Đang tải hộp thoại đồng ý...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Quảng cáo mẫu</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Quảng cáo mẫu (nằm ngoài trang)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Không có</msg>
@@ -54,8 +55,11 @@
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Nhắm mục tiêu</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Cài đặt đầu ra</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Cài đặt trang</msg>
+    <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Cấu hình cấp trang</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Nhắm mục tiêu cấp trang</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Quyền riêng tư</msg>
+    <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Tắt tính năng cá nhân hoá quảng cáo</msg>
+    <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Biện pháp xử lý</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Thuộc tính trong AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">Đã tải <ph name="0">${format}</ph>.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> đang tải...</msg>

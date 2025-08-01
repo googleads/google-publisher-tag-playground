@@ -14,7 +14,7 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Боковое объявление (слева)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Боковое объявление (справа)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Межстраничное объявление на сайте</msg>
-    <msg desc="Button text" name="s68fe43baedc49318">Refresh preview</msg>
+    <msg desc="Button text" name="s68fe43baedc49318">Обновить предпросмотр</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Посмотреть</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Добавить рекламное место</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Удалить рекламное место</msg>
@@ -24,6 +24,7 @@
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Определяет статические рекламные места.</msg>
     <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Задайте атрибуты AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Определяет внестраничные рекламные места.</msg>
+    <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Задать настройки на уровне страницы.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Задает параметры таргетинга на уровне страницы.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Задает настройки конфиденциальности.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058"><ph name="0">${format}</ph>: возвращается пустое значение, если страница или устройство не поддерживает их.</msg>
@@ -31,11 +32,11 @@
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Шаблон рекламного места</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Свое значение</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Чтобы выполнить просмотр в отдельном окне, нажмите кнопку ниже.</msg>
-    <msg desc="Error message." name="s733564cddc33799f">Error: unable to connect to the GPT Sample Builder</msg>
+    <msg desc="Error message." name="s733564cddc33799f">При попытке установить связь со сборщиком образцов тегов GPT произошла ошибка.</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Размеры рекламных мест</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Добавьте ключи и значения таргетинга</msg>
-    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU user consent</msg>
-    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Loading consent dialog...</msg>
+    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Согласие пользователей из ЕС</msg>
+    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Загрузка диалогового окна для получения согласия пользователей…</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Образцы объявлений</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Образцы внестраничных объявлений</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Нет</msg>
@@ -54,8 +55,11 @@
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Таргетинг</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Настройки выходных данных</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Настройки страницы</msg>
+    <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Настройки на уровне страницы</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Таргетинг на уровне страницы</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Конфиденциальность</msg>
+    <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Отключить персонализацию рекламы</msg>
+    <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Защита</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Атрибуты AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph>: загрузка выполнена.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> загружается…</msg>

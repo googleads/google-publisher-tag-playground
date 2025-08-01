@@ -14,7 +14,7 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Anuncio de riel lateral (izquierdo)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Anuncio de riel lateral (derecho)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Anuncio intersticial para la Web</msg>
-    <msg desc="Button text" name="s68fe43baedc49318">Refresh preview</msg>
+    <msg desc="Button text" name="s68fe43baedc49318">Actualizar vista previa</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Abrir vista previa</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Agregar espacio</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Quitar espacio</msg>
@@ -24,6 +24,7 @@
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Define espacios publicitarios estáticos.</msg>
     <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Establece los atributos de AdSense.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Define espacios publicitarios fuera de página.</msg>
+    <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Define la configuración a nivel de la página.</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Configura la segmentación en la página.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Establece la configuración de privacidad.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Los espacios <ph name="0">${format}</ph> muestran un valor nulo si la página o el dispositivo no los admiten.</msg>
@@ -31,11 +32,11 @@
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Plantilla de espacios</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Personalizado</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Haz clic en el botón que aparece a continuación para obtener una vista previa en una ventana nueva.</msg>
-    <msg desc="Error message." name="s733564cddc33799f">Error: unable to connect to the GPT Sample Builder</msg>
+    <msg desc="Error message." name="s733564cddc33799f">Error: No se puede establecer la conexión con el Compilador de muestras de GPT</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Tamaños de espacio publicitario</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Agrega pares clave-valor de segmentación</msg>
-    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU user consent</msg>
-    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Loading consent dialog...</msg>
+    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Consentimiento de usuarios de la UE</msg>
+    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Cargando cuadro de diálogo de consentimiento…</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Anuncios de muestra</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Anuncios de muestra (fuera de página)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Ninguno</msg>
@@ -54,8 +55,11 @@
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Segmentación</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Configuración del formato de salida</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Configuración de la página</msg>
+    <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Configuración a nivel de la página</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Segmentación de la página</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privacidad</msg>
+    <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Inhabilitar la personalización de anuncios</msg>
+    <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Tratamientos</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Atributos de AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">Se cargó <ph name="0">${format}</ph>.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">Se está cargando <ph name="0">${format}</ph>…</msg>

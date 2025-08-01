@@ -14,7 +14,7 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">側邊欄廣告 (左)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">側邊欄廣告 (右)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">網站插頁式廣告</msg>
-    <msg desc="Button text" name="s68fe43baedc49318">Refresh preview</msg>
+    <msg desc="Button text" name="s68fe43baedc49318">重新整理預覽畫面</msg>
     <msg desc="Button text" name="s3be169991df10a5d">開啟預覽</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">新增版位</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除版位</msg>
@@ -24,6 +24,7 @@
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 定義靜態廣告版位。</msg>
     <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// 設定 AdSense 屬性。</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// 定義非頁內廣告版位。</msg>
+    <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// 進行網頁層級設定。</msg>
     <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// 設定網頁層級指定目標。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 調整隱私權設定。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">如果網頁或裝置不支援，「<ph name="0">${format}</ph>」廣告版位會傳回空值。</msg>
@@ -31,11 +32,11 @@
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">版位範本</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">自訂</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>。點選下方按鈕即可在新視窗中預覽。</msg>
-    <msg desc="Error message." name="s733564cddc33799f">Error: unable to connect to the GPT Sample Builder</msg>
+    <msg desc="Error message." name="s733564cddc33799f">錯誤：無法連線至 GPT 範例建構工具</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">廣告版位大小</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">新增指定鍵/值</msg>
-    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU user consent</msg>
-    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Loading consent dialog...</msg>
+    <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">歐盟使用者同意聲明</msg>
+    <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">正在載入同意聲明對話方塊...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">廣告範例</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">廣告範例 (非頁內廣告)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">無</msg>
@@ -54,8 +55,11 @@
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">指定目標</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">輸出內容設定</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">網頁設定</msg>
+    <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">頁面層級設定</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">網頁層級指定目標</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">隱私權</msg>
+    <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">停用廣告個人化</msg>
+    <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">保護措施</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense 屬性</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a">已載入<ph name="0">${format}</ph>。</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">正在載入<ph name="0">${format}</ph>...</msg>
