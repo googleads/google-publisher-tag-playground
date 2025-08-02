@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-import {
-  SampleAdSenseAttributeConfig,
-  SamplePrivacyConfig,
-  SampleTargetingKV,
-} from '../../model/sample-config.js';
+import {SamplePrivacyConfig} from '../../model/sample-config.js';
 import {sanitizeJs} from '../sanitize.js';
 
 type GptEvent = keyof googletag.events.EventTypeMap;
@@ -29,11 +25,8 @@ const api = {
   pubAdsService: () => 'googletag.pubads()',
   addEventListener: (event: GptEvent, code: string) =>
     `${api.pubAdsService()}.addEventListener('${event}', (event) => {${code}})`,
-  enableSingleRequest: () => `${api.pubAdsService()}.enableSingleRequest()`,
   setPrivacySettings: (settings: string) =>
     `${api.pubAdsService()}.setPrivacySettings({${settings}})`,
-  setTargeting: (kv: SampleTargetingKV) =>
-    `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
 
   privacySetting: {
     ltd: (enabled: boolean) => `limitedAds: ${sanitizeJs(enabled)}`,
@@ -42,11 +35,6 @@ const api = {
     tfcd: (enabled: boolean) =>
       `childDirectedTreatment: ${sanitizeJs(enabled)}`,
     tfua: (enabled: boolean) => `underAgeOfConsent: ${sanitizeJs(enabled)}`,
-  },
-
-  set: {
-    pageUrl: (url: string) =>
-      `${api.pubAdsService()}.set('page_url', ${sanitizeJs(url)})`,
   },
 };
 
@@ -61,28 +49,6 @@ const api = {
  */
 export function addEventListener(event: GptEvent, code: string) {
   return api.addEventListener(event, code);
-}
-
-/**
- * Generates code for enabling SRA mode.
- */
-export function enableSingleRequest() {
-  return api.enableSingleRequest() + ';';
-}
-
-/**
- * Generates code for setting AdSense attributes.
- */
-export function setAdSenseAttributes(
-  adSenseConfig: SampleAdSenseAttributeConfig,
-) {
-  const adSenseAttributes: string[] = [];
-
-  if (adSenseConfig.pageUrl) {
-    adSenseAttributes.push(api.set.pageUrl(adSenseConfig.pageUrl) + ';');
-  }
-
-  return adSenseAttributes.length > 0 ? adSenseAttributes.join('\n') : '';
 }
 
 /**
@@ -112,23 +78,5 @@ export function setPrivacySettings(privacy: SamplePrivacyConfig) {
 
   return privacySettings.length > 0
     ? api.setPrivacySettings(privacySettings.join(',')) + ';'
-    : '';
-}
-
-/**
- * Generates code for setting page-level targeting.
- *
- * @param targeting Page-level targeting configuration object.
- * @returns
- */
-export function setTargeting(targeting: SampleTargetingKV[]) {
-  const targetingKVs: string[] = [];
-
-  targeting?.forEach((kv: SampleTargetingKV) => {
-    targetingKVs.push('.' + api.setTargeting(kv));
-  });
-
-  return targetingKVs.length > 0
-    ? api.pubAdsService() + targetingKVs.join('') + ';'
     : '';
 }

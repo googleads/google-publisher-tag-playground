@@ -39,10 +39,8 @@ export const templates = {
   s292d08a9cea72454: '‏‮Fluid‬‏ ‏‮ad‬‏',
   s2a071e5a3e79454a: '‏‮Key‬‏=‏‮Value‬‏1,‏‮Value‬‏2,...',
   s2d647200b120ea41: '‏‮Ad‬‏ ‏‮unit‬‏ ‏‮path‬‏',
-  s2fe608b6b49c885b: '// ‏‮Set‬‏ ‏‮AdSense‬‏ ‏‮attributes‬‏.',
   s3132d1a0580760bc: '‏‮Child‬‏-‏‮directed‬‏ ‏‮treatment‬‏',
   s3400fb34f1e245a9: '‏‮Multi‬‏-‏‮size‬‏ ‏‮ad‬‏',
-  s34774a88f199f364: '// ‏‮Configure‬‏ ‏‮page‬‏-‏‮level‬‏ ‏‮targeting‬‏.',
   s352f8b213acc822a: str`${0} ‏‮is‬‏ ‏‮loaded‬‏.`,
   s3870e706a2084c79: str`‏‮Invalid‬‏ ‏‮value‬‏ ‏‮for‬‏ ‏‮key‬‏ ${0}: ${1}`,
   s3be169991df10a5d: '‏‮Open‬‏ ‏‮preview‬‏',
@@ -60,7 +58,6 @@ export const templates = {
   s53a96edcf36221b2: '‏‮Ad‬‏ ‏‮slot‬‏ ‏‮sizes‬‏',
   s5bf3f3d517569ebd: '‏‮Anchor‬‏ ‏‮ad‬‏ (‏‮bottom‬‏)',
   s5e13187e6961d8b1: '// ‏‮Define‬‏ ‏‮out‬‏-‏‮of‬‏-‏‮page‬‏ ‏‮slots‬‏.',
-  s5ec0955e7a33abf4: '// ‏‮Enable‬‏ ‏‮single‬‏ ‏‮request‬‏ ‏‮mode‬‏.',
   s5fc316a7f287b7be:
     '‏‮This‬‏ ‏‮sample‬‏ ‏‮cannot‬‏ ‏‮be‬‏ ‏‮previewed‬‏ ‏‮in‬‏ ‏‮an‬‏ ‏‮iframe‬‏',
   s669b18c6d2d9c95b: '‏‮None‬‏',

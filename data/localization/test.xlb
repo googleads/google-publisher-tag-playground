@@ -20,12 +20,9 @@
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
-    <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Ến̂ấb̂l̂́ê ŝ́în̂́ĝl̂́ê r̂́êq̂́ûếŝt̂́ m̂́ôd̂́ê.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
-    <msg name="s2fe608b6b49c885b" desc="Code comment preceding calls to configure AdSense settings.">// Ŝ́êt̂́ Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// D̂́êf̂́în̂́ê ốût̂́-ốf̂-p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
-    <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
     <msg name="s08995feb9716ee48" desc="Drop-down label">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>

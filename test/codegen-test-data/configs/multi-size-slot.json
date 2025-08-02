@@ -1,40 +1,31 @@
 {
   "page": {
-    "sra": true,
     "privacy": {
       "npa": true,
       "rdp": true,
       "tfcd": true,
       "tfua": true
     },
-    "targeting": [
-      {
-        "key": "page",
-        "value": "red"
-      }
-    ]
+    "config": {
+      "singleRequest": true,
+      "targeting": {"page": "red"}
+    }
   },
   "slots": [
     {
       "adUnit": "/123/abc",
       "size": [[300, 250], [100, 100], ["fluid"]],
-      "targeting": [
-        {
-          "key": "slot",
-          "value": "blue"
-        }
-      ]
+      "config": {
+        "targeting": {"slot": "blue"}
+      }
     },
     {
       "adUnit": "/6355419/Travel/Europe/France/Paris",
       "size": [300, 250],
       "format": "INTERSTITIAL",
-      "targeting": [
-        {
-          "key": "interstitial",
-          "value": "yellow"
-        }
-      ]
+      "config": {
+        "targeting": {"interstitial": "yellow"}
+      }
     }
   ]
 }

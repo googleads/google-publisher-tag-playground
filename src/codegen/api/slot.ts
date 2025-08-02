@@ -14,11 +14,7 @@
  * limitations under the License.
  */
 
-import {
-  SampleSlotConfig,
-  SampleTargetingKV,
-} from '../../model/sample-config.js';
-import {sanitizeJs} from '../sanitize.js';
+import {SampleSlotConfig} from '../../model/sample-config.js';
 
 import * as config from './config.js';
 
@@ -28,8 +24,6 @@ const api = {
   addService: () => 'addService(googletag.pubads())',
   setConfig: (config: googletag.config.SlotSettingsConfig) =>
     `setConfig(${JSON.stringify(config)})`,
-  setTargeting: (kv: SampleTargetingKV) =>
-    `setTargeting(${sanitizeJs(kv.key)}, ${sanitizeJs(kv.value)})`,
 };
 
 /* Public exports */
@@ -41,13 +35,7 @@ export function addInlineSlotSettings(
   slotConfig: SampleSlotConfig,
   slotDefinition: string,
 ) {
-  let slotSettings = slotDefinition;
-
-  slotConfig.targeting?.forEach((kv: SampleTargetingKV) => {
-    slotSettings += '.' + api.setTargeting(kv);
-  });
-
-  slotSettings += '.' + api.addService();
+  let slotSettings = `${slotDefinition}.${api.addService()}`;
 
   if (slotConfig.config) {
     const cleanConfig = config.slotConfig(slotConfig.config);

@@ -1,24 +1,25 @@
 {
   "page": {
-    "sra": true,
     "privacy": {
       "ltd": true,
       "npa": true,
       "rdp": true,
       "tfcd": true,
       "tfua": true
+    },
+    "config": {
+      "singleRequest": true
     }
   },
   "slots": [
     {
       "adUnit": "/123/abc",
       "size": [300, 250],
-      "targeting": [
-        {
-          "key": "slot",
-          "value": "blue"
+      "config": {
+        "targeting": {
+          "slot": "blue"
         }
-      ]
+      }
     }
   ]
 }

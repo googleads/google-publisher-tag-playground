@@ -39,10 +39,8 @@ export const templates = {
   s292d08a9cea72454: 'Reklama elastyczna',
   s2a071e5a3e79454a: 'Klucz=Wartość1,Wartość2,…',
   s2d647200b120ea41: 'Ścieżka jednostki reklamowej',
-  s2fe608b6b49c885b: '// Ustaw atrybuty AdSense.',
   s3132d1a0580760bc: 'Traktowanie jako reklamy skierowanej do dzieci',
   s3400fb34f1e245a9: 'Reklama w kilku rozmiarach',
-  s34774a88f199f364: '// Skonfiguruj kierowanie na poziomie strony.',
   s352f8b213acc822a: str`Boks ${0} został wczytany.`,
   s3870e706a2084c79: str`Nieprawidłowa wartość klucza ${0}: ${1}`,
   s3be169991df10a5d: 'Otwórz podgląd',
@@ -60,7 +58,6 @@ export const templates = {
   s53a96edcf36221b2: 'Rozmiary boksów reklamowych',
   s5bf3f3d517569ebd: 'Reklama zakotwiczona (u dołu)',
   s5e13187e6961d8b1: '// Zdefiniuj boksy poza stroną.',
-  s5ec0955e7a33abf4: '// Włącz tryb pojedynczego żądania.',
   s5fc316a7f287b7be:
     'Nie można wyświetlić podglądu tego przykładu w elemencie iframe',
   s669b18c6d2d9c95b: 'Brak',

@@ -20,12 +20,9 @@
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// Request and render all previously defined ad slots.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
-    <msg name="s5ec0955e7a33abf4" desc="Code comment preceding a call to googletag.enableSingleRequest().">// Enable single request mode.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
-    <msg name="s2fe608b6b49c885b" desc="Code comment preceding calls to configure AdSense settings.">// Set AdSense attributes.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// Define out-of-page slots.</msg>
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
-    <msg name="s34774a88f199f364" desc="Code comment preceding page-level targeting configuration.">// Configure page-level targeting.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
     <msg name="s08995feb9716ee48" desc="Drop-down label">Out-of-page format</msg>

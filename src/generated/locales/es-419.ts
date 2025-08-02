@@ -39,10 +39,8 @@ export const templates = {
   s292d08a9cea72454: 'Anuncio flexible',
   s2a071e5a3e79454a: 'Key=Value1,Value2,…',
   s2d647200b120ea41: 'Ruta de acceso de la unidad de anuncios',
-  s2fe608b6b49c885b: '// Establece los atributos de AdSense.',
   s3132d1a0580760bc: 'Contenido dirigido a niños',
   s3400fb34f1e245a9: 'Anuncio de varios tamaños',
-  s34774a88f199f364: '// Configura la segmentación en la página.',
   s352f8b213acc822a: str`Se cargó ${0}.`,
   s3870e706a2084c79: str`El valor de la clave ${0} no es válido: ${1}`,
   s3be169991df10a5d: 'Abrir vista previa',
@@ -60,7 +58,6 @@ export const templates = {
   s53a96edcf36221b2: 'Tamaños de espacio publicitario',
   s5bf3f3d517569ebd: 'Anuncio fijo (inferior)',
   s5e13187e6961d8b1: '// Define espacios publicitarios fuera de página.',
-  s5ec0955e7a33abf4: '// Habilita el modo de solicitud única.',
   s5fc316a7f287b7be:
     'No se puede obtener una vista previa de este ejemplo en un iframe',
   s669b18c6d2d9c95b: 'Ninguno',

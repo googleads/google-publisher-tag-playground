@@ -1,27 +1,27 @@
 {
   "page": {
-    "sra": false
+    "config": {
+      "singleRequest": false
+    }
   },
   "slots": [
     {
       "adUnit": "/123/abc",
       "size": [300, 250],
-      "targeting": [
-        {
-          "key": "kv1",
-          "value": "value1"
+      "config": {
+        "targeting": {
+          "kv1": "value1"
         }
-      ]
+      }
     },
     {
       "adUnit": "/123/def",
       "size": [300, 250],
-      "targeting": [
-        {
-          "key": "kv2",
-          "value": "value2"
+      "config": {
+        "targeting": {
+          "kv2": "value2"
         }
-      ]
+      }
     },
     {
       "adUnit": "/123/ghi",

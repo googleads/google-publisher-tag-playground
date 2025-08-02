@@ -40,10 +40,8 @@ export const templates = {
   s292d08a9cea72454: 'Annuncio flessibile',
   s2a071e5a3e79454a: 'Key=Value1,Value2,...',
   s2d647200b120ea41: 'Percorso unità pubblicitaria',
-  s2fe608b6b49c885b: '// Imposta gli attributi AdSense.',
   s3132d1a0580760bc: 'Trattamento per siti o servizi destinati ai minori',
   s3400fb34f1e245a9: 'Annuncio con più dimensioni',
-  s34774a88f199f364: '// Configura targeting a livello di pagina.',
   s352f8b213acc822a: str`${0} è stata caricata.`,
   s3870e706a2084c79: str`Valore non valido per la chiave ${0}: ${1}`,
   s3be169991df10a5d: 'Apri anteprima',
@@ -61,7 +59,6 @@ export const templates = {
   s53a96edcf36221b2: 'Dimensioni aree annunci',
   s5bf3f3d517569ebd: 'Annuncio ancorato (in basso)',
   s5e13187e6961d8b1: '// Definisci aree fuori pagina.',
-  s5ec0955e7a33abf4: '// Abilita la modalità di richiesta singola.',
   s5fc316a7f287b7be:
     "Impossibile visualizzare l'anteprima di questo esempio in un iframe",
   s669b18c6d2d9c95b: 'Nessuno',

@@ -39,10 +39,8 @@ export const templates = {
   s292d08a9cea72454: 'Flexible Anzeige',
   s2a071e5a3e79454a: 'Schlüssel=Wert1,Wert2,…',
   s2d647200b120ea41: 'Anzeigenblock-Pfad',
-  s2fe608b6b49c885b: '// AdSense-Attribute festlegen.',
   s3132d1a0580760bc: 'Inhalte für Kinder',
   s3400fb34f1e245a9: 'Anzeige in unterschiedlichen Größen',
-  s34774a88f199f364: '// Configure page-level targeting.',
   s352f8b213acc822a: str`${0} is loaded.`,
   s3870e706a2084c79: str`Ungültiger Wert für Schlüssel ${0}: ${1}`,
   s3be169991df10a5d: 'Vorschau öffnen',
@@ -60,7 +58,6 @@ export const templates = {
   s53a96edcf36221b2: 'Größen von Anzeigenflächen',
   s5bf3f3d517569ebd: 'Ankeranzeige (unten)',
   s5e13187e6961d8b1: '// Define out-of-page slots.',
-  s5ec0955e7a33abf4: '// Enable single request mode.',
   s5fc316a7f287b7be:
     'Für dieses Beispiel kann keine Vorschau in einem iFrame angezeigt werden',
   s669b18c6d2d9c95b: 'Keine',

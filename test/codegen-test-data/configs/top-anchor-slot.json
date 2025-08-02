@@ -4,12 +4,11 @@
       "adUnit": "/6355419/Travel/Europe/France/Paris",
       "size": [300, 250],
       "format": "TOP_ANCHOR",
-      "targeting": [
-        {
-          "key": "interstitial",
-          "value": "yellow"
+      "config": {
+        "targeting": {
+          "interstitial": "yellow"
         }
-      ]
+      }
     }
   ]
 }

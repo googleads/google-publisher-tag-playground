@@ -25,10 +25,6 @@ import * as pubads from './api/pubads.js';
 /* Internal template strings */
 
 const strings = {
-  setAdSenseAttributesComment: () =>
-    msg('// Set AdSense attributes.', {
-      desc: 'Code comment preceding calls to configure AdSense settings.',
-    }),
   staticSlotComment: () =>
     msg('// Define static ad slots.', {
       desc: 'Code comment preceding ad slot definitions.',
@@ -41,17 +37,9 @@ const strings = {
     msg('// Enable GPT services.', {
       desc: 'Code comment preceding a call to googletag.enableServices().',
     }),
-  enableSraComment: () =>
-    msg('// Enable single request mode.', {
-      desc: 'Code comment preceding a call to googletag.enableSingleRequest().',
-    }),
   pageSettingsComment: () =>
     msg('// Configure page-level settings.', {
       desc: 'Code comment preceding page-level configuration.',
-    }),
-  pageTargetingComment: () =>
-    msg('// Configure page-level targeting.', {
-      desc: 'Code comment preceding page-level targeting configuration.',
     }),
   privacySettingsComment: () =>
     msg('// Configure privacy settings.', {
@@ -99,11 +87,7 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
   const staticSlots = slotDefinitions(config);
   const outOfPageSlots = slotDefinitions(config, true);
 
-  const adSenseAttributes = pubads.setAdSenseAttributes(
-    config.page?.adsense || {},
-  );
   const pageSettings = googletag.setConfig(config.page || {});
-  const pageTargeting = pubads.setTargeting(config.page?.targeting || []);
   const privacySettings = pubads.setPrivacySettings(config.page?.privacy || {});
 
   return `
@@ -116,17 +100,8 @@ function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
     ${privacySettings.length > 0 ? strings.privacySettingsComment() : ''}
     ${privacySettings}
 
-    ${pageTargeting.length > 0 ? strings.pageTargetingComment() : ''}
-    ${pageTargeting}
-
-    ${adSenseAttributes.length > 0 ? strings.setAdSenseAttributesComment() : ''}
-    ${adSenseAttributes}
-
     ${pageSettings.length > 0 ? strings.pageSettingsComment() : ''}
     ${pageSettings}
-
-    ${config.page?.sra ? strings.enableSraComment() : ''}
-    ${config.page?.sra ? pubads.enableSingleRequest() : ''}
 
     ${strings.enableServicesComment()}
     ${googletag.enableServices()}
