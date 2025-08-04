@@ -7,6 +7,7 @@
     <msg name="s703415876ae4626f" desc="A sample ad with one valid size">Fixed-size ad (750x200)</msg>
     <msg name="s48390e2c954ba495" desc="A sample ad with one valid size.">Fixed-size ad (100x100)</msg>
     <msg name="s292d08a9cea72454" desc="A sample native ad, which resizes to fit the space available.">Fluid ad</msg>
+    <msg name="s6ead833ff5e49608" desc="An out-of-page ad format">Ad intents ad</msg>
     <msg name="s5bf3f3d517569ebd" desc="An out-of-page ad format">Anchor ad (bottom)</msg>
     <msg name="s710f900ef624e363" desc="An out-of-page ad format">Anchor ad (top)</msg>
     <msg name="s1163c710c6c9bccf" desc="An out-of-page ad format">Gaming interstitial ad</msg>

@@ -101,4 +101,5 @@ export const templates = {
   sf0cab2483f66aa2e: '自訂',
   sf915707accde585c: '未滿規定年齡',
   sf93d227444bc5687: '網頁設定',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

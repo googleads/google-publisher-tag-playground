@@ -105,4 +105,5 @@ export const templates = {
   sf0cab2483f66aa2e: '‏‮Custom‬‏',
   sf915707accde585c: '‏‮Under‬‏ ‏‮the‬‏ ‏‮age‬‏ ‏‮of‬‏ ‏‮consent‬‏',
   sf93d227444bc5687: '‏‮Page‬‏ ‏‮settings‬‏',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

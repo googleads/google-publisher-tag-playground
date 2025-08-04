@@ -106,4 +106,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Personalizado',
   sf915707accde585c: 'No alcanza la edad de consentimiento',
   sf93d227444bc5687: 'Configuración de la página',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

@@ -102,4 +102,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Benutzerdefiniert',
   sf915707accde585c: 'Inhalte für Minderjährige',
   sf93d227444bc5687: 'Seiteneinstellungen',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

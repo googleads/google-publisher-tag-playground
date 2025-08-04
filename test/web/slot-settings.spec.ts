@@ -170,7 +170,11 @@ test.describe('Ad template select', () => {
 });
 
 test.describe('Ad format select', () => {
-  const excludedFormats = ['GAME_MANUAL_INTERSTITIAL', 'REWARDED'];
+  const excludedFormats = [
+    'AD_INTENTS',
+    'GAME_MANUAL_INTERSTITIAL',
+    'REWARDED',
+  ];
 
   test.use({
     config: {

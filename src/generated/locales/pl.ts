@@ -105,4 +105,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Niestandardowe',
   sf915707accde585c: 'Poniżej wieku świadomego wyrażenia zgody',
   sf93d227444bc5687: 'Ustawienia strony',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

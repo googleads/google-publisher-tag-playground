@@ -106,6 +106,7 @@ export const outOfPageFormatNames: Record<
   keyof typeof googletag.enums.OutOfPageFormat,
   () => string
 > = {
+  AD_INTENTS: () => msg('Ad intents ad', {desc: 'An out-of-page ad format'}),
   BOTTOM_ANCHOR: () =>
     msg('Anchor ad (bottom)', {desc: 'An out-of-page ad format'}),
   TOP_ANCHOR: () => msg('Anchor ad (top)', {desc: 'An out-of-page ad format'}),

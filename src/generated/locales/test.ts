@@ -61,6 +61,7 @@ export const templates = {
   s5fc316a7f287b7be: 'T̂́ĥî́ŝ ŝ́âm̂́p̂l̂́ê ĉ́ân̂́n̂ốt̂ b̂́ê p̂́r̂ếv̂î́êŵ́êd̂́ î́n̂ ấn̂ î́f̂r̂́âm̂́ê',
   s669b18c6d2d9c95b: 'N̂́ôn̂́ê',
   s68fe43baedc49318: 'R̂́êf̂́r̂ếŝĥ́ p̂́r̂ếv̂î́êŵ́',
+  s6ead833ff5e49608: 'Ấd̂ î́n̂t̂́ên̂́t̂ŝ́ ấd̂',
   s703415876ae4626f: 'F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (750x̂́200)',
   s707a334b3b2a7140: str`${0}. Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.`,
   s710f900ef624e363: 'Ấn̂ĉ́ĥốr̂ ấd̂ (t̂́ôp̂́)',

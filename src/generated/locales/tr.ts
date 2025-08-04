@@ -102,4 +102,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Özel',
   sf915707accde585c: 'Reşit olmayanlar',
   sf93d227444bc5687: 'Sayfa ayarları',
+  s6ead833ff5e49608: 'Ad intents ad',
 };

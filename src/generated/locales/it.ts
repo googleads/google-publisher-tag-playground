@@ -106,4 +106,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Personalizzato',
   sf915707accde585c: "Sotto l'età del consenso digitale",
   sf93d227444bc5687: 'Impostazioni della pagina',
+  s6ead833ff5e49608: 'Ad intents ad',
 };
