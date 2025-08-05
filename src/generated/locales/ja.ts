@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: 'スロットを追加',
   s0536dee760be4bf2: '// プライバシーを設定します。',
   s06d92c8a54c8a011: 'スロット テンプレート',
@@ -61,6 +62,7 @@ export const templates = {
   s5fc316a7f287b7be: 'このサンプルは iframe でプレビューできません',
   s669b18c6d2d9c95b: 'なし',
   s68fe43baedc49318: 'プレビューを更新',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: '固定サイズ広告（750x200）',
   s707a334b3b2a7140: str`${0}。下のボタンをクリックすると、新しいウィンドウでプレビューが表示されます。`,
   s710f900ef624e363: 'アンカー広告（上部）',
@@ -74,6 +76,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'スロットを削除',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0}　有効にするにはページをスクロールしてください。`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`${0} を読み込んでいます...`,
   s9dc1289fa45bd694: 'インタースティシャル トリガー',
   sa2b2ab2dd02accfd: 'リンクをクリック',
@@ -102,5 +105,4 @@ export const templates = {
   sf0cab2483f66aa2e: 'カスタム',
   sf915707accde585c: '同意年齢未満',
   sf93d227444bc5687: 'ページ設定',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: '‏‮Add‬‏ ‏‮slot‬‏',
   s0536dee760be4bf2: '// ‏‮Configure‬‏ ‏‮privacy‬‏ ‏‮settings‬‏.',
   s06d92c8a54c8a011: '‏‮Slot‬‏ ‏‮template‬‏',
@@ -62,6 +63,7 @@ export const templates = {
     '‏‮This‬‏ ‏‮sample‬‏ ‏‮cannot‬‏ ‏‮be‬‏ ‏‮previewed‬‏ ‏‮in‬‏ ‏‮an‬‏ ‏‮iframe‬‏',
   s669b18c6d2d9c95b: '‏‮None‬‏',
   s68fe43baedc49318: '‏‮Refresh‬‏ ‏‮preview‬‏',
+  s6ead833ff5e49608: '‏‮Ad‬‏ ‏‮intents‬‏ ‏‮ad‬‏',
   s703415876ae4626f: '‏‮Fixed‬‏-‏‮size‬‏ ‏‮ad‬‏ (750‏‮x‬‏200)',
   s707a334b3b2a7140: str`${0}. ‏‮Click‬‏ ‏‮the‬‏ ‏‮button‬‏ ‏‮below‬‏ ‏‮to‬‏ ‏‮preview‬‏ ‏‮in‬‏ ‏‮a‬‏ ‏‮new‬‏ ‏‮window‬‏.`,
   s710f900ef624e363: '‏‮Anchor‬‏ ‏‮ad‬‏ (‏‮top‬‏)',
@@ -76,6 +78,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: '‏‮Remove‬‏ ‏‮slot‬‏',
   s8e732383cac5c9fd: '100‏‮x‬‏100,‏‮fluid‬‏,...',
   s90465cbd227840a3: str`${0} ‏‮Scroll‬‏ ‏‮page‬‏ ‏‮to‬‏ ‏‮activate‬‏.`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`${0} ‏‮is‬‏ ‏‮loading‬‏...`,
   s9dc1289fa45bd694: '‏‮Interstitial‬‏ ‏‮triggers‬‏',
   sa2b2ab2dd02accfd: '‏‮Link‬‏ ‏‮click‬‏',
@@ -105,5 +108,4 @@ export const templates = {
   sf0cab2483f66aa2e: '‏‮Custom‬‏',
   sf915707accde585c: '‏‮Under‬‏ ‏‮the‬‏ ‏‮age‬‏ ‏‮of‬‏ ‏‮consent‬‏',
   sf93d227444bc5687: '‏‮Page‬‏ ‏‮settings‬‏',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

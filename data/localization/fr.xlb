@@ -7,6 +7,7 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Annonce de taille fixe (750 x 200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Annonce de taille fixe (100 x 100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Annonce fluide</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Annonce ancrée (en bas)</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">Annonce ancrée (en haut)</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Annonce interstitielle pour jeux</msg>
@@ -18,14 +19,12 @@
     <msg desc="Button text" name="s3be169991df10a5d">Ouvrir l'aperçu</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Ajouter un espace</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Supprimer l'espace</msg>
-    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Demander et afficher tous les espaces publicitaires définis précédemment.</msg>
+    <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Demander et afficher tous les espaces publicitaires définis précédemment.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Activer les services GPT.</msg>
-    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Activer le mode de demande simple.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Définir des espaces publicitaires statiques.</msg>
-    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Définir des attributs AdSense.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Définir des espaces publicitaires hors page.</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Configurer les paramètres au niveau de la page.</msg>
-    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Configurer le ciblage au niveau de la page.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Configurer les paramètres de confidentialité.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Les espaces <ph name="0">${format}</ph> renvoient la valeur "null" si la page ou l'appareil ne les accepte pas.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Format hors page</msg>
@@ -43,6 +42,7 @@
     <msg desc="Output format label" name="s4535f519744108bf">Format de sortie</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Exemple de modèle</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Architecture de demande simple (SRA)</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Aperçu</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traitement adapté aux contenus destinés aux enfants</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Annonces limitées</msg>

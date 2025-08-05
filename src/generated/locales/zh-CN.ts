@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: '添加广告位',
   s0536dee760be4bf2: '// 配置隐私设置。',
   s06d92c8a54c8a011: '广告位模板',
@@ -61,6 +62,7 @@ export const templates = {
   s5fc316a7f287b7be: '此示例无法在 iframe 中预览',
   s669b18c6d2d9c95b: '无',
   s68fe43baedc49318: '刷新预览',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: '固定尺寸广告 (750x200)',
   s707a334b3b2a7140: str`${0}。点击下方的按钮即可在新窗口中预览。`,
   s710f900ef624e363: '锚定广告（顶部）',
@@ -74,6 +76,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: '移除广告位',
   s8e732383cac5c9fd: '100x100,自适应,…',
   s90465cbd227840a3: str`${0}滚动页面即可激活。`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`${0}正在加载…`,
   s9dc1289fa45bd694: '插页式广告触发器',
   sa2b2ab2dd02accfd: '点击链接',
@@ -101,5 +104,4 @@ export const templates = {
   sf0cab2483f66aa2e: '自定义',
   sf915707accde585c: '未达到同意年龄',
   sf93d227444bc5687: '网页设置',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

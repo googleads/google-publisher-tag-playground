@@ -7,6 +7,7 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Объявление фиксированного размера (750 x 200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Объявление фиксированного размера (100 x 100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Объявление гибкого размера</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Фиксированное объявление (внизу)</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">Фиксированное объявление (вверху)</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Межстраничное объявление в играх</msg>
@@ -18,14 +19,12 @@
     <msg desc="Button text" name="s3be169991df10a5d">Посмотреть</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Добавить рекламное место</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Удалить рекламное место</msg>
-    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Запрашивает и отображает все ранее настроенные рекламные места.</msg>
+    <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Запрашивает и отображает все ранее настроенные рекламные места.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Включает методы тега GPT.</msg>
-    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Включает режим единого запроса.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Определяет статические рекламные места.</msg>
-    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// Задайте атрибуты AdSense.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Определяет внестраничные рекламные места.</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Задать настройки на уровне страницы.</msg>
-    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Задает параметры таргетинга на уровне страницы.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Задает настройки конфиденциальности.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058"><ph name="0">${format}</ph>: возвращается пустое значение, если страница или устройство не поддерживает их.</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Формат внестраничного объявления</msg>
@@ -43,6 +42,7 @@
     <msg desc="Output format label" name="s4535f519744108bf">Формат вывода</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Образец шаблона</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Режим единого запроса (РЕЗ)</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Предварительный просмотр</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Ресурс для детей</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Ограниченный показ рекламы</msg>

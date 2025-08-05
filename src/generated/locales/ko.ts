@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: '슬롯 추가',
   s0536dee760be4bf2: '// 개인 정보 보호 설정을 구성합니다.',
   s06d92c8a54c8a011: '슬롯 템플릿',
@@ -61,6 +62,7 @@ export const templates = {
   s5fc316a7f287b7be: '이 샘플은 iframe에서 미리 볼 수 없습니다.',
   s669b18c6d2d9c95b: '없음',
   s68fe43baedc49318: '미리보기 새로고침',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: '고정 크기 광고(750x200)',
   s707a334b3b2a7140: str`${0}. 새 창에서 미리 보려면 아래 버튼을 클릭하세요.`,
   s710f900ef624e363: '앵커 광고(상단)',
@@ -74,6 +76,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: '슬롯 삭제',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0} 페이지를 스크롤하여 활성화합니다.`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`${0} 로드 중...`,
   s9dc1289fa45bd694: '전면 광고 트리거',
   sa2b2ab2dd02accfd: '링크 클릭',
@@ -101,5 +104,4 @@ export const templates = {
   sf0cab2483f66aa2e: '사용자설정',
   sf915707accde585c: '동의 연령 미만',
   sf93d227444bc5687: '페이지 설정',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

@@ -7,6 +7,7 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Sabit boyutlu reklam (750x200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Sabit boyutlu reklam (100x100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Değişken reklam</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Sabit reklam (alt)</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">Sabit reklam (üst)</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Oyun geçiş reklamı</msg>
@@ -18,14 +19,12 @@
     <msg desc="Button text" name="s3be169991df10a5d">Önizlemeyi aç</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Alan ekle</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Alanı kaldır</msg>
-    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// Daha önce tanımlanmış tüm reklam alanlarını isteyip oluşturun.</msg>
+    <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Daha önce tanımlanmış tüm reklam alanlarını isteyip oluşturun.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// GPT hizmetlerini etkinleştirin.</msg>
-    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// Tekli istek modunu etkinleştirin.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Statik reklam alanlarını tanımlayın.</msg>
-    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// AdSense özelliklerini ayarlayın.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Sayfa dışındaki alanları tanımlayın.</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Sayfa seviyesinde ayarları yapılandırın.</msg>
-    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// Sayfa düzeyinde hedeflemeyi yapılandırın.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Gizlilik ayarlarını yapılandırın.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Sayfa veya sayfa dışı biçimleri desteklemiyorsa bu alanlar null değerini döndürür.<ph name="0">${format}</ph></msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">Sayfa dışı biçim</msg>
@@ -43,6 +42,7 @@
     <msg desc="Output format label" name="s4535f519744108bf">Çıkış biçimi</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Örnek şablon</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Tekli istek mimarisi (SRA)</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Önizleme</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Çocuklara yönelik olarak değerlendirilme</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Sınırlı reklamlar</msg>

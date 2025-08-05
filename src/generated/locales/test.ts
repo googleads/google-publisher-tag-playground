@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'D̂́îŝ́âb̂́l̂ế î́n̂î́t̂î́âl̂́ l̂́ôấd̂',
   s02c64e6a6306c0b0: 'Ấd̂d̂́ ŝ́l̂ốt̂',
   s0536dee760be4bf2: '// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.',
   s06d92c8a54c8a011: 'Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê',
@@ -75,6 +76,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂',
   s8e732383cac5c9fd: '100x̂́100,f̂́l̂û́îd̂́,...',
   s90465cbd227840a3: str`${0} Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.`,
+  s96f81f2fccc92df4: '// R̂́êĝ́îŝ́t̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.',
   s9d21580cc7643953: str`${0} î́ŝ l̂́ôấd̂î́n̂ĝ́...`,
   s9dc1289fa45bd694: 'Î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ t̂́r̂î́ĝĝ́êr̂́ŝ',
   sa2b2ab2dd02accfd: 'L̂́în̂́k̂ ĉ́l̂î́ĉk̂́',

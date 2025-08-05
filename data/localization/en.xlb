@@ -19,9 +19,10 @@
     <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
-    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// Request and render all previously defined ad slots.</msg>
+    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display() or googletag.refresh().">// Request and render all previously defined ad slots.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
+    <msg name="s96f81f2fccc92df4" desc="Code comment preceding call(s) to googletag.display().">// Register all previously defined ad slots.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// Define out-of-page slots.</msg>
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
@@ -41,6 +42,7 @@
     <msg name="s4535f519744108bf" desc="Output format label">Output format</msg>
     <msg name="s77b0113eae08368b" desc="Output template label">Sample template</msg>
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Single Request Architecture (SRA)</msg>
+    <msg name="s00f485d30c4d7069" desc="Prevents GPT from requesting ads when calling display().">Disable initial load</msg>
     <msg name="s417b90913e05bc17" desc="Preview toolbar label">Preview</msg>
     <msg name="s3132d1a0580760bc" desc="Privacy setting label">Child-directed treatment</msg>
     <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">Limited ads</msg>

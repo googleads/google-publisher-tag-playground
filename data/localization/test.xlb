@@ -19,9 +19,10 @@
     <msg name="s3be169991df10a5d" desc="Button text">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
-    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display().">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display() or googletag.refresh().">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
+    <msg name="s96f81f2fccc92df4" desc="Code comment preceding call(s) to googletag.display().">// R̂́êĝ́îŝ́t̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="s5e13187e6961d8b1" desc="Code comment preceding out-of-page ad slot definitions.">// D̂́êf̂́în̂́ê ốût̂́-ốf̂-p̂́âĝ́ê ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
@@ -41,6 +42,7 @@
     <msg name="s4535f519744108bf" desc="Output format label">Ốût̂́p̂û́t̂ f̂́ôr̂́m̂ất̂</msg>
     <msg name="s77b0113eae08368b" desc="Output template label">Ŝ́âm̂́p̂l̂́ê t̂́êm̂́p̂l̂́ât̂́ê</msg>
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Ŝ́în̂́ĝl̂́ê R̂́êq̂́ûếŝt̂́ Ấr̂ĉ́ĥî́t̂ếĉt̂́ûr̂́ê (Ŝ́R̂Ấ)</msg>
+    <msg name="s00f485d30c4d7069" desc="Prevents GPT from requesting ads when calling display().">D̂́îŝ́âb̂́l̂ế î́n̂î́t̂î́âl̂́ l̂́ôấd̂</msg>
     <msg name="s417b90913e05bc17" desc="Preview toolbar label">P̂́r̂ếv̂î́êŵ́</msg>
     <msg name="s3132d1a0580760bc" desc="Privacy setting label">Ĉ́ĥî́l̂d̂́-d̂́îr̂́êĉ́t̂ếd̂ t̂́r̂ếât̂́m̂ến̂t̂́</msg>
     <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">L̂́îm̂́ît̂́êd̂́ ấd̂ŝ́</msg>

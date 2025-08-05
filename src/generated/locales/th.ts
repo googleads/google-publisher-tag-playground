@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: 'เพิ่มช่องโฆษณา',
   s0536dee760be4bf2: '// กำหนดค่าการตั้งค่าความเป็นส่วนตัว',
   s06d92c8a54c8a011: 'เทมเพลตช่องโฆษณา',
@@ -61,6 +62,7 @@ export const templates = {
   s5fc316a7f287b7be: 'ตัวอย่างนี้ไม่สามารถแสดงตัวอย่างใน iframe ได้',
   s669b18c6d2d9c95b: 'ไม่มี',
   s68fe43baedc49318: 'รีเฟรชตัวอย่าง',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: 'โฆษณาขนาดคงที่ (750x200)',
   s707a334b3b2a7140: str`${0} คลิกปุ่มด้านล่างเพื่อดูตัวอย่างในหน้าต่างใหม่`,
   s710f900ef624e363: 'โฆษณา Anchor (ด้านบน)',
@@ -75,6 +77,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'นำช่องโฆษณาออก',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0} เลื่อนหน้าเพื่อเปิดใช้งาน`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`กำลังโหลด${0}...`,
   s9dc1289fa45bd694: 'ทริกเกอร์โฆษณาคั่นระหว่างหน้า',
   sa2b2ab2dd02accfd: 'คลิกลิงก์',
@@ -102,5 +105,4 @@ export const templates = {
   sf0cab2483f66aa2e: 'กำหนดเอง',
   sf915707accde585c: 'มีอายุต่ำกว่าเกณฑ์ที่ให้ความยินยอมได้',
   sf93d227444bc5687: 'การตั้งค่าหน้าเว็บ',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

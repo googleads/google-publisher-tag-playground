@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: 'Thêm vị trí',
   s0536dee760be4bf2: '// Định cấu hình chế độ cài đặt quyền riêng tư.',
   s06d92c8a54c8a011: 'Mẫu vị trí',
@@ -61,6 +62,7 @@ export const templates = {
   s5fc316a7f287b7be: 'Không thể xem trước mẫu này trong iframe',
   s669b18c6d2d9c95b: 'Không có',
   s68fe43baedc49318: 'Làm mới bản xem trước',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: 'Quảng cáo có kích thước cố định (750x200)',
   s707a334b3b2a7140: str`${0}. Nhấp vào nút bên dưới để xem trước trong một cửa sổ mới.`,
   s710f900ef624e363: 'Quảng cáo cố định (trên cùng)',
@@ -74,6 +76,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'Xoá vị trí',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0} Cuộn trang để kích hoạt.`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`${0} đang tải...`,
   s9dc1289fa45bd694: 'Hành động kích hoạt quảng cáo xen kẽ',
   sa2b2ab2dd02accfd: 'Nhấp vào đường liên kết',
@@ -102,5 +105,4 @@ export const templates = {
   sf0cab2483f66aa2e: 'Tuỳ chỉnh',
   sf915707accde585c: 'Dưới độ tuổi hợp pháp để tự quản lý tài khoản',
   sf93d227444bc5687: 'Cài đặt trang',
-  s6ead833ff5e49608: 'Ad intents ad',
 };

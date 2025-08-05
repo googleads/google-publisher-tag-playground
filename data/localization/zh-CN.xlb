@@ -7,6 +7,7 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">固定尺寸广告 (750x200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">固定尺寸广告 (100x100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">自适应广告</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">锚定广告（底部）</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">锚定广告（顶部）</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">游戏插页式广告</msg>
@@ -18,14 +19,12 @@
     <msg desc="Button text" name="s3be169991df10a5d">打开预览页面</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">添加广告位</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除广告位</msg>
-    <msg desc="Code comment preceding a call to googletag.display()." name="sd3926a53f7b06107">// 请求并呈现所有之前定义的广告位。</msg>
+    <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 请求并呈现所有之前定义的广告位。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// 启用 GPT 服务。</msg>
-    <msg desc="Code comment preceding a call to googletag.enableSingleRequest()." name="s5ec0955e7a33abf4">// 启用单一请求模式。</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 定义静态广告位。</msg>
-    <msg desc="Code comment preceding calls to configure AdSense settings." name="s2fe608b6b49c885b">// 设置 AdSense 属性。</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// 定义页外广告位。</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// 配置页面级设置。</msg>
-    <msg desc="Code comment preceding page-level targeting configuration." name="s34774a88f199f364">// 配置网页级定位。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 配置隐私设置。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">如果网页或设备不支持<ph name="0">${format}</ph>广告位，这些广告位会返回 null。</msg>
     <msg desc="Drop-down label" name="s08995feb9716ee48">页外广告格式</msg>
@@ -43,6 +42,7 @@
     <msg desc="Output format label" name="s4535f519744108bf">输出格式</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">示例模板</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">单一请求架构 (SRA)</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">预览</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">面向儿童的内容</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">受限广告</msg>

@@ -23,6 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
+  s00f485d30c4d7069: 'Disable initial load',
   s02c64e6a6306c0b0: 'Aggiungi area',
   s0536dee760be4bf2: '// Configura impostazioni della privacy.',
   s06d92c8a54c8a011: 'Modello area',
@@ -63,6 +64,7 @@ export const templates = {
     "Impossibile visualizzare l'anteprima di questo esempio in un iframe",
   s669b18c6d2d9c95b: 'Nessuno',
   s68fe43baedc49318: 'Aggiorna anteprima',
+  s6ead833ff5e49608: 'Ad intents ad',
   s703415876ae4626f: 'Annuncio con dimensioni fisse (750 x 200)',
   s707a334b3b2a7140: str`${0}. Fai clic sul pulsante in basso per visualizzare l'anteprima in una nuova finestra.`,
   s710f900ef624e363: 'Annuncio ancorato (in alto)',
@@ -77,6 +79,7 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'Rimuovi area',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0} Scorri la pagina per attivare.`,
+  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
   s9d21580cc7643953: str`Caricamento di ${0} in corso…`,
   s9dc1289fa45bd694: 'Attivatori di annunci interstitial',
   sa2b2ab2dd02accfd: 'Clic su link',
@@ -106,5 +109,4 @@ export const templates = {
   sf0cab2483f66aa2e: 'Personalizzato',
   sf915707accde585c: "Sotto l'età del consenso digitale",
   sf93d227444bc5687: 'Impostazioni della pagina',
-  s6ead833ff5e49608: 'Ad intents ad',
 };
