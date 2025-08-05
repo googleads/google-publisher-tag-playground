@@ -71,18 +71,26 @@ export const sampleAds: SampleAd[] = [
     name: outOfPageFormatNames.BOTTOM_ANCHOR,
     slot: {
       adUnit: '/6355419/Travel',
+      config: {
+        targeting: {
+          test: 'anchor',
+        },
+      },
       format: 'BOTTOM_ANCHOR',
       size: [],
-      targeting: [{key: 'test', value: 'anchor'}],
     },
   },
   {
     name: outOfPageFormatNames.TOP_ANCHOR,
     slot: {
       adUnit: '/6355419/Travel',
+      config: {
+        targeting: {
+          test: 'anchor',
+        },
+      },
       format: 'TOP_ANCHOR',
       size: [],
-      targeting: [{key: 'test', value: 'anchor'}],
     },
   },
   {

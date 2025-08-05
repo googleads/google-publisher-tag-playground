@@ -230,7 +230,7 @@ export function display(
  */
 export function displayAll(sampleConfig: SampleConfig) {
   let displayAll = '';
-  if (sampleConfig.page?.sra) {
+  if (sampleConfig.page?.config?.singleRequest) {
     // Prefer a static slot, since OOP slots have a higher chance of being null.
     let index = sampleConfig.slots.findIndex(
       (s: SampleSlotConfig) => !s.format,
