@@ -59,6 +59,7 @@ export function pageConfig(config: googletag.config.PageSettingsConfig) {
     adsenseAttributes: {
       page_url: config.adsenseAttributes?.page_url,
     },
+    disableInitialLoad: config.disableInitialLoad,
     privacyTreatments: config.privacyTreatments,
     singleRequest: config.singleRequest,
     targeting: config.targeting,

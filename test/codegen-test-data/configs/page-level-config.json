@@ -1,9 +1,14 @@
 {
   "page": {
     "config": {
+      "adsenseAttributes": {
+        "page_url": "https://www.google.com"
+      },
+      "disableInitialLoad": true,
       "privacyTreatments": {
         "treatments": ["disablePersonalization"]
-      }
+      },
+      "singleRequest": true
     }
   },
   "slots": [

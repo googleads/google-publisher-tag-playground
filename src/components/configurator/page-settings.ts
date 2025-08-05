@@ -29,9 +29,10 @@ import {
   SamplePrivacyConfig,
 } from '../../model/sample-config.js';
 import {
-  adSenseAttributeConfigNames,
+  adSenseAttributesConfigNames,
   configNames,
   pageConfigNames,
+  pageSettingsConfigNames,
   privacyConfigNames,
   privacyTreatmentConfigNames,
   privacyTreatmentNames,
@@ -62,6 +63,8 @@ const PAGE_URL_VALIDATION_REGEX = new RegExp(
 @localized()
 @customElement('page-settings')
 export class PageSettings extends LitElement {
+  @query('configurator-checkbox#disableInitialLoad')
+  private disableInitialLoadInput!: HTMLInputElement;
   @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
   @queryAll('.privacy configurator-checkbox')
   private privacySettings!: HTMLInputElement[];
@@ -85,6 +88,8 @@ export class PageSettings extends LitElement {
 
     // Populate page-level config.
     const pageConfig: googletag.config.PageSettingsConfig = {};
+    pageConfig.disableInitialLoad =
+      this.disableInitialLoadInput.checked || undefined;
     pageConfig.singleRequest = this.sraInput.checked || undefined;
 
     pageConfig.adsenseAttributes = pageConfig.adsenseAttributes || {};
@@ -128,13 +133,18 @@ export class PageSettings extends LitElement {
   private renderGeneralSettings() {
     return html`
       ${this.renderCheckbox(
+        'disableInitialLoad',
+        pageSettingsConfigNames.disableInitialLoad(),
+        this.config.config?.disableInitialLoad || undefined,
+      )}
+      ${this.renderCheckbox(
         'sra',
-        pageConfigNames.sra!(),
+        pageSettingsConfigNames.singleRequest(),
         this.config.config?.singleRequest || undefined,
       )}
       <configurator-text-field
         id="pageUrl"
-        label="${adSenseAttributeConfigNames.pageUrl()}"
+        label="${adSenseAttributesConfigNames.page_url()}"
         error-text="${strings.validationErrorPageUrl()}"
         pattern="${PAGE_URL_VALIDATION_PATTERN}"
         placeholder="https://www.example.com"
@@ -184,7 +194,7 @@ export class PageSettings extends LitElement {
   private renderPageTargeting() {
     return html`<targeting-input
       class="page"
-      title="${pageConfigNames.targeting!()}"
+      title="${pageSettingsConfigNames.targeting()}"
       .config="${this.config.config?.targeting || []}"
       @update="${this.handleUpdate}"
     >

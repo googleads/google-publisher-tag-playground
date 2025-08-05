@@ -25,6 +25,7 @@ const api = {
   pubAdsService: () => 'googletag.pubads()',
   addEventListener: (event: GptEvent, code: string) =>
     `${api.pubAdsService()}.addEventListener('${event}', (event) => {${code}})`,
+  refreshAll: () => `${api.pubAdsService()}.refresh()`,
   setPrivacySettings: (settings: string) =>
     `${api.pubAdsService()}.setPrivacySettings({${settings}})`,
 
@@ -49,6 +50,15 @@ const api = {
  */
 export function addEventListener(event: GptEvent, code: string) {
   return api.addEventListener(event, code);
+}
+
+/**
+ * Generates code for refreshing all ad slots.
+ *
+ * @returns
+ */
+export function refresh() {
+  return api.refreshAll() + ';';
 }
 
 /**

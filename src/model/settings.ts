@@ -17,12 +17,16 @@
 import {msg} from '@lit/localize';
 
 import {
-  SampleAdSenseAttributeConfig,
   SampleConfig,
   SamplePageConfig,
   SamplePrivacyConfig,
   SampleTemplateConfig,
 } from '../../src/model/sample-config.js';
+
+/** Placerholder function for unsupported properties. */
+function notSupported(): string {
+  throw new Error('Property not supported.');
+}
 
 /**
  * Maps {@link SampleConfig} properties to their friendly names.
@@ -61,13 +65,47 @@ export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
 };
 
 /**
- * Maps {@link SampleAdSenseAttributeConfig} properties to their friendly names.
+ * Maps {@link googletag.config.PageSettingsConfig} properties to their friendly
+ * names.
  */
-export const adSenseAttributeConfigNames: Record<
-  keyof SampleAdSenseAttributeConfig,
+export const pageSettingsConfigNames: Record<
+  keyof googletag.config.PageSettingsConfig,
   () => string
 > = {
-  pageUrl: () =>
+  adsenseAttributes: () => pageConfigNames.adsense(),
+  adExpansion: notSupported,
+  adYield: notSupported,
+  categoryExclusion: notSupported,
+  centering: notSupported,
+  collapseDiv: notSupported,
+  disableInitialLoad: () =>
+    msg('Disable initial load', {
+      desc: 'Prevents GPT from requesting ads when calling display().',
+    }),
+  lazyLoad: notSupported,
+  location: notSupported,
+  pps: notSupported,
+  privacyTreatments: notSupported,
+  safeFrame: notSupported,
+  singleRequest: () => pageConfigNames.sra(),
+  targeting: () => pageConfigNames.targeting(),
+  threadYield: notSupported,
+  videoAds: notSupported,
+};
+
+/**
+ * Maps {@link googletag.config.AdSenseAttributesConfig} properties to their
+ * friendly names.
+ */
+export const adSenseAttributesConfigNames: Record<
+  keyof googletag.config.AdSenseAttributesConfig,
+  () => string
+> = {
+  adsense_ad_format: notSupported,
+  adsense_channel_ids: notSupported,
+  adsense_test_mode: notSupported,
+  document_language: notSupported,
+  page_url: () =>
     msg('Page URL', {
       desc: 'The page URL to associate with ad requests.',
     }),

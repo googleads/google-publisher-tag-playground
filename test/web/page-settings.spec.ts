@@ -16,9 +16,9 @@
 
 import {SampleConfig, SamplePageConfig} from '../../src/model/sample-config.js';
 import {
-  adSenseAttributeConfigNames,
+  adSenseAttributesConfigNames,
   configNames,
-  pageConfigNames,
+  pageSettingsConfigNames,
   privacyConfigNames,
   privacyTreatmentNames,
 } from '../../src/model/settings.js';
@@ -35,7 +35,12 @@ const BOOLEAN_SETTINGS: {
   setting: SamplePageConfig;
 }[] = [
   {
-    label: pageConfigNames.sra(),
+    label: pageSettingsConfigNames.disableInitialLoad(),
+    expectedText: 'disableInitialLoad',
+    setting: {config: {disableInitialLoad: true}},
+  },
+  {
+    label: pageSettingsConfigNames.singleRequest(),
     expectedText: 'singleRequest',
     setting: {config: {singleRequest: true}},
   },
@@ -208,7 +213,7 @@ test.describe('Page URL', () => {
       page,
     }) => {
       const pageUrlInput = configurator.getTextField(
-        adSenseAttributeConfigNames.pageUrl(),
+        adSenseAttributesConfigNames.page_url(),
         configurator.getConfigSection(configNames.page()),
       );
 
@@ -225,7 +230,7 @@ test.describe('Page URL', () => {
       shouldBeValid = true,
     ): Promise<void> {
       const pageUrlInput = configurator.getTextField(
-        adSenseAttributeConfigNames.pageUrl(),
+        adSenseAttributesConfigNames.page_url(),
         configurator.getConfigSection(configNames.page()),
       );
       await pageUrlInput.fill(url);

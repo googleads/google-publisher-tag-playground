@@ -45,9 +45,13 @@ const strings = {
     msg('// Configure privacy settings.', {
       desc: 'Code comment preceding privacy settings configuration.',
     }),
+  registerSlotsComment: () =>
+    msg('// Register all previously defined ad slots.', {
+      desc: 'Code comment preceding call(s) to googletag.display().',
+    }),
   requestAdsComment: () =>
     msg('// Request and render all previously defined ad slots.', {
-      desc: 'Code comment preceding a call to googletag.display().',
+      desc: 'Code comment preceding a call to googletag.display() or googletag.refresh().',
     }),
 };
 
@@ -77,10 +81,22 @@ function slotDefinitions(config: SampleConfig, outOfPage = false) {
 }
 
 function requestAds(config: SampleConfig) {
-  return `
-    ${config.slots.length > 0 ? strings.requestAdsComment() : ''}
-    ${config.slots.length > 0 ? googletag.displayAll(config) : ''}
-  `.trim();
+  if (config.slots.length === 0) return '';
+
+  if (config.page?.config?.disableInitialLoad) {
+    return `
+      ${strings.registerSlotsComment()}
+      ${googletag.displayAll(config)}
+
+      ${strings.requestAdsComment()}
+      ${pubads.refresh()}
+    `.trim();
+  } else {
+    return `
+      ${strings.requestAdsComment()}
+      ${googletag.displayAll(config)}
+    `.trim();
+  }
 }
 
 function initGpt(config: SampleConfig, requestAndRenderAds: boolean) {
