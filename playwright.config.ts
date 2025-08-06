@@ -22,15 +22,17 @@ import {defineConfig, devices} from '@playwright/test';
 export default defineConfig({
   testDir: './test/web',
   testMatch: /.*\.spec\.ts/,
-  /* Run tests in files in parallel */
-  fullyParallel: true,
+  /* Run tests in files in parallel. */
+  // fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code.
    */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
-  /* Limit workers to 4 in CI environments, use the default otherwise. */
-  workers: process.env.CI ? 4 : undefined,
+  retries: process.env.CI ? 4 : 0,
+  /* Use 100% of the available CPU cores in CI environments. */
+  workers: process.env.CI ? '100%' : undefined,
+  /* Stop running tests after the first failure in CI environments. */
+  maxFailures: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
 
