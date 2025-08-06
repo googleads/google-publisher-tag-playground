@@ -16,12 +16,37 @@
 
 import 'jasmine';
 
+import {sampleAds} from '../src/model/sample-ads.js';
 import {SampleConfig} from '../src/model/sample-config.js';
 import {migrateLegacyProperties} from '../src/util/compatibility-utils.js';
 
 describe('Compatibility utils', () => {
   describe('migrateLegacyProperties', () => {
+    sampleAds.forEach(sampleAd => {
+      it(`should not modify ${sampleAd.name()}`, () => {
+        const config: SampleConfig = {slots: [sampleAd.slot]};
+        const originalConfig = JSON.parse(JSON.stringify(config));
+        migrateLegacyProperties(config);
+        expect(config).toEqual(originalConfig);
+      });
+    });
+
     it('should not modify config with no legacy properties', () => {
+      const config: SampleConfig = {
+        page: {},
+        slots: [
+          {
+            adUnit: '',
+            size: 'fluid',
+          },
+        ],
+      };
+      const originalConfig = JSON.parse(JSON.stringify(config));
+      migrateLegacyProperties(config);
+      expect(config).toEqual(originalConfig);
+    });
+
+    it('should not modify config with only new properties', () => {
       const config: SampleConfig = {
         page: {
           config: {
@@ -47,9 +72,7 @@ describe('Compatibility utils', () => {
         ],
       };
       const originalConfig = JSON.parse(JSON.stringify(config));
-
       migrateLegacyProperties(config);
-
       expect(config).toEqual(originalConfig);
     });
 

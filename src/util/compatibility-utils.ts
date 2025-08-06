@@ -37,22 +37,25 @@ export function migrateLegacyProperties(config: SampleConfig) {
 }
 
 function migrateLegacyPageSettings(page: SamplePageConfig) {
-  // Ensure page config is initialized.
-  page.config ||= {};
+  const config = page.config || {};
 
   if (page.adsense) {
-    page.config.adsenseAttributes ||= {};
-    page.config.adsenseAttributes.page_url = page.adsense.pageUrl;
+    config.adsenseAttributes ||= {};
+    config.adsenseAttributes.page_url = page.adsense.pageUrl;
   }
 
   if (page.sra) {
-    page.config.singleRequest = page.sra;
+    config.singleRequest = page.sra;
   }
 
   if (page.targeting) {
-    page.config.targeting = Object.fromEntries(
+    config.targeting = Object.fromEntries(
       page.targeting.map(kv => [kv.key, kv.value]),
     );
+  }
+
+  if (Object.keys(config).length > 0) {
+    page.config = config;
   }
 
   // Remove deprecated properties.
@@ -62,14 +65,18 @@ function migrateLegacyPageSettings(page: SamplePageConfig) {
 }
 
 function migrateLegacySlotSettings(slot: SampleSlotConfig) {
-  // Ensure slot config is initialized.
-  slot.config ||= {};
+  const config = slot.config || {};
 
   if (slot.targeting) {
-    slot.config.targeting = Object.fromEntries(
+    config.targeting = Object.fromEntries(
       slot.targeting.map(kv => [kv.key, kv.value]),
     );
   }
 
+  if (Object.keys(config).length > 0) {
+    slot.config = config;
+  }
+
+  // Remove deprecated properties.
   delete slot.targeting;
 }
