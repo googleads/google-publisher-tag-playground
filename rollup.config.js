@@ -16,11 +16,12 @@
 
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
-import terser from '@rollup/plugin-terser';
 import {importMetaAssets} from '@web/rollup-plugin-import-meta-assets';
-import glob from 'glob';
+import {glob} from 'glob';
 import copy from 'rollup-plugin-copy';
-import minifyHTML from 'rollup-plugin-minify-html-literals';
+import {minify} from 'rollup-plugin-esbuild';
+import minifyHTML from 'rollup-plugin-minify-html-literals-v3';
+import summary from 'rollup-plugin-summary';
 
 const MINIFY_HTML_OPTIONS = {
   options: {
@@ -36,21 +37,8 @@ const MINIFY_HTML_OPTIONS = {
   },
 };
 
-const TERSER_OPTIONS = {
-  warnings: true,
-  ecma: 2020,
-  compress: {
-    unsafe: true,
-    passes: 2,
-  },
-  output: {
-    // Allow @license and @preserve in output.
-    comments: 'some',
-    inline_script: false,
-  },
-};
-
-// Process direct includes individually to ensure they're bundled with all dependencies.
+// Process direct includes individually to ensure they're bundled with all
+// dependencies.
 const includes = glob.sync('site/includes/*.js').map(include => {
   return {
     input: include,
@@ -58,11 +46,7 @@ const includes = glob.sync('site/includes/*.js').map(include => {
       dir: 'dist/includes/',
       format: 'es',
     },
-    plugins: [
-      resolve(),
-      minifyHTML(MINIFY_HTML_OPTIONS),
-      terser(TERSER_OPTIONS),
-    ],
+    plugins: [resolve(), minifyHTML(MINIFY_HTML_OPTIONS), minify()],
   };
 });
 
@@ -74,7 +58,7 @@ const locales = glob.sync('src/generated/locales/*.js').map(locale => {
       dir: 'dist/locales/',
       format: 'es',
     },
-    plugins: [resolve(), terser(TERSER_OPTIONS)],
+    plugins: [resolve(), minify()],
   };
 });
 
@@ -121,7 +105,11 @@ export default [
         ],
         flatten: false,
       }),
-      terser(TERSER_OPTIONS),
+      minify(),
+      summary({
+        showBrotliSize: true,
+        showGzippedSize: true,
+      }),
     ],
   },
   ...includes,
