@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import '../ui-controls/ad-exclusion-input';
 import '../ui-controls/config-section';
 import '../ui-controls/configurator-checkbox';
 import '../ui-controls/configurator-text-field';
@@ -34,9 +35,9 @@ import {
   pageConfigNames,
   pageSettingsConfigNames,
   privacyConfigNames,
-  privacyTreatmentConfigNames,
   privacyTreatmentNames,
 } from '../../model/settings.js';
+import {AdExclusionInput} from '../ui-controls/ad-exclusion-input.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
 
@@ -65,14 +66,15 @@ const PAGE_URL_VALIDATION_REGEX = new RegExp(
 export class PageSettings extends LitElement {
   @query('configurator-checkbox#disableInitialLoad')
   private disableInitialLoadInput!: HTMLInputElement;
+  @query('configurator-text-field#pageUrl')
+  private pageUrl!: ConfiguratorTextField;
   @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
   @queryAll('.privacy configurator-checkbox')
   private privacySettings!: HTMLInputElement[];
   @queryAll('.privacy .treatments configurator-checkbox')
   private privacyTreatments!: HTMLInputElement[];
   @query('targeting-input') private targetingInput!: TargetingInput;
-  @query('configurator-text-field#pageUrl')
-  private pageUrl!: ConfiguratorTextField;
+  @query('ad-exclusion-input') private exclusionInput!: AdExclusionInput;
 
   /**
    * Gets the active page-level configuration.
@@ -100,6 +102,10 @@ export class PageSettings extends LitElement {
       : undefined;
 
     pageConfig.targeting = this.targetingInput.config;
+
+    const exclusions = this.exclusionInput.config;
+    pageConfig.categoryExclusion =
+      exclusions.length > 0 ? exclusions : undefined;
 
     const treatments: googletag.config.PrivacyTreatment[] = [];
     this.privacyTreatments.forEach(input => {
@@ -177,7 +183,7 @@ export class PageSettings extends LitElement {
       <config-section
         class="treatments"
         nested
-        title="${privacyTreatmentConfigNames.treatments()}"
+        title="${pageSettingsConfigNames.privacyTreatments()}"
       >
         ${Object.keys(privacyTreatmentNames).map((setting: string) => {
           const key = setting as googletag.config.PrivacyTreatment;
@@ -201,10 +207,19 @@ export class PageSettings extends LitElement {
     </targeting-input>`;
   }
 
+  private renderAdExclusions() {
+    return html`<ad-exclusion-input
+      class="exclusions"
+      title="${pageSettingsConfigNames.categoryExclusion()}"
+      .config="${this.config.config?.categoryExclusion || []}"
+      @update="${this.handleUpdate}"
+    ></ad-exclusion-input>`;
+  }
+
   render() {
     return html`<config-section title="${configNames.page!()}">
       ${this.renderGeneralSettings()} ${this.renderPrivacySettings()}
-      ${this.renderPageTargeting()}
+      ${this.renderPageTargeting()} ${this.renderAdExclusions()}
     </config-section>`;
   }
 }

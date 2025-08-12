@@ -20,6 +20,7 @@ import {
   SampleConfig,
   SamplePageConfig,
   SamplePrivacyConfig,
+  SampleSlotConfig,
   SampleTemplateConfig,
 } from '../../src/model/sample-config.js';
 
@@ -65,6 +66,21 @@ export const pageConfigNames: Record<keyof SamplePageConfig, () => string> = {
 };
 
 /**
+ * Maps {@link SampleSlotConfig} properties to their friendly names.
+ */
+export const slotConfigNames: Record<keyof SampleSlotConfig, () => string> = {
+  adUnit: () => msg('Ad unit path', {desc: 'Ad unit path label'}),
+  config: () =>
+    msg('Slot-level configuration', {
+      desc: 'Section containing slot-level configuration settings.',
+    }),
+  format: () => msg('Out-of-page format', {desc: 'Out-of-page format label'}),
+  targeting: () =>
+    msg('Targeting', {desc: 'Section containing ad targeting options.'}),
+  size: () => msg('Sizes', {desc: 'Section containing ad sizing options.'}),
+};
+
+/**
  * Maps {@link googletag.config.PageSettingsConfig} properties to their friendly
  * names.
  */
@@ -72,10 +88,13 @@ export const pageSettingsConfigNames: Record<
   keyof googletag.config.PageSettingsConfig,
   () => string
 > = {
-  adsenseAttributes: () => pageConfigNames.adsense(),
+  adsenseAttributes: pageConfigNames.adsense,
   adExpansion: notSupported,
   adYield: notSupported,
-  categoryExclusion: notSupported,
+  categoryExclusion: () =>
+    msg('Ad exclusion labels', {
+      desc: 'Section containing ad exclusion labels.',
+    }),
   centering: notSupported,
   collapseDiv: notSupported,
   disableInitialLoad: () =>
@@ -85,12 +104,35 @@ export const pageSettingsConfigNames: Record<
   lazyLoad: notSupported,
   location: notSupported,
   pps: notSupported,
-  privacyTreatments: notSupported,
+  privacyTreatments: () =>
+    msg('Treatments', {desc: 'Setting to control privacy treatments'}),
   safeFrame: notSupported,
-  singleRequest: () => pageConfigNames.sra(),
-  targeting: () => pageConfigNames.targeting(),
+  singleRequest: pageConfigNames.sra,
+  targeting: pageConfigNames.targeting,
   threadYield: notSupported,
   videoAds: notSupported,
+};
+
+/**
+ * Maps {@link googletag.config.SlotSettingsConfig} properties to their friendly
+ * names.
+ */
+export const slotSettingsConfigNames: Record<
+  keyof googletag.config.SlotSettingsConfig,
+  () => string
+> = {
+  adExpansion: notSupported,
+  adsenseAttributes: notSupported,
+  categoryExclusion: pageSettingsConfigNames.categoryExclusion,
+  clickUrl: notSupported,
+  collapseDiv: notSupported,
+  componentAuction: notSupported,
+  interstitial: () =>
+    msg('Interstitial triggers', {
+      desc: 'User actions that can trigger an intersitial ad.',
+    }),
+  safeFrame: notSupported,
+  targeting: slotConfigNames.targeting,
 };
 
 /**
@@ -167,10 +209,7 @@ export const interstitialConfigNames: Record<
   keyof googletag.config.InterstitialConfig,
   () => string
 > = {
-  triggers: () =>
-    msg('Interstitial triggers', {
-      desc: 'User actions that can trigger an intersitial ad.',
-    }),
+  triggers: slotSettingsConfigNames.interstitial,
   requireStorageAccess: () =>
     msg('Require local storage consent', {
       desc: 'Whether user consent is required to access local storage.',
@@ -191,19 +230,6 @@ export const interstitialTriggerNames: Record<
   unhideWindow: () =>
     msg('Unhide window', {
       desc: 'The action of hiding and then returning to the page (for example, by switching tabs).',
-    }),
-};
-
-/**
- * Maps {@link PrivacyTreatmentsConfig} properties to their friendly names.
- */
-export const privacyTreatmentConfigNames: Record<
-  keyof googletag.config.PrivacyTreatmentsConfig,
-  () => string
-> = {
-  treatments: () =>
-    msg('Treatments', {
-      desc: 'Setting to control privacy treatments',
     }),
 };
 

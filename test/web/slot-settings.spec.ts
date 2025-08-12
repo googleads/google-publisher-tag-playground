@@ -163,6 +163,185 @@ test.describe('Ad template select', () => {
   });
 });
 
+test.describe('Configure targeting', () => {
+  const testKey = 'test-key';
+  const testValue = 'test-value';
+
+  test.use({
+    config: {
+      slots: [EMPTY_CUSTOM_SLOT],
+    } as SampleConfig,
+  });
+
+  test('Adding/removing KV updates code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Slot settings',
+      'Targeting',
+    );
+
+    await targetingInput.addValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).toContainText(testKey);
+    await expect(page.locator('gpt-playground')).toContainText(testValue);
+
+    await targetingInput.deleteValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(testKey);
+    await expect(page.locator('gpt-playground')).not.toContainText(testValue);
+  });
+
+  test('Editing KV removes it from code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Slot settings',
+      'Targeting',
+    );
+
+    await targetingInput.addValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).toContainText(testKey);
+    await expect(page.locator('gpt-playground')).toContainText(testValue);
+
+    await targetingInput.editValue(`${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(testKey);
+    await expect(page.locator('gpt-playground')).not.toContainText(testValue);
+  });
+
+  test('Invalid KV does not appear in code', async ({configurator, page}) => {
+    const targetingInput = configurator.getChipInput(
+      'Slot settings',
+      'Targeting',
+    );
+
+    await targetingInput.addValue(`1${testKey}=${testValue}`);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      `1${testKey}`,
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      `${testValue}`,
+    );
+  });
+
+  test.describe('Prepopulation', () => {
+    test.use({
+      config: {
+        slots: [
+          {
+            ...EMPTY_CUSTOM_SLOT,
+            config: {targeting: {[testKey]: testValue}},
+          },
+        ],
+      },
+    });
+
+    test('Prepopulated targeting KV appears in code', async ({
+      configurator,
+      page,
+    }) => {
+      const targetingInput = configurator.getChipInput(
+        'Slot settings',
+        'Targeting',
+      );
+      await expect(
+        targetingInput.getChip(`${testKey}=${testValue}`),
+      ).toBeVisible();
+      await expect(page.locator('gpt-playground')).toContainText(testKey);
+      await expect(page.locator('gpt-playground')).toContainText(testValue);
+    });
+  });
+});
+
+test.describe('Configure ad exclusions', () => {
+  const testLabel = 'test-label';
+
+  test.use({
+    config: {
+      slots: [EMPTY_CUSTOM_SLOT],
+    } as SampleConfig,
+  });
+
+  test('Adding/removing label updates code', async ({configurator, page}) => {
+    const exclusionInput = configurator.getChipInput(
+      'Slot settings',
+      'Ad exclusion labels',
+    );
+
+    await exclusionInput.addValue(testLabel);
+    await expect(page.locator('gpt-playground')).toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).toContainText(testLabel);
+
+    await exclusionInput.deleteValue(testLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(testLabel);
+  });
+
+  test('Editing label removes it from code', async ({configurator, page}) => {
+    const exclusionInput = configurator.getChipInput(
+      'Slot settings',
+      'Ad exclusion labels',
+    );
+
+    await exclusionInput.addValue(testLabel);
+    await expect(page.locator('gpt-playground')).toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).toContainText(testLabel);
+
+    await exclusionInput.editValue(testLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(testLabel);
+  });
+
+  test('Invalid label does not appear in code', async ({
+    configurator,
+    page,
+  }) => {
+    const exclusionInput = configurator.getChipInput(
+      'Slot settings',
+      'Ad exclusion labels',
+    );
+
+    const invalidLabel = 'a'.repeat(128);
+    await exclusionInput.addValue(invalidLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      invalidLabel,
+    );
+  });
+
+  test.describe('Prepopulation', () => {
+    test.use({
+      config: {
+        slots: [
+          {
+            ...EMPTY_CUSTOM_SLOT,
+            config: {categoryExclusion: [testLabel]},
+          },
+        ],
+      },
+    });
+
+    test('Prepopulated ad exclusion label appears in code', async ({
+      configurator,
+      page,
+    }) => {
+      const exclusionInput = configurator.getChipInput(
+        'Slot settings',
+        'Ad exclusion labels',
+      );
+      await expect(exclusionInput.getChip(testLabel)).toBeVisible();
+      await expect(page.locator('gpt-playground')).toContainText(
+        'categoryExclusion',
+      );
+      await expect(page.locator('gpt-playground')).toContainText(testLabel);
+    });
+  });
+});
+
 test.describe('Ad format select', () => {
   const excludedFormats = [
     'AD_INTENTS',

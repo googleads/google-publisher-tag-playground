@@ -4,6 +4,7 @@
       "adsenseAttributes": {
         "page_url": "https://www.google.com"
       },
+      "categoryExclusion": ["airline"],
       "disableInitialLoad": true,
       "privacyTreatments": {
         "treatments": ["disablePersonalization"]

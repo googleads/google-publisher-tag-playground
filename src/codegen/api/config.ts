@@ -59,6 +59,7 @@ export function pageConfig(config: googletag.config.PageSettingsConfig) {
     adsenseAttributes: {
       page_url: config.adsenseAttributes?.page_url,
     },
+    categoryExclusion: config.categoryExclusion,
     disableInitialLoad: config.disableInitialLoad,
     privacyTreatments: config.privacyTreatments,
     singleRequest: config.singleRequest,
@@ -81,6 +82,7 @@ export function pageConfig(config: googletag.config.PageSettingsConfig) {
 export function slotConfig(config: googletag.config.SlotSettingsConfig) {
   // Copy only the settings that we explicitly support.
   const cleanConfig: googletag.config.SlotSettingsConfig = {
+    categoryExclusion: config.categoryExclusion,
     interstitial: {
       requireStorageAccess: config.interstitial?.requireStorageAccess,
       triggers: {

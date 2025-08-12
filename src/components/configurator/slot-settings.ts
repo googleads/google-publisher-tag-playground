@@ -36,7 +36,10 @@ import {
   interstitialConfigNames,
   interstitialTriggerNames,
   outOfPageFormatNames,
+  slotConfigNames,
+  slotSettingsConfigNames,
 } from '../../model/settings.js';
+import {AdExclusionInput} from '../ui-controls/ad-exclusion-input.js';
 import {ConfiguratorCheckbox} from '../ui-controls/configurator-checkbox.js';
 import {
   ConfiguratorFormatOptGroup,
@@ -51,27 +54,19 @@ import {TargetingInput} from '../ui-controls/targeting-input.js';
 // Constant UI strings.
 const strings = {
   addSlotTitle: () => msg('Add slot', {desc: 'Button text'}),
-  adUnitLabel: () => msg('Ad unit path', {desc: 'Text box label'}),
   defaultInterstitialTrigger: () =>
     msg('Link click', {desc: 'The action of clicking on a link.'}),
   customOptionLabel: () =>
     msg('Custom', {
       desc: 'Drop-down option that allows users to input custom ad slot values.',
     }),
-  oopFormatLabel: () => msg('Out-of-page format', {desc: 'Drop-down label'}),
   oopFormatUnselected: () =>
     msg('None', {desc: 'Option indicating no out-of-page format is selected.'}),
   removeSlotTitle: () => msg('Remove slot', {desc: 'Button title'}),
   sampleAdsLabel: () => msg('Sample ads', {desc: 'Option group label'}),
   sampleAdsOopLabel: () =>
     msg('Sample ads (out-of-page)', {desc: 'Option group label'}),
-  sizeSectionTitle: () =>
-    msg('Sizes', {desc: 'Section containing ad sizing options.'}),
   slotTemplateLabel: () => msg('Slot template', {desc: 'Drop-down label'}),
-  targetingSectionTitle: () =>
-    msg('Targeting', {
-      desc: 'Section containing ad targeting options.',
-    }),
   validationErrorAdUnitPath: () =>
     msg('Please specify a valid ad unit path.', {desc: 'Validation error.'}),
 };
@@ -311,6 +306,12 @@ export class SlotSettings extends LitElement {
     const targeting = parent.querySelector('targeting-input') as TargetingInput;
     slotConfig.targeting = targeting?.config;
 
+    const exclusions = parent.querySelector(
+      'ad-exclusion-input',
+    ) as AdExclusionInput;
+    slotConfig.categoryExclusion =
+      exclusions?.config.length > 0 ? exclusions?.config : undefined;
+
     if (slot.format === 'INTERSTITIAL') {
       const interstitialConfig: googletag.config.InterstitialConfig = {};
 
@@ -457,7 +458,7 @@ export class SlotSettings extends LitElement {
 
     return html`
       <configurator-format-select
-        label="${strings.oopFormatLabel()}"
+        label="${slotConfigNames.format()}"
         name="formats"
         .options="${formats}"
         @update="${this.updateSlot}"
@@ -467,7 +468,7 @@ export class SlotSettings extends LitElement {
 
   private renderSlotOptions(slot: SampleSlotConfig) {
     return html` <configurator-text-field
-        label="${strings.adUnitLabel()}"
+        label="${slotConfigNames.adUnit()}"
         error-text="${strings.validationErrorAdUnitPath()}"
         name="adUnit"
         pattern="${AD_UNIT_VALIDATION_PATTERN}"
@@ -479,7 +480,7 @@ export class SlotSettings extends LitElement {
 
   private renderSlotSizeInput(slot: SampleSlotConfig) {
     return html` <slot-size-input
-      title="${strings.sizeSectionTitle()}"
+      title="${slotConfigNames.size()}"
       .config="${slot.size}"
       @update="${this.updateSlot}"
     ></slot-size-input>`;
@@ -487,10 +488,18 @@ export class SlotSettings extends LitElement {
 
   private renderTargetingInput(slot: SampleSlotConfig) {
     return html` <targeting-input
-      title="${strings.targetingSectionTitle()}"
+      title="${slotSettingsConfigNames.targeting()}"
       .config="${slot.config?.targeting || []}"
       @update="${this.updateSlot}"
     ></targeting-input>`;
+  }
+
+  private renderAdExclusionInput(slot: SampleSlotConfig) {
+    return html`<ad-exclusion-input
+      title="${slotSettingsConfigNames.categoryExclusion()}"
+      .config="${slot.config?.categoryExclusion || []}"
+      @update="${this.updateSlot}"
+    ></ad-exclusion-input>`;
   }
 
   private renderSlotSettings(slot: SampleSlotConfig) {
@@ -500,7 +509,7 @@ export class SlotSettings extends LitElement {
         this.renderInterstitialSlotSettings(slot),
       )}
       ${when(!slot.format, () => this.renderSlotSizeInput(slot))}
-      ${this.renderTargetingInput(slot)}
+      ${this.renderTargetingInput(slot)} ${this.renderAdExclusionInput(slot)}
     `;
   }
 

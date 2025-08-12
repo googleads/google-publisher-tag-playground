@@ -5,6 +5,7 @@
       "size": [],
       "format": "INTERSTITIAL",
       "config": {
+        "categoryExclusion": ["airline"],
         "interstitial": {
           "requireStorageAccess": true,
           "triggers": {

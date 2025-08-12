@@ -197,6 +197,91 @@ test.describe('Configure targeting', () => {
   });
 });
 
+test.describe('Configure ad exclusions', () => {
+  const testLabel = 'test-label';
+
+  test('Adding/removing label updates code', async ({configurator, page}) => {
+    const exclusionInput = configurator.getChipInput(
+      'Page settings',
+      'Ad exclusion labels',
+    );
+
+    await exclusionInput.addValue(testLabel);
+    await expect(page.locator('gpt-playground')).toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).toContainText(testLabel);
+
+    await exclusionInput.deleteValue(testLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(testLabel);
+  });
+
+  test('Editing label removes it from code', async ({configurator, page}) => {
+    const exclusionInput = configurator.getChipInput(
+      'Page settings',
+      'Ad exclusion labels',
+    );
+
+    await exclusionInput.addValue(testLabel);
+    await expect(page.locator('gpt-playground')).toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).toContainText(testLabel);
+
+    await exclusionInput.editValue(testLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(testLabel);
+  });
+
+  test('Invalid label does not appear in code', async ({
+    configurator,
+    page,
+  }) => {
+    const exclusionInput = configurator.getChipInput(
+      'Page settings',
+      'Ad exclusion labels',
+    );
+
+    const invalidLabel = 'a'.repeat(128);
+    await exclusionInput.addValue(invalidLabel);
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      'categoryExclusion',
+    );
+    await expect(page.locator('gpt-playground')).not.toContainText(
+      invalidLabel,
+    );
+  });
+
+  test.describe('Prepopulation', () => {
+    test.use({
+      config: {
+        page: {config: {categoryExclusion: [testLabel]}},
+        slots: [],
+      },
+    });
+
+    test('Prepopulated ad exclusion label appears in code', async ({
+      configurator,
+      page,
+    }) => {
+      const exclusionInput = configurator.getChipInput(
+        'Page settings',
+        'Ad exclusion labels',
+      );
+      await expect(exclusionInput.getChip(testLabel)).toBeVisible();
+      await expect(page.locator('gpt-playground')).toContainText(
+        'categoryExclusion',
+      );
+      await expect(page.locator('gpt-playground')).toContainText(testLabel);
+    });
+  });
+});
+
 test.describe('Page URL', () => {
   test.describe('Prepopulation', () => {
     const testUrl = 'https://one.two.test.co.uk';
