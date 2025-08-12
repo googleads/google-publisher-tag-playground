@@ -24,7 +24,7 @@ const SAMPLE_AD_SLOT: SampleConfig = {
   slots: [{adUnit: '/6355419/Travel/Europe', size: [100, 100]}],
 };
 
-const PREVIEW_PAGE_GLOB = '**/index.html';
+const PREVIEW_SAMPLE_GLOB = '**/sample.js';
 const PREVIEW_SELECTOR = 'gpt-playground-preview';
 
 test.describe('Toolbar controls', () => {
@@ -166,51 +166,28 @@ test.describe('Toolbar controls', () => {
 test.describe('Toolbar buttons', () => {
   test.use({config: SAMPLE_AD_SLOT});
 
-  test('Refresh reloads preview', async ({
-    browserName,
-    configurator,
-    context,
-  }) => {
-    test.skip(
-      browserName !== 'chromium',
-      'Mocking network requests from service workers is only supported in Chrome.',
-    );
-
-    // Disable loading GPT for this test, but keep track of the number of times
-    // it was requested. This tells us how many times the preview was requested.
-    let previewRequestCount = 0;
-    await context.route('**/gpt.js', async route => {
-      previewRequestCount++;
-      await route.abort();
-    });
-
+  test('Refresh reloads preview', async ({configurator}) => {
     // Wait for the preview to be requested.
-    await configurator.page.waitForEvent('framenavigated');
+    const firstResponse =
+      await configurator.page.waitForResponse(PREVIEW_SAMPLE_GLOB);
+    const originalConfig = (await firstResponse.body()).toString();
 
-    // Locate the preview frame and wait for it to be fully loaded.
-    const previewFrame = configurator.page.frame({
-      url: PREVIEW_PAGE_GLOB,
-    });
-    expect(previewFrame).not.toBeNull();
-    await previewFrame?.waitForLoadState('networkidle');
-    expect(previewRequestCount).toEqual(1);
-
-    // Take a screenshot of the intial state of the preview frame.
-    const previewFrameElem = await previewFrame?.frameElement();
-    const originalPreview = await previewFrameElem?.screenshot({
-      animations: 'disabled',
-    });
-
-    // Click the refresh button and wait for the preview to reload.
+    // Click the refresh button.
+    const previewPromise =
+      configurator.page.waitForResponse(PREVIEW_SAMPLE_GLOB);
     const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
     await previewPane.getByText('refresh').click();
-    await previewFrame?.waitForLoadState('networkidle');
-    expect(previewRequestCount).toEqual(2);
 
-    // Ensure the preview frame contains the same content as before.
-    const newPreview = await previewFrameElem?.screenshot({
-      animations: 'disabled',
-    });
-    expect(newPreview).toEqual(originalPreview);
+    // Wait for the preview to be requested again.
+    const secondResponse = await previewPromise;
+    const newConfig = (await secondResponse.body()).toString();
+
+    // Ensure that the requests were initiated one after the other.
+    expect(secondResponse.request().timing().startTime).toBeGreaterThan(
+      firstResponse.request().timing().startTime,
+    );
+
+    // Ensure that the requests contained the same sample config.
+    expect(newConfig).toEqual(originalConfig);
   });
 });

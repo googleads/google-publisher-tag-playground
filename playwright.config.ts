@@ -23,9 +23,8 @@ export default defineConfig({
   testDir: './test/web',
   testMatch: /.*\.spec\.ts/,
   /* Run tests in files in parallel. */
-  // fullyParallel: true,
-  /* Fail the build on CI if you accidentally left test.only in the source code.
-   */
+  fullyParallel: true,
+  /* Fail the build on CI if you accidentally left test.only in the source. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 4 : 0,
@@ -44,7 +43,9 @@ export default defineConfig({
      * comparing screenshots.
      */
     toHaveScreenshot: {maxDiffPixelRatio: 0.01},
-    toMatchSnapshot: {maxDiffPixelRatio: 0.01}
+    toMatchSnapshot: {maxDiffPixelRatio: 0.01},
+    /* Increase timeout for auto-retrying assertions, to reduce flakiness. */
+    timeout: 15 * 1000,
   },
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -59,17 +60,26 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: {...devices['Desktop Chrome']},
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: {width: 1920, height: 1080},
+      },
     },
 
     {
       name: 'firefox',
-      use: {...devices['Desktop Firefox']},
+      use: {
+        ...devices['Desktop Firefox'],
+        viewport: {width: 1920, height: 1080},
+      },
     },
 
     {
       name: 'webkit',
-      use: {...devices['Desktop Safari']},
+      use: {
+        ...devices['Desktop Safari'],
+        viewport: {width: 1920, height: 1080},
+      },
     },
   ],
 

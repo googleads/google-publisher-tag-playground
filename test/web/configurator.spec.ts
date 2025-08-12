@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import {Locator, Page} from '@playwright/test';
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -23,7 +22,7 @@ import {SampleConfig} from '../../src/model/sample-config.js';
 
 import {expect, test} from './fixtures/configurator.js';
 
-test.describe('Configurator screenshots', () => {
+test.describe('Configurator screenshots', {tag: '@screenshot'}, () => {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const CONFIG_DIR = path.resolve(__dirname, '../codegen-test-data/configs');
 
@@ -44,17 +43,15 @@ test.describe('Configurator screenshots', () => {
         configurator,
         page,
       }) => {
-        // Set the viewport to a standard size, so screenshots are
-        // consistent.
-        await page.setViewportSize({width: 1920, height: 1080});
-
         // Expand the viewport as necessary to ensure the entire
         // configurator is visible.
-        const lastControl = configurator.getSelect(
-          'Output format',
-          configurator.getConfigSection('Output settings'),
-        );
-        await ensureElementIsVisible(lastControl, page);
+        const elemSize = await configurator
+          .getConfigSection('Output settings')
+          .boundingBox();
+        await page.setViewportSize({
+          width: page.viewportSize()!.width,
+          height: elemSize!.y + elemSize!.height,
+        });
 
         // Take a screenshot of the configurator and compare it to the
         // golden image.
@@ -65,27 +62,3 @@ test.describe('Configurator screenshots', () => {
     });
   }
 });
-
-/**
- * Resizes the viewport height until the specified element is
- * visible.
- *
- * @param elem
- * @param page
- * @returns
- */
-async function ensureElementIsVisible(
-  elem: Locator,
-  page: Page,
-): Promise<void> {
-  const elemSize = await elem.boundingBox();
-  const viewportSize = page.viewportSize()!;
-  if (elemSize!.y + elemSize!.height > viewportSize.height) {
-    await page.setViewportSize({
-      width: viewportSize.width,
-      height: viewportSize.height + 50,
-    });
-    return ensureElementIsVisible(elem, page);
-  }
-  return Promise.resolve();
-}

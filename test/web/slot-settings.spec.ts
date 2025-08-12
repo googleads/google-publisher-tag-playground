@@ -25,8 +25,6 @@ import {
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
 
-const CODE_EDITOR_SELECTOR = 'playground-file-editor';
-
 const AD_UNIT_TEXT_FIELD_LABEL = 'Ad unit path';
 const SLOT_SETTINGS_TITLE = 'Slot settings';
 const FORMAT_SELECT_LABEL = 'Out-of-page format';
@@ -148,7 +146,6 @@ test.describe('Ad template select', () => {
   sampleAds.forEach(sampleAd => {
     test(`Selecting ${sampleAd.name()} changes code`, async ({
       configurator,
-      page,
     }) => {
       const templateSelect = configurator.getSelect(
         TEMPLATE_SELECT_LABEL,
@@ -156,14 +153,11 @@ test.describe('Ad template select', () => {
       );
       await expect(templateSelect).toBeVisible();
 
-      const originalCode = await page.locator(CODE_EDITOR_SELECTOR).screenshot({
-        animations: 'disabled',
-      });
+      const originalCode = await configurator.getCodeEditorContents();
 
       await configurator.selectOption(templateSelect, sampleAd.name());
-      const newCode = await page.locator(CODE_EDITOR_SELECTOR).screenshot({
-        animations: 'disabled',
-      });
+      const newCode = await configurator.getCodeEditorContents();
+
       expect(newCode).not.toEqual(originalCode);
     });
   });
@@ -187,10 +181,7 @@ test.describe('Ad format select', () => {
     .forEach(format => {
       const formatName = format[1]();
 
-      test(`Selecting ${formatName} updates code`, async ({
-        configurator,
-        page,
-      }) => {
+      test(`Selecting ${formatName} updates code`, async ({configurator}) => {
         const formatSelect = configurator.getSelect(
           FORMAT_SELECT_LABEL,
           configurator.getConfigSection(SLOT_SETTINGS_TITLE),
@@ -198,12 +189,12 @@ test.describe('Ad format select', () => {
         await expect(formatSelect).toBeVisible();
 
         await configurator.selectOption(formatSelect, formatName);
-        await expect(page.locator(CODE_EDITOR_SELECTOR)).toContainText(
+        expect(await configurator.getCodeEditorContents()).toContain(
           formatName,
         );
 
         await configurator.selectOption(formatSelect, 'None');
-        await expect(page.locator(CODE_EDITOR_SELECTOR)).not.toContainText(
+        expect(await configurator.getCodeEditorContents()).not.toContain(
           formatName,
         );
       });

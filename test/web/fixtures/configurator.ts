@@ -44,6 +44,7 @@ export class Configurator {
   async goto(config: SampleConfig) {
     await this.page.goto(
       `/configurator#config=${encode(JSON.stringify(config))}`,
+      {waitUntil: 'commit'},
     );
   }
 
@@ -69,8 +70,21 @@ export class Configurator {
       .locator('input');
   }
 
+  /**
+   * Returns configurator `chip-input` elements.
+   */
   getChipInput(...titleHeirarchy: string[]) {
     return new ChipInput(this, this.getConfigSection(...titleHeirarchy));
+  }
+
+  /**
+   * Returns the contents of the playground code editor.
+   */
+  async getCodeEditorContents() {
+    const editor = this.page
+      .locator('playground-code-editor')
+      .locator('div.CodeMirror-code');
+    return editor.textContent();
   }
 
   /**
