@@ -7,6 +7,7 @@
     <msg name="s703415876ae4626f" desc="A sample ad with one valid size">Fixed-size ad (750x200)</msg>
     <msg name="s48390e2c954ba495" desc="A sample ad with one valid size.">Fixed-size ad (100x100)</msg>
     <msg name="s292d08a9cea72454" desc="A sample native ad, which resizes to fit the space available.">Fluid ad</msg>
+    <msg name="s2d647200b120ea41" desc="Ad unit path label">Ad unit path</msg>
     <msg name="s6ead833ff5e49608" desc="An out-of-page ad format">Ad intents ad</msg>
     <msg name="s5bf3f3d517569ebd" desc="An out-of-page ad format">Anchor ad (bottom)</msg>
     <msg name="s710f900ef624e363" desc="An out-of-page ad format">Anchor ad (top)</msg>
@@ -27,18 +28,19 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
-    <msg name="s08995feb9716ee48" desc="Drop-down label">Out-of-page format</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Slot template</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Custom</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Click the button below to preview in a new window.</msg>
     <msg name="s733564cddc33799f" desc="Error message.">Error: unable to connect to the GPT Sample Builder</msg>
     <msg name="s53a96edcf36221b2" desc="Input field label">Ad slot sizes</msg>
+    <msg name="s6b0627385c38c206" desc="Input field title">Add an ad exclusion label</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Add targeting key-values</msg>
     <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">EU user consent</msg>
     <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">Loading consent dialog...</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Sample ads</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Sample ads (out-of-page)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">None</msg>
+    <msg name="s08995feb9716ee48" desc="Out-of-page format label">Out-of-page format</msg>
     <msg name="s4535f519744108bf" desc="Output format label">Output format</msg>
     <msg name="s77b0113eae08368b" desc="Output template label">Sample template</msg>
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Single Request Architecture (SRA)</msg>
@@ -50,6 +52,7 @@
     <msg name="sb457d189f407a5a6" desc="Privacy setting label">Restrict data processing</msg>
     <msg name="sf915707accde585c" desc="Privacy setting label">Under the age of consent</msg>
     <msg name="s5fc316a7f287b7be" desc="Reason the embedded preview is unavailable.">This sample cannot be previewed in an iframe</msg>
+    <msg name="s4edecd7e589254c3" desc="Section containing ad exclusion labels.">Ad exclusion labels</msg>
     <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Sizes</msg>
     <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Slot settings</msg>
     <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">Targeting</msg>
@@ -58,6 +61,7 @@
     <msg name="sdb90b681e373be33" desc="Section containing page-level configuration settings.">Page-level configuration</msg>
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">Page-level targeting</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">Privacy</msg>
+    <msg name="s23dffb234cd0ff74" desc="Section containing slot-level configuration settings.">Slot-level configuration</msg>
     <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">Disable ads personalization</msg>
     <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">Treatments</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">AdSense attributes</msg>
@@ -65,7 +69,6 @@
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> is loading...</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> is not supported on this page.</msg>
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
-    <msg name="s2d647200b120ea41" desc="Text box label">Ad unit path</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Unavailable</msg>
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Unhide window</msg>
@@ -74,6 +77,7 @@
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Interstitial triggers</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">Key=Value1,Value2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x100,fluid,...</msg>
+    <msg name="s9919a3c7a0754a26" desc="Validation error">Labels must be 127 characters or less</msg>
     <msg name="sa9c78a7a0167358f" desc="Validation error">Duplicate key: <ph name="0">${key}</ph></msg>
     <msg name="sb4fb36c094a78d99" desc="Validation error">Invalid key: <ph name="0">${key}</ph></msg>
     <msg name="s3870e706a2084c79" desc="Validation error">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>

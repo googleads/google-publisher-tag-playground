@@ -7,7 +7,8 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">固定大小廣告 (750x200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">固定大小廣告 (100x100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">自動調整廣告</msg>
-    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
+    <msg desc="Ad unit path label" name="s2d647200b120ea41">廣告單元路徑</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">廣告意圖廣告</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">錨定廣告 (底部)</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">錨定廣告 (頂端)</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">遊戲插頁式廣告</msg>
@@ -22,27 +23,28 @@
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 請求及顯示先前定義的所有廣告版位。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// 啟用 GPT 服務。</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 定義靜態廣告版位。</msg>
-    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// 註冊先前定義的所有廣告版位。</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// 定義非頁內廣告版位。</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// 進行網頁層級設定。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 調整隱私權設定。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">如果網頁或裝置不支援，「<ph name="0">${format}</ph>」廣告版位會傳回空值。</msg>
-    <msg desc="Drop-down label" name="s08995feb9716ee48">非頁內廣告格式</msg>
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">版位範本</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">自訂</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>。點選下方按鈕即可在新視窗中預覽。</msg>
     <msg desc="Error message." name="s733564cddc33799f">錯誤：無法連線至 GPT 範例建構工具</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">廣告版位大小</msg>
+    <msg desc="Input field title" name="s6b0627385c38c206">Add an ad exclusion label</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">新增指定鍵/值</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">歐盟使用者同意聲明</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">正在載入同意聲明對話方塊...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">廣告範例</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">廣告範例 (非頁內廣告)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">無</msg>
+    <msg desc="Out-of-page format label" name="s08995feb9716ee48">非頁內廣告格式</msg>
     <msg desc="Output format label" name="s4535f519744108bf">輸出格式</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">範本範例</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">單一請求架構 (SRA)</msg>
-    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">停用初始載入功能</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">預覽</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">兒童導向內容</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">受限制的廣告</msg>
@@ -50,6 +52,7 @@
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">受限的資料處理</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">未滿規定年齡</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">無法在 iframe 中預覽這個範例</msg>
+    <msg desc="Section containing ad exclusion labels." name="s4edecd7e589254c3">Ad exclusion labels</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">大小</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">版位設定</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">指定目標</msg>
@@ -58,6 +61,7 @@
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">頁面層級設定</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">網頁層級指定目標</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">隱私權</msg>
+    <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Slot-level configuration</msg>
     <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">停用廣告個人化</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">保護措施</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense 屬性</msg>
@@ -65,7 +69,6 @@
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">正在載入<ph name="0">${format}</ph>...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">這個頁面不支援<ph name="0">${format}</ph>。</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph>捲動頁面即可啟用。</msg>
-    <msg desc="Text box label" name="s2d647200b120ea41">廣告單元路徑</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">無法使用</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">連結點擊</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">取消隱藏視窗</msg>
@@ -74,6 +77,7 @@
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">插頁式廣告觸發條件</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">鍵=值1,值2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
+    <msg desc="Validation error" name="s9919a3c7a0754a26">Labels must be 127 characters or less</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">重複的鍵：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">無效的鍵：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">鍵「<ph name="0">${key}</ph>」的值無效：<ph name="1">${value}</ph></msg>

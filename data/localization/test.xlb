@@ -7,6 +7,7 @@
     <msg name="s703415876ae4626f" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (750x̂́200)</msg>
     <msg name="s48390e2c954ba495" desc="A sample ad with one valid size.">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (100x̂́100)</msg>
     <msg name="s292d08a9cea72454" desc="A sample native ad, which resizes to fit the space available.">F̂́l̂û́îd̂́ ấd̂</msg>
+    <msg name="s2d647200b120ea41" desc="Ad unit path label">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
     <msg name="s6ead833ff5e49608" desc="An out-of-page ad format">Ấd̂ î́n̂t̂́ên̂́t̂ŝ́ ấd̂</msg>
     <msg name="s5bf3f3d517569ebd" desc="An out-of-page ad format">Ấn̂ĉ́ĥốr̂ ấd̂ (b̂́ôt̂́t̂ốm̂)</msg>
     <msg name="s710f900ef624e363" desc="An out-of-page ad format">Ấn̂ĉ́ĥốr̂ ấd̂ (t̂́ôp̂́)</msg>
@@ -27,18 +28,19 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
-    <msg name="s08995feb9716ee48" desc="Drop-down label">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
     <msg name="s733564cddc33799f" desc="Error message.">Ếr̂r̂́ôr̂́: û́n̂ấb̂l̂́ê t̂́ô ĉ́ôn̂́n̂ếĉt̂́ t̂́ô t̂́ĥế Ĝ́P̂T̂́ Ŝ́âm̂́p̂l̂́ê B̂́ûî́l̂d̂́êr̂́</msg>
     <msg name="s53a96edcf36221b2" desc="Input field label">Ấd̂ ŝ́l̂ốt̂ ŝ́îẑ́êŝ́</msg>
+    <msg name="s6b0627385c38c206" desc="Input field title">Ấd̂d̂́ ấn̂ ấd̂ ếx̂ĉ́l̂û́ŝî́ôn̂́ l̂́âb̂́êl̂́</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́-v̂́âl̂́ûếŝ</msg>
     <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">ẾÛ û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́</msg>
     <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">L̂́ôấd̂î́n̂ĝ́ ĉ́ôn̂́ŝến̂t̂́ d̂́îấl̂ốĝ...</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>
+    <msg name="s08995feb9716ee48" desc="Out-of-page format label">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
     <msg name="s4535f519744108bf" desc="Output format label">Ốût̂́p̂û́t̂ f̂́ôr̂́m̂ất̂</msg>
     <msg name="s77b0113eae08368b" desc="Output template label">Ŝ́âm̂́p̂l̂́ê t̂́êm̂́p̂l̂́ât̂́ê</msg>
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Ŝ́în̂́ĝl̂́ê R̂́êq̂́ûếŝt̂́ Ấr̂ĉ́ĥî́t̂ếĉt̂́ûr̂́ê (Ŝ́R̂Ấ)</msg>
@@ -50,6 +52,7 @@
     <msg name="sb457d189f407a5a6" desc="Privacy setting label">R̂́êŝ́t̂r̂́îĉ́t̂ d̂́ât̂́â p̂́r̂ốĉếŝŝ́în̂́ĝ</msg>
     <msg name="sf915707accde585c" desc="Privacy setting label">Û́n̂d̂́êr̂́ t̂́ĥế ấĝế ốf̂ ĉ́ôn̂́ŝến̂t̂́</msg>
     <msg name="s5fc316a7f287b7be" desc="Reason the embedded preview is unavailable.">T̂́ĥî́ŝ ŝ́âm̂́p̂l̂́ê ĉ́ân̂́n̂ốt̂ b̂́ê p̂́r̂ếv̂î́êŵ́êd̂́ î́n̂ ấn̂ î́f̂r̂́âm̂́ê</msg>
+    <msg name="s4edecd7e589254c3" desc="Section containing ad exclusion labels.">Ấd̂ ếx̂ĉ́l̂û́ŝî́ôn̂́ l̂́âb̂́êl̂́ŝ</msg>
     <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Ŝ́îẑ́êŝ́</msg>
     <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Ŝ́l̂ốt̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
     <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">T̂́âr̂́ĝết̂î́n̂ĝ́</msg>
@@ -58,6 +61,7 @@
     <msg name="sdb90b681e373be33" desc="Section containing page-level configuration settings.">P̂́âĝ́ê-l̂́êv̂́êl̂́ ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">P̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">P̂́r̂î́v̂ấĉŷ́</msg>
+    <msg name="s23dffb234cd0ff74" desc="Section containing slot-level configuration settings.">Ŝ́l̂ốt̂-l̂́êv̂́êl̂́ ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
     <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">D̂́îŝ́âb̂́l̂ế ấd̂ŝ́ p̂́êr̂́ŝốn̂ấl̂î́ẑất̂î́ôn̂́</msg>
     <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">T̂́r̂ếât̂́m̂ến̂t̂́ŝ</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ</msg>
@@ -65,7 +69,6 @@
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
-    <msg name="s2d647200b120ea41" desc="Text box label">Ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Û́n̂ĥ́îd̂́ê ŵ́în̂́d̂ốŵ</msg>
@@ -74,6 +77,7 @@
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ t̂́r̂î́ĝĝ́êr̂́ŝ</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">K̂́êŷ́=V̂́âl̂́ûế1,V̂́âl̂́ûế2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x̂́100,f̂́l̂û́îd̂́,...</msg>
+    <msg name="s9919a3c7a0754a26" desc="Validation error">L̂́âb̂́êl̂́ŝ m̂́ûŝ́t̂ b̂́ê 127 ĉ́ĥấr̂ấĉt̂́êr̂́ŝ ốr̂ l̂́êŝ́ŝ</msg>
     <msg name="sa9c78a7a0167358f" desc="Validation error">D̂́ûp̂́l̂î́ĉất̂ế k̂́êŷ́: <ph name="0">${key}</ph></msg>
     <msg name="sb4fb36c094a78d99" desc="Validation error">Î́n̂v̂́âl̂́îd̂́ k̂́êŷ́: <ph name="0">${key}</ph></msg>
     <msg name="s3870e706a2084c79" desc="Validation error">Î́n̂v̂́âl̂́îd̂́ v̂́âl̂́ûế f̂́ôr̂́ k̂́êŷ́ <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>

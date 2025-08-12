@@ -23,7 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
-  s00f485d30c4d7069: 'Disable initial load',
+  s00f485d30c4d7069: 'Inhabilitar la carga inicial',
   s02c64e6a6306c0b0: 'Agregar espacio',
   s0536dee760be4bf2: '// Establece la configuración de privacidad.',
   s06d92c8a54c8a011: 'Plantilla de espacios',
@@ -36,6 +36,7 @@ export const templates = {
   s1c1f567a55f86cc2: 'Mostrar ventana',
   s1c67a1fa4d07bd8b: 'URL de la página',
   s1e6dc9c6efd64b15: 'Inhabilitar la personalización de anuncios',
+  s23dffb234cd0ff74: 'Slot-level configuration',
   s267a52c34c200ef0: 'Arquitectura de solicitud única (SRA)',
   s292d08a9cea72454: 'Anuncio flexible',
   s2a071e5a3e79454a: 'Key=Value1,Value2,…',
@@ -56,6 +57,7 @@ export const templates = {
   s4661d2a8c1259e58: 'Anuncios de muestra (fuera de página)',
   s48390e2c954ba495: 'Anuncio de tamaño fijo (100 x 100)',
   s49b92d61c8e9e116: 'Especifica una URL válida.',
+  s4edecd7e589254c3: 'Ad exclusion labels',
   s53a96edcf36221b2: 'Tamaños de espacio publicitario',
   s5bf3f3d517569ebd: 'Anuncio fijo (inferior)',
   s5e13187e6961d8b1: '// Define espacios publicitarios fuera de página.',
@@ -63,7 +65,8 @@ export const templates = {
     'No se puede obtener una vista previa de este ejemplo en un iframe',
   s669b18c6d2d9c95b: 'Ninguno',
   s68fe43baedc49318: 'Actualizar vista previa',
-  s6ead833ff5e49608: 'Ad intents ad',
+  s6b0627385c38c206: 'Add an ad exclusion label',
+  s6ead833ff5e49608: 'Intenciones de anuncios',
   s703415876ae4626f: 'Anuncio de tamaño fijo (750 × 200)',
   s707a334b3b2a7140: str`${0}. Haz clic en el botón que aparece a continuación para obtener una vista previa en una ventana nueva.`,
   s710f900ef624e363: 'Anuncio fijo (superior)',
@@ -79,7 +82,9 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'Quitar espacio',
   s8e732383cac5c9fd: '100x100,fluid,…',
   s90465cbd227840a3: str`${0} Desplázate por la página para activarla.`,
-  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
+  s96f81f2fccc92df4:
+    '// Registra todos los espacios publicitarios definidos anteriormente.',
+  s9919a3c7a0754a26: 'Labels must be 127 characters or less',
   s9d21580cc7643953: str`Se está cargando ${0}…`,
   s9dc1289fa45bd694: 'Acciones que activan anuncios intersticiales',
   sa2b2ab2dd02accfd: 'Clic en vínculo',

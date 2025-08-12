@@ -7,7 +7,8 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">Quảng cáo có kích thước cố định (750x200)</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">Quảng cáo có kích thước cố định (100x100)</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Quảng cáo linh hoạt</msg>
-    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
+    <msg desc="Ad unit path label" name="s2d647200b120ea41">Đường dẫn đơn vị quảng cáo</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Quảng cáo dựa trên ý định</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">Quảng cáo cố định (dưới cùng)</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">Quảng cáo cố định (trên cùng)</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">Quảng cáo xen kẽ trong trò chơi</msg>
@@ -22,27 +23,28 @@
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Yêu cầu và hiển thị tất cả các vị trí quảng cáo đã xác định trước đó.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Bật các dịch vụ GPT.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Xác định vị trí quảng cáo tĩnh.</msg>
-    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Đăng ký tất cả các vị trí quảng cáo đã xác định trước đó.</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// Xác định vị trí nằm ngoài trang.</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Định cấu hình chế độ cài đặt cấp trang.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Định cấu hình chế độ cài đặt quyền riêng tư.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">Các vị trí <ph name="0">${format}</ph> sẽ trả về giá trị rỗng nếu trang hoặc thiết bị không hỗ trợ.</msg>
-    <msg desc="Drop-down label" name="s08995feb9716ee48">Định dạng nằm ngoài trang</msg>
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Mẫu vị trí</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Tuỳ chỉnh</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Nhấp vào nút bên dưới để xem trước trong một cửa sổ mới.</msg>
     <msg desc="Error message." name="s733564cddc33799f">Lỗi: không kết nối được với Trình tạo mẫu GPT</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Kích thước vị trí quảng cáo</msg>
+    <msg desc="Input field title" name="s6b0627385c38c206">Add an ad exclusion label</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Thêm khoá-giá trị nhắm mục tiêu</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Sự đồng ý của người dùng ở Liên minh Châu Âu</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Đang tải hộp thoại đồng ý...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Quảng cáo mẫu</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Quảng cáo mẫu (nằm ngoài trang)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Không có</msg>
+    <msg desc="Out-of-page format label" name="s08995feb9716ee48">Định dạng nằm ngoài trang</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Định dạng đầu ra</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Mẫu</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Cấu trúc yêu cầu duy nhất (SRA)</msg>
-    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Tắt tải ban đầu</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Xem trước</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Được dành cho trẻ em</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Quảng cáo bị hạn chế</msg>
@@ -50,6 +52,7 @@
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Hạn chế hoạt động xử lý dữ liệu</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">Dưới độ tuổi hợp pháp để tự quản lý tài khoản</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Không thể xem trước mẫu này trong iframe</msg>
+    <msg desc="Section containing ad exclusion labels." name="s4edecd7e589254c3">Ad exclusion labels</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Kích thước</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Cài đặt vị trí</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Nhắm mục tiêu</msg>
@@ -58,6 +61,7 @@
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Cấu hình cấp trang</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Nhắm mục tiêu cấp trang</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Quyền riêng tư</msg>
+    <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Slot-level configuration</msg>
     <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Tắt tính năng cá nhân hoá quảng cáo</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Biện pháp xử lý</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Thuộc tính trong AdSense</msg>
@@ -65,7 +69,6 @@
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> đang tải...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">Trang này không hỗ trợ <ph name="0">${format}</ph>.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Cuộn trang để kích hoạt.</msg>
-    <msg desc="Text box label" name="s2d647200b120ea41">Đường dẫn đơn vị quảng cáo</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Không có sẵn</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Nhấp vào đường liên kết</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Hiện cửa sổ</msg>
@@ -74,6 +77,7 @@
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Hành động kích hoạt quảng cáo xen kẽ</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Khoá=Giá trị1,Giá trị2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
+    <msg desc="Validation error" name="s9919a3c7a0754a26">Labels must be 127 characters or less</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Trùng khoá: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">Khoá không hợp lệ: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">Giá trị không hợp lệ cho khoá <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>

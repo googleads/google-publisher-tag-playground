@@ -23,7 +23,7 @@ import {str} from '@lit/localize';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const templates = {
-  s00f485d30c4d7069: 'Disable initial load',
+  s00f485d30c4d7069: 'Disattiva caricamento iniziale',
   s02c64e6a6306c0b0: 'Aggiungi area',
   s0536dee760be4bf2: '// Configura impostazioni della privacy.',
   s06d92c8a54c8a011: 'Modello area',
@@ -36,6 +36,7 @@ export const templates = {
   s1c1f567a55f86cc2: 'Mostra finestra',
   s1c67a1fa4d07bd8b: 'URL pagina',
   s1e6dc9c6efd64b15: 'Disattiva la personalizzazione degli annunci',
+  s23dffb234cd0ff74: 'Slot-level configuration',
   s267a52c34c200ef0:
     'SRA (Single Request Architecture, architettura di richiesta singola)',
   s292d08a9cea72454: 'Annuncio flessibile',
@@ -57,6 +58,7 @@ export const templates = {
   s4661d2a8c1259e58: 'Esempi di annunci (fuori pagina)',
   s48390e2c954ba495: 'Annuncio con dimensioni fisse (100 x 100)',
   s49b92d61c8e9e116: 'Specifica un URL valido.',
+  s4edecd7e589254c3: 'Ad exclusion labels',
   s53a96edcf36221b2: 'Dimensioni aree annunci',
   s5bf3f3d517569ebd: 'Annuncio ancorato (in basso)',
   s5e13187e6961d8b1: '// Definisci aree fuori pagina.',
@@ -64,7 +66,8 @@ export const templates = {
     "Impossibile visualizzare l'anteprima di questo esempio in un iframe",
   s669b18c6d2d9c95b: 'Nessuno',
   s68fe43baedc49318: 'Aggiorna anteprima',
-  s6ead833ff5e49608: 'Ad intents ad',
+  s6b0627385c38c206: 'Add an ad exclusion label',
+  s6ead833ff5e49608: 'Annuncio per intenzione',
   s703415876ae4626f: 'Annuncio con dimensioni fisse (750 x 200)',
   s707a334b3b2a7140: str`${0}. Fai clic sul pulsante in basso per visualizzare l'anteprima in una nuova finestra.`,
   s710f900ef624e363: 'Annuncio ancorato (in alto)',
@@ -79,7 +82,9 @@ export const templates = {
   s8a2c4a3aa651b7fb: 'Rimuovi area',
   s8e732383cac5c9fd: '100x100,fluid,...',
   s90465cbd227840a3: str`${0} Scorri la pagina per attivare.`,
-  s96f81f2fccc92df4: '// Register all previously defined ad slots.',
+  s96f81f2fccc92df4:
+    '// Registra tutte le aree annunci definite in precedenza.',
+  s9919a3c7a0754a26: 'Labels must be 127 characters or less',
   s9d21580cc7643953: str`Caricamento di ${0} in corso…`,
   s9dc1289fa45bd694: 'Attivatori di annunci interstitial',
   sa2b2ab2dd02accfd: 'Clic su link',

@@ -7,7 +7,8 @@
     <msg desc="A sample ad with one valid size" name="s703415876ae4626f">固定サイズ広告（750x200）</msg>
     <msg desc="A sample ad with one valid size." name="s48390e2c954ba495">固定サイズ広告（100×100）</msg>
     <msg desc="A sample native ad, which resizes to fit the space available." name="s292d08a9cea72454">Fluid 広告</msg>
-    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">Ad intents ad</msg>
+    <msg desc="Ad unit path label" name="s2d647200b120ea41">広告ユニットのパス</msg>
+    <msg desc="An out-of-page ad format" name="s6ead833ff5e49608">広告インテント広告</msg>
     <msg desc="An out-of-page ad format" name="s5bf3f3d517569ebd">アンカー広告（下部）</msg>
     <msg desc="An out-of-page ad format" name="s710f900ef624e363">アンカー広告（上部）</msg>
     <msg desc="An out-of-page ad format" name="s1163c710c6c9bccf">ゲーム インタースティシャル広告</msg>
@@ -22,27 +23,28 @@
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 事前に定義したすべての広告スロットをリクエストしてレンダリングします。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// GPT サービスを有効にします。</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 静的広告スロットを定義します。</msg>
-    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// Register all previously defined ad slots.</msg>
+    <msg desc="Code comment preceding call(s) to googletag.display()." name="s96f81f2fccc92df4">// 事前に定義したすべての広告スロットを登録します。</msg>
     <msg desc="Code comment preceding out-of-page ad slot definitions." name="s5e13187e6961d8b1">// ページ外スロットを定義します。</msg>
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// ページレベルの設定を構成します。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// プライバシーを設定します。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">ページまたはデバイスで <ph name="0">${format}</ph> がサポートされていない場合、スロットは null を返します。</msg>
-    <msg desc="Drop-down label" name="s08995feb9716ee48">ページ外フォーマット</msg>
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">スロット テンプレート</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">カスタム</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>。下のボタンをクリックすると、新しいウィンドウでプレビューが表示されます。</msg>
     <msg desc="Error message." name="s733564cddc33799f">エラー: GPT サンプル ビルダーに接続できません</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">広告スロットのサイズ</msg>
+    <msg desc="Input field title" name="s6b0627385c38c206">Add an ad exclusion label</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">ターゲティングの Key-Value を追加</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU ユーザーの同意</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">同意ダイアログを読み込んでいます...</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">サンプル広告</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">サンプル広告（ページ外）</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">なし</msg>
+    <msg desc="Out-of-page format label" name="s08995feb9716ee48">ページ外フォーマット</msg>
     <msg desc="Output format label" name="s4535f519744108bf">出力形式</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">サンプル テンプレート</msg>
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">シングル リクエスト アーキテクチャ（SRA）</msg>
-    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Disable initial load</msg>
+    <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">初回の読み込みを無効にする</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">プレビュー</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">子供向け取り扱い</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">制限付き広告</msg>
@@ -50,6 +52,7 @@
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">データ処理を制限する</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">同意年齢未満</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">このサンプルは iframe でプレビューできません</msg>
+    <msg desc="Section containing ad exclusion labels." name="s4edecd7e589254c3">Ad exclusion labels</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">サイズ</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">スロットの設定</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">ターゲティング</msg>
@@ -58,6 +61,7 @@
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">ページ単位の設定</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">ページレベルのターゲティング</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">プライバシー</msg>
+    <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Slot-level configuration</msg>
     <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">広告のパーソナライズを無効にする</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">取り扱い</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense の属性</msg>
@@ -65,7 +69,6 @@
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> を読み込んでいます...</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">このページで <ph name="0">${format}</ph> はサポートされていません。</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph>　有効にするにはページをスクロールしてください。</msg>
-    <msg desc="Text box label" name="s2d647200b120ea41">広告ユニットのパス</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">利用不可</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">リンクをクリック</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">ウィンドウを再表示</msg>
@@ -74,6 +77,7 @@
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">インタースティシャル トリガー</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
+    <msg desc="Validation error" name="s9919a3c7a0754a26">Labels must be 127 characters or less</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">キーが重複しています: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">キーが無効です: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">キー <ph name="0">${key}</ph> の値が無効です: <ph name="1">${value}</ph></msg>
