@@ -17,6 +17,8 @@
 import '../ui-controls/ad-exclusion-input';
 import '../ui-controls/config-section';
 import '../ui-controls/configurator-checkbox';
+import '../ui-controls/configurator-format-select';
+import '../ui-controls/configurator-select';
 import '../ui-controls/configurator-text-field';
 import '../ui-controls/targeting-input';
 
@@ -31,6 +33,7 @@ import {
 } from '../../model/sample-config.js';
 import {
   adSenseAttributesConfigNames,
+  collapseDivNames,
   configNames,
   pageConfigNames,
   pageSettingsConfigNames,
@@ -38,6 +41,10 @@ import {
   privacyTreatmentNames,
 } from '../../model/settings.js';
 import {AdExclusionInput} from '../ui-controls/ad-exclusion-input.js';
+import {
+  ConfiguratorSelect,
+  ConfiguratorSelectOption,
+} from '../ui-controls/configurator-select.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
 
@@ -66,9 +73,11 @@ const PAGE_URL_VALIDATION_REGEX = new RegExp(
 export class PageSettings extends LitElement {
   @query('configurator-checkbox#disableInitialLoad')
   private disableInitialLoadInput!: HTMLInputElement;
+  @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
+  @query('configurator-select#collapseDiv')
+  private collapseDivSelect!: ConfiguratorSelect;
   @query('configurator-text-field#pageUrl')
   private pageUrl!: ConfiguratorTextField;
-  @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
   @queryAll('.privacy configurator-checkbox')
   private privacySettings!: HTMLInputElement[];
   @queryAll('.privacy .treatments configurator-checkbox')
@@ -93,6 +102,9 @@ export class PageSettings extends LitElement {
     pageConfig.disableInitialLoad =
       this.disableInitialLoadInput.checked || undefined;
     pageConfig.singleRequest = this.sraInput.checked || undefined;
+    pageConfig.collapseDiv =
+      (this.collapseDivSelect.value as googletag.config.CollapseDivBehavior) ||
+      undefined;
 
     pageConfig.adsenseAttributes = pageConfig.adsenseAttributes || {};
     pageConfig.adsenseAttributes.page_url = PAGE_URL_VALIDATION_REGEX.test(
@@ -137,6 +149,26 @@ export class PageSettings extends LitElement {
   }
 
   private renderGeneralSettings() {
+    const collapseDivOptions: ConfiguratorSelectOption[] = [
+      {
+        label: collapseDivNames.DISABLED(),
+        selected:
+          !this.config.config?.collapseDiv ||
+          this.config.config?.collapseDiv === 'DISABLED',
+        value: '',
+      },
+    ];
+
+    Object.entries(collapseDivNames)
+      .filter(([k]) => k !== 'DISABLED')
+      .forEach(([k, v]) => {
+        collapseDivOptions.push({
+          label: v(),
+          value: k,
+          selected: this.config.config?.collapseDiv === k,
+        });
+      });
+
     return html`
       ${this.renderCheckbox(
         'disableInitialLoad',
@@ -148,6 +180,12 @@ export class PageSettings extends LitElement {
         pageSettingsConfigNames.singleRequest(),
         this.config.config?.singleRequest || undefined,
       )}
+      <configurator-select
+        id="collapseDiv"
+        label="${pageSettingsConfigNames.collapseDiv()}"
+        .options="${collapseDivOptions}"
+        @update="${this.handleUpdate}"
+      ></configurator-select>
       <configurator-text-field
         id="pageUrl"
         label="${adSenseAttributesConfigNames.page_url()}"

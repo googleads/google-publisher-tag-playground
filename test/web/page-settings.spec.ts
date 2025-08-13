@@ -17,6 +17,7 @@
 import {SampleConfig, SamplePageConfig} from '../../src/model/sample-config.js';
 import {
   adSenseAttributesConfigNames,
+  collapseDivNames,
   configNames,
   pageSettingsConfigNames,
   privacyConfigNames,
@@ -117,6 +118,58 @@ test.describe('Enable/disable checkboxes', () => {
         ).toBeChecked();
         await expect(page.locator('gpt-playground')).toContainText(
           expectedText,
+        );
+      });
+    });
+  });
+});
+
+test.describe('Collapse ad slots', () => {
+  Object.entries(collapseDivNames).forEach(([key, label]) => {
+    test(`Selecting "${label()}" updates code`, async ({configurator}) => {
+      const pageSettings = configurator.getConfigSection(configNames.page());
+      const collapseDivSelect = configurator.getSelect(
+        pageSettingsConfigNames.collapseDiv(),
+        pageSettings,
+      );
+
+      await configurator.selectOption(collapseDivSelect, label());
+      if (key === 'DISABLED') {
+        expect(await configurator.getCodeEditorContents()).not.toContain(
+          'collapseDiv',
+        );
+      } else {
+        expect(await configurator.getCodeEditorContents()).toContain(key);
+      }
+    });
+
+    test.describe('Prepopulation', () => {
+      test.use({
+        config: {
+          page: {
+            config: {
+              collapseDiv: key as googletag.config.CollapseDivBehavior,
+            },
+          },
+          slots: [],
+        },
+      });
+
+      test(`Prepopulating "${key}" works as expected`, async ({
+        configurator,
+      }) => {
+        const pageSettings = configurator.getConfigSection(configNames.page());
+        const collapseDivSelect = configurator.getSelect(
+          pageSettingsConfigNames.collapseDiv(),
+          pageSettings,
+        );
+
+        await expect(
+          configurator.getSelectOption(collapseDivSelect, label()),
+        ).toBeSelected();
+
+        expect(await configurator.getCodeEditorContents()).toContain(
+          key === 'DISABLED' ? '' : key,
         );
       });
     });

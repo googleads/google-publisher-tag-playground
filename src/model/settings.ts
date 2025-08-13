@@ -96,7 +96,10 @@ export const pageSettingsConfigNames: Record<
       desc: 'Section containing ad exclusion labels.',
     }),
   centering: notSupported,
-  collapseDiv: notSupported,
+  collapseDiv: () =>
+    msg('Collapse ad slots', {
+      desc: 'Setting to control if/when ad slots should be collapsed (hidden).',
+    }),
   disableInitialLoad: () =>
     msg('Disable initial load', {
       desc: 'Prevents GPT from requesting ads when calling display().',
@@ -125,7 +128,10 @@ export const slotSettingsConfigNames: Record<
   adsenseAttributes: notSupported,
   categoryExclusion: pageSettingsConfigNames.categoryExclusion,
   clickUrl: notSupported,
-  collapseDiv: notSupported,
+  collapseDiv: () =>
+    msg('Collapse ad slot', {
+      desc: 'Setting to control if/when a single ad slot should be collapsed (hidden).',
+    }),
   componentAuction: notSupported,
   interstitial: () =>
     msg('Interstitial triggers', {
@@ -243,5 +249,27 @@ export const privacyTreatmentNames: Record<
   disablePersonalization: () =>
     msg('Disable ads personalization', {
       desc: 'Setting to control ads personalization privacy treatment,',
+    }),
+};
+
+/**
+ * Maps {@link googletag.config.CollapseDivBehavior} values to their friendly
+ * names.
+ */
+export const collapseDivNames: Record<
+  googletag.config.CollapseDivBehavior,
+  () => string
+> = {
+  DISABLED: () =>
+    msg('Never', {
+      desc: 'Setting indicating that ad slots will never be collapsed (hidden).',
+    }),
+  BEFORE_FETCH: () =>
+    msg('Before requesting an ad', {
+      desc: 'Setting indicating that ad slots will be collapsed (hidden) before requesting an ad.',
+    }),
+  ON_NO_FILL: () =>
+    msg('If no ad is returned', {
+      desc: 'Setting indicating that ad slots will be collapsed (hidden) if no ad is returned.',
     }),
 };

@@ -5,6 +5,7 @@
         "page_url": "https://www.google.com"
       },
       "categoryExclusion": ["airline"],
+      "collapseDiv": "BEFORE_FETCH",
       "disableInitialLoad": true,
       "privacyTreatments": {
         "treatments": ["disablePersonalization"]

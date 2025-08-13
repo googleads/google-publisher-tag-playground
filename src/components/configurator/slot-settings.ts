@@ -32,6 +32,7 @@ import {isEqual} from 'lodash-es';
 import {sampleAds} from '../../model/sample-ads.js';
 import type {SampleSlotConfig} from '../../model/sample-config.js';
 import {
+  collapseDivNames,
   configNames,
   interstitialConfigNames,
   interstitialTriggerNames,
@@ -47,6 +48,10 @@ import {
   ConfiguratorFormatSelect,
   ConfiguratorFormatSelectOption,
 } from '../ui-controls/configurator-format-select.js';
+import {
+  ConfiguratorSelect,
+  ConfiguratorSelectOption,
+} from '../ui-controls/configurator-select.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {SlotSizeInput} from '../ui-controls/slot-size-input.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
@@ -66,6 +71,10 @@ const strings = {
   sampleAdsLabel: () => msg('Sample ads', {desc: 'Option group label'}),
   sampleAdsOopLabel: () =>
     msg('Sample ads (out-of-page)', {desc: 'Option group label'}),
+  settingInheritLabel: () =>
+    msg('Use page setting', {
+      desc: "Option that indicates a slot-level setting's value should be inherited from page-leve settings.",
+    }),
   slotTemplateLabel: () => msg('Slot template', {desc: 'Drop-down label'}),
   validationErrorAdUnitPath: () =>
     msg('Please specify a valid ad unit path.', {desc: 'Validation error.'}),
@@ -312,7 +321,14 @@ export class SlotSettings extends LitElement {
     slotConfig.categoryExclusion =
       exclusions?.config.length > 0 ? exclusions?.config : undefined;
 
-    if (slot.format === 'INTERSTITIAL') {
+    if (!slot.format) {
+      const collapseDiv = parent.querySelector(
+        '[name=collapseDiv]',
+      ) as ConfiguratorSelect;
+      slotConfig.collapseDiv =
+        (collapseDiv?.value as googletag.config.CollapseDivBehavior) ||
+        undefined;
+    } else if (slot.format === 'INTERSTITIAL') {
       const interstitialConfig: googletag.config.InterstitialConfig = {};
 
       const requireStorageAccess = (
@@ -508,8 +524,36 @@ export class SlotSettings extends LitElement {
       ${when(slot.format && slot.format === 'INTERSTITIAL', () =>
         this.renderInterstitialSlotSettings(slot),
       )}
-      ${when(!slot.format, () => this.renderSlotSizeInput(slot))}
+      ${when(!slot.format, () => this.renderNonOopSlotSettings(slot))}
       ${this.renderTargetingInput(slot)} ${this.renderAdExclusionInput(slot)}
+    `;
+  }
+
+  private renderNonOopSlotSettings(slot: SampleSlotConfig) {
+    const collapseDivOptions: ConfiguratorSelectOption[] = [
+      {
+        label: strings.settingInheritLabel(),
+        selected: !slot.config?.collapseDiv,
+        value: '',
+      },
+    ];
+
+    Object.entries(collapseDivNames).forEach(([k, v]) => {
+      collapseDivOptions.push({
+        label: v(),
+        value: k,
+        selected: slot.config?.collapseDiv === k,
+      });
+    });
+
+    return html`
+      <configurator-select
+        label="${slotSettingsConfigNames.collapseDiv()}"
+        name="collapseDiv"
+        .options="${collapseDivOptions}"
+        @update="${this.updateSlot}"
+      ></configurator-select>
+      ${this.renderSlotSizeInput(slot)}
     `;
   }
 

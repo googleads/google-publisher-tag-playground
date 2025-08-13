@@ -17,10 +17,12 @@
 import {sampleAds} from '../../src/model/sample-ads.js';
 import {SampleConfig, SampleSlotConfig} from '../../src/model/sample-config.js';
 import {
+  collapseDivNames,
   configNames,
   interstitialConfigNames,
   interstitialTriggerNames,
   outOfPageFormatNames,
+  slotSettingsConfigNames,
 } from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
@@ -159,6 +161,90 @@ test.describe('Ad template select', () => {
       const newCode = await configurator.getCodeEditorContents();
 
       expect(newCode).not.toEqual(originalCode);
+    });
+  });
+});
+
+test.describe('Collapse ad slot', () => {
+  test.use({
+    config: {
+      slots: [EMPTY_CUSTOM_SLOT],
+    } as SampleConfig,
+  });
+
+  const INHERIT_LABEL = 'Use page setting';
+
+  test(`Selecting "${INHERIT_LABEL}" removes code`, async ({configurator}) => {
+    const slotSettings = configurator.getConfigSection(configNames.slots());
+    const collapseDivSelect = configurator.getSelect(
+      slotSettingsConfigNames.collapseDiv(),
+      slotSettings,
+    );
+
+    // Ensure the inherit option is selected by default.
+    await expect(
+      configurator.getSelectOption(collapseDivSelect, INHERIT_LABEL),
+    ).toBeSelected();
+    expect(await configurator.getCodeEditorContents()).not.toContain(
+      'collapseDiv',
+    );
+
+    // Select a different option and ensure code contains the collapseDiv
+    // setting.
+    await configurator.selectOption(
+      collapseDivSelect,
+      collapseDivNames.BEFORE_FETCH(),
+    );
+    expect(await configurator.getCodeEditorContents()).toContain('collapseDiv');
+
+    // Re-select the inherit option and ensure the collapseDiv setting was
+    // removed.
+    await configurator.selectOption(collapseDivSelect, INHERIT_LABEL);
+    expect(await configurator.getCodeEditorContents()).not.toContain(
+      'collapseDiv',
+    );
+  });
+
+  Object.entries(collapseDivNames).forEach(([key, label]) => {
+    test(`Selecting "${label()}" updates code`, async ({configurator}) => {
+      const slotSettings = configurator.getConfigSection(configNames.slots());
+      const collapseDivSelect = configurator.getSelect(
+        slotSettingsConfigNames.collapseDiv(),
+        slotSettings,
+      );
+
+      await configurator.selectOption(collapseDivSelect, label());
+      expect(await configurator.getCodeEditorContents()).toContain(key);
+    });
+
+    test.describe('Prepopulation', () => {
+      test.use({
+        config: {
+          slots: [
+            {
+              ...EMPTY_CUSTOM_SLOT,
+              config: {
+                collapseDiv: key as googletag.config.CollapseDivBehavior,
+              },
+            },
+          ],
+        },
+      });
+
+      test(`Prepopulating "${key}" works as expected`, async ({
+        configurator,
+      }) => {
+        const slotSettings = configurator.getConfigSection(configNames.slots());
+        const collapseDivSelect = configurator.getSelect(
+          slotSettingsConfigNames.collapseDiv(),
+          slotSettings,
+        );
+
+        await expect(
+          configurator.getSelectOption(collapseDivSelect, label()),
+        ).toBeSelected();
+        expect(await configurator.getCodeEditorContents()).toContain(key);
+      });
     });
   });
 });
