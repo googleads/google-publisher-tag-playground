@@ -40,6 +40,7 @@
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Beispielanzeigen</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Beispielanzeigen (Out-of-Page)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Keine</msg>
+    <msg desc="Option that indicates a slot-level setting's value should be inherited from page-leve settings." name="sd59d6171f900185b">Use page setting</msg>
     <msg desc="Out-of-page format label" name="s08995feb9716ee48">Out-of-Page-Format</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Ausgabeformat</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Beispielvorlage</msg>
@@ -62,7 +63,12 @@
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Targeting auf Seitenebene</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Datenschutzerklärung</msg>
     <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Slot-level configuration</msg>
+    <msg desc="Setting indicating that ad slots will be collapsed (hidden) before requesting an ad." name="se8fba10796fd950d">Before requesting an ad</msg>
+    <msg desc="Setting indicating that ad slots will be collapsed (hidden) if no ad is returned." name="se21652e86046e76d">If no ad is returned</msg>
+    <msg desc="Setting indicating that ad slots will never be collapsed (hidden)." name="s8b97ea84af17c029">Never</msg>
     <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Personalisierte Werbung deaktivieren</msg>
+    <msg desc="Setting to control if/when a single ad slot should be collapsed (hidden)." name="se53efa37a0c7e1d9">Collapse ad slot</msg>
+    <msg desc="Setting to control if/when ad slots should be collapsed (hidden)." name="s51e4d68633a473de">Collapse ad slots</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Maßnahmen</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense-Attribute</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> is loaded.</msg>

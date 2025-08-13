@@ -58,6 +58,7 @@ export const templates = {
   s48390e2c954ba495: 'Anuncio de tamaño fijo (100 x 100)',
   s49b92d61c8e9e116: 'Especifica una URL válida.',
   s4edecd7e589254c3: 'Ad exclusion labels',
+  s51e4d68633a473de: 'Collapse ad slots',
   s53a96edcf36221b2: 'Tamaños de espacio publicitario',
   s5bf3f3d517569ebd: 'Anuncio fijo (inferior)',
   s5e13187e6961d8b1: '// Define espacios publicitarios fuera de página.',
@@ -80,6 +81,7 @@ export const templates = {
   s85ed67972e8ca8a4:
     'Se requiere consentimiento para acceder al almacenamiento local',
   s8a2c4a3aa651b7fb: 'Quitar espacio',
+  s8b97ea84af17c029: 'Never',
   s8e732383cac5c9fd: '100x100,fluid,…',
   s90465cbd227840a3: str`${0} Desplázate por la página para activarla.`,
   s96f81f2fccc92df4:
@@ -103,11 +105,15 @@ export const templates = {
   sd3926a53f7b06107:
     '// Solicita y renderiza todos los espacios publicitarios definidos anteriormente.',
   sd4801ff24e6e00e1: str`No hay ningún valor para la clave: ${0}`,
+  sd59d6171f900185b: 'Use page setting',
   sd5ac53cfd233dbcb: 'Anuncios limitados',
   sdb90b681e373be33: 'Configuración a nivel de la página',
   sdee10f7d35f52edf: 'Atributos de AdSense',
+  se21652e86046e76d: 'If no ad is returned',
+  se53efa37a0c7e1d9: 'Collapse ad slot',
   se6dd79643508bb80: 'Segmentación',
   se78c02e9a98a0f47: 'Privacidad',
+  se8fba10796fd950d: 'Before requesting an ad',
   seb61938dbbd0dd2b: 'Exploración en el navegador',
   secff207571282402: 'Anuncio intersticial para la Web',
   sefe480470a2c783c: 'Anuncio recompensado',

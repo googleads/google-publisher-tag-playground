@@ -40,6 +40,7 @@
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>
+    <msg name="sd59d6171f900185b" desc="Option that indicates a slot-level setting's value should be inherited from page-leve settings.">Û́ŝế p̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́</msg>
     <msg name="s08995feb9716ee48" desc="Out-of-page format label">Ốût̂́-ốf̂-p̂́âĝ́ê f̂́ôr̂́m̂ất̂</msg>
     <msg name="s4535f519744108bf" desc="Output format label">Ốût̂́p̂û́t̂ f̂́ôr̂́m̂ất̂</msg>
     <msg name="s77b0113eae08368b" desc="Output template label">Ŝ́âm̂́p̂l̂́ê t̂́êm̂́p̂l̂́ât̂́ê</msg>
@@ -62,7 +63,12 @@
     <msg name="s758d8c59379ea482" desc="Section containing page-level targeting options.">P̂́âĝ́ê-l̂́êv̂́êl̂́ t̂́âr̂́ĝết̂î́n̂ĝ́</msg>
     <msg name="se78c02e9a98a0f47" desc="Section containing privacy settings.">P̂́r̂î́v̂ấĉŷ́</msg>
     <msg name="s23dffb234cd0ff74" desc="Section containing slot-level configuration settings.">Ŝ́l̂ốt̂-l̂́êv̂́êl̂́ ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
+    <msg name="se8fba10796fd950d" desc="Setting indicating that ad slots will be collapsed (hidden) before requesting an ad.">B̂́êf̂́ôr̂́ê r̂́êq̂́ûếŝt̂́în̂́ĝ ấn̂ ấd̂</msg>
+    <msg name="se21652e86046e76d" desc="Setting indicating that ad slots will be collapsed (hidden) if no ad is returned.">Î́f̂ n̂́ô ấd̂ î́ŝ r̂́êt̂́ûr̂́n̂ếd̂</msg>
+    <msg name="s8b97ea84af17c029" desc="Setting indicating that ad slots will never be collapsed (hidden).">N̂́êv̂́êr̂́</msg>
     <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">D̂́îŝ́âb̂́l̂ế ấd̂ŝ́ p̂́êr̂́ŝốn̂ấl̂î́ẑất̂î́ôn̂́</msg>
+    <msg name="se53efa37a0c7e1d9" desc="Setting to control if/when a single ad slot should be collapsed (hidden).">Ĉ́ôl̂́l̂ấp̂ŝ́ê ấd̂ ŝ́l̂ốt̂</msg>
+    <msg name="s51e4d68633a473de" desc="Setting to control if/when ad slots should be collapsed (hidden).">Ĉ́ôl̂́l̂ấp̂ŝ́ê ấd̂ ŝ́l̂ốt̂ŝ́</msg>
     <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">T̂́r̂ếât̂́m̂ến̂t̂́ŝ</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
