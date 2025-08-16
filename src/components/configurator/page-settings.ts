@@ -20,6 +20,7 @@ import '../ui-controls/configurator-checkbox';
 import '../ui-controls/configurator-format-select';
 import '../ui-controls/configurator-select';
 import '../ui-controls/configurator-text-field';
+import '../ui-controls/inheritable-checkbox';
 import '../ui-controls/targeting-input';
 
 import {localized, msg} from '@lit/localize';
@@ -39,6 +40,7 @@ import {
   pageSettingsConfigNames,
   privacyConfigNames,
   privacyTreatmentNames,
+  safeFrameConfigNames,
 } from '../../model/settings.js';
 import {AdExclusionInput} from '../ui-controls/ad-exclusion-input.js';
 import {
@@ -46,6 +48,7 @@ import {
   ConfiguratorSelectOption,
 } from '../ui-controls/configurator-select.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
+import {InheritableCheckbox} from '../ui-controls/inheritable-checkbox.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
 
 const strings = {
@@ -74,6 +77,8 @@ export class PageSettings extends LitElement {
   @query('configurator-checkbox#disableInitialLoad')
   private disableInitialLoadInput!: HTMLInputElement;
   @query('configurator-checkbox#sra') private sraInput!: HTMLInputElement;
+  @query('inheritable-checkbox#forceSafeFrame')
+  private forceSafeFrame!: InheritableCheckbox;
   @query('configurator-select#collapseDiv')
   private collapseDivSelect!: ConfiguratorSelect;
   @query('configurator-text-field#pageUrl')
@@ -105,6 +110,10 @@ export class PageSettings extends LitElement {
     pageConfig.collapseDiv =
       (this.collapseDivSelect.value as googletag.config.CollapseDivBehavior) ||
       undefined;
+
+    pageConfig.safeFrame = pageConfig.safeFrame || {};
+    pageConfig.safeFrame.forceSafeFrame =
+      this.forceSafeFrame.checked || undefined;
 
     pageConfig.adsenseAttributes = pageConfig.adsenseAttributes || {};
     pageConfig.adsenseAttributes.page_url = PAGE_URL_VALIDATION_REGEX.test(
@@ -139,13 +148,26 @@ export class PageSettings extends LitElement {
     );
   }
 
-  private renderCheckbox(id: string, label: string, checked = false) {
-    return html`<configurator-checkbox
-      id="${id}"
-      label="${label}"
-      ?checked="${checked}"
-      @update="${this.handleUpdate}"
-    ></configurator-checkbox>`;
+  private renderCheckbox(
+    id: string,
+    label: string,
+    checked = false,
+    inheritable = false,
+  ) {
+    return inheritable
+      ? html`<inheritable-checkbox
+          id="${id}"
+          inheritanceKey="${id}"
+          label="${label}"
+          value="${checked}"
+          @update="${this.handleUpdate}"
+        ></inheritable-checkbox>`
+      : html`<configurator-checkbox
+          id="${id}"
+          label="${label}"
+          ?checked="${checked}"
+          @update="${this.handleUpdate}"
+        ></configurator-checkbox>`;
   }
 
   private renderGeneralSettings() {
@@ -179,6 +201,12 @@ export class PageSettings extends LitElement {
         'sra',
         pageSettingsConfigNames.singleRequest(),
         this.config.config?.singleRequest || undefined,
+      )}
+      ${this.renderCheckbox(
+        'forceSafeFrame',
+        safeFrameConfigNames.forceSafeFrame(),
+        this.config.config?.safeFrame?.forceSafeFrame || undefined,
+        true,
       )}
       <configurator-select
         id="collapseDiv"

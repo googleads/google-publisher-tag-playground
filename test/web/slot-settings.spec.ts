@@ -22,6 +22,7 @@ import {
   interstitialConfigNames,
   interstitialTriggerNames,
   outOfPageFormatNames,
+  safeFrameConfigNames,
   slotSettingsConfigNames,
 } from '../../src/model/settings.js';
 
@@ -702,6 +703,177 @@ test.describe('Interstitial settings', () => {
         await expect(page.locator('gpt-playground')).toContainText(
           expectedText,
         );
+      });
+    });
+  });
+});
+
+test.describe('Inheritable checkboxes', () => {
+  const inheritableCheckboxes: {
+    label: string;
+    expectedText: string;
+    setting: googletag.config.SlotSettingsConfig;
+  }[] = [
+    {
+      label: safeFrameConfigNames.forceSafeFrame(),
+      expectedText: 'forceSafeFrame',
+      setting: {safeFrame: {forceSafeFrame: true}},
+    },
+  ];
+
+  inheritableCheckboxes.forEach(({label, expectedText, setting}) => {
+    test.describe(label, () => {
+      test.use({
+        config: {
+          slots: [EMPTY_CUSTOM_SLOT],
+        } as SampleConfig,
+      });
+
+      test(`Enable/disable adds/removes ${expectedText}`, async ({
+        configurator,
+        page,
+      }) => {
+        const slotSettings = configurator.getConfigSection(configNames.slots());
+        const checkbox = configurator.getCheckbox(label, slotSettings);
+
+        // Enable the setting and ensure expected string appears in code.
+        await checkbox.check();
+        await expect(page.locator('gpt-playground')).toContainText(
+          expectedText,
+        );
+
+        // Disable the setting and ensure expected string no longer appears in
+        // code.
+        await checkbox.uncheck();
+        await expect(page.locator('gpt-playground')).not.toContainText(
+          expectedText,
+        );
+      });
+
+      test.describe('Inheritance', () => {
+        test('parent disabled, child disabled: no setting', async ({
+          configurator,
+        }) => {
+          const pageSettings = configurator.getConfigSection(
+            configNames.page(),
+          );
+          const slotSettings = configurator.getConfigSection(
+            configNames.slots(),
+          );
+          const pageCheckbox = configurator.getCheckbox(label, pageSettings);
+          const slotCheckbox = configurator.getCheckbox(label, slotSettings);
+
+          // Ensure both are not checked.
+          await pageCheckbox.uncheck();
+          await slotCheckbox.uncheck();
+
+          await expect(pageCheckbox).not.toBeChecked();
+          await expect(slotCheckbox).not.toBeChecked();
+
+          const code = await configurator.getCodeEditorContents();
+          expect(code).not.toContain(expectedText);
+        });
+
+        test('parent enabled, child inheriting: one true setting', async ({
+          configurator,
+        }) => {
+          const pageSettings = configurator.getConfigSection(
+            configNames.page(),
+          );
+          const slotSettings = configurator.getConfigSection(
+            configNames.slots(),
+          );
+          const pageCheckbox = configurator.getCheckbox(label, pageSettings);
+          const slotCheckbox = configurator.getCheckbox(label, slotSettings);
+
+          // Enable parent, child should inherit.
+          await pageCheckbox.check();
+
+          await expect(pageCheckbox).toBeChecked();
+          await expect(slotCheckbox).toBeChecked();
+
+          const code = await configurator.getCodeEditorContents();
+          expect(
+            code?.match(new RegExp(`${expectedText}: true`, 'g')) || [],
+          ).toHaveLength(1);
+          expect(code).not.toContain(`${expectedText}: false`);
+        });
+
+        test('parent disabled, child enabled: one true setting', async ({
+          configurator,
+        }) => {
+          const pageSettings = configurator.getConfigSection(
+            configNames.page(),
+          );
+          const slotSettings = configurator.getConfigSection(
+            configNames.slots(),
+          );
+          const pageCheckbox = configurator.getCheckbox(label, pageSettings);
+          const slotCheckbox = configurator.getCheckbox(label, slotSettings);
+
+          // Eenable only the child.
+          await slotCheckbox.check();
+
+          await expect(pageCheckbox).not.toBeChecked();
+          await expect(slotCheckbox).toBeChecked();
+
+          const code = await configurator.getCodeEditorContents();
+          expect(
+            code?.match(new RegExp(`${expectedText}: true`, 'g')) || [],
+          ).toHaveLength(1);
+          expect(code).not.toContain(`${expectedText}: false`);
+        });
+
+        test('parent enabled, child disabled: one true and one false setting', async ({
+          configurator,
+        }) => {
+          const pageSettings = configurator.getConfigSection(
+            configNames.page(),
+          );
+          const slotSettings = configurator.getConfigSection(
+            configNames.slots(),
+          );
+          const pageCheckbox = configurator.getCheckbox(label, pageSettings);
+          const slotCheckbox = configurator.getCheckbox(label, slotSettings);
+
+          // Enable parent, disable child.
+          await pageCheckbox.check();
+          await slotCheckbox.uncheck();
+
+          await expect(pageCheckbox).toBeChecked();
+          await expect(slotCheckbox).not.toBeChecked();
+
+          const code = await configurator.getCodeEditorContents();
+          expect(
+            code?.match(new RegExp(`${expectedText}: true`, 'g')) || [],
+          ).toHaveLength(1);
+          expect(
+            code?.match(new RegExp(`${expectedText}: false`, 'g')) || [],
+          ).toHaveLength(1);
+        });
+      });
+
+      test.describe('Prepopulation', () => {
+        test.use({
+          config: {
+            slots: [{...EMPTY_CUSTOM_SLOT, config: setting}],
+          },
+        });
+
+        test(`Prepopulating ${label} adds ${expectedText}`, async ({
+          configurator,
+          page,
+        }) => {
+          const slotSettings = configurator.getConfigSection(
+            configNames.slots(),
+          );
+          await expect(
+            configurator.getCheckbox(label, slotSettings),
+          ).toBeChecked();
+          await expect(page.locator('gpt-playground')).toContainText(
+            expectedText,
+          );
+        });
       });
     });
   });

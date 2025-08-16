@@ -3,7 +3,16 @@
     {
       "adUnit": "/123/abc",
       "size": [300, 250],
-      "format": "INTERSTITIAL"
+      "format": "INTERSTITIAL",
+      "config": {
+        "interstitial": {
+          "requireStorageAccess": true,
+          "triggers": {
+            "navBar": true,
+            "unhideWindow": true
+          }
+        }
+      }
     }
   ]
 }

@@ -22,6 +22,7 @@ import {
   pageSettingsConfigNames,
   privacyConfigNames,
   privacyTreatmentNames,
+  safeFrameConfigNames,
 } from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
@@ -44,6 +45,11 @@ const BOOLEAN_SETTINGS: {
     label: pageSettingsConfigNames.singleRequest(),
     expectedText: 'singleRequest',
     setting: {config: {singleRequest: true}},
+  },
+  {
+    label: safeFrameConfigNames.forceSafeFrame(),
+    expectedText: 'forceSafeFrame',
+    setting: {config: {safeFrame: {forceSafeFrame: true}}},
   },
   {
     label: privacyConfigNames.ltd(),

@@ -3,16 +3,11 @@
     {
       "adUnit": "/123/abc",
       "size": [],
-      "format": "INTERSTITIAL",
       "config": {
         "categoryExclusion": ["airline"],
         "collapseDiv": "ON_NO_FILL",
-        "interstitial": {
-          "requireStorageAccess": true,
-          "triggers": {
-            "navBar": true,
-            "unhideWindow": true
-          }
+        "safeFrame": {
+          "forceSafeFrame": true
         }
       }
     }

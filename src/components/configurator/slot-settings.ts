@@ -19,6 +19,7 @@ import '../ui-controls/config-section';
 import '../ui-controls/configurator-icon-button';
 import '../ui-controls/configurator-format-select';
 import '../ui-controls/configurator-text-field';
+import '../ui-controls/inheritable-checkbox';
 import '../ui-controls/slot-size-input';
 import '../ui-controls/targeting-input';
 
@@ -26,6 +27,7 @@ import {localized, msg} from '@lit/localize';
 import {css, html, LitElement, TemplateResult} from 'lit';
 import {customElement, property, state} from 'lit/decorators.js';
 import {classMap} from 'lit/directives/class-map.js';
+import {ifDefined} from 'lit/directives/if-defined.js';
 import {when} from 'lit/directives/when.js';
 import {isEqual} from 'lodash-es';
 
@@ -37,6 +39,7 @@ import {
   interstitialConfigNames,
   interstitialTriggerNames,
   outOfPageFormatNames,
+  safeFrameConfigNames,
   slotConfigNames,
   slotSettingsConfigNames,
 } from '../../model/settings.js';
@@ -53,6 +56,7 @@ import {
   ConfiguratorSelectOption,
 } from '../ui-controls/configurator-select.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
+import {InheritableCheckbox} from '../ui-controls/inheritable-checkbox.js';
 import {SlotSizeInput} from '../ui-controls/slot-size-input.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
 
@@ -322,6 +326,12 @@ export class SlotSettings extends LitElement {
       exclusions?.config.length > 0 ? exclusions?.config : undefined;
 
     if (!slot.format) {
+      const foceSafeFrame = parent.querySelector(
+        '[name=forceSafeFrame]',
+      ) as InheritableCheckbox;
+      slotConfig.safeFrame = slotConfig.safeFrame || {};
+      slotConfig.safeFrame.forceSafeFrame = foceSafeFrame?.checked;
+
       const collapseDiv = parent.querySelector(
         '[name=collapseDiv]',
       ) as ConfiguratorSelect;
@@ -547,6 +557,16 @@ export class SlotSettings extends LitElement {
     });
 
     return html`
+      <inheritable-checkbox
+        inherits
+        inheritanceKey="forceSafeFrame"
+        label="${safeFrameConfigNames.forceSafeFrame()}"
+        name="forceSafeFrame"
+        value="${ifDefined(
+          slot.config?.safeFrame?.forceSafeFrame ?? undefined,
+        )}"
+        @update="${this.updateSlot}"
+      ></inheritable-checkbox>
       <configurator-select
         label="${slotSettingsConfigNames.collapseDiv()}"
         name="collapseDiv"

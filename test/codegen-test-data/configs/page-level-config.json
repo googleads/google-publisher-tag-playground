@@ -10,6 +10,9 @@
       "privacyTreatments": {
         "treatments": ["disablePersonalization"]
       },
+      "safeFrame": {
+        "forceSafeFrame": true
+      },
       "singleRequest": true
     }
   },
