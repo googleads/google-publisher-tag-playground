@@ -21,6 +21,34 @@ import {expect, Locator} from '@playwright/test';
  */
 export const configuratorExpect = expect.extend({
   /**
+   * Ensures the {@link Locator} points to a checked element.
+   *
+   * @param locator
+   * @returns
+   */
+  async toBeChecked(locator: Locator) {
+    try {
+      const role = await locator.evaluate(elem => elem.role);
+      await (role?.toLowerCase() === 'switch'
+        ? // Use evaluate here to bypass actionability checks.
+          expect(
+            await locator.locator('..').evaluate(elem => elem.className),
+          ).not.toContain('unselected')
+        : expect(locator).toBeChecked());
+
+      return {
+        pass: true,
+        message: () => 'Expected element to be unchecked, but it was checked.',
+      };
+    } catch (e) {
+      return {
+        pass: false,
+        message: () => 'Expected element to be checked, but it was unchecked.',
+      };
+    }
+  },
+
+  /**
    * Ensures the {@link Locator} points to an enabled element.
    *
    * @param locator

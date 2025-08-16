@@ -67,6 +67,7 @@ export class Configurator {
   getCheckbox(label: string, parent: Locator = this.page.locator('body')) {
     return parent
       .locator(`configurator-checkbox[label="${label}"]`)
+      .or(parent.locator(`inheritable-checkbox[label="${label}"]`))
       .locator('input');
   }
 

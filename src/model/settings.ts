@@ -273,3 +273,21 @@ export const collapseDivNames: Record<
       desc: 'Setting indicating that ad slots will be collapsed (hidden) if no ad is returned.',
     }),
 };
+
+/**
+ * Maps {@link googletag.config.SafeFrameConfig} properties to their friendly
+ * names.
+ */
+export const safeFrameConfigNames: Record<
+  keyof googletag.config.SafeFrameConfig,
+  () => string
+> = {
+  allowOverlayExpansion: notSupported,
+  allowPushExpansion: notSupported,
+  forceSafeFrame: () =>
+    msg('Force SafeFrame', {
+      desc: 'Setting to control whether ads should be forced to render using a SafeFrame container.',
+    }),
+  sandbox: notSupported,
+  useUniqueDomain: notSupported,
+};

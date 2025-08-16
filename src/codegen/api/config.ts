@@ -63,6 +63,9 @@ export function pageConfig(config: googletag.config.PageSettingsConfig) {
     collapseDiv: config.collapseDiv,
     disableInitialLoad: config.disableInitialLoad,
     privacyTreatments: config.privacyTreatments,
+    safeFrame: {
+      forceSafeFrame: config.safeFrame?.forceSafeFrame,
+    },
     singleRequest: config.singleRequest,
     targeting: config.targeting,
   };
@@ -91,6 +94,9 @@ export function slotConfig(config: googletag.config.SlotSettingsConfig) {
         navBar: config.interstitial?.triggers?.navBar,
         unhideWindow: config.interstitial?.triggers?.unhideWindow,
       },
+    },
+    safeFrame: {
+      forceSafeFrame: config.safeFrame?.forceSafeFrame,
     },
     targeting: config.targeting,
   };
