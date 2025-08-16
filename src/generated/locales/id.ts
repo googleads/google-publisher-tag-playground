@@ -116,4 +116,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Kustom',
   sf915707accde585c: 'Di bawah usia dewasa',
   sf93d227444bc5687: 'Setelan halaman',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

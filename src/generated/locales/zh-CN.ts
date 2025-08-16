@@ -114,4 +114,5 @@ export const templates = {
   sf0cab2483f66aa2e: '自定义',
   sf915707accde585c: '未达到同意年龄',
   sf93d227444bc5687: '网页设置',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

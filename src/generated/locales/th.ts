@@ -115,4 +115,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'กำหนดเอง',
   sf915707accde585c: 'มีอายุต่ำกว่าเกณฑ์ที่ให้ความยินยอมได้',
   sf93d227444bc5687: 'การตั้งค่าหน้าเว็บ',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

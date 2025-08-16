@@ -119,4 +119,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Personnalisé',
   sf915707accde585c: "En dessous de l'âge minimal requis",
   sf93d227444bc5687: 'Paramètres de la page',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

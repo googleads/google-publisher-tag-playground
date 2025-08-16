@@ -114,4 +114,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Ĉ́ûŝ́t̂ốm̂',
   sf915707accde585c: 'Û́n̂d̂́êr̂́ t̂́ĥế ấĝế ốf̂ ĉ́ôn̂́ŝến̂t̂́',
   sf93d227444bc5687: 'P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ',
+  sfe2e9ccd10b35b4a: 'F̂́ôr̂́ĉế Ŝ́âf̂́êF̂́r̂ấm̂ế',
 };

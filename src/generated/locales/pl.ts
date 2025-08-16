@@ -119,4 +119,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Niestandardowe',
   sf915707accde585c: 'Poniżej wieku świadomego wyrażenia zgody',
   sf93d227444bc5687: 'Ustawienia strony',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

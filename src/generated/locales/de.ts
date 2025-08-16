@@ -116,4 +116,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Benutzerdefiniert',
   sf915707accde585c: 'Inhalte für Minderjährige',
   sf93d227444bc5687: 'Seiteneinstellungen',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

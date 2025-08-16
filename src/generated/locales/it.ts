@@ -120,4 +120,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Personalizzato',
   sf915707accde585c: "Sotto l'età del consenso digitale",
   sf93d227444bc5687: 'Impostazioni della pagina',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

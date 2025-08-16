@@ -114,4 +114,5 @@ export const templates = {
   sf0cab2483f66aa2e: '사용자설정',
   sf915707accde585c: '동의 연령 미만',
   sf93d227444bc5687: '페이지 설정',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

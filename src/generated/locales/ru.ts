@@ -117,4 +117,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Свое значение',
   sf915707accde585c: 'Лица, не достигшие минимального возраста',
   sf93d227444bc5687: 'Настройки страницы',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

@@ -115,4 +115,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Özel',
   sf915707accde585c: 'Reşit olmayanlar',
   sf93d227444bc5687: 'Sayfa ayarları',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };

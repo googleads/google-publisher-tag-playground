@@ -116,4 +116,5 @@ export const templates = {
   sf0cab2483f66aa2e: 'Tuỳ chỉnh',
   sf915707accde585c: 'Dưới độ tuổi hợp pháp để tự quản lý tài khoản',
   sf93d227444bc5687: 'Cài đặt trang',
+  sfe2e9ccd10b35b4a: 'Force SafeFrame',
 };
