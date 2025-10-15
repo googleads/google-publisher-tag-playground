@@ -104,7 +104,10 @@ export const pageSettingsConfigNames: Record<
     msg('Disable initial load', {
       desc: 'Prevents GPT from requesting ads when calling display().',
     }),
-  lazyLoad: notSupported,
+  lazyLoad: () =>
+    msg('Lazy loading', {
+      desc: 'Section containing lazy loading options.',
+    }),
   location: notSupported,
   pps: notSupported,
   privacyTreatments: () =>
@@ -294,4 +297,22 @@ export const safeFrameConfigNames: Record<
     }),
   sandbox: notSupported,
   useUniqueDomain: notSupported,
+};
+
+export const lazyLoadConfigNames: Record<
+  keyof googletag.config.LazyLoadConfig,
+  () => string
+> = {
+  fetchMarginPercent: () =>
+    msg('Fetch margin (% viewport)', {
+      desc: 'Distance from the current viewport an ad must be before we request it, as a percentage of viewport size.',
+    }),
+  renderMarginPercent: () =>
+    msg('Render margin (% viewport)', {
+      desc: 'Distance from the current viewport an ad must be before we render it, as a percentage of viewport size.',
+    }),
+  mobileScaling: () =>
+    msg('Mobile scaling multiplier', {
+      desc: 'A multiplier applied to fetch and render margins on mobile devices.',
+    }),
 };

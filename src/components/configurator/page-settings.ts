@@ -19,6 +19,7 @@ import '../ui-controls/config-section';
 import '../ui-controls/configurator-checkbox';
 import '../ui-controls/configurator-format-select';
 import '../ui-controls/configurator-select';
+import '../ui-controls/configurator-slider';
 import '../ui-controls/configurator-text-field';
 import '../ui-controls/inheritable-checkbox';
 import '../ui-controls/targeting-input';
@@ -36,6 +37,7 @@ import {
   adSenseAttributesConfigNames,
   collapseDivNames,
   configNames,
+  lazyLoadConfigNames,
   pageConfigNames,
   pageSettingsConfigNames,
   privacyConfigNames,
@@ -47,6 +49,7 @@ import {
   ConfiguratorSelect,
   ConfiguratorSelectOption,
 } from '../ui-controls/configurator-select.js';
+import {ConfiguratorSlider} from '../ui-controls/configurator-slider.js';
 import {ConfiguratorTextField} from '../ui-controls/configurator-text-field.js';
 import {InheritableCheckbox} from '../ui-controls/inheritable-checkbox.js';
 import {TargetingInput} from '../ui-controls/targeting-input.js';
@@ -89,6 +92,12 @@ export class PageSettings extends LitElement {
   private privacyTreatments!: HTMLInputElement[];
   @query('targeting-input') private targetingInput!: TargetingInput;
   @query('ad-exclusion-input') private exclusionInput!: AdExclusionInput;
+  @query('configurator-slider#fetchMargin')
+  private fetchMarginInput!: ConfiguratorSlider;
+  @query('configurator-slider#renderMargin')
+  private renderMarginInput!: ConfiguratorSlider;
+  @query('configurator-slider#mobileScaling')
+  private mobileScalingInput!: ConfiguratorSlider;
 
   /**
    * Gets the active page-level configuration.
@@ -137,6 +146,18 @@ export class PageSettings extends LitElement {
 
     pageConfig.privacyTreatments =
       treatments.length > 0 ? {treatments: treatments} : undefined;
+
+    const fetchMargin = this.fetchMarginInput.value;
+    const renderMargin = this.renderMarginInput.value;
+    const mobileScaling = this.mobileScalingInput.value;
+    pageConfig.lazyLoad =
+      fetchMargin || renderMargin || mobileScaling > 1
+        ? {
+            fetchMarginPercent: fetchMargin || undefined,
+            renderMarginPercent: renderMargin || undefined,
+            mobileScaling: mobileScaling > 1 ? mobileScaling : undefined,
+          }
+        : undefined;
 
     if (Object.keys(pageConfig).length > 0) {
       this.config.config = pageConfig;
@@ -273,6 +294,45 @@ export class PageSettings extends LitElement {
     </targeting-input>`;
   }
 
+  private renderLazyLoading() {
+    return html`<config-section
+      id="lazyload"
+      title="${pageSettingsConfigNames.lazyLoad()}"
+      nested
+    >
+      <configurator-slider
+        id="fetchMargin"
+        label="${lazyLoadConfigNames.fetchMarginPercent()}"
+        value="${this.config.config?.lazyLoad?.fetchMarginPercent || 0}"
+        min="0"
+        max="500"
+        step="50"
+        @update="${this.handleUpdate}"
+        labeled
+      ></configurator-slider>
+      <configurator-slider
+        id="renderMargin"
+        label="${lazyLoadConfigNames.renderMarginPercent()}"
+        value="${this.config.config?.lazyLoad?.renderMarginPercent || 0}"
+        min="0"
+        max="500"
+        step="50"
+        @update="${this.handleUpdate}"
+        labeled
+      ></configurator-slider>
+      <configurator-slider
+        id="mobileScaling"
+        label="${lazyLoadConfigNames.mobileScaling()}"
+        value="${this.config.config?.lazyLoad?.mobileScaling || 1}"
+        min="1"
+        max="5"
+        step="0.5"
+        @update="${this.handleUpdate}"
+        labeled
+      ></configurator-slider>
+    </config-section>`;
+  }
+
   private renderAdExclusions() {
     return html`<ad-exclusion-input
       class="exclusions"
@@ -285,7 +345,8 @@ export class PageSettings extends LitElement {
   render() {
     return html`<config-section title="${configNames.page!()}">
       ${this.renderGeneralSettings()} ${this.renderPrivacySettings()}
-      ${this.renderPageTargeting()} ${this.renderAdExclusions()}
+      ${this.renderPageTargeting()} ${this.renderLazyLoading()}
+      ${this.renderAdExclusions()}
     </config-section>`;
   }
 }

@@ -19,6 +19,7 @@ import {
   adSenseAttributesConfigNames,
   collapseDivNames,
   configNames,
+  lazyLoadConfigNames,
   pageSettingsConfigNames,
   privacyConfigNames,
   privacyTreatmentNames,
@@ -414,6 +415,135 @@ test.describe('Page URL', () => {
 
     test('Paths are supported', async ({configurator}) => {
       await validatePageUrl(configurator, 'https://www.google.com/one/two');
+    });
+  });
+});
+
+test.describe('Lazy loading', () => {
+  test('Defaults are 0/1 and lazyLoad is not configured', async ({
+    configurator,
+  }) => {
+    const pageSettings = configurator.getConfigSection(configNames.page());
+    const fetchMarginSlider = configurator.getSlider(
+      lazyLoadConfigNames.fetchMarginPercent(),
+      pageSettings,
+    );
+    await expect(fetchMarginSlider).toHaveAttribute('value', '0');
+
+    const renderMarginSlider = configurator.getSlider(
+      lazyLoadConfigNames.renderMarginPercent(),
+      pageSettings,
+    );
+    await expect(renderMarginSlider).toHaveAttribute('value', '0');
+
+    const mobileScalingSlider = configurator.getSlider(
+      lazyLoadConfigNames.mobileScaling(),
+      pageSettings,
+    );
+    await expect(mobileScalingSlider).toHaveAttribute('value', '1');
+
+    expect(await configurator.getCodeEditorContents()).not.toContain(
+      'lazyLoad',
+    );
+  });
+
+  test('Setting fetch margin adds lazyLoad config to code', async ({
+    configurator,
+  }) => {
+    const pageSettings = configurator.getConfigSection(configNames.page());
+    const fetchMarginSlider = configurator.getSlider(
+      lazyLoadConfigNames.fetchMarginPercent(),
+      pageSettings,
+    );
+
+    await fetchMarginSlider.locator('input').focus();
+    await configurator.page.keyboard.press('ArrowRight'); // 0 -> 50
+
+    await expect(fetchMarginSlider).toHaveAttribute('value', '50');
+    expect(await configurator.getCodeEditorContents()).toContain(
+      'fetchMarginPercent: 50',
+    );
+  });
+
+  test('Setting render margin adds lazyLoad config to code', async ({
+    configurator,
+  }) => {
+    const pageSettings = configurator.getConfigSection(configNames.page());
+    const renderMarginSlider = configurator.getSlider(
+      lazyLoadConfigNames.renderMarginPercent(),
+      pageSettings,
+    );
+
+    await renderMarginSlider.locator('input').focus();
+    await configurator.page.keyboard.press('ArrowRight'); // 0 -> 50
+
+    await expect(renderMarginSlider).toHaveAttribute('value', '50');
+    expect(await configurator.getCodeEditorContents()).toContain(
+      'renderMarginPercent: 50',
+    );
+  });
+
+  test('Setting mobile scaling adds lazyLoad config to code', async ({
+    configurator,
+  }) => {
+    const pageSettings = configurator.getConfigSection(configNames.page());
+    const mobileScalingSlider = configurator.getSlider(
+      lazyLoadConfigNames.mobileScaling(),
+      pageSettings,
+    );
+
+    await mobileScalingSlider.locator('input').focus();
+    await configurator.page.keyboard.press('ArrowRight'); // 1 -> 1.5
+
+    await expect(mobileScalingSlider).toHaveAttribute('value', '1.5');
+    expect(await configurator.getCodeEditorContents()).toContain(
+      'mobileScaling: 1.5',
+    );
+  });
+
+  test.describe('Prepopulation', () => {
+    test.use({
+      config: {
+        page: {
+          config: {
+            lazyLoad: {
+              fetchMarginPercent: 300,
+              renderMarginPercent: 100,
+              mobileScaling: 2,
+            },
+          },
+        },
+        slots: [],
+      },
+    });
+
+    test('Prepopulating lazy load settings works as expected', async ({
+      configurator,
+    }) => {
+      const pageSettings = configurator.getConfigSection(configNames.page());
+
+      const fetchMarginSlider = configurator.getSlider(
+        lazyLoadConfigNames.fetchMarginPercent(),
+        pageSettings,
+      );
+      await expect(fetchMarginSlider).toHaveAttribute('value', '300');
+
+      const renderMarginSlider = configurator.getSlider(
+        lazyLoadConfigNames.renderMarginPercent(),
+        pageSettings,
+      );
+      await expect(renderMarginSlider).toHaveAttribute('value', '100');
+
+      const mobileScalingSlider = configurator.getSlider(
+        lazyLoadConfigNames.mobileScaling(),
+        pageSettings,
+      );
+      await expect(mobileScalingSlider).toHaveAttribute('value', '2');
+
+      const code = await configurator.getCodeEditorContents();
+      expect(code).toContain('fetchMarginPercent: 300');
+      expect(code).toContain('renderMarginPercent: 100');
+      expect(code).toContain('mobileScaling: 2');
     });
   });
 });

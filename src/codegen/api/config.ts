@@ -62,6 +62,7 @@ export function pageConfig(config: googletag.config.PageSettingsConfig) {
     categoryExclusion: config.categoryExclusion,
     collapseDiv: config.collapseDiv,
     disableInitialLoad: config.disableInitialLoad,
+    lazyLoad: config.lazyLoad,
     privacyTreatments: config.privacyTreatments,
     safeFrame: {
       forceSafeFrame: config.safeFrame?.forceSafeFrame,
