@@ -16,13 +16,15 @@
 
 import {Page} from '@playwright/test';
 
+import {templateConfigNames} from '../../src/model/settings.js';
 import {ScriptTarget} from '../../src/model/typescript.js';
 
 import {expect, test} from './fixtures/configurator.js';
 
 const PLAYGROUND_SELECTOR = 'gpt-playground';
 
-const TARGET_SELECT_LABEL = 'Output format';
+const TARGET_SELECT_LABEL = templateConfigNames.target();
+const AD_SPACING_SLIDER_LABEL = templateConfigNames.adSpacing();
 
 test.describe('Output format configuration', () => {
   async function assertTypeScript(page: Page) {
@@ -102,6 +104,68 @@ test.describe('Output format configuration', () => {
         configurator.getSelectOption(targetSelect, 'ES2020'),
       ).toBeSelected();
       await assertJavaScript(page);
+    });
+  });
+});
+
+test.describe('Ad spacing configuration', () => {
+  test.use({
+    config: {
+      slots: [
+        {adUnit: '/6355419/Travel', size: [728, 90]},
+        {adUnit: '/6355419/Travel', size: [728, 90]},
+      ],
+    },
+  });
+
+  test('Default is 0', async ({configurator}) => {
+    const adSpacingSlider = configurator.getSlider(AD_SPACING_SLIDER_LABEL);
+    await expect(adSpacingSlider).toBeVisible();
+    await expect(adSpacingSlider).toHaveAttribute('value', '0');
+    await expect(configurator.getCodeEditorContents()).not.toContain(
+      'class="spacer"',
+    );
+  });
+
+  test('Setting spacing adds spacer to code', async ({configurator}) => {
+    const adSpacingSlider = configurator.getSlider(AD_SPACING_SLIDER_LABEL);
+    await expect(adSpacingSlider).toBeVisible();
+
+    // Move the slider 2 stops to the right (0% -> 100%)
+    await adSpacingSlider.locator('input').focus();
+    await configurator.page.keyboard.press('ArrowRight');
+    await configurator.page.keyboard.press('ArrowRight');
+
+    await expect(adSpacingSlider).toHaveAttribute('value', '100');
+
+    await configurator.switchToEditorTab('index.html');
+    expect(await configurator.getCodeEditorContents()).toContain(
+      'class="spacer" style="height: 100vh"',
+    );
+  });
+
+  test.describe('Prepopulating 250', () => {
+    test.use({
+      config: {
+        slots: [
+          {adUnit: '/6355419/Travel', size: [728, 90]},
+          {adUnit: '/6355419/Travel', size: [728, 90]},
+        ],
+        template: {
+          adSpacing: 250,
+        },
+      },
+    });
+
+    test('Adds spacer to code', async ({configurator}) => {
+      const adSpacingSlider = configurator.getSlider(AD_SPACING_SLIDER_LABEL);
+      await expect(adSpacingSlider).toBeVisible();
+      await expect(adSpacingSlider).toHaveAttribute('value', '250');
+
+      await configurator.switchToEditorTab('index.html');
+      expect(await configurator.getCodeEditorContents()).toContain(
+        'class="spacer" style="height: 250vh"',
+      );
     });
   });
 });

@@ -181,6 +181,10 @@ export const templateConfigNames: Record<
   keyof SampleTemplateConfig,
   () => string
 > = {
+  adSpacing: () =>
+    msg('Ad spacing (% viewport)', {
+      desc: 'The minimum amount of space to leave between ads, expressed as a percentage of the viewport.',
+    }),
   type: () => msg('Sample template', {desc: 'Output template label'}),
   target: () => msg('Output format', {desc: 'Output format label'}),
 };

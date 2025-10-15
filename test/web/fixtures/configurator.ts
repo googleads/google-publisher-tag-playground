@@ -88,6 +88,13 @@ export class Configurator {
     return editor.textContent();
   }
 
+  async switchToEditorTab(filename: string) {
+    const tab = this.page.locator(
+      `playground-internal-tab[data-filename="${filename}"]`,
+    );
+    await tab.click();
+  }
+
   /**
    * Returns configurator select element(s).
    */
@@ -100,6 +107,15 @@ export class Configurator {
    */
   getSelectOption(selectElem: Locator, optionText: string) {
     return selectElem.locator('md-select-option').filter({hasText: optionText});
+  }
+
+  /**
+   * Returns configurator slider element(s).
+   */
+  getSlider(label: string, parent: Locator = this.page.locator('body')) {
+    return parent
+      .locator(`configurator-slider[label="${label}"]`)
+      .locator('md-slider');
   }
 
   /**
@@ -134,6 +150,17 @@ export class Configurator {
     // Ensure the option was actually selected.
     await expect(option).toBeSelected();
   }
+}
+
+export class ChipInput {
+  constructor(
+    private configurator: Configurator,
+    public readonly input: Locator,
+  ) {}
+
+  /**
+   * Attempts to add the provided value to this chip input.
+
 }
 
 export class ChipInput {

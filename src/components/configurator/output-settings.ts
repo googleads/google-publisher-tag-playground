@@ -16,6 +16,7 @@
 
 import '../ui-controls/config-section';
 import '../ui-controls/configurator-select';
+import '../ui-controls/configurator-slider';
 
 import {localized} from '@lit/localize';
 import {html, LitElement} from 'lit';
@@ -28,6 +29,7 @@ import {
   ConfiguratorOption,
   ConfiguratorSelect,
 } from '../ui-controls/configurator-select.js';
+import {ConfiguratorSlider} from '../ui-controls/configurator-slider.js';
 
 /**
  * Output template configurator settings.
@@ -37,6 +39,8 @@ import {
 export class OutputSettings extends LitElement {
   @query('configurator-select#target')
   private targetSelect!: ConfiguratorSelect;
+  @query('configurator-slider#adSpacing')
+  private adSpacingInput!: ConfiguratorSlider;
 
   /**
    * Gets the active page-level configuration.
@@ -45,6 +49,8 @@ export class OutputSettings extends LitElement {
   config: SampleTemplateConfig = {};
 
   private handleUpdate() {
+    this.config.adSpacing = this.adSpacingInput.value || undefined;
+
     const target = this.targetSelect.value;
     this.config.target =
       target && target.length > 0
@@ -76,12 +82,22 @@ export class OutputSettings extends LitElement {
         });
       });
 
-    return html`<configurator-select
-      id="target"
-      label="${templateConfigNames.target!()}"
-      .options="${options}"
-      @update="${this.handleUpdate}"
-    ></configurator-select>`;
+    return html`<configurator-slider
+        id="adSpacing"
+        label="${templateConfigNames.adSpacing!()}"
+        value="${this.config.adSpacing || 0}"
+        min="0"
+        max="500"
+        step="50"
+        @update="${this.handleUpdate}"
+        labeled
+      ></configurator-slider>
+      <configurator-select
+        id="target"
+        label="${templateConfigNames.target!()}"
+        .options="${options}"
+        @update="${this.handleUpdate}"
+      ></configurator-select>`;
   }
 
   render() {

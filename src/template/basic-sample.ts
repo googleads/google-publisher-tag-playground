@@ -52,6 +52,11 @@ export class BasicSample extends Template {
     }
   `;
 
+  insertSpacer(viewportPercentage?: number) {
+    if (!viewportPercentage) return '';
+    return `<div class="spacer" style="height: ${viewportPercentage}vh"></div>`;
+  }
+
   async bodyHtml(): Promise<string> {
     const slotContainers: string[] = [];
 
@@ -66,12 +71,17 @@ export class BasicSample extends Template {
     // Output ad containers for non-OOP slots second.
     this.sampleConfig.slots
       .filter((slot: SampleSlotConfig) => !slot.format)
-      .forEach((slot: SampleSlotConfig) => {
+      .forEach((slot: SampleSlotConfig, index: number) => {
         const id = samplegen.getSlotContainerId(this.sampleConfig, slot);
         slotContainers.push(
-          `<div id="${id}" class="ad-slot" style="${getSlotStyles(
-            slot,
-          )}"></div>`,
+          `${
+            index > 0
+              ? this.insertSpacer(this.sampleConfig.template?.adSpacing)
+              : ''
+          }
+            <div id="${id}" class="ad-slot" style="${getSlotStyles(
+              slot,
+            )}"></div>`,
         );
       });
 

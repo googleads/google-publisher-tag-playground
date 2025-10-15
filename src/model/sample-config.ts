@@ -81,6 +81,7 @@ export interface SampleTargetingKV {
  * Custom sample template options.
  */
 export interface SampleTemplateConfig {
+  adSpacing?: number;
   type?: SampleTemplateType;
   target?: ScriptTarget;
 }
