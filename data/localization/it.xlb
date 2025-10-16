@@ -33,14 +33,14 @@
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Fai clic sul pulsante in basso per visualizzare l'anteprima in una nuova finestra.</msg>
     <msg desc="Error message." name="s733564cddc33799f">Errore: impossibile connettersi allo strumento per la creazione di esempi di GPT</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Dimensioni aree annunci</msg>
-    <msg desc="Input field title" name="s6b0627385c38c206">Add an ad exclusion label</msg>
+    <msg desc="Input field title" name="s6b0627385c38c206">Aggiungi un'etichetta di esclusione degli annunci</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Aggiungi coppie chiave-valore di targeting</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Consenso degli utenti dell'UE</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Caricamento della finestra di dialogo per il consenso in corso…</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Esempi di annunci</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Esempi di annunci (fuori pagina)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Nessuno</msg>
-    <msg desc="Option that indicates a slot-level setting's value should be inherited from page-leve settings." name="sd59d6171f900185b">Use page setting</msg>
+    <msg desc="Option that indicates a slot-level setting's value should be inherited from page-leve settings." name="sd59d6171f900185b">Usa impostazione a livello di pagina</msg>
     <msg desc="Out-of-page format label" name="s08995feb9716ee48">Formato fuori pagina</msg>
     <msg desc="Output format label" name="s4535f519744108bf">Formato di output</msg>
     <msg desc="Output template label" name="s77b0113eae08368b">Esempio di modello</msg>
@@ -53,7 +53,7 @@
     <msg desc="Privacy setting label" name="sb457d189f407a5a6">Limita il trattamento dati</msg>
     <msg desc="Privacy setting label" name="sf915707accde585c">Sotto l'età del consenso digitale</msg>
     <msg desc="Reason the embedded preview is unavailable." name="s5fc316a7f287b7be">Impossibile visualizzare l'anteprima di questo esempio in un iframe</msg>
-    <msg desc="Section containing ad exclusion labels." name="s4edecd7e589254c3">Ad exclusion labels</msg>
+    <msg desc="Section containing ad exclusion labels." name="s4edecd7e589254c3">Etichette di esclusione degli annunci</msg>
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Dimensioni</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Impostazioni area</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Targeting</msg>
@@ -62,14 +62,15 @@
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Configurazione a livello di pagina</msg>
     <msg desc="Section containing page-level targeting options." name="s758d8c59379ea482">Targeting a livello di pagina</msg>
     <msg desc="Section containing privacy settings." name="se78c02e9a98a0f47">Privacy</msg>
-    <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Slot-level configuration</msg>
-    <msg desc="Setting indicating that ad slots will be collapsed (hidden) before requesting an ad." name="se8fba10796fd950d">Before requesting an ad</msg>
-    <msg desc="Setting indicating that ad slots will be collapsed (hidden) if no ad is returned." name="se21652e86046e76d">If no ad is returned</msg>
-    <msg desc="Setting indicating that ad slots will never be collapsed (hidden)." name="s8b97ea84af17c029">Never</msg>
+    <msg desc="Section containing slot-level configuration settings." name="s23dffb234cd0ff74">Configurazione a livello di area</msg>
+    <msg desc="Setting indicating that ad slots will be collapsed (hidden) before requesting an ad." name="se8fba10796fd950d">Prima di richiedere un annuncio</msg>
+    <msg desc="Setting indicating that ad slots will be collapsed (hidden) if no ad is returned." name="se21652e86046e76d">Se non viene restituito alcun annuncio</msg>
+    <msg desc="Setting indicating that ad slots will never be collapsed (hidden)." name="s8b97ea84af17c029">Mai</msg>
     <msg desc="Setting to control ads personalization privacy treatment," name="s1e6dc9c6efd64b15">Disattiva la personalizzazione degli annunci</msg>
-    <msg desc="Setting to control if/when a single ad slot should be collapsed (hidden)." name="se53efa37a0c7e1d9">Collapse ad slot</msg>
-    <msg desc="Setting to control if/when ad slots should be collapsed (hidden)." name="s51e4d68633a473de">Collapse ad slots</msg>
+    <msg desc="Setting to control if/when a single ad slot should be collapsed (hidden)." name="se53efa37a0c7e1d9">Comprimi area annunci</msg>
+    <msg desc="Setting to control if/when ad slots should be collapsed (hidden)." name="s51e4d68633a473de">Comprimi aree annunci</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Trattamenti</msg>
+    <msg desc="Setting to control whether ads should be forced to render using a SafeFrame container." name="sfe2e9ccd10b35b4a">Forza SafeFrame</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">Attributi AdSense</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> è stata caricata.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953">Caricamento di <ph name="0">${format}</ph> in corso…</msg>
@@ -83,7 +84,7 @@
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Attivatori di annunci interstitial</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
-    <msg desc="Validation error" name="s9919a3c7a0754a26">Labels must be 127 characters or less</msg>
+    <msg desc="Validation error" name="s9919a3c7a0754a26">Le etichette non possono avere più di 127 caratteri</msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Chiave duplicata: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">Chiave non valida: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">Valore non valido per la chiave <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>

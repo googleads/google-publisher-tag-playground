@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="en">
   <messages>
+    <msg name="sdf7b9d8028213f69" desc="A multiplier applied to fetch and render margins on mobile devices.">Mobile scaling multiplier</msg>
     <msg name="s3400fb34f1e245a9" desc="A sample ad with multiple valid sizes">Multi-size ad</msg>
     <msg name="sbba26a884a26c0c7" desc="A sample ad with one valid size">Fixed-size ad (300x250)</msg>
     <msg name="s4121536e35beb2ed" desc="A sample ad with one valid size">Fixed-size ad (728x90)</msg>
@@ -28,6 +29,8 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
+    <msg name="s1bc6849021c39575" desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size.">Render margin (% viewport)</msg>
+    <msg name="s0ae4a4d62b686a77" desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size.">Fetch margin (% viewport)</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Slot template</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Custom</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Click the button below to preview in a new window.</msg>
@@ -57,6 +60,7 @@
     <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Sizes</msg>
     <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Slot settings</msg>
     <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">Targeting</msg>
+    <msg name="s4839a6cee190597f" desc="Section containing lazy loading options.">Lazy loading</msg>
     <msg name="sc907ffeeafb021d1" desc="Section containing options to control output.">Output settings</msg>
     <msg name="sf93d227444bc5687" desc="Section containing page settings.">Page settings</msg>
     <msg name="sdb90b681e373be33" desc="Section containing page-level configuration settings.">Page-level configuration</msg>
@@ -80,6 +84,7 @@
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Unhide window</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">Browser navigation</msg>
+    <msg name="sa6e68f4d7e8574ed" desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport.">Ad spacing (% viewport)</msg>
     <msg name="s1c67a1fa4d07bd8b" desc="The page URL to associate with ad requests.">Page URL</msg>
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Interstitial triggers</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">Key=Value1,Value2,...</msg>

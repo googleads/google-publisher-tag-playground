@@ -120,5 +120,10 @@ export const templates = {
   sf0cab2483f66aa2e: '‏‮Custom‬‏',
   sf915707accde585c: '‏‮Under‬‏ ‏‮the‬‏ ‏‮age‬‏ ‏‮of‬‏ ‏‮consent‬‏',
   sf93d227444bc5687: '‏‮Page‬‏ ‏‮settings‬‏',
-  sfe2e9ccd10b35b4a: 'Force SafeFrame',
+  sfe2e9ccd10b35b4a: '‏‮Force‬‏ ‏‮SafeFrame‬‏',
+  s4839a6cee190597f: 'Lazy loading',
+  sa6e68f4d7e8574ed: 'Ad spacing (% viewport)',
+  s0ae4a4d62b686a77: 'Fetch margin (% viewport)',
+  s1bc6849021c39575: 'Render margin (% viewport)',
+  sdf7b9d8028213f69: 'Mobile scaling multiplier',
 };

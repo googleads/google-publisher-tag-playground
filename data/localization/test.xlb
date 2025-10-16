@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="test">
   <messages>
+    <msg name="sdf7b9d8028213f69" desc="A multiplier applied to fetch and render margins on mobile devices.">M̂́ôb̂́îl̂́ê ŝ́ĉấl̂î́n̂ĝ́ m̂́ûl̂́t̂î́p̂l̂́îếr̂</msg>
     <msg name="s3400fb34f1e245a9" desc="A sample ad with multiple valid sizes">M̂́ûl̂́t̂î́-ŝ́îẑ́ê ấd̂</msg>
     <msg name="sbba26a884a26c0c7" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (300x̂́250)</msg>
     <msg name="s4121536e35beb2ed" desc="A sample ad with one valid size">F̂́îx̂́êd̂́-ŝ́îẑ́ê ấd̂ (728x̂́90)</msg>
@@ -28,6 +29,8 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
+    <msg name="s1bc6849021c39575" desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size.">R̂́ên̂́d̂ếr̂ m̂́âr̂́ĝî́n̂ (% v̂́îếŵp̂́ôr̂́t̂)</msg>
+    <msg name="s0ae4a4d62b686a77" desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size.">F̂́êt̂́ĉĥ́ m̂́âr̂́ĝî́n̂ (% v̂́îếŵp̂́ôr̂́t̂)</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê</msg>
     <msg name="sf0cab2483f66aa2e" desc="Drop-down option that allows users to input custom ad slot values.">Ĉ́ûŝ́t̂ốm̂</msg>
     <msg name="s707a334b3b2a7140" desc="Embedded preview is unavailable, sample must be viewed in a separate window."><ph name="0">${strings.previewUnavailable()}</ph>. Ĉ́l̂î́ĉk̂́ t̂́ĥế b̂́ût̂́t̂ốn̂ b̂́êl̂́ôŵ́ t̂́ô p̂́r̂ếv̂î́êŵ́ î́n̂ ấ n̂́êŵ́ ŵ́în̂́d̂ốŵ.</msg>
@@ -57,6 +60,7 @@
     <msg name="s3e0b42b56e05829d" desc="Section containing ad sizing options.">Ŝ́îẑ́êŝ́</msg>
     <msg name="s7b5fa742d13b462e" desc="Section containing ad slot settings.">Ŝ́l̂ốt̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
     <msg name="se6dd79643508bb80" desc="Section containing ad targeting options.">T̂́âr̂́ĝết̂î́n̂ĝ́</msg>
+    <msg name="s4839a6cee190597f" desc="Section containing lazy loading options.">L̂́âẑ́ŷ l̂́ôấd̂î́n̂ĝ́</msg>
     <msg name="sc907ffeeafb021d1" desc="Section containing options to control output.">Ốût̂́p̂û́t̂ ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
     <msg name="sf93d227444bc5687" desc="Section containing page settings.">P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ</msg>
     <msg name="sdb90b681e373be33" desc="Section containing page-level configuration settings.">P̂́âĝ́ê-l̂́êv̂́êl̂́ ĉ́ôn̂́f̂î́ĝû́r̂ất̂î́ôn̂́</msg>
@@ -80,6 +84,7 @@
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Û́n̂ĥ́îd̂́ê ŵ́în̂́d̂ốŵ</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">B̂́r̂ốŵŝ́êr̂́ n̂́âv̂́îĝ́ât̂́îốn̂</msg>
+    <msg name="sa6e68f4d7e8574ed" desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport.">Ấd̂ ŝ́p̂ấĉî́n̂ĝ́ (% v̂́îếŵp̂́ôr̂́t̂)</msg>
     <msg name="s1c67a1fa4d07bd8b" desc="The page URL to associate with ad requests.">P̂́âĝ́ê Û́R̂L̂́</msg>
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Î́n̂t̂́êr̂́ŝt̂́ît̂́îấl̂ t̂́r̂î́ĝĝ́êr̂́ŝ</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">K̂́êŷ́=V̂́âl̂́ûế1,V̂́âl̂́ûế2,...</msg>

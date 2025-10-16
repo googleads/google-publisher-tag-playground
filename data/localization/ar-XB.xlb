@@ -70,6 +70,7 @@
     <msg desc="Setting to control if/when a single ad slot should be collapsed (hidden)." name="se53efa37a0c7e1d9">‏‮Collapse‬‏ ‏‮ad‬‏ ‏‮slot‬‏</msg>
     <msg desc="Setting to control if/when ad slots should be collapsed (hidden)." name="s51e4d68633a473de">‏‮Collapse‬‏ ‏‮ad‬‏ ‏‮slots‬‏</msg>
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">‏‮Treatments‬‏</msg>
+    <msg desc="Setting to control whether ads should be forced to render using a SafeFrame container." name="sfe2e9ccd10b35b4a">‏‮Force‬‏ ‏‮SafeFrame‬‏</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">‏‮AdSense‬‏ ‏‮attributes‬‏</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> ‏‮is‬‏ ‏‮loaded‬‏.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> ‏‮is‬‏ ‏‮loading‬‏...</msg>
