@@ -24,12 +24,36 @@ import {fileURLToPath} from 'url';
 import * as config from '../src/codegen/api/config.js';
 import * as codegen from '../src/codegen/gpt-sample.js';
 import {SampleConfig} from '../src/model/sample-config.js';
+import {window} from '../src/model/window.js';
 
 describe('Codegen', () => {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const CONFIG_DIR = path.resolve(__dirname, './codegen-test-data/configs');
 
   const COMPILER = create();
+
+  afterEach(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const globalThis = global as any;
+    delete globalThis.window;
+    delete globalThis.fetch;
+
+    window.playgroundConfig = {};
+  });
+
+  beforeEach(() => {
+    // Load utility file includes from the local filesystem.
+    window.playgroundConfig = {
+      baseUrl: path.resolve(fileURLToPath(import.meta.url), '../../site'),
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const globalThis = global as any;
+    globalThis.window = window;
+    globalThis.fetch = jasmine.createSpy('fetch').and.callFake(async url => {
+      return new Response(fs.readFileSync(url).toString());
+    });
+  });
 
   const configs = fs.readdirSync(CONFIG_DIR);
   for (const config of configs) {
@@ -42,6 +66,7 @@ describe('Codegen', () => {
       const code = `
         ${await codegen.initializeGpt(parsedConfig, true)}
         ${await codegen.requestAndRenderAds(parsedConfig)}
+        ${await codegen.sampleUtilities(parsedConfig)}
         `;
 
       // Compiler will throw an error is the code is invalid.

@@ -21,6 +21,8 @@ import {formatTypeScript} from '../util/format-code.js';
 
 import * as googletag from './api/googletag.js';
 import * as pubads from './api/pubads.js';
+import {rewardedAdsHelper} from './helpers/rewarded-ad.js';
+import {SampleHelper} from './helpers/sample-helper.js';
 
 /* Internal template strings */
 
@@ -57,6 +59,31 @@ const strings = {
 
 /* Internal helper methods */
 
+function getHelpers(config: SampleConfig) {
+  const helpers: SampleHelper[] = [];
+
+  // Collect relevant helpers.
+  if (config.slots.some(slot => slot.format && 'REWARDED' === slot.format)) {
+    helpers.push(rewardedAdsHelper);
+  }
+
+  return helpers;
+}
+
+function globalDeclarations(config: SampleConfig) {
+  return `
+    ${globalSlotDeclarations(config)}
+
+    ${globalHelperDeclarations(config)}
+  `;
+}
+
+function globalHelperDeclarations(config: SampleConfig) {
+  return config.slots.some(slot => slot.format && 'REWARDED' === slot.format)
+    ? rewardedAdsHelper.globalDeclarations()
+    : '';
+}
+
 function globalSlotDeclarations(config: SampleConfig) {
   return config.slots
     .map((slot: SampleSlotConfig) => {
@@ -64,6 +91,13 @@ function globalSlotDeclarations(config: SampleConfig) {
     })
     .filter(v => v !== '')
     .join('\n');
+}
+
+async function helperImports(config: SampleConfig, utilFilePath: string) {
+  const imports = getHelpers(config).flatMap(helper => helper.exports());
+  return imports.length > 0
+    ? `import { ${imports.sort().join(',')} } from '${utilFilePath}';`
+    : '';
 }
 
 function slotDefinitions(config: SampleConfig, outOfPage = false) {
@@ -145,6 +179,17 @@ export function getSlotContainerId(
 }
 
 /**
+ * Whether or not the provided {@link SampleConfig} has associated
+ * utility code.
+ *
+ * @param config The sample config.
+ * @returns `true` if the config has associated utility code, `false` otherwise.
+ */
+export function hasUtilities(config: SampleConfig) {
+  return getHelpers(config).length > 0;
+}
+
+/**
  * Generates code necessary to define ad slots and initialize GPT.
  *
  * @param config The sample config.
@@ -155,11 +200,14 @@ export function getSlotContainerId(
 export async function initializeGpt(
   config: SampleConfig,
   requestAndRenderAds = true,
+  importFilePath?: string,
 ) {
   const initCode = `
+    ${importFilePath ? await helperImports(config, importFilePath) : ''}
+
     ${googletag.cmd.init()}
 
-    ${globalSlotDeclarations(config)}
+    ${globalDeclarations(config)}
 
     ${googletag.cmd.push(initGpt(config, requestAndRenderAds))}
   `
@@ -178,4 +226,18 @@ export async function initializeGpt(
 export async function requestAndRenderAds(config: SampleConfig) {
   const requestAndRenderAdsCode = googletag.cmd.push(requestAds(config));
   return await formatTypeScript(requestAndRenderAdsCode);
+}
+
+/**
+ * Generates utility code necessary for the sample to run.
+ *
+ * @param config
+ * @returns
+ */
+export async function sampleUtilities(config: SampleConfig) {
+  const helperUtilities = (
+    await Promise.all(getHelpers(config).map(helper => helper.utilities()))
+  ).flat();
+
+  return await formatTypeScript(helperUtilities.join('\n\n'));
 }

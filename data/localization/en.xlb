@@ -21,6 +21,7 @@
     <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
+    <msg name="s5e8250fb85d64c23" desc="Close button text.">Close</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display() or googletag.refresh().">// Request and render all previously defined ad slots.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Enable GPT services.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// Define static ad slots.</msg>
@@ -29,6 +30,10 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Configure page-level settings.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Configure privacy settings.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
+    <msg name="s0a0c98fc141bc5b6" desc="Comment identifying code executed to request user consent.">Prompt the user for their consent to view the rewarded ad.</msg>
+    <msg name="sc8625c36e2ee45d5" desc="Comment identifying code executed when the user consents.">Display the rewarded ad if the user consents.</msg>
+    <msg name="s61ee08c5b62e5b08" desc="Comment identifying code executed when the user does not consent.">Destroy the rewarded ad slot if the user does not consent.</msg>
+    <msg name="sd7b3aac1efbac63c" desc="Consent prompt displayed to users.">Watch an ad to receive a special reward?</msg>
     <msg name="s1bc6849021c39575" desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size.">Render margin (% viewport)</msg>
     <msg name="s0ae4a4d62b686a77" desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size.">Fetch margin (% viewport)</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Slot template</msg>
@@ -39,7 +44,9 @@
     <msg name="s6b0627385c38c206" desc="Input field title">Add an ad exclusion label</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Add targeting key-values</msg>
     <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">EU user consent</msg>
+    <msg name="s5c64f55f3fbc34f1" desc="Message displayed when a user recieves a reward for watching an ad.">You have been rewarded <ph name="0">${amount} ${type}</ph>!</msg>
     <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">Loading consent dialog...</msg>
+    <msg name="s09205907b5b56cda" desc="No button text.">No</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Sample ads</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Sample ads (out-of-page)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">None</msg>
@@ -76,9 +83,15 @@
     <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">Treatments</msg>
     <msg name="sfe2e9ccd10b35b4a" desc="Setting to control whether ads should be forced to render using a SafeFrame container.">Force SafeFrame</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">AdSense attributes</msg>
+    <msg name="s863c0ad66f72f959" desc="Status message: ad did not fill.">No ad returned for <ph name="0">${format}</ph> slot.</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> is loaded.</msg>
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> is loading...</msg>
+    <msg name="s133bb1ee15ece5ae" desc="Status message: The rewarded ad has been closed by the user."><ph name="0">${strings.format()}</ph> was closed.</msg>
+    <msg name="s93d1fd626db001f3" desc="Status message: The rewarded ad is currently being viewed."><ph name="0">${strings.format()}</ph> is active.</msg>
+    <msg name="sf7886e272836b258" desc="Status message: The rewarded ad is ready to be displayed."><ph name="0">${strings.format()}</ph> slot is ready.</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> is not supported on this page.</msg>
+    <msg name="s03c563952f49581d" desc="Status message: User dismissed the rewarded ad consent prompt."><ph name="0">${strings.format()}</ph> prompt was dismissed.</msg>
+    <msg name="s2bba125a7eef0bb9" desc="Status message: User received a reward for viewing an ad.">Reward granted.</msg>
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Unavailable</msg>
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
@@ -98,5 +111,6 @@
     <msg name="s49b92d61c8e9e116" desc="Validation error.">Please specify a valid URL.</msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">Please specify a valid ad unit path.</msg>
     <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">Require local storage consent</msg>
+    <msg name="scb489a1a173ac3f0" desc="Yes button text.">Yes</msg>
   </messages>
 </localizationbundle>

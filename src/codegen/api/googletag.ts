@@ -22,6 +22,7 @@ import {
   SampleSlotConfig,
 } from '../../model/sample-config.js';
 import {outOfPageFormatNames} from '../../model/settings.js';
+import {rewardedAdsHelper} from '../helpers/rewarded-ad.js';
 import {sanitizeJs} from '../sanitize.js';
 
 import * as config from './config.js';
@@ -42,6 +43,7 @@ const api = {
     `googletag.defineOutOfPageSlot(${sanitizeJs(
       slot.adUnit,
     )}, googletag.enums.OutOfPageFormat.${String(slot.format)})`,
+  destroySlot: (id: string) => `googletag.destroySlots([${id}])`,
   display: (idOrSlot: string) => `googletag.display(${idOrSlot})`,
   enableServices: () => 'googletag.enableServices()',
   setConfig: (config: googletag.config.PageSettingsConfig) =>
@@ -72,6 +74,10 @@ const outOfPage = {
     msg(str`${format} is loading...`, {
       desc: 'Status message: An out-of-page ad is loading.',
     }),
+  noFill: (format: string) =>
+    msg(str`No ad returned for ${format} slot.`, {
+      desc: 'Status message: ad did not fill.',
+    }),
   notSupported: (format: string) =>
     msg(str`${format} is not supported on this page.`, {
       desc: 'Status message: The specified out-of-page format is not supported on the current page.',
@@ -87,6 +93,43 @@ const status = {
 };
 
 /* Internal helper methods */
+
+function getOutOfPageEventListeners(
+  config: SampleConfig,
+  slot: SampleSlotConfig,
+) {
+  const id = getSlotIdentifer(config, slot);
+  const formatStr = outOfPageFormatNames[slot.format!]();
+
+  let formatSpecificEventListeners = '';
+
+  switch (slot.format) {
+    case 'REWARDED':
+      formatSpecificEventListeners += rewardedAdsHelper
+        .slotEventListeners(config, slot)
+        .join('\n\n');
+      break;
+    default:
+      formatSpecificEventListeners += `
+        ${pubads.addEventListener(
+          'slotOnload',
+          getSlotOnloadCallback(config, slot),
+        )};
+      `;
+      break;
+  }
+
+  return `
+    ${formatSpecificEventListeners}
+
+    ${pubads.addEventListener(
+      'slotRenderEnded',
+      `if (event.slot === ${id} && event.isEmpty) {
+        ${status.update(id, outOfPage.noFill(formatStr))};
+      }`,
+    )};
+  `;
+}
 
 /**
  * Generates a slotOnload event callback function body for the
@@ -178,10 +221,10 @@ export function defineSlot(
  * @returns
  */
 export function defineOutOfPageSlot(
-  sampleConfig: SampleConfig,
+  config: SampleConfig,
   slotConfig: SampleSlotConfig,
 ) {
-  const slotVar = getSlotIdentifer(sampleConfig, slotConfig);
+  const slotVar = getSlotIdentifer(config, slotConfig);
 
   const formatString = outOfPageFormatNames[slotConfig.format!]();
   return `
@@ -195,12 +238,24 @@ export function defineOutOfPageSlot(
 
       ${status.update(slotVar, `${outOfPage.loading(formatString)}`)};
 
-      ${pubads.addEventListener(
-        'slotOnload',
-        getSlotOnloadCallback(sampleConfig, slotConfig),
-      )}
+      ${getOutOfPageEventListeners(config, slotConfig)}
     }
   `.trim();
+}
+
+/**
+ * Generates code for destorying a single ad slot.
+ *
+ * @param sampleConfig
+ * @param slotConfig
+ * @returns
+ */
+export function destroySlot(
+  sampleConfig: SampleConfig,
+  slotConfig: SampleSlotConfig,
+) {
+  const slotId = getSlotIdentifer(sampleConfig, slotConfig);
+  return `if(${slotId}) ${api.destroySlot(slotId)};`;
 }
 
 /**
@@ -218,7 +273,7 @@ export function display(
   const idOrSlot = slotConfig.format ? id : `'${id}'`;
 
   return slotConfig.format
-    ? `if (${idOrSlot}) { ${api.display(idOrSlot)}; }`
+    ? `if (${idOrSlot}) ${api.display(idOrSlot)};`
     : `${api.display(idOrSlot)};`;
 }
 
@@ -279,4 +334,25 @@ export function getSlotIdentifer(
   slotConfig: SampleSlotConfig,
 ) {
   return `slot${sampleConfig.slots.indexOf(slotConfig) + 1}`;
+}
+
+/**
+ * Updates the status message for the specified slot.
+ *
+ * Only out-of-page slots have status elements. Calling this
+ * method with a non-OOP slot returns an empty string.
+ *
+ * @param config The sample config.
+ * @param slotConfig The slot within this config being updated.
+ * @param message The new status message to be displayed.
+ * @returns
+ */
+export function updateStatus(
+  config: SampleConfig,
+  slotConfig: SampleSlotConfig,
+  message: string,
+) {
+  return slotConfig.format
+    ? status.update(getSlotIdentifer(config, slotConfig), message)
+    : '';
 }

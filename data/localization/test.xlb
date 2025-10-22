@@ -21,6 +21,7 @@
     <msg name="s3be169991df10a5d" desc="Button text">Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́</msg>
     <msg name="s02c64e6a6306c0b0" desc="Button text">Ấd̂d̂́ ŝ́l̂ốt̂</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">R̂́êm̂́ôv̂́ê ŝ́l̂ốt̂</msg>
+    <msg name="s5e8250fb85d64c23" desc="Close button text.">Ĉ́l̂ốŝế</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display() or googletag.refresh().">// R̂́êq̂́ûếŝt̂́ ấn̂d̂́ r̂́ên̂́d̂ếr̂ ấl̂l̂́ p̂́r̂ếv̂î́ôû́ŝl̂́ŷ d̂́êf̂́în̂́êd̂́ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
     <msg name="sc5c8140d066b7231" desc="Code comment preceding a call to googletag.enableServices().">// Ến̂ấb̂l̂́ê Ĝ́P̂T̂́ ŝ́êr̂́v̂î́ĉếŝ.</msg>
     <msg name="s71e012bd812c44a2" desc="Code comment preceding ad slot definitions.">// D̂́êf̂́în̂́ê ŝ́t̂ất̂î́ĉ ấd̂ ŝ́l̂ốt̂ŝ́.</msg>
@@ -29,6 +30,10 @@
     <msg name="s419ce4c474f1f9a8" desc="Code comment preceding page-level configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́âĝ́ê-l̂́êv̂́êl̂́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0536dee760be4bf2" desc="Code comment preceding privacy settings configuration.">// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.</msg>
     <msg name="s0d576da69783c058" desc="Code comment: The specified out-of-page format may not be supported in all environments."><ph name="0">${format}</ph> ŝ́l̂ốt̂ŝ́ r̂́êt̂́ûr̂́n̂ n̂́ûl̂́l̂ î́f̂ t̂́ĥế p̂́âĝ́ê ốr̂ d̂́êv̂́îĉ́ê d̂́ôếŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́ t̂́ĥếm̂.</msg>
+    <msg name="s0a0c98fc141bc5b6" desc="Comment identifying code executed to request user consent.">P̂́r̂ốm̂p̂́t̂ t̂́ĥế û́ŝếr̂ f̂́ôr̂́ t̂́ĥếîr̂́ ĉ́ôn̂́ŝến̂t̂́ t̂́ô v̂́îếŵ t̂́ĥế r̂́êŵ́âr̂́d̂ếd̂ ấd̂.</msg>
+    <msg name="sc8625c36e2ee45d5" desc="Comment identifying code executed when the user consents.">D̂́îŝ́p̂l̂́âŷ́ t̂́ĥế r̂́êŵ́âr̂́d̂ếd̂ ấd̂ î́f̂ t̂́ĥế û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́ŝ.</msg>
+    <msg name="s61ee08c5b62e5b08" desc="Comment identifying code executed when the user does not consent.">D̂́êŝ́t̂r̂́ôŷ́ t̂́ĥế r̂́êŵ́âr̂́d̂ếd̂ ấd̂ ŝ́l̂ốt̂ î́f̂ t̂́ĥế û́ŝếr̂ d̂́ôếŝ n̂́ôt̂́ ĉ́ôn̂́ŝến̂t̂́.</msg>
+    <msg name="sd7b3aac1efbac63c" desc="Consent prompt displayed to users.">Ŵ́ât̂́ĉĥ́ ấn̂ ấd̂ t̂́ô r̂́êĉ́êî́v̂ế ấ ŝ́p̂ếĉî́âl̂́ r̂́êŵ́âr̂́d̂?</msg>
     <msg name="s1bc6849021c39575" desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size.">R̂́ên̂́d̂ếr̂ m̂́âr̂́ĝî́n̂ (% v̂́îếŵp̂́ôr̂́t̂)</msg>
     <msg name="s0ae4a4d62b686a77" desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size.">F̂́êt̂́ĉĥ́ m̂́âr̂́ĝî́n̂ (% v̂́îếŵp̂́ôr̂́t̂)</msg>
     <msg name="s06d92c8a54c8a011" desc="Drop-down label">Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê</msg>
@@ -39,7 +44,9 @@
     <msg name="s6b0627385c38c206" desc="Input field title">Ấd̂d̂́ ấn̂ ấd̂ ếx̂ĉ́l̂û́ŝî́ôn̂́ l̂́âb̂́êl̂́</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́-v̂́âl̂́ûếŝ</msg>
     <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">ẾÛ û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́</msg>
+    <msg name="s5c64f55f3fbc34f1" desc="Message displayed when a user recieves a reward for watching an ad.">Ŷ́ôû́ ĥ́âv̂́ê b̂́êến̂ r̂́êŵ́âr̂́d̂ếd̂ <ph name="0">${amount} ${type}</ph>!</msg>
     <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">L̂́ôấd̂î́n̂ĝ́ ĉ́ôn̂́ŝến̂t̂́ d̂́îấl̂ốĝ...</msg>
+    <msg name="s09205907b5b56cda" desc="No button text.">N̂́ô</msg>
     <msg name="s11a3c998dc1af0b1" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́</msg>
     <msg name="s4661d2a8c1259e58" desc="Option group label">Ŝ́âm̂́p̂l̂́ê ấd̂ŝ́ (ốût̂́-ốf̂-p̂́âĝ́ê)</msg>
     <msg name="s669b18c6d2d9c95b" desc="Option indicating no out-of-page format is selected.">N̂́ôn̂́ê</msg>
@@ -76,9 +83,15 @@
     <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">T̂́r̂ếât̂́m̂ến̂t̂́ŝ</msg>
     <msg name="sfe2e9ccd10b35b4a" desc="Setting to control whether ads should be forced to render using a SafeFrame container.">F̂́ôr̂́ĉế Ŝ́âf̂́êF̂́r̂ấm̂ế</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ</msg>
+    <msg name="s863c0ad66f72f959" desc="Status message: ad did not fill.">N̂́ô ấd̂ r̂́êt̂́ûr̂́n̂ếd̂ f̂́ôr̂́ <ph name="0">${format}</ph> ŝ́l̂ốt̂.</msg>
     <msg name="s352f8b213acc822a" desc="Status message: An ad slot of the specified format has loaded."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂ếd̂.</msg>
     <msg name="s9d21580cc7643953" desc="Status message: An out-of-page ad is loading."><ph name="0">${format}</ph> î́ŝ l̂́ôấd̂î́n̂ĝ́...</msg>
+    <msg name="s133bb1ee15ece5ae" desc="Status message: The rewarded ad has been closed by the user."><ph name="0">${strings.format()}</ph> ŵ́âŝ́ ĉ́l̂ốŝếd̂.</msg>
+    <msg name="s93d1fd626db001f3" desc="Status message: The rewarded ad is currently being viewed."><ph name="0">${strings.format()}</ph> î́ŝ ấĉt̂́îv̂́ê.</msg>
+    <msg name="sf7886e272836b258" desc="Status message: The rewarded ad is ready to be displayed."><ph name="0">${strings.format()}</ph> ŝ́l̂ốt̂ î́ŝ r̂́êấd̂ŷ́.</msg>
     <msg name="s8233e942045a2b50" desc="Status message: The specified out-of-page format is not supported on the current page."><ph name="0">${format}</ph> î́ŝ n̂́ôt̂́ ŝ́ûp̂́p̂ốr̂t̂́êd̂́ ốn̂ t̂́ĥî́ŝ p̂́âĝ́ê.</msg>
+    <msg name="s03c563952f49581d" desc="Status message: User dismissed the rewarded ad consent prompt."><ph name="0">${strings.format()}</ph> p̂́r̂ốm̂p̂́t̂ ŵ́âŝ́ d̂́îŝ́m̂î́ŝŝ́êd̂́.</msg>
+    <msg name="s2bba125a7eef0bb9" desc="Status message: User received a reward for viewing an ad.">R̂́êŵ́âr̂́d̂ ĝ́r̂ấn̂t̂́êd̂́.</msg>
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
@@ -98,5 +111,6 @@
     <msg name="s49b92d61c8e9e116" desc="Validation error.">P̂́l̂ếâŝ́ê ŝ́p̂ếĉî́f̂ŷ́ ấ v̂́âl̂́îd̂́ Û́R̂L̂́.</msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">P̂́l̂ếâŝ́ê ŝ́p̂ếĉî́f̂ŷ́ ấ v̂́âl̂́îd̂́ ấd̂ û́n̂î́t̂ p̂́ât̂́ĥ.</msg>
     <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">R̂́êq̂́ûî́r̂ế l̂́ôĉ́âl̂́ ŝ́t̂ốr̂ấĝế ĉ́ôn̂́ŝến̂t̂́</msg>
+    <msg name="scb489a1a173ac3f0" desc="Yes button text.">Ŷ́êŝ́</msg>
   </messages>
 </localizationbundle>
