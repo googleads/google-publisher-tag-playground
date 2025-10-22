@@ -99,7 +99,7 @@ export default [
       copy({
         targets: [
           {
-            src: ['site/*', '!site/includes', '!site/js'],
+            src: ['site/*', '!site/includes/*.js', '!site/js'],
             dest: 'dist',
           },
         ],

@@ -58,11 +58,16 @@ if (config) {
     document.head,
   );
 
-  // Execute GPT initialization logic.
-  addInlineScript(await template.gptInitialization());
-
   // Render body content.
   render(html`${unsafeHTML(await template.bodyHtml())}`, document.body);
+
+  // Execute GPT initialization logic.
+  addInlineScript(
+    `
+      ${await template.gptInitialization()}
+      ${await template.utilities()}
+    `,
+  );
 
   // Execute GPT request/render logic.
   addInlineScript(await template.gptRequestAndRenderAds());

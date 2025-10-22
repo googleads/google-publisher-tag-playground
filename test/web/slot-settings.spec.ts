@@ -430,11 +430,7 @@ test.describe('Configure ad exclusions', () => {
 });
 
 test.describe('Ad format select', () => {
-  const excludedFormats = [
-    'AD_INTENTS',
-    'GAME_MANUAL_INTERSTITIAL',
-    'REWARDED',
-  ];
+  const excludedFormats = ['AD_INTENTS', 'GAME_MANUAL_INTERSTITIAL'];
 
   test.use({
     config: {
@@ -455,6 +451,7 @@ test.describe('Ad format select', () => {
         await expect(formatSelect).toBeVisible();
 
         await configurator.selectOption(formatSelect, formatName);
+        await configurator.switchToEditorTab('sample.ts');
         expect(await configurator.getCodeEditorContents()).toContain(
           formatName,
         );

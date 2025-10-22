@@ -90,11 +90,7 @@ const AD_UNIT_VALIDATION_PATTERN =
 const AD_UNIT_VALIDATION_REGEX = new RegExp(`^${AD_UNIT_VALIDATION_PATTERN}$`);
 
 // Unsupported out-of-page formats.
-const EXCLUDED_OOP_FORMATS = [
-  'AD_INTENTS',
-  'GAME_MANUAL_INTERSTITIAL',
-  'REWARDED',
-];
+const EXCLUDED_OOP_FORMATS = ['AD_INTENTS', 'GAME_MANUAL_INTERSTITIAL'];
 
 /**
  * A wrapper around {@link SampleSlotConfig} that associates additional metadata

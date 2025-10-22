@@ -94,6 +94,14 @@ export const sampleAds: SampleAd[] = [
     },
   },
   {
+    name: outOfPageFormatNames.REWARDED,
+    slot: {
+      adUnit: '/22639388115/rewarded_web_example',
+      format: 'REWARDED',
+      size: [],
+    },
+  },
+  {
     name: outOfPageFormatNames.LEFT_SIDE_RAIL,
     slot: {
       adUnit: '/6355419/Travel/Europe',

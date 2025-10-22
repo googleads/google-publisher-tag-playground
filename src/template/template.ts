@@ -29,6 +29,8 @@ const GPT_STANDARD_URL = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
 const GPT_LIMITED_ADS_URL =
   'https://pagead2.googlesyndication.com/tag/js/gpt.js';
 
+const SAMPLE_UTILITIES_FILENAME = 'sample-utils';
+
 /**
  * Base class from which all sample templates extend.
  */
@@ -98,10 +100,18 @@ export abstract class Template {
          <!-- playground-hide-end -->`
       : '';
 
+    let utilities = '';
+    if (samplegen.hasUtilities(this.sampleConfig)) {
+      utilities = this.jsTarget
+        ? `<script src="./${SAMPLE_UTILITIES_FILENAME}.js"></script>`
+        : `<script type="module" src="./${SAMPLE_UTILITIES_FILENAME}.js"></script>`;
+    }
+
     return `
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    ${consent}${stylesheets}${scripts}${modules}${gptInit}${inlineStyles}
+    ${consent}${stylesheets}${scripts}${utilities}${modules}${gptInit}
+    ${inlineStyles}
     `.trim();
   }
 
@@ -158,6 +168,21 @@ export abstract class Template {
   }
 
   /**
+   * Returns utility code associated with the current sample.
+   */
+  async utilities(): Promise<string> {
+    if (samplegen.hasUtilities(this.sampleConfig)) {
+      const utilities = await samplegen.sampleUtilities(this.sampleConfig);
+      return this.jsTarget
+        ? // Rewrite exports, since JS samples don't use module loading.
+          tsToJs(utilities.replace(/^export\s+/gm, ''), this.jsTarget)
+        : utilities;
+    }
+
+    return '';
+  }
+
+  /**
    * Returns a playground {@link ProjectManifest} for the current template.
    */
   async playgroundConfig(): Promise<ProjectManifest> {
@@ -166,7 +191,11 @@ export abstract class Template {
     if (!this.jsTarget) {
       // TypeScript samples have seperate HTML and TS files.
       config.files!['sample.ts'] = {
-        content: await samplegen.initializeGpt(this.sampleConfig),
+        content: await samplegen.initializeGpt(
+          this.sampleConfig,
+          true,
+          `./${SAMPLE_UTILITIES_FILENAME}.js`,
+        ),
       };
       // Include a hidden package.json, to enable autocomplete of GPT methods.
       config.files!['package.json'] = {
@@ -189,6 +218,15 @@ export abstract class Template {
     }
 
     config.files!['index.html'] = {content: await this.formattedHtml()};
+
+    // If utility code is needed, add a seperate file to contain it.
+    if (samplegen.hasUtilities(this.sampleConfig)) {
+      const extension = this.jsTarget ? 'js' : 'ts';
+      const filename = `${SAMPLE_UTILITIES_FILENAME}.${extension}`;
+      config.files![filename] = {
+        content: await this.utilities(),
+      };
+    }
 
     return config;
   }

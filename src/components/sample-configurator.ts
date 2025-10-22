@@ -104,8 +104,11 @@ export class SampleConfigurator extends LitElement {
   }
 
   private isPreviewable() {
-    // Out-of-page slots won't work in the embedded preview iframe.
-    return !this.config.slots?.some(slot => slot.format);
+    // Out-of-page slots (aside from rewarded) won't work in the embedded
+    // preview iframe.
+    return !this.config.slots?.some(
+      slot => slot.format && slot.format !== 'REWARDED',
+    );
   }
 
   private updatePreview() {
