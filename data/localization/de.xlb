@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="de">
   <messages>
+    <msg desc="A multiplier applied to fetch and render margins on mobile devices." name="sdf7b9d8028213f69">Multiplikator für die Mobilgeräteskalierung</msg>
     <msg desc="A sample ad with multiple valid sizes" name="s3400fb34f1e245a9">Anzeige in unterschiedlichen Größen</msg>
     <msg desc="A sample ad with one valid size" name="sbba26a884a26c0c7">Anzeige mit fester Größe (300 × 250)</msg>
     <msg desc="A sample ad with one valid size" name="s4121536e35beb2ed">Anzeige mit fester Größe (728 x 90)</msg>
@@ -20,6 +21,7 @@
     <msg desc="Button text" name="s3be169991df10a5d">Vorschau öffnen</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">Anzeigenfläche hinzufügen</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Anzeigenfläche entfernen</msg>
+    <msg desc="Close button text." name="s5e8250fb85d64c23">Schließen</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Request and render all previously defined ad slots.</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// Enable GPT services.</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// Define static ad slots.</msg>
@@ -28,15 +30,23 @@
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// Einstellungen auf Seitenebene konfigurieren.</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// Configure privacy settings.</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058"><ph name="0">${format}</ph> slots return null if the page or device does not support them.</msg>
+    <msg desc="Comment identifying code executed to request user consent." name="s0a0c98fc141bc5b6">Den Nutzer auffordern, seine Einwilligung zum Ansehen der Anzeige mit Prämie zu geben.</msg>
+    <msg desc="Comment identifying code executed when the user consents." name="sc8625c36e2ee45d5">Anzeige mit Prämie anzeigen, wenn der Nutzer seine Einwilligung erteilt.</msg>
+    <msg desc="Comment identifying code executed when the user does not consent." name="s61ee08c5b62e5b08">Wenn der Nutzer keine Einwilligung erteilt, muss die Fläche für die Anzeige mit Prämie gelöscht werden.</msg>
+    <msg desc="Consent prompt displayed to users." name="sd7b3aac1efbac63c">Anzeige ansehen, um eine besondere Prämie zu erhalten?</msg>
+    <msg desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size." name="s1bc6849021c39575">Abstand für das Rendering (% des Darstellungsbereichs)</msg>
+    <msg desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size." name="s0ae4a4d62b686a77">Abstand für den Anzeigenabruf (% des Darstellungsbereichs)</msg>
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">Vorlage für Anzeigenflächen</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">Benutzerdefiniert</msg>
-    <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Klicken Sie auf die Schaltfläche unten, um eine Vorschau in einem neuen Fenster zu öffnen.</msg>
+    <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>. Klicken Sie auf den Button unten, um eine Vorschau in einem neuen Fenster zu öffnen.</msg>
     <msg desc="Error message." name="s733564cddc33799f">Fehler: Verbindung zum GPT Sample Builder nicht möglich</msg>
     <msg desc="Input field label" name="s53a96edcf36221b2">Größen von Anzeigenflächen</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">Ausschlusslabel für Anzeigen hinzufügen</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Targeting-Schlüssel/Wert-Paare hinzufügen</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Einwilligung der Nutzer in der EU</msg>
+    <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">Du hast <ph name="0">${amount} ${type}</ph> erhalten!</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Dialog zur Einholung von Einwilligungen wird geladen…</msg>
+    <msg desc="No button text." name="s09205907b5b56cda">Nein</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">Beispielanzeigen</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">Beispielanzeigen (Out-of-Page)</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">Keine</msg>
@@ -57,6 +67,7 @@
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">Größen</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">Einstellungen für die Anzeigenfläche</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">Targeting</msg>
+    <msg desc="Section containing lazy loading options." name="s4839a6cee190597f">Lazy Loading</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">Ausgabeeinstellungen</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">Seiteneinstellungen</msg>
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">Konfiguration auf Seitenebene</msg>
@@ -72,14 +83,21 @@
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">Maßnahmen</msg>
     <msg desc="Setting to control whether ads should be forced to render using a SafeFrame container." name="sfe2e9ccd10b35b4a">SafeFrame erzwingen</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense-Attribute</msg>
+    <msg desc="Status message: ad did not fill." name="s863c0ad66f72f959">Für die Anzeigenfläche „<ph name="0">${format}</ph>“ wurde keine Anzeige zurückgegeben.</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph> is loaded.</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph> is loading...</msg>
+    <msg desc="Status message: The rewarded ad has been closed by the user." name="s133bb1ee15ece5ae"><ph name="0">${strings.format()}</ph> wurde geschlossen.</msg>
+    <msg desc="Status message: The rewarded ad is currently being viewed." name="s93d1fd626db001f3"><ph name="0">${strings.format()}</ph> ist aktiv.</msg>
+    <msg desc="Status message: The rewarded ad is ready to be displayed." name="sf7886e272836b258">Anzeigenfläche „<ph name="0">${strings.format()}</ph>“ ist bereit.</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50"><ph name="0">${format}</ph> is not supported on this page.</msg>
+    <msg desc="Status message: User dismissed the rewarded ad consent prompt." name="s03c563952f49581d">Prompt „<ph name="0">${strings.format()}</ph>“ wurde geschlossen.</msg>
+    <msg desc="Status message: User received a reward for viewing an ad." name="s2bba125a7eef0bb9">Prämie erhalten.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Scroll page to activate.</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Nicht verfügbar</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Auf Link klicken</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Fenster einblenden</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Browsernavigation</msg>
+    <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">Anzeigenabstand (% des Darstellungsbereichs)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">Seiten-URL</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Interstitial-Trigger</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Schlüssel=Wert1,Wert2,…</msg>
@@ -93,5 +111,6 @@
     <msg desc="Validation error." name="s49b92d61c8e9e116">Geben Sie eine gültige URL an.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Geben Sie einen gültigen Anzeigenblockpfad an.</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Einwilligung für lokale Speicherung erforderlich</msg>
+    <msg desc="Yes button text." name="scb489a1a173ac3f0">Ja</msg>
   </messages>
 </localizationbundle>

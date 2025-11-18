@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <localizationbundle locale="zh-CN">
   <messages>
+    <msg desc="A multiplier applied to fetch and render margins on mobile devices." name="sdf7b9d8028213f69">移动设备缩放系数</msg>
     <msg desc="A sample ad with multiple valid sizes" name="s3400fb34f1e245a9">多尺寸广告</msg>
     <msg desc="A sample ad with one valid size" name="sbba26a884a26c0c7">固定尺寸广告 (300x250)</msg>
     <msg desc="A sample ad with one valid size" name="s4121536e35beb2ed">固定尺寸广告 (728x90)</msg>
@@ -20,6 +21,7 @@
     <msg desc="Button text" name="s3be169991df10a5d">打开预览页面</msg>
     <msg desc="Button text" name="s02c64e6a6306c0b0">添加广告位</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除广告位</msg>
+    <msg desc="Close button text." name="s5e8250fb85d64c23">关闭</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 请求并呈现所有之前定义的广告位。</msg>
     <msg desc="Code comment preceding a call to googletag.enableServices()." name="sc5c8140d066b7231">// 启用 GPT 服务。</msg>
     <msg desc="Code comment preceding ad slot definitions." name="s71e012bd812c44a2">// 定义静态广告位。</msg>
@@ -28,6 +30,12 @@
     <msg desc="Code comment preceding page-level configuration." name="s419ce4c474f1f9a8">// 配置页面级设置。</msg>
     <msg desc="Code comment preceding privacy settings configuration." name="s0536dee760be4bf2">// 配置隐私设置。</msg>
     <msg desc="Code comment: The specified out-of-page format may not be supported in all environments." name="s0d576da69783c058">如果网页或设备不支持<ph name="0">${format}</ph>广告位，这些广告位会返回 null。</msg>
+    <msg desc="Comment identifying code executed to request user consent." name="s0a0c98fc141bc5b6">提示用户选择是否同意观看激励广告。</msg>
+    <msg desc="Comment identifying code executed when the user consents." name="sc8625c36e2ee45d5">如果用户同意，则展示激励广告。</msg>
+    <msg desc="Comment identifying code executed when the user does not consent." name="s61ee08c5b62e5b08">如果用户不同意，则销毁激励广告位。</msg>
+    <msg desc="Consent prompt displayed to users." name="sd7b3aac1efbac63c">愿意观看一条广告来获得特别奖励吗？</msg>
+    <msg desc="Distance from the current viewport an ad must be before we render it, as a percentage of viewport size." name="s1bc6849021c39575">呈现边距（占视口的百分比）</msg>
+    <msg desc="Distance from the current viewport an ad must be before we request it, as a percentage of viewport size." name="s0ae4a4d62b686a77">提取边距（占视口的百分比）</msg>
     <msg desc="Drop-down label" name="s06d92c8a54c8a011">广告位模板</msg>
     <msg desc="Drop-down option that allows users to input custom ad slot values." name="sf0cab2483f66aa2e">自定义</msg>
     <msg desc="Embedded preview is unavailable, sample must be viewed in a separate window." name="s707a334b3b2a7140"><ph name="0">${strings.previewUnavailable()}</ph>。点击下方的按钮即可在新窗口中预览。</msg>
@@ -36,7 +44,9 @@
     <msg desc="Input field title" name="s6b0627385c38c206">添加广告排除标签</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">添加定位键值对</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">欧盟地区用户意见征求</msg>
+    <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">您已获得以下奖励：<ph name="0">${amount} ${type}</ph>！</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">正在加载意见征求对话框…</msg>
+    <msg desc="No button text." name="s09205907b5b56cda">否</msg>
     <msg desc="Option group label" name="s11a3c998dc1af0b1">广告示例</msg>
     <msg desc="Option group label" name="s4661d2a8c1259e58">广告示例（页外）</msg>
     <msg desc="Option indicating no out-of-page format is selected." name="s669b18c6d2d9c95b">无</msg>
@@ -57,6 +67,7 @@
     <msg desc="Section containing ad sizing options." name="s3e0b42b56e05829d">尺寸</msg>
     <msg desc="Section containing ad slot settings." name="s7b5fa742d13b462e">广告位设置</msg>
     <msg desc="Section containing ad targeting options." name="se6dd79643508bb80">定位</msg>
+    <msg desc="Section containing lazy loading options." name="s4839a6cee190597f">延迟加载</msg>
     <msg desc="Section containing options to control output." name="sc907ffeeafb021d1">输出设置</msg>
     <msg desc="Section containing page settings." name="sf93d227444bc5687">网页设置</msg>
     <msg desc="Section containing page-level configuration settings." name="sdb90b681e373be33">页面级配置</msg>
@@ -72,14 +83,21 @@
     <msg desc="Setting to control privacy treatments" name="sb69b079c821c34c8">处理措施</msg>
     <msg desc="Setting to control whether ads should be forced to render using a SafeFrame container." name="sfe2e9ccd10b35b4a">强制使用 SafeFrame</msg>
     <msg desc="Settings that affect AdSense behavior." name="sdee10f7d35f52edf">AdSense 属性</msg>
+    <msg desc="Status message: ad did not fill." name="s863c0ad66f72f959">未针对“<ph name="0">${format}</ph>”广告位返回任何广告。</msg>
     <msg desc="Status message: An ad slot of the specified format has loaded." name="s352f8b213acc822a"><ph name="0">${format}</ph>已加载完毕。</msg>
     <msg desc="Status message: An out-of-page ad is loading." name="s9d21580cc7643953"><ph name="0">${format}</ph>正在加载…</msg>
+    <msg desc="Status message: The rewarded ad has been closed by the user." name="s133bb1ee15ece5ae">“<ph name="0">${strings.format()}</ph>”已关闭。</msg>
+    <msg desc="Status message: The rewarded ad is currently being viewed." name="s93d1fd626db001f3">“<ph name="0">${strings.format()}</ph>”正在展示。</msg>
+    <msg desc="Status message: The rewarded ad is ready to be displayed." name="sf7886e272836b258">“<ph name="0">${strings.format()}</ph>”广告位已准备就绪。</msg>
     <msg desc="Status message: The specified out-of-page format is not supported on the current page." name="s8233e942045a2b50">此页面不支持<ph name="0">${format}</ph>。</msg>
+    <msg desc="Status message: User dismissed the rewarded ad consent prompt." name="s03c563952f49581d">已关闭“<ph name="0">${strings.format()}</ph>”提示。</msg>
+    <msg desc="Status message: User received a reward for viewing an ad." name="s2bba125a7eef0bb9">已发放奖励。</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph>滚动页面即可激活。</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">不可用</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">点击链接</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">取消隐藏窗口</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">浏览器导航</msg>
+    <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">广告间距（占视口的百分比）</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">网页网址</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">插页式广告触发器</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">键=值1,值2,…</msg>
@@ -93,5 +111,6 @@
     <msg desc="Validation error." name="s49b92d61c8e9e116">请指定一个有效的网址。</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">请指定一个有效的广告单元路径。</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">需要征得用户同意才能使用本地存储空间</msg>
+    <msg desc="Yes button text." name="scb489a1a173ac3f0">是</msg>
   </messages>
 </localizationbundle>
