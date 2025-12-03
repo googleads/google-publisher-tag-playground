@@ -122,7 +122,7 @@ test.describe('Ad spacing configuration', () => {
     const adSpacingSlider = configurator.getSlider(AD_SPACING_SLIDER_LABEL);
     await expect(adSpacingSlider).toBeVisible();
     await expect(adSpacingSlider).toHaveAttribute('value', '0');
-    await expect(configurator.getCodeEditorContents()).not.toContain(
+    expect(await configurator.getCodeEditorContents()).not.toContain(
       'class="spacer"',
     );
   });
