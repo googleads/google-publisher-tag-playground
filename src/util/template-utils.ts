@@ -40,7 +40,7 @@ export function getSlotStyles(slot: SampleSlotConfig): string {
         : slot.size;
 
     for (const size of sizes) {
-      if (Array.isArray(size) && size[0] !== 'fluid') {
+      if (Array.isArray(size) && typeof size[0] === 'number') {
         if (minH >= size[1]) minH = size[1];
         if (minW >= size[0]) minW = size[0];
       }
