@@ -233,17 +233,24 @@ export const interstitialConfigNames: Record<
  * Maps `googletag.config.InterstitialTrigger` values to their friendly names.
  */
 export const interstitialTriggerNames: Record<
-  googletag.config.InterstitialTrigger,
-  () => string
-> = {
-  navBar: () =>
-    msg('Browser navigation', {
-      desc: 'The action of interacting with the browser navigation bar.',
-    }),
-  unhideWindow: () =>
-    msg('Unhide window', {
-      desc: 'The action of hiding and then returning to the page (for example, by switching tabs).',
-    }),
+    googletag.config.InterstitialTrigger, () => string> = {
+  navBar: () => msg('Browser navigation', {
+    desc: 'The action of interacting with the browser navigation bar.',
+  }),
+  unhideWindow: () => msg('Unhide window', {
+    desc:
+        'The action of hiding and then returning to the page (for example, by switching tabs).',
+  }),
+  inactivity: () => msg('Inactivity', {
+    desc:
+        'The action of the user being inactive for a period of time and then returning to the page.',
+  }),
+  backward: () => msg('Backward navigation', {
+    desc: 'The action of navigating backward in the browser history.',
+  }),
+  endOfArticle: () => msg('End of article', {
+    desc: 'The action of reaching the end of an article.',
+  }),
 };
 
 /**
