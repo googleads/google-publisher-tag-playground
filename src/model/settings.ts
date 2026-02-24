@@ -135,6 +135,7 @@ export const slotSettingsConfigNames: Record<
     msg('Collapse ad slot', {
       desc: 'Setting to control if/when a single ad slot should be collapsed (hidden).',
     }),
+  componentAuction: notSupported,
   interstitial: () =>
     msg('Interstitial triggers', {
       desc: 'User actions that can trigger an intersitial ad.',
