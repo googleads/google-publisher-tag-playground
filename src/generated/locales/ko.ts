@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ export const templates = {
   s3400fb34f1e245a9: '여러 크기의 광고',
   s352f8b213acc822a: str`${0}이(가) 로드되었습니다.`,
   s3870e706a2084c79: str`유효하지 않은 ${0} 키 값: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: '미리보기 열기',
   s3e0b42b56e05829d: '크기',
   s4089274c7ce7fb00: 'EU 사용자 동의',
@@ -66,6 +67,7 @@ export const templates = {
   s4839a6cee190597f: '지연 로드',
   s49b92d61c8e9e116: '올바른 URL을 지정하세요.',
   s4edecd7e589254c3: '광고 제외 라벨',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: '광고 슬롯 접기',
   s53a96edcf36221b2: '광고 슬롯 크기',
   s5bf3f3d517569ebd: '앵커 광고(하단)',
@@ -131,6 +133,7 @@ export const templates = {
   sefe480470a2c783c: '보상형 광고',
   sf0cab2483f66aa2e: '사용자설정',
   sf7886e272836b258: str`${0} 슬롯을 사용할 수 있습니다.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: '동의 연령 미만',
   sf93d227444bc5687: '페이지 설정',
   sfe2e9ccd10b35b4a: 'SafeFrame 강제 적용',

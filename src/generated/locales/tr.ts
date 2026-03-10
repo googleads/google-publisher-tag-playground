@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Çok boyutlu reklam',
   s352f8b213acc822a: str`${0} yüklendi.`,
   s3870e706a2084c79: str`${0} anahtarı için geçersiz değer: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Önizlemeyi aç',
   s3e0b42b56e05829d: 'Boyutlar',
   s4089274c7ce7fb00: 'AB kullanıcı izni',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: 'Geç yükleme',
   s49b92d61c8e9e116: 'Lütfen geçerli bir URL belirtin.',
   s4edecd7e589254c3: 'Reklam hariç tutma etiketleri',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Reklam alanlarını daralt',
   s53a96edcf36221b2: 'Reklam alanı boyutları',
   s5bf3f3d517569ebd: 'Sabit reklam (alt)',
@@ -133,6 +135,7 @@ export const templates = {
   sefe480470a2c783c: 'Ödüllü reklam',
   sf0cab2483f66aa2e: 'Özel',
   sf7886e272836b258: str`${0} alanı hazır.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'Reşit olmayanlar',
   sf93d227444bc5687: 'Sayfa ayarları',
   sfe2e9ccd10b35b4a: "SafeFrame'i zorunlu kıl",

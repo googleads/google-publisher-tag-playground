@@ -17,9 +17,9 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Yan reklam sütunu reklamı (sol)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Yan reklam sütunu reklamı (sağ)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Web geçiş reklamı</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">Alan ekle</msg>
     <msg desc="Button text" name="s68fe43baedc49318">Önizlemeyi yenile</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Önizlemeyi aç</msg>
-    <msg desc="Button text" name="s02c64e6a6306c0b0">Alan ekle</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Alanı kaldır</msg>
     <msg desc="Close button text." name="s5e8250fb85d64c23">Kapat</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Daha önce tanımlanmış tüm reklam alanlarını isteyip oluşturun.</msg>
@@ -97,17 +97,20 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Bağlantıyı tıklama</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Pencereyi göster</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Tarayıcıda gezinme</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">Reklam aralığı (görüntü alanı yüzdesi)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">Sayfa URL'si</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Geçiş reklamı tetikleyicileri</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="s9919a3c7a0754a26">Etiketler, 127 karakter veya daha kısa olmalıdır.</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">Geçersiz boyut: <ph name="0">${size}</ph></msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Yinelenen anahtar: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">Geçersiz anahtar: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79"><ph name="0">${key}</ph> anahtarı için geçersiz değer: <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">Anahtar için değer yok: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Geçersiz boyut: <ph name="0">${size}</ph></msg>
     <msg desc="Validation error." name="s49b92d61c8e9e116">Lütfen geçerli bir URL belirtin.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Lütfen geçerli bir reklam birimi yolu belirtin.</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Yerel depolama alanı iznini zorunlu kıl</msg>

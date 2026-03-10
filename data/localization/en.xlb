@@ -17,9 +17,9 @@
     <msg name="s09c694b6602d365d" desc="An out-of-page ad format">Side rail ad (left)</msg>
     <msg name="sccb7f7246c10ecb6" desc="An out-of-page ad format">Side rail ad (right)</msg>
     <msg name="secff207571282402" desc="An out-of-page ad format">Web interstitial ad</msg>
+    <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
     <msg name="s68fe43baedc49318" desc="Button text">Refresh preview</msg>
     <msg name="s3be169991df10a5d" desc="Button text">Open preview</msg>
-    <msg name="s02c64e6a6306c0b0" desc="Button text">Add slot</msg>
     <msg name="s8a2c4a3aa651b7fb" desc="Button title">Remove slot</msg>
     <msg name="s5e8250fb85d64c23" desc="Close button text.">Close</msg>
     <msg name="sd3926a53f7b06107" desc="Code comment preceding a call to googletag.display() or googletag.refresh().">// Request and render all previously defined ad slots.</msg>
@@ -97,17 +97,20 @@
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">Link click</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Unhide window</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">Browser navigation</msg>
+    <msg name="s51791dbd45e9686e" desc="The action of navigating backward in the browser history.">Backward navigation</msg>
+    <msg name="sf82ca28be9ba0f11" desc="The action of reaching the end of an article.">End of article</msg>
+    <msg name="s3aa2bb1183ed9183" desc="The action of the user being inactive for a period of time and then returning to the page.">Inactivity</msg>
     <msg name="sa6e68f4d7e8574ed" desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport.">Ad spacing (% viewport)</msg>
     <msg name="s1c67a1fa4d07bd8b" desc="The page URL to associate with ad requests.">Page URL</msg>
     <msg name="s9dc1289fa45bd694" desc="User actions that can trigger an intersitial ad.">Interstitial triggers</msg>
     <msg name="s2a071e5a3e79454a" desc="Valid format for user key-value input">Key=Value1,Value2,...</msg>
     <msg name="s8e732383cac5c9fd" desc="Valid formats for user size input">100x100,fluid,...</msg>
     <msg name="s9919a3c7a0754a26" desc="Validation error">Labels must be 127 characters or less</msg>
+    <msg name="sb4a18873f72e8f57" desc="Validation error">Invalid size: <ph name="0">${size}</ph></msg>
     <msg name="sa9c78a7a0167358f" desc="Validation error">Duplicate key: <ph name="0">${key}</ph></msg>
     <msg name="sb4fb36c094a78d99" desc="Validation error">Invalid key: <ph name="0">${key}</ph></msg>
     <msg name="s3870e706a2084c79" desc="Validation error">Invalid value for key <ph name="0">${key}</ph>: <ph name="1">${value}</ph></msg>
     <msg name="sd4801ff24e6e00e1" desc="Validation error">No value for key: <ph name="0">${key}</ph></msg>
-    <msg name="sb4a18873f72e8f57" desc="Validation error">Invalid size: <ph name="0">${size}</ph></msg>
     <msg name="s49b92d61c8e9e116" desc="Validation error.">Please specify a valid URL.</msg>
     <msg name="sab590a46db406ca7" desc="Validation error.">Please specify a valid ad unit path.</msg>
     <msg name="s85ed67972e8ca8a4" desc="Whether user consent is required to access local storage.">Require local storage consent</msg>

@@ -17,9 +17,9 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">사이드 레일 광고(왼쪽)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">사이드 레일 광고(오른쪽)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">웹 전면 광고</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">슬롯 추가</msg>
     <msg desc="Button text" name="s68fe43baedc49318">미리보기 새로고침</msg>
     <msg desc="Button text" name="s3be169991df10a5d">미리보기 열기</msg>
-    <msg desc="Button text" name="s02c64e6a6306c0b0">슬롯 추가</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">슬롯 삭제</msg>
     <msg desc="Close button text." name="s5e8250fb85d64c23">닫기</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 이전에 정의된 모든 광고 슬롯을 요청하고 렌더링합니다.</msg>
@@ -97,17 +97,20 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">링크 클릭</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">창 숨기기 해제</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">브라우저 탐색</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">광고 간격(표시 영역 비율)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">페이지 URL</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">전면 광고 트리거</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Key=Value1,Value2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="s9919a3c7a0754a26">라벨은 127자 이하여야 합니다(영문 기준).</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">잘못된 크기: <ph name="0">${size}</ph></msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">중복 키: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">잘못된 키: <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">유효하지 않은 <ph name="0">${key}</ph> 키 값: <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">키 값이 없음: <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">잘못된 크기: <ph name="0">${size}</ph></msg>
     <msg desc="Validation error." name="s49b92d61c8e9e116">올바른 URL을 지정하세요.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">유효한 광고 단위 경로를 지정하세요.</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">로컬 저장소 동의 필요</msg>

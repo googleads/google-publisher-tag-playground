@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: '‏‮Multi‬‏-‏‮size‬‏ ‏‮ad‬‏',
   s352f8b213acc822a: str`${0} ‏‮is‬‏ ‏‮loaded‬‏.`,
   s3870e706a2084c79: str`‏‮Invalid‬‏ ‏‮value‬‏ ‏‮for‬‏ ‏‮key‬‏ ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: '‏‮Open‬‏ ‏‮preview‬‏',
   s3e0b42b56e05829d: '‏‮Sizes‬‏',
   s4089274c7ce7fb00: '‏‮EU‬‏ ‏‮user‬‏ ‏‮consent‬‏',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: '‏‮Lazy‬‏ ‏‮loading‬‏',
   s49b92d61c8e9e116: '‏‮Please‬‏ ‏‮specify‬‏ ‏‮a‬‏ ‏‮valid‬‏ ‏‮URL‬‏.',
   s4edecd7e589254c3: '‏‮Ad‬‏ ‏‮exclusion‬‏ ‏‮labels‬‏',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: '‏‮Collapse‬‏ ‏‮ad‬‏ ‏‮slots‬‏',
   s53a96edcf36221b2: '‏‮Ad‬‏ ‏‮slot‬‏ ‏‮sizes‬‏',
   s5bf3f3d517569ebd: '‏‮Anchor‬‏ ‏‮ad‬‏ (‏‮bottom‬‏)',
@@ -141,6 +143,7 @@ export const templates = {
   sefe480470a2c783c: '‏‮Rewarded‬‏ ‏‮ad‬‏',
   sf0cab2483f66aa2e: '‏‮Custom‬‏',
   sf7886e272836b258: str`${0} ‏‮slot‬‏ ‏‮is‬‏ ‏‮ready‬‏.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: '‏‮Under‬‏ ‏‮the‬‏ ‏‮age‬‏ ‏‮of‬‏ ‏‮consent‬‏',
   sf93d227444bc5687: '‏‮Page‬‏ ‏‮settings‬‏',
   sfe2e9ccd10b35b4a: '‏‮Force‬‏ ‏‮SafeFrame‬‏',

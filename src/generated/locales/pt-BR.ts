@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Anúncio de vários tamanhos',
   s352f8b213acc822a: str`${0} foi carregado.`,
   s3870e706a2084c79: str`Valor inválido para a chave ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Abrir a visualização',
   s3e0b42b56e05829d: 'Tamanhos',
   s4089274c7ce7fb00: 'Consentimento dos usuários da UE',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: 'Carregamento lento',
   s49b92d61c8e9e116: 'Especifique um URL válido.',
   s4edecd7e589254c3: 'Rótulos de exclusão de anúncio',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Fechar espaços do anúncio',
   s53a96edcf36221b2: 'Tamanhos de espaços de anúncio',
   s5bf3f3d517569ebd: 'Anúncio âncora (parte de baixo)',
@@ -138,6 +140,7 @@ export const templates = {
   sefe480470a2c783c: 'Anúncio premiado',
   sf0cab2483f66aa2e: 'Personalizado',
   sf7886e272836b258: str`O espaço ${0} está pronto.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'Abaixo da idade de consentimento',
   sf93d227444bc5687: 'Configurações da página',
   sfe2e9ccd10b35b4a: 'Forçar SafeFrame',

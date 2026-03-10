@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,6 +54,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Annuncio con più dimensioni',
   s352f8b213acc822a: str`${0} è stata caricata.`,
   s3870e706a2084c79: str`Valore non valido per la chiave ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Apri anteprima',
   s3e0b42b56e05829d: 'Dimensioni',
   s4089274c7ce7fb00: "Consenso degli utenti dell'UE",
@@ -68,6 +69,7 @@ export const templates = {
   s4839a6cee190597f: 'Caricamento lento',
   s49b92d61c8e9e116: 'Specifica un URL valido.',
   s4edecd7e589254c3: 'Etichette di esclusione degli annunci',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Comprimi aree annunci',
   s53a96edcf36221b2: 'Dimensioni aree annunci',
   s5bf3f3d517569ebd: 'Annuncio ancorato (in basso)',
@@ -139,6 +141,7 @@ export const templates = {
   sefe480470a2c783c: 'Annuncio con premio',
   sf0cab2483f66aa2e: 'Personalizzato',
   sf7886e272836b258: str`L'area ${0} è pronta.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: "Sotto l'età del consenso digitale",
   sf93d227444bc5687: 'Impostazioni della pagina',
   sfe2e9ccd10b35b4a: 'Forza SafeFrame',

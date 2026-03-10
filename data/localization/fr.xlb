@@ -17,9 +17,9 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">Annonce side rail (gauche)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">Annonce side rail (droite)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">Annonce interstitielle pour le Web</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">Ajouter un espace</msg>
     <msg desc="Button text" name="s68fe43baedc49318">Actualiser l'aperçu</msg>
     <msg desc="Button text" name="s3be169991df10a5d">Ouvrir l'aperçu</msg>
-    <msg desc="Button text" name="s02c64e6a6306c0b0">Ajouter un espace</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">Supprimer l'espace</msg>
     <msg desc="Close button text." name="s5e8250fb85d64c23">Fermer</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// Demander et afficher tous les espaces publicitaires définis précédemment.</msg>
@@ -97,17 +97,20 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Clic sur un lien</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Afficher la fenêtre</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Navigation via navigateur</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">Espacement des annonces (% de la fenêtre d'affichage)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">URL de la page</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Déclencheurs d'interstitiels</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">Clé=Valeur1,Valeur2,…</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,…</msg>
     <msg desc="Validation error" name="s9919a3c7a0754a26">Les libellés ne doivent pas comporter plus de 127 caractères</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">Taille non valide : <ph name="0">${size}</ph></msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">Clé en double : <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">Clé non valide : <ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">Valeur non valide pour la clé <ph name="0">${key}</ph> : <ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">Aucune valeur pour la clé : <ph name="0">${key}</ph></msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">Taille non valide : <ph name="0">${size}</ph></msg>
     <msg desc="Validation error." name="s49b92d61c8e9e116">Veuillez saisir une URL valide.</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">Veuillez spécifier un chemin d'accès valide pour le bloc d'annonces.</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">Exiger l'autorisation de stockage local</msg>

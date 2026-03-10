@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ export const templates = {
   s3400fb34f1e245a9: '多尺寸广告',
   s352f8b213acc822a: str`${0}已加载完毕。`,
   s3870e706a2084c79: str`键“${0}”的值无效：${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: '打开预览页面',
   s3e0b42b56e05829d: '尺寸',
   s4089274c7ce7fb00: '欧盟地区用户意见征求',
@@ -66,6 +67,7 @@ export const templates = {
   s4839a6cee190597f: '延迟加载',
   s49b92d61c8e9e116: '请指定一个有效的网址。',
   s4edecd7e589254c3: '广告排除标签',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: '折叠广告位',
   s53a96edcf36221b2: '广告位尺寸',
   s5bf3f3d517569ebd: '锚定广告（底部）',
@@ -131,6 +133,7 @@ export const templates = {
   sefe480470a2c783c: '激励广告',
   sf0cab2483f66aa2e: '自定义',
   sf7886e272836b258: str`“${0}”广告位已准备就绪。`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: '未达到同意年龄',
   sf93d227444bc5687: '网页设置',
   sfe2e9ccd10b35b4a: '强制使用 SafeFrame',

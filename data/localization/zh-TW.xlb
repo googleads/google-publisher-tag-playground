@@ -17,9 +17,9 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">側邊欄廣告 (左)</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">側邊欄廣告 (右)</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">網站插頁式廣告</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">新增版位</msg>
     <msg desc="Button text" name="s68fe43baedc49318">重新整理預覽畫面</msg>
     <msg desc="Button text" name="s3be169991df10a5d">開啟預覽</msg>
-    <msg desc="Button text" name="s02c64e6a6306c0b0">新增版位</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除版位</msg>
     <msg desc="Close button text." name="s5e8250fb85d64c23">關閉</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 請求及顯示先前定義的所有廣告版位。</msg>
@@ -97,17 +97,20 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">連結點擊</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">取消隱藏視窗</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">瀏覽器導覽</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">廣告間距 (可視區域百分比)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">網頁網址</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">插頁式廣告觸發條件</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">鍵=值1,值2,...</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,fluid,...</msg>
     <msg desc="Validation error" name="s9919a3c7a0754a26">標籤不得超過 127 個半形字元</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">無效的大小：<ph name="0">${size}</ph></msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">重複的鍵：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">無效的鍵：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">鍵「<ph name="0">${key}</ph>」的值無效：<ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">鍵「<ph name="0">${key}</ph>」沒有值</msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">無效的大小：<ph name="0">${size}</ph></msg>
     <msg desc="Validation error." name="s49b92d61c8e9e116">請指定有效的網址。</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">請指定有效的廣告單元路徑。</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">必須取得本機儲存空間的存取權</msg>

@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Reklama w kilku rozmiarach',
   s352f8b213acc822a: str`Boks ${0} został wczytany.`,
   s3870e706a2084c79: str`Nieprawidłowa wartość klucza ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Otwórz podgląd',
   s3e0b42b56e05829d: 'Rozmiary',
   s4089274c7ce7fb00: 'Zgoda użytkowników z UE',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: 'Leniwe ładowanie',
   s49b92d61c8e9e116: 'Podaj prawidłowy URL.',
   s4edecd7e589254c3: 'Etykiety wykluczenia reklam',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Zwiń boksy reklamowe',
   s53a96edcf36221b2: 'Rozmiary boksów reklamowych',
   s5bf3f3d517569ebd: 'Reklama zakotwiczona (u dołu)',
@@ -139,6 +141,7 @@ export const templates = {
   sefe480470a2c783c: 'Reklama z nagrodą',
   sf0cab2483f66aa2e: 'Niestandardowe',
   sf7886e272836b258: str`Boks ${0} jest gotowy.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'Poniżej wieku świadomego wyrażenia zgody',
   sf93d227444bc5687: 'Ustawienia strony',
   sfe2e9ccd10b35b4a: 'Wymuś SafeFrame',

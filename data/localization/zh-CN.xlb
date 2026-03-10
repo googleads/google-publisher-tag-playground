@@ -17,9 +17,9 @@
     <msg desc="An out-of-page ad format" name="s09c694b6602d365d">侧边栏广告（左侧）</msg>
     <msg desc="An out-of-page ad format" name="sccb7f7246c10ecb6">侧边栏广告（右侧）</msg>
     <msg desc="An out-of-page ad format" name="secff207571282402">网站插页式广告</msg>
+    <msg desc="Button text" name="s02c64e6a6306c0b0">添加广告位</msg>
     <msg desc="Button text" name="s68fe43baedc49318">刷新预览</msg>
     <msg desc="Button text" name="s3be169991df10a5d">打开预览页面</msg>
-    <msg desc="Button text" name="s02c64e6a6306c0b0">添加广告位</msg>
     <msg desc="Button title" name="s8a2c4a3aa651b7fb">移除广告位</msg>
     <msg desc="Close button text." name="s5e8250fb85d64c23">关闭</msg>
     <msg desc="Code comment preceding a call to googletag.display() or googletag.refresh()." name="sd3926a53f7b06107">// 请求并呈现所有之前定义的广告位。</msg>
@@ -97,17 +97,20 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">点击链接</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">取消隐藏窗口</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">浏览器导航</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">广告间距（占视口的百分比）</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">网页网址</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">插页式广告触发器</msg>
     <msg desc="Valid format for user key-value input" name="s2a071e5a3e79454a">键=值1,值2,…</msg>
     <msg desc="Valid formats for user size input" name="s8e732383cac5c9fd">100x100,自适应,…</msg>
     <msg desc="Validation error" name="s9919a3c7a0754a26">标签长度不得超过 127 个字符</msg>
+    <msg desc="Validation error" name="sb4a18873f72e8f57">无效的尺寸：<ph name="0">${size}</ph></msg>
     <msg desc="Validation error" name="sa9c78a7a0167358f">重复的键：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="sb4fb36c094a78d99">无效的键：<ph name="0">${key}</ph></msg>
     <msg desc="Validation error" name="s3870e706a2084c79">键“<ph name="0">${key}</ph>”的值无效：<ph name="1">${value}</ph></msg>
     <msg desc="Validation error" name="sd4801ff24e6e00e1">键“<ph name="0">${key}</ph>”没有值</msg>
-    <msg desc="Validation error" name="sb4a18873f72e8f57">无效的尺寸：<ph name="0">${size}</ph></msg>
     <msg desc="Validation error." name="s49b92d61c8e9e116">请指定一个有效的网址。</msg>
     <msg desc="Validation error." name="sab590a46db406ca7">请指定一个有效的广告单元路径。</msg>
     <msg desc="Whether user consent is required to access local storage." name="s85ed67972e8ca8a4">需要征得用户同意才能使用本地存储空间</msg>

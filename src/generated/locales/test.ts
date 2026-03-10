@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'M̂́ûl̂́t̂î́-ŝ́îẑ́ê ấd̂',
   s352f8b213acc822a: str`${0} î́ŝ l̂́ôấd̂ếd̂.`,
   s3870e706a2084c79: str`Î́n̂v̂́âl̂́îd̂́ v̂́âl̂́ûế f̂́ôr̂́ k̂́êŷ́ ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Î́n̂ấĉt̂́îv̂́ît̂́ŷ',
   s3be169991df10a5d: 'Ốp̂ến̂ p̂́r̂ếv̂î́êŵ́',
   s3e0b42b56e05829d: 'Ŝ́îẑ́êŝ́',
   s4089274c7ce7fb00: 'ẾÛ û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: 'L̂́âẑ́ŷ l̂́ôấd̂î́n̂ĝ́',
   s49b92d61c8e9e116: 'P̂́l̂ếâŝ́ê ŝ́p̂ếĉî́f̂ŷ́ ấ v̂́âl̂́îd̂́ Û́R̂L̂́.',
   s4edecd7e589254c3: 'Ấd̂ ếx̂ĉ́l̂û́ŝî́ôn̂́ l̂́âb̂́êl̂́ŝ',
+  s51791dbd45e9686e: 'B̂́âĉ́k̂ŵ́âr̂́d̂ n̂́âv̂́îĝ́ât̂́îốn̂',
   s51e4d68633a473de: 'Ĉ́ôl̂́l̂ấp̂ŝ́ê ấd̂ ŝ́l̂ốt̂ŝ́',
   s53a96edcf36221b2: 'Ấd̂ ŝ́l̂ốt̂ ŝ́îẑ́êŝ́',
   s5bf3f3d517569ebd: 'Ấn̂ĉ́ĥốr̂ ấd̂ (b̂́ôt̂́t̂ốm̂)',
@@ -133,6 +135,7 @@ export const templates = {
   sefe480470a2c783c: 'R̂́êŵ́âr̂́d̂ếd̂ ấd̂',
   sf0cab2483f66aa2e: 'Ĉ́ûŝ́t̂ốm̂',
   sf7886e272836b258: str`${0} ŝ́l̂ốt̂ î́ŝ r̂́êấd̂ŷ́.`,
+  sf82ca28be9ba0f11: 'Ến̂d̂́ ốf̂ ấr̂t̂́îĉ́l̂ế',
   sf915707accde585c: 'Û́n̂d̂́êr̂́ t̂́ĥế ấĝế ốf̂ ĉ́ôn̂́ŝến̂t̂́',
   sf93d227444bc5687: 'P̂́âĝ́ê ŝ́êt̂́t̂î́n̂ĝ́ŝ',
   sfe2e9ccd10b35b4a: 'F̂́ôr̂́ĉế Ŝ́âf̂́êF̂́r̂ấm̂ế',

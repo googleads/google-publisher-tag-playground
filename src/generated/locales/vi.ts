@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Quảng cáo có nhiều kích thước',
   s352f8b213acc822a: str`Đã tải ${0}.`,
   s3870e706a2084c79: str`Giá trị không hợp lệ cho khoá ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Mở bản xem trước',
   s3e0b42b56e05829d: 'Kích thước',
   s4089274c7ce7fb00: 'Sự đồng ý của người dùng ở Liên minh Châu Âu',
@@ -66,6 +67,7 @@ export const templates = {
   s4839a6cee190597f: 'Tải từng phần',
   s49b92d61c8e9e116: 'Vui lòng chỉ định một URL hợp lệ.',
   s4edecd7e589254c3: 'Nhãn loại trừ quảng cáo',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Thu gọn các vị trí quảng cáo',
   s53a96edcf36221b2: 'Kích thước vị trí quảng cáo',
   s5bf3f3d517569ebd: 'Quảng cáo cố định (dưới cùng)',
@@ -134,6 +136,7 @@ export const templates = {
   sefe480470a2c783c: 'Quảng cáo có tặng thưởng',
   sf0cab2483f66aa2e: 'Tuỳ chỉnh',
   sf7886e272836b258: str`Vị trí ${0} đã sẵn sàng.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'Dưới độ tuổi hợp pháp để tự quản lý tài khoản',
   sf93d227444bc5687: 'Cài đặt trang',
   sfe2e9ccd10b35b4a: 'Buộc sử dụng SafeFrame',

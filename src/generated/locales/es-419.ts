@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'Anuncio de varios tamaños',
   s352f8b213acc822a: str`Se cargó ${0}.`,
   s3870e706a2084c79: str`El valor de la clave ${0} no es válido: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'Abrir vista previa',
   s3e0b42b56e05829d: 'Tamaños',
   s4089274c7ce7fb00: 'Consentimiento de usuarios de la UE',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: 'Carga diferida',
   s49b92d61c8e9e116: 'Especifica una URL válida.',
   s4edecd7e589254c3: 'Etiquetas de exclusión de anuncios',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'Contraer espacios publicitarios',
   s53a96edcf36221b2: 'Tamaños de espacio publicitario',
   s5bf3f3d517569ebd: 'Anuncio fijo (inferior)',
@@ -141,6 +143,7 @@ export const templates = {
   sefe480470a2c783c: 'Anuncio recompensado',
   sf0cab2483f66aa2e: 'Personalizado',
   sf7886e272836b258: str`El espacio ${0} está listo.`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'No alcanza la edad de consentimiento',
   sf93d227444bc5687: 'Configuración de la página',
   sfe2e9ccd10b35b4a: 'Forzar SafeFrame',

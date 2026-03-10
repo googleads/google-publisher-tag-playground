@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ export const templates = {
   s3400fb34f1e245a9: '多重大小廣告',
   s352f8b213acc822a: str`已載入${0}。`,
   s3870e706a2084c79: str`鍵「${0}」的值無效：${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: '開啟預覽',
   s3e0b42b56e05829d: '大小',
   s4089274c7ce7fb00: '歐盟使用者同意聲明',
@@ -66,6 +67,7 @@ export const templates = {
   s4839a6cee190597f: '延遲載入',
   s49b92d61c8e9e116: '請指定有效的網址。',
   s4edecd7e589254c3: '廣告排除標籤',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: '收合廣告版位',
   s53a96edcf36221b2: '廣告版位大小',
   s5bf3f3d517569ebd: '錨定廣告 (底部)',
@@ -131,6 +133,7 @@ export const templates = {
   sefe480470a2c783c: '獎勵廣告',
   sf0cab2483f66aa2e: '自訂',
   sf7886e272836b258: str`「${0}」版位已準備就緒。`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: '未滿規定年齡',
   sf93d227444bc5687: '網頁設定',
   sfe2e9ccd10b35b4a: '強制使用 SafeFrame',

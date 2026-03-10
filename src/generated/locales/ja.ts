@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -53,6 +53,7 @@ export const templates = {
   s3400fb34f1e245a9: 'マルチサイズ広告',
   s352f8b213acc822a: str`${0} を読み込みました。`,
   s3870e706a2084c79: str`キー ${0} の値が無効です: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'プレビューを開く',
   s3e0b42b56e05829d: 'サイズ',
   s4089274c7ce7fb00: 'EU ユーザーの同意',
@@ -67,6 +68,7 @@ export const templates = {
   s4839a6cee190597f: '遅延読み込み',
   s49b92d61c8e9e116: '有効な URL を指定してください。',
   s4edecd7e589254c3: '広告の除外ラベル',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: '広告スロットを閉じる',
   s53a96edcf36221b2: '広告スロットのサイズ',
   s5bf3f3d517569ebd: 'アンカー広告（下部）',
@@ -134,6 +136,7 @@ export const templates = {
   sefe480470a2c783c: 'リワード広告',
   sf0cab2483f66aa2e: 'カスタム',
   sf7886e272836b258: str`${0} スロットの準備ができました。`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: '同意年齢未満',
   sf93d227444bc5687: 'ページ設定',
   sfe2e9ccd10b35b4a: 'SafeFrame を強制的に適用',

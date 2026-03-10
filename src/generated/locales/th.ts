@@ -1,5 +1,5 @@
 /**
- * Copyright 2025 Google LLC
+ * Copyright 2026 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,6 +52,7 @@ export const templates = {
   s3400fb34f1e245a9: 'โฆษณาหลายขนาด',
   s352f8b213acc822a: str`โหลด${0} แล้ว`,
   s3870e706a2084c79: str`ค่าไม่ถูกต้องสำหรับคีย์ ${0}: ${1}`,
+  s3aa2bb1183ed9183: 'Inactivity',
   s3be169991df10a5d: 'เปิดตัวอย่าง',
   s3e0b42b56e05829d: 'ขนาด',
   s4089274c7ce7fb00: 'ความยินยอมของผู้ใช้ EU',
@@ -66,6 +67,7 @@ export const templates = {
   s4839a6cee190597f: 'การโหลดเมื่อจำเป็น',
   s49b92d61c8e9e116: 'โปรดระบุ URL ที่ถูกต้อง',
   s4edecd7e589254c3: 'ป้ายกำกับการยกเว้นโฆษณา',
+  s51791dbd45e9686e: 'Backward navigation',
   s51e4d68633a473de: 'ยุบช่องโฆษณา',
   s53a96edcf36221b2: 'ขนาดช่องโฆษณา',
   s5bf3f3d517569ebd: 'โฆษณา Anchor (ด้านล่าง)',
@@ -132,6 +134,7 @@ export const templates = {
   sefe480470a2c783c: 'โฆษณาที่มีการให้รางวัล',
   sf0cab2483f66aa2e: 'กำหนดเอง',
   sf7886e272836b258: str`ช่อง ${0} พร้อมใช้งานแล้ว`,
+  sf82ca28be9ba0f11: 'End of article',
   sf915707accde585c: 'มีอายุต่ำกว่าเกณฑ์ที่ให้ความยินยอมได้',
   sf93d227444bc5687: 'การตั้งค่าหน้าเว็บ',
   sfe2e9ccd10b35b4a: 'บังคับใช้ SafeFrame',
