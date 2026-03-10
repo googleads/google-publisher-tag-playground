@@ -26,14 +26,14 @@ export default defineConfig({
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source. */
   forbidOnly: !!process.env.CI,
-  /* Retry on CI only */
-  retries: process.env.CI ? 4 : 0,
+  /* Allow retries to reduce flakiness. */
+  retries: 4,
   /* Use 100% of the available CPU cores in CI environments. */
   workers: process.env.CI ? '100%' : undefined,
   /* Stop running tests after the first failure in CI environments. */
   maxFailures: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: 'blob',
 
   /* Shared settings for all the projects below. See
      https://playwright.dev/docs/api/class-testoptions. */
@@ -72,6 +72,7 @@ export default defineConfig({
         ...devices['Desktop Firefox'],
         viewport: {width: 1920, height: 1080},
       },
+      workers: 4,  // Limit workers to avoid flakiness.
     },
 
     {
@@ -80,6 +81,7 @@ export default defineConfig({
         ...devices['Desktop Safari'],
         viewport: {width: 1920, height: 1080},
       },
+      workers: 4,  // Limit workers to avoid flakiness.
     },
   ],
 
