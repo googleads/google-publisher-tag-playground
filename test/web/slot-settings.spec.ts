@@ -647,6 +647,21 @@ test.describe('Interstitial settings', () => {
       expectedText: 'unhideWindow',
       setting: {triggers: {unhideWindow: true}},
     },
+    {
+      label: interstitialTriggerNames.backward(),
+      expectedText: 'backward',
+      setting: {triggers: {backward: true}},
+    },
+    {
+      label: interstitialTriggerNames.endOfArticle(),
+      expectedText: 'endOfArticle',
+      setting: {triggers: {endOfArticle: true}},
+    },
+    {
+      label: interstitialTriggerNames.inactivity(),
+      expectedText: 'inactivity',
+      setting: {triggers: {inactivity: true}},
+    },
   ];
 
   const interstitialSlotConfig: SampleSlotConfig = {

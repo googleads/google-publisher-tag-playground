@@ -92,6 +92,9 @@ export function slotConfig(config: googletag.config.SlotSettingsConfig) {
     interstitial: {
       requireStorageAccess: config.interstitial?.requireStorageAccess,
       triggers: {
+        backward: config.interstitial?.triggers?.backward,
+        endOfArticle: config.interstitial?.triggers?.endOfArticle,
+        inactivity: config.interstitial?.triggers?.inactivity,
         navBar: config.interstitial?.triggers?.navBar,
         unhideWindow: config.interstitial?.triggers?.unhideWindow,
       },
