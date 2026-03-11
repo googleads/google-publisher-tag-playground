@@ -95,7 +95,7 @@ jobs:
         cp blob-report/* all-blob-reports/
     - name: Merge Playwright reports
       run: |
-        if [[ -d all-blob-reports ]]; then
+        if [ -d all-blob-reports ]; then
           cp blob-report/* all-blob-reports/
           npx playwright merge-reports --reporter html ./all-blob-reports
         fi
