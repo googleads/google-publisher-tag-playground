@@ -79,13 +79,13 @@ jobs:
       env:
           HOME: /root
       run: |
-        npm run test:playwright -- --project=firefox --grep-invert=@screenshot
+        npm run test:playwright -- --project=firefox --grep-invert=@screenshot --workers='50%'
         cp blob-report/* all-blob-reports/
     - name: Run Playwright tests (Safari)
       env:
           HOME: /root
       run: |
-        npm run test:playwright -- --project=webkit --grep-invert=@screenshot
+        npm run test:playwright -- --project=webkit --grep-invert=@screenshot --workers='50%'
         cp blob-report/* all-blob-reports/
     - name: Run Playwright tests (Screenshot)
       env:
