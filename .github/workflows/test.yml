@@ -65,10 +65,40 @@ jobs:
       run: npx -y tsx scripts/gen-samples.ts        
     - name: Run Node tests
       run: npm run test
-    - name: Run Playwright tests
+    - name: Setup Playwright report dirs
+      run: |
+        mkdir -p all-blob-reports
+        mkdir -p blob-report
+    - name: Run Playwright tests (Chrome)
       env:
           HOME: /root
-      run: npm run test:playwright
+      run: |
+        npm run test:playwright -- --project=chromium --grep-invert=@screenshot
+        cp blob-report/* all-blob-reports/
+    - name: Run Playwright tests (Firefox)
+      env:
+          HOME: /root
+      run: |
+        npm run test:playwright -- --project=firefox --grep-invert=@screenshot
+        cp blob-report/* all-blob-reports/
+    - name: Run Playwright tests (Safari)
+      env:
+          HOME: /root
+      run: |
+        npm run test:playwright -- --project=webkit --grep-invert=@screenshot
+        cp blob-report/* all-blob-reports/
+    - name: Run Playwright tests (Screenshot)
+      env:
+          HOME: /root
+      run: |
+        npm run test:playwright -- --grep=@screenshot
+        cp blob-report/* all-blob-reports/
+    - name: Merge Playwright reports
+      run: |
+        if [[ -d all-blob-reports ]]; then
+          cp blob-report/* all-blob-reports/
+          npx playwright merge-reports --reporter html ./all-blob-reports
+        fi
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
