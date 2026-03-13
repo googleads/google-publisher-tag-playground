@@ -91,6 +91,7 @@ export const pageSettingsConfigNames: Record<
   adsenseAttributes: pageConfigNames.adsense,
   adExpansion: notSupported,
   adYield: notSupported,
+  autoRefresh: notSupported,
   categoryExclusion: () =>
     msg('Ad exclusion labels', {
       desc: 'Section containing ad exclusion labels.',

@@ -97,9 +97,9 @@
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Bağlantıyı tıklama</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Pencereyi göster</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Tarayıcıda gezinme</msg>
-    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Backward navigation</msg>
-    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">End of article</msg>
-    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Inactivity</msg>
+    <msg desc="The action of navigating backward in the browser history." name="s51791dbd45e9686e">Geriye doğru gezinme</msg>
+    <msg desc="The action of reaching the end of an article." name="sf82ca28be9ba0f11">Makalenin sonu</msg>
+    <msg desc="The action of the user being inactive for a period of time and then returning to the page." name="s3aa2bb1183ed9183">Etkinlik yok</msg>
     <msg desc="The minimum amount of space to leave between ads, expressed as a percentage of the viewport." name="sa6e68f4d7e8574ed">Reklam aralığı (görüntü alanı yüzdesi)</msg>
     <msg desc="The page URL to associate with ad requests." name="s1c67a1fa4d07bd8b">Sayfa URL'si</msg>
     <msg desc="User actions that can trigger an intersitial ad." name="s9dc1289fa45bd694">Geçiş reklamı tetikleyicileri</msg>
