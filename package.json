@@ -42,7 +42,7 @@
     "@types/node": "^20.19.37",
     "@web/dev-server": "^0.3.7",
     "@web/rollup-plugin-import-meta-assets": "^2.3.3",
-    "@xmldom/xmldom": "^0.9.8",
+    "@xmldom/xmldom": "^0.9.9",
     "glob": "^12.0.0",
     "gts": "^6.0.2",
     "jasmine": "^5.13.0",
