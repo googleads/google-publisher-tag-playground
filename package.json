@@ -24,7 +24,7 @@
     "@lit/localize": "^0.12.2",
     "@material/web": "^2.4.1",
     "lit": "^3.3.2",
-    "lodash-es": "^4.17.23",
+    "lodash-es": "^4.18.1",
     "playground-elements": "^0.18.1",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
