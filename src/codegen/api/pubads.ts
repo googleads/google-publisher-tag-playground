@@ -33,6 +33,8 @@ const api = {
     ltd: (enabled: boolean) => `limitedAds: ${sanitizeJs(enabled)}`,
     npa: (enabled: boolean) => `nonPersonalizedAds: ${sanitizeJs(enabled)}`,
     rdp: (enabled: boolean) => `restrictDataProcessing: ${sanitizeJs(enabled)}`,
+    tfat: (treatment: keyof typeof googletag.enums.TagForAgeTreatment) =>
+      `tagForAgeTreatment: googletag.enums.TagForAgeTreatment.${treatment}`,
     tfcd: (enabled: boolean) =>
       `childDirectedTreatment: ${sanitizeJs(enabled)}`,
     tfua: (enabled: boolean) => `underAgeOfConsent: ${sanitizeJs(enabled)}`,
@@ -78,6 +80,9 @@ export function setPrivacySettings(privacy: SamplePrivacyConfig) {
   }
   if (privacy?.rdp) {
     privacySettings.push(api.privacySetting.rdp(true));
+  }
+  if (privacy?.tfat !== undefined && privacy.tfat !== 'UNSPECIFIED') {
+    privacySettings.push(api.privacySetting.tfat(privacy.tfat));
   }
   if (privacy?.tfua) {
     privacySettings.push(api.privacySetting.tfua(true));

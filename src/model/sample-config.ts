@@ -53,6 +53,7 @@ export interface SamplePrivacyConfig {
   ltd?: boolean;
   npa?: boolean;
   rdp?: boolean;
+  tfat?: keyof typeof googletag.enums.TagForAgeTreatment;
   tfcd?: boolean;
   tfua?: boolean;
 }

@@ -57,6 +57,7 @@
     <msg name="s267a52c34c200ef0" desc="Page-level setting label">Ŝ́în̂́ĝl̂́ê R̂́êq̂́ûếŝt̂́ Ấr̂ĉ́ĥî́t̂ếĉt̂́ûr̂́ê (Ŝ́R̂Ấ)</msg>
     <msg name="s00f485d30c4d7069" desc="Prevents GPT from requesting ads when calling display().">D̂́îŝ́âb̂́l̂ế î́n̂î́t̂î́âl̂́ l̂́ôấd̂</msg>
     <msg name="s417b90913e05bc17" desc="Preview toolbar label">P̂́r̂ếv̂î́êŵ́</msg>
+    <msg name="s3e745f11d41db048" desc="Privacy setting label">Ấĝế t̂́r̂ếât̂́m̂ến̂t̂́</msg>
     <msg name="s3132d1a0580760bc" desc="Privacy setting label">Ĉ́ĥî́l̂d̂́-d̂́îr̂́êĉ́t̂ếd̂ t̂́r̂ếât̂́m̂ến̂t̂́</msg>
     <msg name="sd5ac53cfd233dbcb" desc="Privacy setting label">L̂́îm̂́ît̂́êd̂́ ấd̂ŝ́</msg>
     <msg name="s0eb106f4b9813ad3" desc="Privacy setting label">N̂́ôn̂́-p̂́êr̂́ŝốn̂ấl̂î́ẑếd̂ ấd̂ŝ́</msg>
@@ -94,6 +95,9 @@
     <msg name="s2bba125a7eef0bb9" desc="Status message: User received a reward for viewing an ad.">R̂́êŵ́âr̂́d̂ ĝ́r̂ấn̂t̂́êd̂́.</msg>
     <msg name="s90465cbd227840a3" desc="Status message: Users must scroll the page to activate an out-of-page ad."><ph name="0">${outOfPage.loaded(format)}</ph> Ŝ́ĉr̂́ôl̂́l̂ p̂́âĝ́ê t̂́ô ấĉt̂́îv̂́ât̂́ê.</msg>
     <msg name="s43e9aef7aa01fca9" desc="Text shown when a drop-down option is disabled.">Û́n̂ấv̂ấîl̂́âb̂́l̂ế</msg>
+    <msg name="see7e5431ccf76ccc" desc="TFAT setting label">Û́n̂ŝ́p̂ếĉî́f̂î́êd̂́</msg>
+    <msg name="s21e31bdc9713e7fd" desc="TFAT setting label">Ĉ́ĥî́l̂d̂́</msg>
+    <msg name="s24befdfb1b2afce1" desc="TFAT setting label">T̂́êến̂</msg>
     <msg name="sa2b2ab2dd02accfd" desc="The action of clicking on a link.">L̂́în̂́k̂ ĉ́l̂î́ĉk̂́</msg>
     <msg name="s1c1f567a55f86cc2" desc="The action of hiding and then returning to the page (for example, by switching tabs).">Û́n̂ĥ́îd̂́ê ŵ́în̂́d̂ốŵ</msg>
     <msg name="seb61938dbbd0dd2b" desc="The action of interacting with the browser navigation bar.">B̂́r̂ốŵŝ́êr̂́ n̂́âv̂́îĝ́ât̂́îốn̂</msg>

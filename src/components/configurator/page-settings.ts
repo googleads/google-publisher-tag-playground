@@ -43,6 +43,7 @@ import {
   privacyConfigNames,
   privacyTreatmentNames,
   safeFrameConfigNames,
+  tagForAgeTreatmentNames,
 } from '../../model/settings.js';
 import {AdExclusionInput} from '../ui-controls/ad-exclusion-input.js';
 import {
@@ -88,6 +89,8 @@ export class PageSettings extends LitElement {
   private pageUrl!: ConfiguratorTextField;
   @queryAll('.privacy configurator-checkbox')
   private privacySettings!: HTMLInputElement[];
+  @query('configurator-select#tfat')
+  private ageTreatmentSelect!: ConfiguratorSelect;
   @queryAll('.privacy .treatments configurator-checkbox')
   private privacyTreatments!: HTMLInputElement[];
   @query('targeting-input') private targetingInput!: TargetingInput;
@@ -107,9 +110,14 @@ export class PageSettings extends LitElement {
   private handleUpdate() {
     this.config.privacy = this.config.privacy || {};
     this.privacySettings.forEach(input => {
-      this.config.privacy![input.id as keyof SamplePrivacyConfig] =
-        input.checked;
+      this.config.privacy![
+        input.id as keyof Omit<SamplePrivacyConfig, 'tfat'>
+      ] = input.checked;
     });
+    const tfatSelectorValue = this.ageTreatmentSelect.value;
+    this.config.privacy!.tfat = tfatSelectorValue
+      ? (tfatSelectorValue as keyof typeof googletag.enums.TagForAgeTreatment)
+      : undefined;
 
     // Populate page-level config.
     const pageConfig: googletag.config.PageSettingsConfig = {};
@@ -252,6 +260,17 @@ export class PageSettings extends LitElement {
   private renderPrivacySettings() {
     const privacy = this.config.privacy || {};
     const treatment = this.config.config?.privacyTreatments || {treatments: []};
+    const ageTreatmentOptions: ConfiguratorSelectOption[] = [];
+    Object.entries(tagForAgeTreatmentNames).forEach(([key, label]) => {
+      const enumKey = key as keyof typeof googletag.enums.TagForAgeTreatment;
+      ageTreatmentOptions.push({
+        label: label(),
+        value: enumKey,
+        selected:
+          privacy.tfat === enumKey ||
+          (privacy.tfat === undefined && enumKey === 'UNSPECIFIED'),
+      });
+    });
 
     return html`<config-section
       class="privacy"
@@ -260,11 +279,20 @@ export class PageSettings extends LitElement {
     >
       ${Object.keys(privacyConfigNames).map((setting: string) => {
         const key = setting as keyof SamplePrivacyConfig;
-        return this.renderCheckbox(
-          key,
-          privacyConfigNames[key](),
-          privacy[key],
-        );
+        if (key === 'tfat') {
+          return html`<configurator-select
+            id="tfat"
+            label="${privacyConfigNames[key]()}"
+            .options="${ageTreatmentOptions}"
+            @update="${this.handleUpdate}"
+          ></configurator-select>`;
+        } else {
+          return this.renderCheckbox(
+            key,
+            privacyConfigNames[key](),
+            privacy[key],
+          );
+        }
       })}
 
       <config-section

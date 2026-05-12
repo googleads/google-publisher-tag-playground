@@ -24,6 +24,7 @@ import {
   privacyConfigNames,
   privacyTreatmentNames,
   safeFrameConfigNames,
+  tagForAgeTreatmentNames,
 } from '../../src/model/settings.js';
 
 import {Configurator, expect, test} from './fixtures/configurator.js';
@@ -126,6 +127,64 @@ test.describe('Enable/disable checkboxes', () => {
         await expect(page.locator('gpt-playground')).toContainText(
           expectedText,
         );
+      });
+    });
+  });
+});
+
+test.describe('Age treatment', () => {
+  Object.keys(tagForAgeTreatmentNames).forEach(key => {
+    test(`Selecting "${key}" updates code`, async ({configurator}) => {
+      const pageSettings = configurator.getConfigSection(configNames.page());
+      const ageTreatmentSelect = configurator.getSelect(
+        privacyConfigNames.tfat(),
+        pageSettings,
+      );
+
+      await configurator.selectOption(ageTreatmentSelect, key);
+
+      const codeContents = await configurator.getCodeEditorContents();
+
+      if (key === 'UNSPECIFIED') {
+        expect(codeContents).not.toContain('tagForAgeTreatment');
+      } else {
+        const expectedSetting = `googletag.enums.TagForAgeTreatment.${key}`;
+        expect(codeContents).toContain(expectedSetting);
+      }
+    });
+
+    test.describe('Prepopulation', () => {
+      test.use({
+        config: {
+          page: {
+            privacy: {
+              tfat: key as keyof typeof googletag.enums.TagForAgeTreatment,
+            },
+          },
+          slots: [],
+        },
+      });
+
+      test(`Prepopulating "${key}" works as expected`, async ({
+        configurator,
+      }) => {
+        const pageSettings = configurator.getConfigSection(configNames.page());
+        const ageTreatmentSelect = configurator.getSelect(
+          privacyConfigNames.tfat(),
+          pageSettings,
+        );
+
+        await expect(
+          configurator.getSelectOption(ageTreatmentSelect, key),
+        ).toBeSelected();
+
+        const codeContents = await configurator.getCodeEditorContents();
+        if (key === 'UNSPECIFIED') {
+          expect(codeContents).not.toContain('tagForAgeTreatment');
+        } else {
+          const expectedSetting = `googletag.enums.TagForAgeTreatment.${key}`;
+          expect(codeContents).toContain(expectedSetting);
+        }
       });
     });
   });

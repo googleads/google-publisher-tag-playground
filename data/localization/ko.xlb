@@ -57,6 +57,7 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">단일 요청 아키텍처(SRA)</msg>
     <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">초기 로드 중지</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">미리보기</msg>
+    <msg desc="Privacy setting label" name="s3e745f11d41db048">Age treatment</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">아동 대상 서비스로 취급</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">제한적인 광고</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">개인 맞춤이 아닌 광고</msg>
@@ -94,6 +95,9 @@
     <msg desc="Status message: User received a reward for viewing an ad." name="s2bba125a7eef0bb9">보상이 지급됐습니다.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> 페이지를 스크롤하여 활성화합니다.</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">사용할 수 없음</msg>
+    <msg desc="TFAT setting label" name="see7e5431ccf76ccc">Unspecified</msg>
+    <msg desc="TFAT setting label" name="s21e31bdc9713e7fd">Child</msg>
+    <msg desc="TFAT setting label" name="s24befdfb1b2afce1">Teen</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">링크 클릭</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">창 숨기기 해제</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">브라우저 탐색</msg>

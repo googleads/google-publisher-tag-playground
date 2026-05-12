@@ -170,6 +170,7 @@ export const privacyConfigNames: Record<
   () => string
 > = {
   // Order here defines the order of settings in the configurator.
+  tfat: () => msg('Age treatment', {desc: 'Privacy setting label'}),
   tfcd: () => msg('Child-directed treatment', {desc: 'Privacy setting label'}),
   ltd: () => msg('Limited ads', {desc: 'Privacy setting label'}),
   npa: () => msg('Non-personalized ads', {desc: 'Privacy setting label'}),
@@ -327,4 +328,16 @@ export const lazyLoadConfigNames: Record<
     msg('Mobile scaling multiplier', {
       desc: 'A multiplier applied to fetch and render margins on mobile devices.',
     }),
+};
+
+/**
+ * Maps `googletag.enums.TagForAgeTreatment` keys to their friendly names.
+ */
+export const tagForAgeTreatmentNames: Record<
+  keyof typeof googletag.enums.TagForAgeTreatment,
+  () => string
+> = {
+  UNSPECIFIED: () => msg('Unspecified', {desc: 'TFAT setting label'}),
+  CHILD: () => msg('Child', {desc: 'TFAT setting label'}),
+  TEEN: () => msg('Teen', {desc: 'TFAT setting label'}),
 };
