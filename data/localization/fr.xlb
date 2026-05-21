@@ -57,7 +57,7 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Architecture de demande simple (SRA)</msg>
     <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Désactiver le chargement initial</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Aperçu</msg>
-    <msg desc="Privacy setting label" name="s3e745f11d41db048">Age treatment</msg>
+    <msg desc="Privacy setting label" name="s3e745f11d41db048">Traitement de l'âge</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Traitement adapté aux contenus destinés aux enfants</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">Annonces limitées</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Annonces non personnalisées</msg>
@@ -95,9 +95,9 @@
     <msg desc="Status message: User received a reward for viewing an ad." name="s2bba125a7eef0bb9">Récompense accordée.</msg>
     <msg desc="Status message: Users must scroll the page to activate an out-of-page ad." name="s90465cbd227840a3"><ph name="0">${outOfPage.loaded(format)}</ph> Faites défiler la page pour l'activer.</msg>
     <msg desc="Text shown when a drop-down option is disabled." name="s43e9aef7aa01fca9">Indisponible</msg>
-    <msg desc="TFAT setting label" name="see7e5431ccf76ccc">Unspecified</msg>
-    <msg desc="TFAT setting label" name="s21e31bdc9713e7fd">Child</msg>
-    <msg desc="TFAT setting label" name="s24befdfb1b2afce1">Teen</msg>
+    <msg desc="TFAT setting label" name="see7e5431ccf76ccc">Non spécifié</msg>
+    <msg desc="TFAT setting label" name="s21e31bdc9713e7fd">Enfant</msg>
+    <msg desc="TFAT setting label" name="s24befdfb1b2afce1">Adolescents</msg>
     <msg desc="The action of clicking on a link." name="sa2b2ab2dd02accfd">Clic sur un lien</msg>
     <msg desc="The action of hiding and then returning to the page (for example, by switching tabs)." name="s1c1f567a55f86cc2">Afficher la fenêtre</msg>
     <msg desc="The action of interacting with the browser navigation bar." name="seb61938dbbd0dd2b">Navigation via navigateur</msg>
