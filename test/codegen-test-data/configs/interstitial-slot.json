@@ -8,7 +8,6 @@
         "interstitial": {
           "requireStorageAccess": true,
           "triggers": {
-            "backward": true,
             "endOfArticle": true,
             "inactivity": true,
             "navBar": true,

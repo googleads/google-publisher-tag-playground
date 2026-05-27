@@ -62,7 +62,7 @@ export const templates = {
   s4121536e35beb2ed: 'Iklan ukuran tetap (728x90)',
   s417b90913e05bc17: 'Pratinjau',
   s419ce4c474f1f9a8: '// Konfigurasikan setelan tingkat halaman.',
-  s42278ac7b37a5245: 'Tambahkan nilai kunci penargetan',
+  s42278ac7b37a5245: 'Tambahkan kunci-nilai penargetan',
   s43e9aef7aa01fca9: 'Tidak tersedia',
   s4535f519744108bf: 'Format output',
   s4661d2a8c1259e58: 'Contoh iklan (di luar halaman)',

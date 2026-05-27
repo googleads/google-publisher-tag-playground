@@ -90,7 +90,16 @@ const AD_UNIT_VALIDATION_PATTERN =
 const AD_UNIT_VALIDATION_REGEX = new RegExp(`^${AD_UNIT_VALIDATION_PATTERN}$`);
 
 // Unsupported out-of-page formats.
-const EXCLUDED_OOP_FORMATS = ['AD_INTENTS', 'GAME_MANUAL_INTERSTITIAL'];
+type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
+const EXCLUDED_OOP_FORMATS: OutOfPageFormat[] = [
+  'AD_INTENTS',
+  'GAME_MANUAL_INTERSTITIAL',
+];
+
+// Unsupported interstitial triggers.
+const EXCLUDED_INTERSTITIAL_TRIGGERS: googletag.config.InterstitialTrigger[] = [
+  'backward',
+];
 
 /**
  * A wrapper around {@link SampleSlotConfig} that associates additional metadata
@@ -102,8 +111,6 @@ interface KeyedSlot {
   /** Whether this slot represents a sample ad template. */
   template: boolean;
 }
-
-type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
 
 /**
  * Custom component for displaying/editing an array of GPT slots.
@@ -383,17 +390,25 @@ export class SlotSettings extends LitElement {
       ></configurator-checkbox>
     `);
 
-    Object.entries(interstitialTriggerNames).map(([key, label]) => {
-      const trigger = key as googletag.config.InterstitialTrigger;
-      triggers.push(
-        html` <configurator-checkbox
-          label="${label()}"
-          name="${trigger}"
-          ?checked="${slot.config?.interstitial?.triggers?.[trigger]}"
-          @update="${this.updateSlot}"
-        ></configurator-checkbox>`,
-      );
-    });
+    Object.entries(interstitialTriggerNames)
+      // Remove triggers we don't support.
+      .filter(
+        ([key]) =>
+          !EXCLUDED_INTERSTITIAL_TRIGGERS.includes(
+            key as googletag.config.InterstitialTrigger,
+          ),
+      )
+      .map(([key, label]) => {
+        const trigger = key as googletag.config.InterstitialTrigger;
+        triggers.push(
+          html` <configurator-checkbox
+            label="${label()}"
+            name="${trigger}"
+            ?checked="${slot.config?.interstitial?.triggers?.[trigger]}"
+            @update="${this.updateSlot}"
+          ></configurator-checkbox>`,
+        );
+      });
 
     return html`
       <configurator-checkbox

@@ -648,11 +648,6 @@ test.describe('Interstitial settings', () => {
       setting: {triggers: {unhideWindow: true}},
     },
     {
-      label: interstitialTriggerNames.backward(),
-      expectedText: 'backward',
-      setting: {triggers: {backward: true}},
-    },
-    {
       label: interstitialTriggerNames.endOfArticle(),
       expectedText: 'endOfArticle',
       setting: {triggers: {endOfArticle: true}},
