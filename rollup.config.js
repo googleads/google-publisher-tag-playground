@@ -39,7 +39,7 @@ const MINIFY_HTML_OPTIONS = {
 
 // Process direct includes individually to ensure they're bundled with all
 // dependencies.
-const includes = glob.sync('site/includes/*.js').map(include => {
+const includes = glob.sync('build/site/includes/*.js').map(include => {
   return {
     input: include,
     output: {
@@ -51,7 +51,7 @@ const includes = glob.sync('site/includes/*.js').map(include => {
 });
 
 // Process locale files individually to ensure they aren't chunked together.
-const locales = glob.sync('src/generated/locales/*.js').map(locale => {
+const locales = glob.sync('build/src/generated/locales/*.js').map(locale => {
   return {
     input: locale,
     output: {
@@ -64,7 +64,7 @@ const locales = glob.sync('src/generated/locales/*.js').map(locale => {
 
 export default [
   {
-    input: glob.sync('site/js/*.js'),
+    input: glob.sync('build/site/js/*.js'),
     output: {
       dir: 'dist/js',
       format: 'es',
@@ -90,7 +90,7 @@ export default [
       // Convert typescript from CJS -> ESM.
       // Ignore all `requires`, rather than including polyfills we won't use.
       commonjs({
-        include: 'node_modules/typescript/lib/typescript.js',
+        include: '**/node_modules/typescript/lib/typescript.js',
         ignore: () => true,
       }),
       resolve(),

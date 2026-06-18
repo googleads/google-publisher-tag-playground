@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "build",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es2021", "dom"],

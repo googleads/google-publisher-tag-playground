@@ -19,7 +19,6 @@ import 'jasmine';
 import fs from 'fs';
 import path from 'path';
 import {create} from 'ts-node';
-import {fileURLToPath} from 'url';
 
 import * as config from '../src/codegen/api/config.js';
 import * as codegen from '../src/codegen/gpt-sample.js';
@@ -27,8 +26,13 @@ import {SampleConfig} from '../src/model/sample-config.js';
 import {window} from '../src/model/window.js';
 
 describe('Codegen', () => {
-  const __dirname = path.dirname(fileURLToPath(import.meta.url));
-  const CONFIG_DIR = path.resolve(__dirname, './codegen-test-data/configs');
+  // Find the package root directory.
+  const packageRoot = process.cwd();
+
+  const CONFIG_DIR = path.resolve(
+    packageRoot,
+    'test/codegen-test-data/configs',
+  );
 
   const COMPILER = create();
 
@@ -44,7 +48,7 @@ describe('Codegen', () => {
   beforeEach(() => {
     // Load utility file includes from the local filesystem.
     window.playgroundConfig = {
-      baseUrl: path.resolve(fileURLToPath(import.meta.url), '../../site'),
+      baseUrl: path.resolve(packageRoot, 'site'),
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
