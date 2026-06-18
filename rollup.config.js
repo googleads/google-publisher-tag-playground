@@ -37,40 +37,68 @@ const MINIFY_HTML_OPTIONS = {
   },
 };
 
-// Process direct includes individually to ensure they're bundled with all
-// dependencies.
-const includes = glob.sync('build/site/includes/*.js').map(include => {
-  return {
-    input: include,
-    output: {
-      dir: 'dist/includes/',
-      format: 'es',
-    },
-    plugins: [resolve(), minifyHTML(MINIFY_HTML_OPTIONS), minify()],
-  };
-});
+const isWatching = process.env.ROLLUP_WATCH === 'true';
 
-// Process locale files individually to ensure they aren't chunked together.
-const locales = glob.sync('build/src/generated/locales/*.js').map(locale => {
-  return {
-    input: locale,
-    output: {
-      dir: 'dist/locales/',
-      format: 'es',
-    },
-    plugins: [resolve(), minify()],
-  };
-});
+// Process direct includes in a single config to bundle with dependencies.
+const includes = {
+  input: glob.sync('build/site/includes/*.js'),
+  output: {
+    dir: 'dist/includes/',
+    format: 'es',
+  },
+  plugins: [
+    resolve(),
+    !isWatching && minifyHTML(MINIFY_HTML_OPTIONS),
+    !isWatching && minify(),
+  ].filter(Boolean),
+};
+
+// Process locale files in a single config to avoid duplicate pipeline overhead.
+const locales = {
+  input: glob.sync('build/src/generated/locales/*.js'),
+  output: {
+    dir: 'dist/locales/',
+    format: 'es',
+  },
+  plugins: [resolve(), !isWatching && minify()].filter(Boolean),
+};
+
+// Process TypeScript seperately so it can be treated as an external dependency
+// in other configs. This speeds up incremental build times significantly.
+const typescriptChunk = {
+  input: 'node_modules/typescript/lib/typescript.js',
+  output: {
+    file: 'dist/js/typescript.js',
+    format: 'es',
+    exports: 'default',
+  },
+  plugins: [
+    commonjs({
+      ignore: () => true,
+    }),
+    resolve(),
+    !isWatching && minify(),
+    !isWatching &&
+      summary({
+        showBrotliSize: true,
+        showGzippedSize: true,
+      }),
+  ].filter(Boolean),
+};
 
 export default [
   {
     input: glob.sync('build/site/js/*.js'),
+    external: ['typescript'],
     output: {
       dir: 'dist/js',
       format: 'es',
+      paths: {
+        typescript: './typescript.js',
+      },
       // Manually split dependencies into logical chunks, to aid debugging.
       manualChunks: id => {
-        const lib = id.replace(/^.*\\node_modules\\/, '');
+        const lib = id.replace(/^.*[\\/]node_modules[\\/]/, '');
         if (lib.startsWith('lit')) {
           return 'lit';
         }
@@ -80,22 +108,13 @@ export default [
         if (lib.startsWith('prettier')) {
           return 'prettier';
         }
-        if (lib.startsWith('typescript')) {
-          return 'typescript';
-        }
       },
       chunkFileNames: '[name].js',
     },
     plugins: [
-      // Convert typescript from CJS -> ESM.
-      // Ignore all `requires`, rather than including polyfills we won't use.
-      commonjs({
-        include: '**/node_modules/typescript/lib/typescript.js',
-        ignore: () => true,
-      }),
       resolve(),
       importMetaAssets(),
-      minifyHTML(MINIFY_HTML_OPTIONS),
+      !isWatching && minifyHTML(MINIFY_HTML_OPTIONS),
       copy({
         targets: [
           {
@@ -105,13 +124,15 @@ export default [
         ],
         flatten: false,
       }),
-      minify(),
-      summary({
-        showBrotliSize: true,
-        showGzippedSize: true,
-      }),
-    ],
+      !isWatching && minify(),
+      !isWatching &&
+        summary({
+          showBrotliSize: true,
+          showGzippedSize: true,
+        }),
+    ].filter(Boolean),
   },
-  ...includes,
-  ...locales,
+  includes,
+  locales,
+  typescriptChunk,
 ];

@@ -11,5 +11,9 @@
     "strict": true,
     "skipLibCheck": true
   },
+  "watchOptions": {
+    "watchFile": "dynamicPriorityPolling",
+    "watchDirectory": "dynamicPriorityPolling"
+  },
   "include": ["site/**/*.ts", "src/", "test/"]
 }

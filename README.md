@@ -14,4 +14,5 @@ GPT samples can be demoed at the [official documentation site](https://developer
 1. `npx -y tsx scripts/gen-samples.ts` to generate sample config files.
 
 ### Run
-1. `npm run serve` to start a development server.
+1. `npm run serve` to start a static development server or `npm run serve:watch`
+   to start a development server with incremental builds enabled.
