@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">广告位尺寸</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">添加广告排除标签</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">添加定位键值对</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">欧盟地区用户意见征求</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">您已获得以下奖励：<ph name="0">${amount} ${type}</ph>！</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">正在加载意见征求对话框…</msg>

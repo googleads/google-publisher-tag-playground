@@ -43,6 +43,7 @@
     <msg name="s53a96edcf36221b2" desc="Input field label">Ấd̂ ŝ́l̂ốt̂ ŝ́îẑ́êŝ́</msg>
     <msg name="s6b0627385c38c206" desc="Input field title">Ấd̂d̂́ ấn̂ ấd̂ ếx̂ĉ́l̂û́ŝî́ôn̂́ l̂́âb̂́êl̂́</msg>
     <msg name="s42278ac7b37a5245" desc="Input field title">Ấd̂d̂́ t̂́âr̂́ĝết̂î́n̂ĝ́ k̂́êŷ́-v̂́âl̂́ûếŝ</msg>
+    <msg name="s03b4c3722970eac8" desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page.">Ĉ́ôn̂́t̂î́n̂û́ê r̂́êấd̂î́n̂ĝ́</msg>
     <msg name="s4089274c7ce7fb00" desc="Label for control that enables/disables GDPR consent">ẾÛ û́ŝếr̂ ĉ́ôn̂́ŝến̂t̂́</msg>
     <msg name="s5c64f55f3fbc34f1" desc="Message displayed when a user recieves a reward for watching an ad.">Ŷ́ôû́ ĥ́âv̂́ê b̂́êến̂ r̂́êŵ́âr̂́d̂ếd̂ <ph name="0">${amount} ${type}</ph>!</msg>
     <msg name="sb813a33f700541bf" desc="Message displayed when EU consent dialog is loading.">L̂́ôấd̂î́n̂ĝ́ ĉ́ôn̂́ŝến̂t̂́ d̂́îấl̂ốĝ...</msg>

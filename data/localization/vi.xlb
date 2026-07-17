@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">Kích thước vị trí quảng cáo</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">Thêm nhãn loại trừ quảng cáo</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Thêm khoá-giá trị nhắm mục tiêu</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Sự đồng ý của người dùng ở Liên minh Châu Âu</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">Bạn đã được thưởng <ph name="0">${amount} ${type}</ph>!</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Đang tải hộp thoại đồng ý...</msg>

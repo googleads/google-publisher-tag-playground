@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">광고 슬롯 크기</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">광고 제외 라벨 추가</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">타겟팅 키-값 추가</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU 사용자 동의</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1"><ph name="0">${amount} ${type}</ph>의 보상이 지급되었습니다.</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">동의 대화상자 로드 중...</msg>

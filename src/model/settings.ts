@@ -101,6 +101,7 @@ export const pageSettingsConfigNames: Record<
     msg('Collapse ad slots', {
       desc: 'Setting to control if/when ad slots should be collapsed (hidden).',
     }),
+  continueButton: notSupported,
   disableInitialLoad: () =>
     msg('Disable initial load', {
       desc: 'Prevents GPT from requesting ads when calling display().',
@@ -256,6 +257,10 @@ export const interstitialTriggerNames: Record<
   endOfArticle: () =>
     msg('End of article', {
       desc: 'The action of reaching the end of an article.',
+    }),
+  continueReading: () =>
+    msg('Continue reading', {
+      desc: 'Interstitial format that requires the user to click a "View ad to continue" button to continue interacting with the page.',
     }),
 };
 

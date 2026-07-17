@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">Größen von Anzeigenflächen</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">Ausschlusslabel für Anzeigen hinzufügen</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Targeting-Schlüssel/Wert-Paare hinzufügen</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Einwilligung der Nutzer in der EU</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">Du hast <ph name="0">${amount} ${type}</ph> erhalten!</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Dialog zur Einholung von Einwilligungen wird geladen…</msg>
@@ -57,7 +58,7 @@
     <msg desc="Page-level setting label" name="s267a52c34c200ef0">Einzelanfrage-Architektur</msg>
     <msg desc="Prevents GPT from requesting ads when calling display()." name="s00f485d30c4d7069">Anfängliches Laden deaktivieren</msg>
     <msg desc="Preview toolbar label" name="s417b90913e05bc17">Vorschau</msg>
-    <msg desc="Privacy setting label" name="s3e745f11d41db048">Altersangabe</msg>
+    <msg desc="Privacy setting label" name="s3e745f11d41db048">Alterskennzeichnung</msg>
     <msg desc="Privacy setting label" name="s3132d1a0580760bc">Inhalte für Kinder</msg>
     <msg desc="Privacy setting label" name="sd5ac53cfd233dbcb">eingeschränktes Anzeigen-Targeting</msg>
     <msg desc="Privacy setting label" name="s0eb106f4b9813ad3">Nicht personalisierte Anzeigen</msg>

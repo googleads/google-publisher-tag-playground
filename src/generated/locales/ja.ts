@@ -25,6 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: '初回の読み込みを無効にする',
   s02c64e6a6306c0b0: 'スロットを追加',
+  s03b4c3722970eac8: 'Continue reading',
   s03c563952f49581d: str`${0} プロンプトが閉じられました。`,
   s0536dee760be4bf2: '// プライバシーを設定します。',
   s06d92c8a54c8a011: 'スロット テンプレート',

@@ -25,6 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: 'D̂́îŝ́âb̂́l̂ế î́n̂î́t̂î́âl̂́ l̂́ôấd̂',
   s02c64e6a6306c0b0: 'Ấd̂d̂́ ŝ́l̂ốt̂',
+  s03b4c3722970eac8: 'Ĉ́ôn̂́t̂î́n̂û́ê r̂́êấd̂î́n̂ĝ́',
   s03c563952f49581d: str`${0} p̂́r̂ốm̂p̂́t̂ ŵ́âŝ́ d̂́îŝ́m̂î́ŝŝ́êd̂́.`,
   s0536dee760be4bf2: '// Ĉ́ôn̂́f̂î́ĝû́r̂ế p̂́r̂î́v̂ấĉŷ́ ŝ́êt̂́t̂î́n̂ĝ́ŝ.',
   s06d92c8a54c8a011: 'Ŝ́l̂ốt̂ t̂́êm̂́p̂l̂́ât̂́ê',

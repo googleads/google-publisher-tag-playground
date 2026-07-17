@@ -25,6 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: 'Wyłącz wstępne ładowanie',
   s02c64e6a6306c0b0: 'Dodaj boks',
+  s03b4c3722970eac8: 'Continue reading',
   s03c563952f49581d: str`Prompt ${0} został zamknięty.`,
   s0536dee760be4bf2: '// Skonfiguruj ustawienia prywatności.',
   s06d92c8a54c8a011: 'Szablon boksu',

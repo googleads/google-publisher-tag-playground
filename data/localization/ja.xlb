@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">広告スロットのサイズ</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">広告の除外ラベルを追加</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">ターゲティングの Key-Value を追加</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">EU ユーザーの同意</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1"><ph name="0">${amount} ${type}</ph> を獲得しました。</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">同意ダイアログを読み込んでいます...</msg>

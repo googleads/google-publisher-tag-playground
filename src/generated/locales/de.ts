@@ -25,6 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: 'Anfängliches Laden deaktivieren',
   s02c64e6a6306c0b0: 'Anzeigenfläche hinzufügen',
+  s03b4c3722970eac8: 'Continue reading',
   s03c563952f49581d: str`Prompt „${0}“ wurde geschlossen.`,
   s0536dee760be4bf2: '// Configure privacy settings.',
   s06d92c8a54c8a011: 'Vorlage für Anzeigenflächen',
@@ -59,7 +60,7 @@ export const templates = {
   s3aa2bb1183ed9183: 'Inaktivität',
   s3be169991df10a5d: 'Vorschau öffnen',
   s3e0b42b56e05829d: 'Größen',
-  s3e745f11d41db048: 'Altersangabe',
+  s3e745f11d41db048: 'Alterskennzeichnung',
   s4089274c7ce7fb00: 'Einwilligung der Nutzer in der EU',
   s4121536e35beb2ed: 'Anzeige mit fester Größe (728 x 90)',
   s417b90913e05bc17: 'Vorschau',

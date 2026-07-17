@@ -43,6 +43,7 @@
     <msg desc="Input field label" name="s53a96edcf36221b2">Tamanhos de espaços de anúncio</msg>
     <msg desc="Input field title" name="s6b0627385c38c206">Adicionar um rótulo de exclusão de anúncio</msg>
     <msg desc="Input field title" name="s42278ac7b37a5245">Adicionar chaves-valor de segmentação</msg>
+    <msg desc="Interstitial format that requires the user to click a &quot;View ad to continue&quot; button to continue interacting with the page." name="s03b4c3722970eac8">Continue reading</msg>
     <msg desc="Label for control that enables/disables GDPR consent" name="s4089274c7ce7fb00">Consentimento dos usuários da UE</msg>
     <msg desc="Message displayed when a user recieves a reward for watching an ad." name="s5c64f55f3fbc34f1">Você ganhou <ph name="0">${amount} ${type}</ph>!</msg>
     <msg desc="Message displayed when EU consent dialog is loading." name="sb813a33f700541bf">Carregando caixa de diálogo de consentimento…</msg>

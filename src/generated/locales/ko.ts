@@ -25,6 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: '초기 로드 중지',
   s02c64e6a6306c0b0: '슬롯 추가',
+  s03b4c3722970eac8: 'Continue reading',
   s03c563952f49581d: str`${0} 프롬프트가 종료되었습니다.`,
   s0536dee760be4bf2: '// 개인 정보 보호 설정을 구성합니다.',
   s06d92c8a54c8a011: '슬롯 템플릿',

@@ -99,6 +99,7 @@ const EXCLUDED_OOP_FORMATS: OutOfPageFormat[] = [
 // Unsupported interstitial triggers.
 const EXCLUDED_INTERSTITIAL_TRIGGERS: googletag.config.InterstitialTrigger[] = [
   'backward',
+  'continueReading',
 ];
 
 /**
