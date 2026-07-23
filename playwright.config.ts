@@ -54,6 +54,10 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See
        https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+
+    /* Ignore HTTPS certificate errors when running inside containerized
+       environments. */
+    ignoreHTTPSErrors: !!process.env.IGNORE_HTTPS_ERRORS,
   },
 
   /* Configure projects for major browsers. */
@@ -81,7 +85,7 @@ export default defineConfig({
         ...devices['Desktop Safari'],
         viewport: {width: 1920, height: 1080},
       },
-      workers: 4,  // Limit workers to avoid flakiness.
+      workers: 2,  // Limit workers to avoid CPU saturation and flakiness.
     },
   ],
 

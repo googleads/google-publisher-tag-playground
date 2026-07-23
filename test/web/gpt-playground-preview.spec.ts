@@ -166,20 +166,22 @@ test.describe('Toolbar controls', () => {
 test.describe('Toolbar buttons', () => {
   test.use({config: SAMPLE_AD_SLOT});
 
-  test('Refresh reloads preview', async ({configurator}) => {
-    // Wait for the preview to be requested.
-    const firstResponse =
-      await configurator.page.waitForResponse(PREVIEW_SAMPLE_GLOB);
+  test('Refresh reloads preview', async ({configurator, config}) => {
+    // Navigate and wait for the preview response.
+    const firstResponsePromise =
+      configurator.page.waitForResponse(PREVIEW_SAMPLE_GLOB);
+    await configurator.goto(config);
+    const firstResponse = await firstResponsePromise;
     const originalConfig = (await firstResponse.body()).toString();
 
     // Click the refresh button.
-    const previewPromise =
+    const secondResponsePromise =
       configurator.page.waitForResponse(PREVIEW_SAMPLE_GLOB);
     const previewPane = configurator.page.locator(PREVIEW_SELECTOR);
     await previewPane.getByText('refresh').click();
 
     // Wait for the preview to be requested again.
-    const secondResponse = await previewPromise;
+    const secondResponse = await secondResponsePromise;
     const newConfig = (await secondResponse.body()).toString();
 
     // Ensure that the requests were initiated one after the other.

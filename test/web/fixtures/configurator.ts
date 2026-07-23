@@ -15,6 +15,7 @@
  */
 
 import {Locator, mergeExpects, Page, test as baseTest} from '@playwright/test';
+import * as path from 'path';
 
 import {SampleConfig} from '../../../src/model/sample-config.js';
 import {encode} from '../../../src/util/base64url.js';
@@ -32,6 +33,59 @@ export const test = baseTest.extend<{
   config: [{slots: []} as SampleConfig, {option: true}],
 
   configurator: async ({page, config}, use) => {
+    // Intercept requests to unpkg.com and route them to local node_modules to make tests hermetic.
+    await page.route('https://unpkg.com/**', async route => {
+      const url = route.request().url();
+
+      // 1. Match playground-elements static assets
+      let match = url.match(
+        /https:\/\/unpkg\.com\/playground-elements@[^/]+\/(.+)/,
+      );
+      if (match && match[1]) {
+        const relativePath = match[1];
+        // Only intercept static files of the library, not virtual files in the service worker scope.
+        if (!relativePath.includes('/') || relativePath.startsWith('themes/')) {
+          const filePath = path.resolve(
+            process.cwd(),
+            'node_modules/playground-elements',
+            relativePath,
+          );
+          await route.fulfill({path: filePath});
+          return;
+        }
+        await route.continue();
+        return;
+      }
+
+      // 2. Match typescript compiler lib files
+      match = url.match(/https:\/\/unpkg\.com\/typescript@[^/]+\/lib\/(.+)/);
+      if (match && match[1]) {
+        const filePath = path.resolve(
+          process.cwd(),
+          'node_modules/typescript/lib',
+          match[1],
+        );
+        await route.fulfill({path: filePath});
+        return;
+      }
+
+      // 3. Match @types/google-publisher-tag files
+      match = url.match(
+        /https:\/\/unpkg\.com\/@types\/google-publisher-tag@[^/]+\/(.+)/,
+      );
+      if (match && match[1]) {
+        const filePath = path.resolve(
+          process.cwd(),
+          'node_modules/@types/google-publisher-tag',
+          match[1],
+        );
+        await route.fulfill({path: filePath});
+        return;
+      }
+
+      await route.continue();
+    });
+
     const configurator = new Configurator(page);
     await configurator.goto(config);
     await use(configurator);
