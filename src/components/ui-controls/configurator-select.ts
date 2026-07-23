@@ -59,8 +59,7 @@ export interface ConfiguratorOptGroup {
  * A valid `<select>` option.
  */
 export type ConfiguratorSelectOption =
-  | ConfiguratorOption
-  | ConfiguratorOptGroup;
+  ConfiguratorOption | ConfiguratorOptGroup;
 
 @localized()
 @customElement('configurator-select')

@@ -25,7 +25,7 @@ import {str} from '@lit/localize';
 export const templates = {
   s00f485d30c4d7069: '‏‮Disable‬‏ ‏‮initial‬‏ ‏‮load‬‏',
   s02c64e6a6306c0b0: '‏‮Add‬‏ ‏‮slot‬‏',
-  s03b4c3722970eac8: 'Continue reading',
+  s03b4c3722970eac8: '‏‮Continue‬‏ ‏‮reading‬‏',
   s03c563952f49581d: str`${0} ‏‮prompt‬‏ ‏‮was‬‏ ‏‮dismissed‬‏.`,
   s0536dee760be4bf2: '// ‏‮Configure‬‏ ‏‮privacy‬‏ ‏‮settings‬‏.',
   s06d92c8a54c8a011: '‏‮Slot‬‏ ‏‮template‬‏',

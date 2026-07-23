@@ -50,8 +50,7 @@ export interface ConfiguratorFormatOptGroup extends ConfiguratorOptGroup {
  * A valid ad format aware `<select>` option.
  */
 export type ConfiguratorFormatSelectOption =
-  | ConfiguratorFormatOption
-  | ConfiguratorFormatOptGroup;
+  ConfiguratorFormatOption | ConfiguratorFormatOptGroup;
 
 type OutOfPageFormat = keyof typeof googletag.enums.OutOfPageFormat;
 

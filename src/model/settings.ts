@@ -101,7 +101,6 @@ export const pageSettingsConfigNames: Record<
     msg('Collapse ad slots', {
       desc: 'Setting to control if/when ad slots should be collapsed (hidden).',
     }),
-  continueButton: notSupported,
   disableInitialLoad: () =>
     msg('Disable initial load', {
       desc: 'Prevents GPT from requesting ads when calling display().',
@@ -137,6 +136,7 @@ export const slotSettingsConfigNames: Record<
     msg('Collapse ad slot', {
       desc: 'Setting to control if/when a single ad slot should be collapsed (hidden).',
     }),
+  continueButton: notSupported,
   interstitial: () =>
     msg('Interstitial triggers', {
       desc: 'User actions that can trigger an intersitial ad.',
