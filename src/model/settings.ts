@@ -113,6 +113,7 @@ export const pageSettingsConfigNames: Record<
   pps: notSupported,
   privacyTreatments: () =>
     msg('Treatments', {desc: 'Setting to control privacy treatments'}),
+  requestHookTimeoutMs: notSupported,
   safeFrame: notSupported,
   singleRequest: pageConfigNames.sra,
   targeting: pageConfigNames.targeting,
