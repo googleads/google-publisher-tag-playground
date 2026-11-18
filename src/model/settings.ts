@@ -105,6 +105,7 @@ export const pageSettingsConfigNames: Record<
     msg('Disable initial load', {
       desc: 'Prevents GPT from requesting ads when calling display().',
     }),
+  ipAddress: notSupported,
   lazyLoad: () =>
     msg('Lazy loading', {
       desc: 'Section containing lazy loading options.',
@@ -112,7 +113,7 @@ export const pageSettingsConfigNames: Record<
   location: notSupported,
   pps: notSupported,
   privacyTreatments: () =>
-    msg('Treatments', {desc: 'Setting to control privacy treatments'}),
+    msg('Treatments', {desc: 'Setting to control privacy treatments.'}),
   requestHookTimeoutMs: notSupported,
   safeFrame: notSupported,
   singleRequest: pageConfigNames.sra,

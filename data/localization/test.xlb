@@ -82,7 +82,7 @@
     <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">D̂́îŝ́âb̂́l̂ế ấd̂ŝ́ p̂́êr̂́ŝốn̂ấl̂î́ẑất̂î́ôn̂́</msg>
     <msg name="se53efa37a0c7e1d9" desc="Setting to control if/when a single ad slot should be collapsed (hidden).">Ĉ́ôl̂́l̂ấp̂ŝ́ê ấd̂ ŝ́l̂ốt̂</msg>
     <msg name="s51e4d68633a473de" desc="Setting to control if/when ad slots should be collapsed (hidden).">Ĉ́ôl̂́l̂ấp̂ŝ́ê ấd̂ ŝ́l̂ốt̂ŝ́</msg>
-    <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">T̂́r̂ếât̂́m̂ến̂t̂́ŝ</msg>
+    <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments.">T̂́r̂ếât̂́m̂ến̂t̂́ŝ</msg>
     <msg name="sfe2e9ccd10b35b4a" desc="Setting to control whether ads should be forced to render using a SafeFrame container.">F̂́ôr̂́ĉế Ŝ́âf̂́êF̂́r̂ấm̂ế</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">Ấd̂Ŝ́ên̂́ŝế ất̂t̂́r̂î́b̂û́t̂ếŝ</msg>
     <msg name="s863c0ad66f72f959" desc="Status message: ad did not fill.">N̂́ô ấd̂ r̂́êt̂́ûr̂́n̂ếd̂ f̂́ôr̂́ <ph name="0">${format}</ph> ŝ́l̂ốt̂.</msg>

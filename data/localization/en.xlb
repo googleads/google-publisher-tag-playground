@@ -82,7 +82,7 @@
     <msg name="s1e6dc9c6efd64b15" desc="Setting to control ads personalization privacy treatment,">Disable ads personalization</msg>
     <msg name="se53efa37a0c7e1d9" desc="Setting to control if/when a single ad slot should be collapsed (hidden).">Collapse ad slot</msg>
     <msg name="s51e4d68633a473de" desc="Setting to control if/when ad slots should be collapsed (hidden).">Collapse ad slots</msg>
-    <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments">Treatments</msg>
+    <msg name="sb69b079c821c34c8" desc="Setting to control privacy treatments.">Treatments</msg>
     <msg name="sfe2e9ccd10b35b4a" desc="Setting to control whether ads should be forced to render using a SafeFrame container.">Force SafeFrame</msg>
     <msg name="sdee10f7d35f52edf" desc="Settings that affect AdSense behavior.">AdSense attributes</msg>
     <msg name="s863c0ad66f72f959" desc="Status message: ad did not fill.">No ad returned for <ph name="0">${format}</ph> slot.</msg>
